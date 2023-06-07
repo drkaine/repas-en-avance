@@ -1,0 +1,37 @@
+parameters:
+    level: 8
+
+    paths:
+        - app/
+        - database/
+        - config/
+        - tests/
+
+    excludePaths:
+        - app/Http/Controllers
+        - tests/Browser
+        - tests/DuskTestCase.php
+        - tests/Feature
+        - app/Controller/CreationEnDBController.php
+
+    ignoreErrors:
+
+    polluteScopeWithLoopInitialAssignments: false
+    polluteScopeWithAlwaysIterableForeach: false
+    checkAlwaysTrueCheckTypeFunctionCall: true
+    checkAlwaysTrueInstanceof: true
+    checkAlwaysTrueStrictComparison: true
+    checkExplicitMixedMissingReturn: false
+    checkFunctionNameCase: true
+    checkInternalClassCaseSensitivity: true
+    reportMaybesInMethodSignatures: true
+    reportMaybesInPropertyPhpDocTypes: false
+    reportStaticMethodSignatures: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    checkUninitializedProperties: true
+    checkDynamicProperties: true
+    rememberPossiblyImpureFunctionValues: false
+    checkImplicitMixed: false
+    checkBenevolentUnionTypes: false
+    reportAlwaysTrueInLastCondition: false
+    reportWrongPhpDocTypeInVarTag: false
