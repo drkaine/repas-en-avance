@@ -1,5 +1,6 @@
 Affichage Des Pages (Tests\Feature\AffichageDesPages)
  [x] Affichage accueil
+ [x] Affichage inscription
 
 Modele Des Tables En DB (Tests\Unit\ModeleDesTablesEnDB)
  [x] La table user

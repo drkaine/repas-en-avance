@@ -17,4 +17,11 @@ class AffichageDesPagesTest extends TestCase
 
 		$response->assertStatus(200);
 	}
+
+	public function testAffichageInscription(): void
+	{
+		$response = $this->get('inscription');
+
+		$response->assertStatus(200);
+	}
 }
