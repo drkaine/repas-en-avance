@@ -17,19 +17,18 @@ class ModeleDesTablesEnDBTest extends TestCase
 
 	public function testLaTableUser(): void
 	{
-		User::factory()->create([
+		$user = [
 			'nom' => 'Test user',
 			'email' => 'email@test.fr',
 			'password' => 'password',
 			'email_verified_at' => '2023-06-06 06:06:06',
 			'derniere_connexion' => '06-06-2023 06:06:06',
-		]);
+		];
 
-		$this->assertDatabaseHas('users', [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'email_verified_at' => '2023-06-06 06:06:06',
-			'derniere_connexion' => '06-06-2023 06:06:06',
-		]);
+		User::factory()->create($user);
+
+		unset($user['password']);
+
+		$this->assertDatabaseHas('users', $user);
 	}
 }
