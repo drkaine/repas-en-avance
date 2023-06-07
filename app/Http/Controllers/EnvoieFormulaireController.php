@@ -11,6 +11,10 @@ class EnvoieFormulaireController extends Controller
 {
 	public function inscription(Request $request): JsonResponse
 	{
+		$request->validate([
+			'nom' => 'required|string|max:255',
+		]);
+
 		return response()->json(['message' => 'Inscription réussie'], 201);
 	}
 }

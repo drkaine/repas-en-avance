@@ -8,3 +8,6 @@ Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
 Modele Des Tables En DB (Tests\Unit\ModeleDesTablesEnDB)
  [x] La table user
 
+Validation Formulaire (Tests\Feature\ValidationFormulaire)
+ [x] Validation nom formulaire inscription
+
