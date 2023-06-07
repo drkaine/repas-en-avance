@@ -1,5 +1,5 @@
-Example (Tests\Feature\Example)
- [x] The application returns a successful response
+Affichage Des Pages (Tests\Feature\AffichageDesPages)
+ [x] Affichage accueil
 
 Modele Des Tables En DB (Tests\Unit\ModeleDesTablesEnDB)
  [x] La table user
