@@ -21,7 +21,6 @@ class ValidationFormulaireTest extends TestCase
 			'email' => 'email@test.fr',
 			'password' => 'password',
 			'email_verified_at' => '2023-06-06 06:06:06',
-			'derniere_connexion' => '06-06-2023 06:06:06',
 			'password_confirmation' => 'password',
 		]);
 
@@ -35,7 +34,6 @@ class ValidationFormulaireTest extends TestCase
 			'email' => '',
 			'password' => 'password',
 			'email_verified_at' => '2023-06-06 06:06:06',
-			'derniere_connexion' => '06-06-2023 06:06:06',
 			'password_confirmation' => 'password',
 		]);
 
@@ -49,7 +47,6 @@ class ValidationFormulaireTest extends TestCase
 			'email' => 'email@test.fr',
 			'password' => '',
 			'email_verified_at' => '2023-06-06 06:06:06',
-			'derniere_connexion' => '06-06-2023 06:06:06',
 			'password_confirmation' => 'password',
 		]);
 
@@ -63,7 +60,6 @@ class ValidationFormulaireTest extends TestCase
 			'email' => 'email@test.fr',
 			'password' => 'password',
 			'email_verified_at' => '2023-06-06 06:06:06',
-			'derniere_connexion' => '06-06-2023 06:06:06',
 		]);
 
 		$response->assertStatus(302);
