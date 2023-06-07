@@ -1,0 +1,58 @@
+name: Pipeline-CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    continue-on-error: false
+
+    steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - uses: actions/checkout@v2
+
+      - uses: mirromutth/mysql-action@v1.1
+        with:
+          mysql database: laravel-test-db
+          mysql user: laravel_test_user
+          mysql password: example
+
+      - name: Copy .env
+        run: cp .env.example .env
+
+      - name: Install composer Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Laravel security-checker
+        run: composer global require enlightn/security-checker
+
+      - name: Setup Project
+        run: |
+          php artisan config:clear
+          php artisan cache:clear
+          php artisan key:generate
+
+      - name: Directory Permissions
+        run: chmod 755 -R storage bootstrap/cache
+
+      - name: Run Unit tests
+        env:
+          APP_ENV: testing
+          DB_CONNECTION: mysql
+          DB_USERNAME: laravel_test_user
+          DB_PASSWORD: super_secret
+          DB_DATABASE: laravel_test_db
+        run: php artisan test --testdox
+      
+      - name: PHP-CS-FIXER
+        run: vendor/bin/php-cs-fixer fix --dry-run
+
+      - name: PHPStan
+        run: vendor/bin/phpstan
