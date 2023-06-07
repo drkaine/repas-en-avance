@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
@@ -11,6 +12,8 @@ use Tests\TestCase;
  */
 class ValidationFormulaireTest extends TestCase
 {
+	use RefreshDatabase;
+
 	public function testValidationNomFormulaireInscription(): void
 	{
 		$response = $this->post('/inscription', [
@@ -20,6 +23,19 @@ class ValidationFormulaireTest extends TestCase
 			'email_verified_at' => '2023-06-06 06:06:06',
 			'derniere_connexion' => '06-06-2023 06:06:06',
 			'password_confirmation' => 'password',
+		]);
+
+		$response->assertStatus(302);
+	}
+
+	public function testValidationEmailFormulaireInscription(): void
+	{
+		$response = $this->post('/inscription', [
+			'nom' => 'Test user',
+			'email' => '',
+			'password' => 'password',
+			'email_verified_at' => '2023-06-06 06:06:06',
+			'derniere_connexion' => '06-06-2023 06:06:06',
 		]);
 
 		$response->assertStatus(302);
