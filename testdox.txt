@@ -11,4 +11,5 @@ Modele Des Tables En DB (Tests\Unit\ModeleDesTablesEnDB)
 Validation Formulaire (Tests\Feature\ValidationFormulaire)
  [x] Validation nom formulaire inscription
  [x] Validation email formulaire inscription
+ [x] Validation password formulaire inscription
 
