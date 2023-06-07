@@ -36,6 +36,7 @@ class ValidationFormulaireTest extends TestCase
 			'password' => 'password',
 			'email_verified_at' => '2023-06-06 06:06:06',
 			'derniere_connexion' => '06-06-2023 06:06:06',
+			'password_confirmation' => 'password',
 		]);
 
 		$response->assertStatus(302);
@@ -47,6 +48,20 @@ class ValidationFormulaireTest extends TestCase
 			'nom' => 'Test user',
 			'email' => 'email@test.fr',
 			'password' => '',
+			'email_verified_at' => '2023-06-06 06:06:06',
+			'derniere_connexion' => '06-06-2023 06:06:06',
+			'password_confirmation' => 'password',
+		]);
+
+		$response->assertStatus(302);
+	}
+
+	public function testValidationPasswordConfirmationFormulaireInscription(): void
+	{
+		$response = $this->post('/inscription', [
+			'nom' => 'Test user',
+			'email' => 'email@test.fr',
+			'password' => 'password',
 			'email_verified_at' => '2023-06-06 06:06:06',
 			'derniere_connexion' => '06-06-2023 06:06:06',
 		]);
