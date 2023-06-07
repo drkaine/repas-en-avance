@@ -2,6 +2,9 @@ Affichage Des Pages (Tests\Feature\AffichageDesPages)
  [x] Affichage accueil
  [x] Affichage inscription
 
+Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
+ [x] Inscription avec envoi du formulaire
+
 Modele Des Tables En DB (Tests\Unit\ModeleDesTablesEnDB)
  [x] La table user
 

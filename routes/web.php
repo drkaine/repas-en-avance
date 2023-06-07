@@ -2,6 +2,7 @@
 
 declare(strict_types = 1);
 
+use App\Http\Controllers\EnvoieFormulaireController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,11 @@ Route::get('/', function () {
 Route::get('inscription', function () {
 	return view('inscription');
 })->name('inscription');
+
+Route::post(
+	'inscription',
+	[
+		EnvoieFormulaireController::class,
+		'inscription',
+	]
+)->name('inscription');
