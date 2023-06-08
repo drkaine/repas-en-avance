@@ -24,4 +24,11 @@ class AffichageDesPagesTest extends TestCase
 
 		$response->assertStatus(200);
 	}
+
+	public function testAffichageConnexion(): void
+	{
+		$response = $this->get('connexion');
+
+		$response->assertStatus(200);
+	}
 }

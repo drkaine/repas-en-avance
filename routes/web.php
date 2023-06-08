@@ -31,3 +31,7 @@ Route::post(
 		'inscription',
 	]
 )->name('inscription');
+
+Route::get('connexion', function () {
+	return view('connexion');
+})->name('connexion');
