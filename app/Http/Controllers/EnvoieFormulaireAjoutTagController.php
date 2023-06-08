@@ -11,6 +11,10 @@ class EnvoieFormulaireAjoutTagController extends Controller
 {
 	public function ajoutTag(Request $request): JsonResponse
 	{
+		$request->validate([
+			'nom' => 'required|string',
+		]);
+
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}
 }
