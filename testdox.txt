@@ -7,15 +7,19 @@ Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
  [x] Creation d un user apres l inscription
 
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
- [x] Inscription avec envoi du formulaire
- [x] Connexion avec envoi du formulaire
+ [x] Inscription
+ [x] Connexion
 
 Modele Des Tables En DB (Tests\Unit\ModeleDesTablesEnDB)
  [x] La table user
 
-Validation Formulaire (Tests\Feature\ValidationFormulaire)
- [x] Validation nom formulaire inscription
- [x] Validation email formulaire inscription
- [x] Validation password formulaire inscription
- [x] Validation password confirmation formulaire inscription
+Validation Champs Formulaire Inscription (Tests\Feature\ValidationChampsFormulaireInscription)
+ [x] Champs nom
+ [x] Longueur maximum champs nom
+ [x] Champs email
+ [x] Longueur maximum champs email
+ [x] Format champs email
+ [x] Champs password
+ [x] Longueur minimum password
+ [x] Champs password confirmation
 

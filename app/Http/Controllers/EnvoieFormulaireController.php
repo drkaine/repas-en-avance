@@ -12,7 +12,7 @@ class EnvoieFormulaireController extends Controller
 	public function inscription(Request $request): JsonResponse
 	{
 		$request->validate([
-			'nom' => 'required|string|max:255',
+			'nom' => 'required|string|max:100',
 			'email' => 'required|string|email|unique:users|max:255',
 			'password' => 'required|string|min:8|confirmed',
 		]);
