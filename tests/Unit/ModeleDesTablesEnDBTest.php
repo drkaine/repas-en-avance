@@ -49,7 +49,7 @@ class ModeleDesTablesEnDBTest extends TestCase
 	{
 		Tag::factory()->create(['nom' => 'Catégorie', ]);
 		Tag::factory()->create(['nom' => 'Plat', ]);
-		
+
 		$relation_tag = [
 			'nom_tag_parent' => 'Catégorie',
 			'nom_tag_enfant' => 'Plat',

@@ -7,6 +7,7 @@ Affichage Des Pages (Tests\Feature\AffichageDesPages)
 Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
  [x] Creation d un user apres l inscription
  [x] Creation d un tag
+ [x] Creation d une relation tag
 
 Authentification Connexion (Tests\Feature\AuthentificationConnexion)
  [x] Connexion

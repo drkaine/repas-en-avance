@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Unit;
 
+use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -39,5 +40,27 @@ class AjoutDansLaDBTest extends TestCase
 		$this->post('/ajout_tag', $tag);
 
 		$this->assertDatabaseHas('tags', $tag);
+	}
+
+	public function testCreationDUneRelationTag(): void
+	{
+		Tag::factory()->create(['nom' => 'Catégorie', ]);
+
+		$tag = [
+			'nom' => 'Plat',
+			'nom_tags_parent' => [
+				'Catégorie',
+			],
+			'nom_tags_enfant' => [
+				'Plat',
+			],
+		];
+
+		$this->post('/ajout_tag', $tag);
+
+		$this->assertDatabaseHas('relation_tags', [
+			'nom_tag_parent' => 'Catégorie',
+			'nom_tag_enfant' => 'Plat',
+		]);
 	}
 }
