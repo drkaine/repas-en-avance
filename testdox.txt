@@ -13,6 +13,7 @@ Authentification Connexion (Tests\Feature\AuthentificationConnexion)
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription
  [x] Connexion
+ [x] Ajout tag
 
 Modele Des Tables En DB (Tests\Unit\ModeleDesTablesEnDB)
  [x] La table users

@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Feature;
 
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -41,6 +42,19 @@ class EnvoieFormulaireTest extends TestCase
 		$response = $this->post('/connexion', [
 			'email' => 'email@test.fr',
 			'password' => 'password',
+		]);
+
+		$response->assertStatus(201);
+	}
+
+	public function testAjoutTag(): void
+	{
+		Tag::factory()->create([
+			'nom' => 'Catégorie',
+		]);
+
+		$response = $this->post('/ajout_tag', [
+			'nom' => 'Catégorie',
 		]);
 
 		$response->assertStatus(201);
