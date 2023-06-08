@@ -6,16 +6,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EnvoieFormulaireConnexionController extends Controller
 {
 	public function connexion(Request $request): JsonResponse
 	{
-		$request->validate([
+		$user = $request->validate([
 			'email' => 'required|string|email|max:255',
 			'password' => 'required|string|min:8',
 		]);
 
-		return response()->json(['message' => 'Inscription réussie'], 201);
+		Auth::attempt($user);
+
+		return response()->json(['message' => 'connexion réussie'], 201);
 	}
 }
