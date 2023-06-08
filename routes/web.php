@@ -44,3 +44,7 @@ Route::post(
 		'connexion',
 	]
 )->name('connexion');
+
+Route::get('ajout_tag', function () {
+	return view('ajout_tag');
+})->name('ajout_tag');

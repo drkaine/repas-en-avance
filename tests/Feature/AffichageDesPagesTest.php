@@ -31,4 +31,11 @@ class AffichageDesPagesTest extends TestCase
 
 		$response->assertStatus(200);
 	}
+
+	public function testAjoutTag(): void
+	{
+		$response = $this->get('ajout_tag');
+
+		$response->assertStatus(200);
+	}
 }

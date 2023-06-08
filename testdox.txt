@@ -2,6 +2,7 @@ Affichage Des Pages (Tests\Feature\AffichageDesPages)
  [x] Accueil
  [x] Inscription
  [x] Connexion
+ [x] Ajout tag
 
 Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
  [x] Creation d un user apres l inscription
