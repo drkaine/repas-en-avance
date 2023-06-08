@@ -15,7 +15,7 @@ class EnvoieFormulaireTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function testInscriptionAvecEnvoiDuFormulaire(): void
+	public function testInscription(): void
 	{
 		$response = $this->post('/inscription', [
 			'nom' => 'Test user',
@@ -28,7 +28,7 @@ class EnvoieFormulaireTest extends TestCase
 		$response->assertStatus(201);
 	}
 
-	public function testConnexionAvecEnvoiDuFormulaire(): void
+	public function testConnexion(): void
 	{
 		User::factory()->create([
 			'nom' => 'Test user',

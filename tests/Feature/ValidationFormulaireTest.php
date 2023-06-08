@@ -14,7 +14,7 @@ class ValidationFormulaireTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function testValidationNomFormulaireInscription(): void
+	public function testNomDansInscription(): void
 	{
 		$response = $this->post('/inscription', [
 			'nom' => '',
@@ -27,7 +27,7 @@ class ValidationFormulaireTest extends TestCase
 		$response->assertStatus(302);
 	}
 
-	public function testValidationEmailFormulaireInscription(): void
+	public function testEmailFDansInscription(): void
 	{
 		$response = $this->post('/inscription', [
 			'nom' => 'Test user',
@@ -40,7 +40,7 @@ class ValidationFormulaireTest extends TestCase
 		$response->assertStatus(302);
 	}
 
-	public function testValidationPasswordFormulaireInscription(): void
+	public function testPasswordDansInscription(): void
 	{
 		$response = $this->post('/inscription', [
 			'nom' => 'Test user',
@@ -53,7 +53,7 @@ class ValidationFormulaireTest extends TestCase
 		$response->assertStatus(302);
 	}
 
-	public function testValidationPasswordConfirmationFormulaireInscription(): void
+	public function testPasswordConfirmationDansInscription(): void
 	{
 		$response = $this->post('/inscription', [
 			'nom' => 'Test user',
