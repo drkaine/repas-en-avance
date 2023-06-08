@@ -13,6 +13,9 @@ Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
 Modele Des Tables En DB (Tests\Unit\ModeleDesTablesEnDB)
  [x] La table user
 
+Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaireConnexion)
+ [ ] Champs email
+
 Validation Champs Formulaire Inscription (Tests\Feature\ValidationChampsFormulaireInscription)
  [x] Champs nom
  [x] Longueur maximum champs nom
