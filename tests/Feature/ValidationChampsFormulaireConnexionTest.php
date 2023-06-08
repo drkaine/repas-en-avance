@@ -53,4 +53,14 @@ class ValidationChampsFormulaireConnexionTest extends TestCase
 
 		$response->assertStatus(302);
 	}
+
+	public function testLongueurMinimumChampsPassword(): void
+	{
+		$response = $this->post('/connexion', [
+			'email' => 'email.test.fr',
+			'password' => 'fg',
+		]);
+
+		$response->assertStatus(302);
+	}
 }

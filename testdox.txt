@@ -18,6 +18,7 @@ Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaire
  [x] Longueur maximum champs email
  [x] Format champs email
  [x] Champs password
+ [x] Longueur minimum champs password
 
 Validation Champs Formulaire Inscription (Tests\Feature\ValidationChampsFormulaireInscription)
  [x] Champs nom
