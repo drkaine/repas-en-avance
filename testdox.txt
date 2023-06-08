@@ -4,6 +4,9 @@ Affichage Des Pages (Tests\Feature\AffichageDesPages)
  [x] Connexion
  [x] Ajout tag
 
+Affichage Donnee De La Vue (Tests\Feature\AffichageDonneeDeLaVue)
+ [x] Tag dans la page ajout tag
+
 Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
  [x] Creation d un user apres l inscription
  [x] Creation d un tag

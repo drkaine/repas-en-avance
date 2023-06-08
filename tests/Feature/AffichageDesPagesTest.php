@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace Tests\Feature;
 
+use App\Models\Tag;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
@@ -11,6 +13,8 @@ use Tests\TestCase;
  */
 class AffichageDesPagesTest extends TestCase
 {
+	use RefreshDatabase;
+
 	public function testAccueil(): void
 	{
 		$response = $this->get('/');
@@ -34,6 +38,8 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testAjoutTag(): void
 	{
+		Tag::factory()->create(['nom' => 'Catégorie', ]);
+
 		$response = $this->get('ajout_tag');
 
 		$response->assertStatus(200);

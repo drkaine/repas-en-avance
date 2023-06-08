@@ -12,6 +12,18 @@
     </div>
 
     <div>
+        <label for="tags">Tags assossié</label>
+        <select name="tags" multiple>
+            @foreach($tags as $tag)
+                <option value="{{  $tag->nom  }}">{{  $tag->nom  }}</option>
+            @endforeach
+        </select>
+        @error('tags')
+            <span>{{ $message }}</span>
+        @enderror
+    </div>
+
+    <div>
         <button type="submit">Ajouter un tag</button>
     </div>
 </form>

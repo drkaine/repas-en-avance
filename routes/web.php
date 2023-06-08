@@ -2,6 +2,7 @@
 
 declare(strict_types = 1);
 
+use App\Http\Controllers\AffichageDonneeDeLaVueController;
 use App\Http\Controllers\EnvoieFormulaireAjoutTagController;
 use App\Http\Controllers\EnvoieFormulaireConnexionController;
 use App\Http\Controllers\EnvoieFormulaireInscriptionController;
@@ -46,9 +47,13 @@ Route::post(
 	]
 )->name('connexion');
 
-Route::get('ajout_tag', function () {
-	return view('ajout_tag');
-})->name('ajout_tag');
+Route::get(
+	'ajout_tag',
+	[
+		AffichageDonneeDeLaVueController::class,
+		'ajoutTag',
+	]
+)->name('ajout_tag');
 
 Route::post(
 	'ajout_tag',
