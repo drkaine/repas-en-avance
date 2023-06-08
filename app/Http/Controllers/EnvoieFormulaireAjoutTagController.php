@@ -15,6 +15,10 @@ class EnvoieFormulaireAjoutTagController extends Controller
 			'nom' => 'required|string|max:100',
 		]);
 
+		$ajout_en_db = new AjoutEnDBController($request);
+
+		$ajout_en_db->tag();
+
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}
 }

@@ -29,4 +29,15 @@ class AjoutDansLaDBTest extends TestCase
 
 		$this->assertDatabaseHas('users', $user);
 	}
+
+	public function testCreationDUnTag(): void
+	{
+		$tag = [
+			'nom' => 'Catégorie',
+		];
+
+		$this->post('/ajout_tag', $tag);
+
+		$this->assertDatabaseHas('tags', $tag);
+	}
 }

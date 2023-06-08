@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,13 @@ class AjoutEnDBController extends Controller
 			'nom' => $this->request->nom,
 			'email' => $this->request->email,
 			'password' => bcrypt($this->request->password),
+		]);
+	}
+
+	public function tag(): void
+	{
+		Tag::create([
+			'nom' => $this->request->nom,
 		]);
 	}
 }
