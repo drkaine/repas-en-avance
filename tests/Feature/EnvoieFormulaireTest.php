@@ -49,10 +49,6 @@ class EnvoieFormulaireTest extends TestCase
 
 	public function testAjoutTag(): void
 	{
-		Tag::factory()->create([
-			'nom' => 'Catégorie',
-		]);
-
 		$response = $this->post('/ajout_tag', [
 			'nom' => 'Catégorie',
 		]);
