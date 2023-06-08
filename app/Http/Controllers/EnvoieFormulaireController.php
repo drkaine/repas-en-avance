@@ -23,4 +23,9 @@ class EnvoieFormulaireController extends Controller
 
 		return response()->json(['message' => 'Inscription réussie'], 201);
 	}
+
+	public function connexion(Request $request): JsonResponse
+	{
+		return response()->json(['message' => 'Inscription réussie'], 201);
+	}
 }

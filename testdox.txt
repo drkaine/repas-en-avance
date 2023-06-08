@@ -8,6 +8,7 @@ Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
 
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription avec envoi du formulaire
+ [x] Connexion avec envoi du formulaire
 
 Modele Des Tables En DB (Tests\Unit\ModeleDesTablesEnDB)
  [x] La table user

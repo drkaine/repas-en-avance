@@ -35,3 +35,11 @@ Route::post(
 Route::get('connexion', function () {
 	return view('connexion');
 })->name('connexion');
+
+Route::post(
+	'connexion',
+	[
+		EnvoieFormulaireController::class,
+		'connexion',
+	]
+)->name('connexion');
