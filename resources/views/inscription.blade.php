@@ -1,8 +1,5 @@
 @include('composants.head')
-    <body>
-        <header>
-            <a href="{{  route('accueil')  }}">Accueil</a>
-        </header>
+
         <div>
             <form method="POST" action="{{ route('inscription') }}">
             @csrf

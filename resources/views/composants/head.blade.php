@@ -5,3 +5,4 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Repas en avance</title>
     </head>
+    @include('composants.menu')
