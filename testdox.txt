@@ -19,6 +19,7 @@ Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
 Modele Des Tables En DB (Tests\Unit\ModeleDesTablesEnDB)
  [x] La table users
  [x] La table tags
+ [x] La table relation tags
 
 Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaireConnexion)
  [x] Champs email
