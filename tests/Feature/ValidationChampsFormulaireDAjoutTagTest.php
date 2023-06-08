@@ -22,4 +22,13 @@ class ValidationChampsFormulaireDAjoutTagTest extends TestCase
 
 		$response->assertStatus(302);
 	}
+
+	public function testLongueurMaximumChampsNom(): void
+	{
+		$response = $this->post('/ajout_tag', [
+			'nom' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv',
+		]);
+
+		$response->assertStatus(302);
+	}
 }
