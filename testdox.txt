@@ -2,6 +2,9 @@ Affichage Des Pages (Tests\Feature\AffichageDesPages)
  [x] Affichage accueil
  [x] Affichage inscription
 
+Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
+ [x] Création d un user apres l inscription
+
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription avec envoi du formulaire
 
