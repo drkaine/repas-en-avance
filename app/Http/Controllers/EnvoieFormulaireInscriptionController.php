@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class EnvoieFormulaireController extends Controller
+class EnvoieFormulaireInscriptionController extends Controller
 {
 	public function inscription(Request $request): JsonResponse
 	{
@@ -21,11 +21,6 @@ class EnvoieFormulaireController extends Controller
 
 		$ajout_en_db->user();
 
-		return response()->json(['message' => 'Inscription réussie'], 201);
-	}
-
-	public function connexion(Request $request): JsonResponse
-	{
 		return response()->json(['message' => 'Inscription réussie'], 201);
 	}
 }
