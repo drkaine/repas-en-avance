@@ -14,7 +14,7 @@ class AjoutDansLaDBTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function testCréationDUnUserApresLInscription(): void
+	public function testCreationDUnUserApresLInscription(): void
 	{
 		$user = [
 			'nom' => 'Test user',

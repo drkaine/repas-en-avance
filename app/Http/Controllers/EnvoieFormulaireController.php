@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -18,11 +17,9 @@ class EnvoieFormulaireController extends Controller
 			'password' => 'required|string|min:8|confirmed',
 		]);
 
-		$user = User::create([
-			'nom' => $request->nom,
-			'email' => $request->email,
-			'password' => bcrypt($request->password),
-		]);
+		$ajout_en_db = new AjoutEnDBController($request);
+
+		$ajout_en_db->user();
 
 		return response()->json(['message' => 'Inscription réussie'], 201);
 	}
