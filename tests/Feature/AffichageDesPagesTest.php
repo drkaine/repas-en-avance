@@ -11,21 +11,21 @@ use Tests\TestCase;
  */
 class AffichageDesPagesTest extends TestCase
 {
-	public function testAffichageAccueil(): void
+	public function testAccueil(): void
 	{
 		$response = $this->get('/');
 
 		$response->assertStatus(200);
 	}
 
-	public function testAffichageInscription(): void
+	public function testInscription(): void
 	{
 		$response = $this->get('inscription');
 
 		$response->assertStatus(200);
 	}
 
-	public function testAffichageConnexion(): void
+	public function testConnexion(): void
 	{
 		$response = $this->get('connexion');
 

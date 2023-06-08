@@ -1,7 +1,7 @@
 Affichage Des Pages (Tests\Feature\AffichageDesPages)
- [x] Affichage accueil
- [x] Affichage inscription
- [x] Affichage connexion
+ [x] Accueil
+ [x] Inscription
+ [x] Connexion
 
 Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
  [x] Creation d un user apres l inscription
