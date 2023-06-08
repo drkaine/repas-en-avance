@@ -14,7 +14,8 @@ Modele Des Tables En DB (Tests\Unit\ModeleDesTablesEnDB)
  [x] La table user
 
 Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaireConnexion)
- [ ] Champs email
+ [x] Champs email
+ [x] Longueur maximum champs email
 
 Validation Champs Formulaire Inscription (Tests\Feature\ValidationChampsFormulaireInscription)
  [x] Champs nom

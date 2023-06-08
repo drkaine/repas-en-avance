@@ -23,4 +23,14 @@ class ValidationChampsFormulaireConnexionTest extends TestCase
 
 		$response->assertStatus(302);
 	}
+
+	public function testLongueurMaximumChampsEmail(): void
+	{
+		$response = $this->post('/connexion', [
+			'email' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio@azertyuiopmlkjhgfdsqwxczertyuiopmlkjhgfdsqwxcv.fr',
+			'password' => 'password',
+		]);
+
+		$response->assertStatus(302);
+	}
 }

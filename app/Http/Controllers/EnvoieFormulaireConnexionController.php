@@ -12,7 +12,7 @@ class EnvoieFormulaireConnexionController extends Controller
 	public function connexion(Request $request): JsonResponse
 	{
 		$request->validate([
-			'email' => 'required|string|email',
+			'email' => 'required|string|email|max:255',
 		]);
 
 		return response()->json(['message' => 'Inscription réussie'], 201);
