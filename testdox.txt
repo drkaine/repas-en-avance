@@ -23,6 +23,7 @@ Colonne Null Modele En DB (Tests\Unit\ColonneNullModeleEnDB)
  [x] De la table recette champs temps cuisson
  [x] De la table recette champs temps repos
  [x] De la table recette champs lien
+ [x] De la table recette champs instruction
 
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription

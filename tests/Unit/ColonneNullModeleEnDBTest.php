@@ -103,4 +103,22 @@ class ColonneNullModeleEnDBTest extends TestCase
 
 		$this->assertDatabaseHas('recettes', $recette);
 	}
+
+	public function testDeLaTableRecetteChampsInstruction(): void
+	{
+		$recette = [
+			'temps_preparation' => 1,
+			'temps_cuisson' => 3,
+			'temps_repos' => 2,
+			'lien' => 'https://ici.fr',
+			'instruction' => null,
+			'description' => 'Recette simple et rapide',
+			'reference_livre' => 'Tous en cuisine page 12',
+			'nom' => 'Carotte simple',
+		];
+
+		Recette::factory()->create($recette);
+
+		$this->assertDatabaseHas('recettes', $recette);
+	}
 }
