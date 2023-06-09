@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Unit;
 
+use App\Models\Recette;
 use App\Models\RelationTag;
 use App\Models\Tag;
 use App\Models\User;
@@ -58,5 +59,23 @@ class ModeleDesTablesSQLTest extends TestCase
 		RelationTag::factory()->create($relation_tag);
 
 		$this->assertDatabaseHas('relation_tags', $relation_tag);
+	}
+
+	public function testDeLaTableRecette(): void
+	{
+		$recette = [
+			'temps_preparation' => '1',
+			'temps_cuisson' => 2,
+			'temps_repos' => 3,
+			'lien' => 'https://ici.fr',
+			'instruction' => 'Eplucher les carottes',
+			'description' => 'Recette simple et rapide',
+			'reference_livre' => 'Tous en cuisine page 12',
+			'nom' => 'Carotte simple',
+		];
+
+		Recette::factory()->create($recette);
+
+		$this->assertDatabaseHas('recettes', $recette);
 	}
 }
