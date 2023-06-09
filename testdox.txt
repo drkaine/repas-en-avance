@@ -3,6 +3,7 @@ Affichage Des Pages (Tests\Feature\AffichageDesPages)
  [x] Inscription
  [x] Connexion
  [x] Ajout tag
+ [x] Ajout recette
 
 Affichage Donnee De La Vue (Tests\Feature\AffichageDonneeDeLaVue)
  [x] Tag dans la page ajout tag

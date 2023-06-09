@@ -62,3 +62,10 @@ Route::post(
 		'ajoutTag',
 	]
 )->name('ajout_tag');
+
+Route::get(
+	'ajout_recette',
+	function () {
+		return view('ajout_recette');
+	}
+)->name('ajout_recette');
