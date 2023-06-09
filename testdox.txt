@@ -36,6 +36,9 @@ Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaire
  [x] Champs password
  [x] Longueur minimum champs password
 
+Validation Champs Formulaire DAjout Recette (Tests\Feature\ValidationChampsFormulaireDAjoutRecette)
+ [x] Champs nom
+
 Validation Champs Formulaire DAjout Tag (Tests\Feature\ValidationChampsFormulaireDAjoutTag)
  [x] Champs nom
  [x] Longueur maximum champs nom

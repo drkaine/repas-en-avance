@@ -11,6 +11,9 @@ class EnvoieFormulaireAjoutRecetteController extends Controller
 {
 	public function ajoutRecette(Request $request): JsonResponse
 	{
+		$request->validate([
+			'nom' => 'required|string',
+		]);
 
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}
