@@ -17,7 +17,7 @@ class ValidationChampsFormulaireDAjoutTagTest extends TestCase
 	public function testChampsNom(): void
 	{
 		$response = $this->post('/ajout_tag', [
-			'nom' => '',
+			'nom' => null,
 		]);
 
 		$response->assertStatus(302);

@@ -17,7 +17,7 @@ class ValidationChampsFormulaireInscriptionTest extends TestCase
 	public function testChampsNom(): void
 	{
 		$response = $this->post('/inscription', [
-			'nom' => '',
+			'nom' => null,
 			'email' => 'email@test.fr',
 			'password' => 'password',
 			'email_verified_at' => '2023-06-06 06:06:06',
@@ -44,7 +44,7 @@ class ValidationChampsFormulaireInscriptionTest extends TestCase
 	{
 		$response = $this->post('/inscription', [
 			'nom' => 'Test user',
-			'email' => '',
+			'email' => null,
 			'password' => 'password',
 			'email_verified_at' => '2023-06-06 06:06:06',
 			'password_confirmation' => 'password',
@@ -84,7 +84,7 @@ class ValidationChampsFormulaireInscriptionTest extends TestCase
 		$response = $this->post('/inscription', [
 			'nom' => 'Test user',
 			'email' => 'email@test.fr',
-			'password' => '',
+			'password' => null,
 			'email_verified_at' => '2023-06-06 06:06:06',
 			'password_confirmation' => 'password',
 		]);

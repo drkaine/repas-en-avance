@@ -17,8 +17,8 @@ class ValidationChampsFormulaireDAjoutRecetteTest extends TestCase
 	public function testChampsNom(): void
 	{
 		$response = $this->post('/ajout_recette', [
-			'nom' => '',
-			'temps_preparation' => '1',
+			'nom' => null,
+			'temps_preparation' => 1,
 			'temps_cuisson' => 2,
 			'temps_repos' => 3,
 			'lien' => 'https://ici.fr',
@@ -34,7 +34,7 @@ class ValidationChampsFormulaireDAjoutRecetteTest extends TestCase
 	{
 		$response = $this->post('/ajout_recette', [
 			'nom' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv',
-			'temps_preparation' => '1',
+			'temps_preparation' => 1,
 			'temps_cuisson' => 2,
 			'temps_repos' => 3,
 			'lien' => 'https://ici.fr',

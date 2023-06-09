@@ -64,7 +64,7 @@ class ModeleDesTablesSQLTest extends TestCase
 	public function testDeLaTableRecette(): void
 	{
 		$recette = [
-			'temps_preparation' => '1',
+			'temps_preparation' => 1,
 			'temps_cuisson' => 2,
 			'temps_repos' => 3,
 			'lien' => 'https://ici.fr',

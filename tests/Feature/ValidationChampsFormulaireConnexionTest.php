@@ -17,7 +17,7 @@ class ValidationChampsFormulaireConnexionTest extends TestCase
 	public function testChampsEmail(): void
 	{
 		$response = $this->post('/connexion', [
-			'email' => '',
+			'email' => null,
 			'password' => 'password',
 		]);
 
@@ -48,7 +48,7 @@ class ValidationChampsFormulaireConnexionTest extends TestCase
 	{
 		$response = $this->post('/connexion', [
 			'email' => 'email.test.fr',
-			'password' => '',
+			'password' => null,
 		]);
 
 		$response->assertStatus(302);

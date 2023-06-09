@@ -60,7 +60,7 @@ class EnvoieFormulaireTest extends TestCase
 	public function testAjoutRecette(): void
 	{
 		$response = $this->post('/ajout_recette', [
-			'temps_preparation' => '1',
+			'temps_preparation' => 1,
 			'temps_cuisson' => 2,
 			'temps_repos' => 3,
 			'lien' => null,
