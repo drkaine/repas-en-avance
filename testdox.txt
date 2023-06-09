@@ -25,6 +25,7 @@ Colonne Null Modele En DB (Tests\Unit\ColonneNullModeleEnDB)
  [x] De la table recette champs lien
  [x] De la table recette champs instruction
  [x] De la table recette champs description
+ [x] De la table recette champs reference livre
 
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription
