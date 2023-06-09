@@ -14,7 +14,7 @@ Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
  [x] Creation d une relation tag parent
  [x] Creation d une relation tag enfant
 
-Authentification Connexion (Tests\Feature\AuthentificationConnexion)
+Authentification (Tests\Feature\Authentification)
  [x] Connexion
 
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)

@@ -12,7 +12,7 @@ use Tests\TestCase;
 /**
  * @coversNothing
  */
-class AuthentificationConnexionTest extends TestCase
+class AuthentificationTest extends TestCase
 {
 	use RefreshDatabase;
 
