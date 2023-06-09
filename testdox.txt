@@ -38,6 +38,7 @@ Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaire
 
 Validation Champs Formulaire DAjout Recette (Tests\Feature\ValidationChampsFormulaireDAjoutRecette)
  [x] Champs nom
+ [x] Longueur champs nom
 
 Validation Champs Formulaire DAjout Tag (Tests\Feature\ValidationChampsFormulaireDAjoutTag)
  [x] Champs nom
