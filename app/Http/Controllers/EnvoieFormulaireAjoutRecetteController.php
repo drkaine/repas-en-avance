@@ -13,6 +13,7 @@ class EnvoieFormulaireAjoutRecetteController extends Controller
 	{
 		$request->validate([
 			'nom' => 'required|string|max:255',
+			'temps_preparation' => 'required|integer',
 		]);
 
 		return response()->json(['message' => 'connexion réussie'], 201);
