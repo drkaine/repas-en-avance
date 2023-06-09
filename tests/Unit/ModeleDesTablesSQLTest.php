@@ -13,11 +13,11 @@ use Tests\TestCase;
 /**
  * @coversNothing
  */
-class ModeleDesTablesEnDBTest extends TestCase
+class ModeleDesTablesSQLTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function testLaTableUsers(): void
+	public function testDeLaTableUsers(): void
 	{
 		$user = [
 			'nom' => 'Test user',
@@ -34,7 +34,7 @@ class ModeleDesTablesEnDBTest extends TestCase
 		$this->assertDatabaseHas('users', $user);
 	}
 
-	public function testLaTableTags(): void
+	public function testDeLaTableTags(): void
 	{
 		$tag = [
 			'nom' => 'Catégorie',
@@ -45,7 +45,7 @@ class ModeleDesTablesEnDBTest extends TestCase
 		$this->assertDatabaseHas('tags', $tag);
 	}
 
-	public function testLaTableRelationTags(): void
+	public function testDeLaTableRelationTags(): void
 	{
 		Tag::factory()->create(['nom' => 'Catégorie', ]);
 		Tag::factory()->create(['nom' => 'Plat', ]);
