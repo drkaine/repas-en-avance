@@ -19,7 +19,9 @@ class EnvoieFormulaireAjoutTagController extends Controller
 
 		$ajout_en_db->tag();
 
-		$ajout_en_db->RelationTags();
+		$ajout_en_db->RelationTagsparent();
+
+		$ajout_en_db->RelationTagsEnfant();
 
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}

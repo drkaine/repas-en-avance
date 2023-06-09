@@ -32,10 +32,17 @@ class AjoutEnDBController extends Controller
 		]);
 	}
 
-	public function RelationTags(): void
+	public function RelationTagsParent(): void
 	{
-		foreach ($this->request->nom_tags_parent as $key => $nom_tag_parent) {
-			$this->RelationTag($nom_tag_parent, $this->request->nom_tags_enfant[$key]);
+		foreach ($this->request->nom_tags_parent as $tag_parent) {
+			$this->RelationTag($tag_parent, $this->request->nom);
+		}
+	}
+
+	public function RelationTagsEnfant(): void
+	{
+		foreach ($this->request->nom_tags_enfant as $tag_enfant) {
+			$this->RelationTag($this->request->nom, $tag_enfant);
 		}
 	}
 

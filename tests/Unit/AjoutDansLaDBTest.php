@@ -42,7 +42,7 @@ class AjoutDansLaDBTest extends TestCase
 		$this->assertDatabaseHas('tags', $tag);
 	}
 
-	public function testCreationDUneRelationTag(): void
+	public function testCreationDUneRelationTagParent(): void
 	{
 		Tag::factory()->create(['nom' => 'Catégorie', ]);
 
@@ -51,9 +51,7 @@ class AjoutDansLaDBTest extends TestCase
 			'nom_tags_parent' => [
 				'Catégorie',
 			],
-			'nom_tags_enfant' => [
-				'Plat',
-			],
+			'nom_tags_enfant' => [],
 		];
 
 		$this->post('/ajout_tag', $tag);
@@ -61,6 +59,26 @@ class AjoutDansLaDBTest extends TestCase
 		$this->assertDatabaseHas('relation_tags', [
 			'nom_tag_parent' => 'Catégorie',
 			'nom_tag_enfant' => 'Plat',
+		]);
+	}
+
+	public function testCreationDUneRelationTagEnfant(): void
+	{
+		Tag::factory()->create(['nom' => 'Catégorie', ]);
+
+		$tag = [
+			'nom' => 'Plat',
+			'nom_tags_parent' => [],
+			'nom_tags_enfant' => [
+				'Catégorie',
+			],
+		];
+
+		$this->post('/ajout_tag', $tag);
+
+		$this->assertDatabaseHas('relation_tags', [
+			'nom_tag_parent' => 'Plat',
+			'nom_tag_enfant' => 'Catégorie',
 		]);
 	}
 }
