@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-use App\Http\Controllers\AffichageDonneeDeLaVueController;
+use App\Http\Controllers\AffichageDonneeDesVueController;
 use App\Http\Controllers\EnvoieFormulaireAjoutRecetteController;
 use App\Http\Controllers\EnvoieFormulaireAjoutTagController;
 use App\Http\Controllers\EnvoieFormulaireConnexionController;
@@ -51,7 +51,7 @@ Route::post(
 Route::get(
 	'ajout_tag',
 	[
-		AffichageDonneeDeLaVueController::class,
+		AffichageDonneeDesVueController::class,
 		'ajoutTag',
 	]
 )->name('ajout_tag');

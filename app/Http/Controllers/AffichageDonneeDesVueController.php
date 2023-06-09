@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use Illuminate\View\View;
 
-class AffichageDonneeDeLaVueController extends Controller
+class AffichageDonneeDesVueController extends Controller
 {
 	public function ajoutTag(): View
 	{
