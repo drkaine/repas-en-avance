@@ -31,4 +31,21 @@ class ColonneNullModeleEnDBTest extends TestCase
 
 		$this->assertDatabaseHas('users', $user);
 	}
+
+	public function testDeLaTableUsersChampsDerniereConnexion(): void
+	{
+		$user = [
+			'nom' => 'Test user',
+			'email' => 'email@test.fr',
+			'password' => 'password',
+			'email_verified_at' => '2023-06-06 06:06:06',
+			'derniere_connexion' => null,
+		];
+
+		User::factory()->create($user);
+
+		unset($user['password']);
+
+		$this->assertDatabaseHas('users', $user);
+	}
 }

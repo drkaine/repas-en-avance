@@ -18,7 +18,8 @@ Authentification (Tests\Feature\Authentification)
  [x] Connexion
 
 Colonne Null Modele En DB (Tests\Unit\ColonneNullModeleEnDB)
- [x] De la table users
+ [x] De la table users champs email verified at
+ [x] De la table users champs derniere connexion
 
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription
