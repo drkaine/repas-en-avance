@@ -17,6 +17,9 @@ Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
 Authentification (Tests\Feature\Authentification)
  [x] Connexion
 
+Colonne Null Modele En DB (Tests\Unit\ColonneNullModeleEnDB)
+ [x] De la table users
+
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription
  [x] Connexion
