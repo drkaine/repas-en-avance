@@ -21,6 +21,7 @@ Colonne Null Modele En DB (Tests\Unit\ColonneNullModeleEnDB)
  [x] De la table users champs email verified at
  [x] De la table users champs derniere connexion
  [x] De la table recette champs temps cuisson
+ [x] De la table recette champs temps repos
 
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription
