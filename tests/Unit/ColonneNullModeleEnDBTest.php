@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Unit;
 
+use App\Models\Recette;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -47,5 +48,23 @@ class ColonneNullModeleEnDBTest extends TestCase
 		unset($user['password']);
 
 		$this->assertDatabaseHas('users', $user);
+	}
+
+	public function testDeLaTableRecetteChampsTempsCuisson(): void
+	{
+		$recette = [
+			'temps_preparation' => 1,
+			'temps_cuisson' => null,
+			'temps_repos' => 3,
+			'lien' => 'https://ici.fr',
+			'instruction' => 'Eplucher les carottes',
+			'description' => 'Recette simple et rapide',
+			'reference_livre' => 'Tous en cuisine page 12',
+			'nom' => 'Carotte simple',
+		];
+
+		Recette::factory()->create($recette);
+
+		$this->assertDatabaseHas('recettes', $recette);
 	}
 }

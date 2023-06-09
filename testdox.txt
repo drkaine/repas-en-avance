@@ -20,6 +20,7 @@ Authentification (Tests\Feature\Authentification)
 Colonne Null Modele En DB (Tests\Unit\ColonneNullModeleEnDB)
  [x] De la table users champs email verified at
  [x] De la table users champs derniere connexion
+ [x] De la table recette champs temps cuisson
 
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription
