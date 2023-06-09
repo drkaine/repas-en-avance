@@ -56,4 +56,20 @@ class EnvoieFormulaireTest extends TestCase
 
 		$response->assertStatus(201);
 	}
+
+	public function testAjoutRecette(): void
+	{
+		$response = $this->post('/ajout_recette', [
+			'temps_preparation' => '1',
+			'temps_cuisson' => 2,
+			'temps_repos' => 3,
+			'lien' => null,
+			'instruction' => 'Eplucher les carottes',
+			'description' => 'Recette simple et rapide',
+			'reference_livre' => 'Tous en cuisine page 12',
+			'nom' => 'Carotte simple',
+		]);
+
+		$response->assertStatus(201);
+	}
 }

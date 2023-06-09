@@ -21,6 +21,7 @@ Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription
  [x] Connexion
  [x] Ajout tag
+ [x] Ajout recette
 
 Modele Des Tables SQL (Tests\Unit\ModeleDesTablesSQL)
  [x] De la table users

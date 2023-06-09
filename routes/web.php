@@ -3,6 +3,7 @@
 declare(strict_types = 1);
 
 use App\Http\Controllers\AffichageDonneeDeLaVueController;
+use App\Http\Controllers\EnvoieFormulaireAjoutRecetteController;
 use App\Http\Controllers\EnvoieFormulaireAjoutTagController;
 use App\Http\Controllers\EnvoieFormulaireConnexionController;
 use App\Http\Controllers\EnvoieFormulaireInscriptionController;
@@ -68,4 +69,12 @@ Route::get(
 	function () {
 		return view('ajout_recette');
 	}
+)->name('ajout_recette');
+
+Route::post(
+	'ajout_recette',
+	[
+		EnvoieFormulaireAjoutrecetteController::class,
+		'ajoutRecette',
+	]
 )->name('ajout_recette');
