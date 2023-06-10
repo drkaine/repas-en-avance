@@ -18,6 +18,7 @@ Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
 
 Authentification (Tests\Feature\Authentification)
  [x] Connexion
+ [x] Deconnexion
 
 Colonne Null Modele En DB (Tests\Unit\ColonneNullModeleEnDB)
  [x] De la table users champs email verified at

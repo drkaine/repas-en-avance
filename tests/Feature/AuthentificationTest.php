@@ -32,4 +32,21 @@ class AuthentificationTest extends TestCase
 
 		$this->assertSame($user->id, Auth::user()->id);
 	}
+
+	public function testDeconnexion(): void
+	{
+		$donnee_user = [
+			'nom' => 'Test user',
+			'email' => 'email@test.fr',
+			'password' => 'password',
+		];
+
+		$user = User::factory()->create($donnee_user);
+
+		$this->actingAs($user);
+
+		$this->get('deconnexion');
+
+		$this->assertGuest();
+	}
 }
