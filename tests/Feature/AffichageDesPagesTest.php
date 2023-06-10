@@ -52,13 +52,6 @@ class AffichageDesPagesTest extends TestCase
 		$response->assertStatus(200);
 	}
 
-	public function testDeconnexion(): void
-	{
-		$response = $this->get('deconnexion');
-
-		$response->assertRedirect('/');
-	}
-
 	public function testMonCompte(): void
 	{
 		$response = $this->get('mon_compte');

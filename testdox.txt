@@ -4,7 +4,6 @@ Affichage Des Pages (Tests\Feature\AffichageDesPages)
  [x] Connexion
  [x] Ajout tag
  [x] Ajout recette
- [x] Deconnexion
  [x] Mon compte
 
 Affichage Donnee De La Vue (Tests\Feature\AffichageDonneeDeLaVue)
@@ -42,6 +41,9 @@ Modele Des Tables SQL (Tests\Unit\ModeleDesTablesSQL)
  [x] De la table tags
  [x] De la table relation tags
  [x] De la table recette
+
+Redirection (Tests\Feature\Redirection)
+ [x] Deconnexion
 
 Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaireConnexion)
  [x] Champs email
