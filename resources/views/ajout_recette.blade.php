@@ -71,14 +71,6 @@
     </div>
 
     <div>
-        <label for="validation">Valider</label>
-        <input id="validation" type="checkbox" name="validation">
-        @error('validation')
-            <span>{{ $message }}</span>
-        @enderror
-    </div>
-
-    <div>
         <button type="submit">Ajouter la recette</button>
     </div>
 </form>
