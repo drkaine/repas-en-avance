@@ -16,6 +16,10 @@ class EnvoieFormulaireAjoutRecetteController extends Controller
 			'temps_preparation' => 'required|integer',
 		]);
 
+		$ajout_en_db = new AjoutEnDBController($request);
+
+		$ajout_en_db->recette();
+
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}
 }

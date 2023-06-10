@@ -81,4 +81,22 @@ class AjoutDansLaDBTest extends TestCase
 			'nom_tag_enfant' => 'Catégorie',
 		]);
 	}
+
+	public function testCreationDUneRecette(): void
+	{
+		$recette = [
+			'temps_preparation' => 1,
+			'temps_cuisson' => 3,
+			'temps_repos' => 2,
+			'lien' => 'https://ici.fr',
+			'instruction' => 'Eplucher les carottes',
+			'description' => 'Recette simple et rapide',
+			'reference_livre' => 'page 12 tout le monde peut cuisiner',
+			'nom' => 'Carotte simple',
+		];
+
+		$this->post('/ajout_recette', $recette);
+
+		$this->assertDatabaseHas('recettes', $recette);
+	}
 }

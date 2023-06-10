@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Recette;
 use App\Models\RelationTag;
 use App\Models\Tag;
 use App\Models\User;
@@ -51,6 +52,20 @@ class AjoutEnDBController extends Controller
 		RelationTag::create([
 			'nom_tag_parent' => $nom_tag_parent,
 			'nom_tag_enfant' => $nom_tag_enfant,
+		]);
+	}
+
+	public function recette(): void
+	{
+		Recette::create([
+			'nom' => $this->request->nom,
+			'temps_preparation' => $this->request->temps_preparation,
+			'temps_cuisson' => $this->request->temps_cuisson,
+			'temps_repos' => $this->request->temps_repos,
+			'lien' => $this->request->lien,
+			'instruction' => $this->request->instruction,
+			'description' => $this->request->description,
+			'reference_livre' => $this->request->reference_livre,
 		]);
 	}
 }

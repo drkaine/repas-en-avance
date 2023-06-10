@@ -13,6 +13,7 @@ Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
  [x] Creation d un tag
  [x] Creation d une relation tag parent
  [x] Creation d une relation tag enfant
+ [x] Creation d une recette
 
 Authentification (Tests\Feature\Authentification)
  [x] Connexion
