@@ -58,4 +58,11 @@ class AffichageDesPagesTest extends TestCase
 
 		$response->assertRedirect('/');
 	}
+
+	public function testMonCompte(): void
+	{
+		$response = $this->get('mon_compte');
+
+		$response->assertStatus(200);
+	}
 }

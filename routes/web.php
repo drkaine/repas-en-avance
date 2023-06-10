@@ -96,3 +96,10 @@ Route::post(
 		'ajoutRecette',
 	]
 )->name('ajout_recette');
+
+Route::get(
+	'mon_compte',
+	function () {
+		return view('mon_compte');
+	}
+)->name('mon_compte');
