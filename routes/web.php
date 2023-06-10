@@ -3,6 +3,7 @@
 declare(strict_types = 1);
 
 use App\Http\Controllers\AffichageDonneeDesVueController;
+use App\Http\Controllers\DeconnexionUserController;
 use App\Http\Controllers\EnvoieFormulaireAjoutRecetteController;
 use App\Http\Controllers\EnvoieFormulaireAjoutTagController;
 use App\Http\Controllers\EnvoieFormulaireConnexionController;
@@ -56,6 +57,14 @@ Route::post(
 		'connexion',
 	]
 )->name('connexion');
+
+Route::get(
+	'deconnexion',
+	[
+		DeconnexionUserController::class,
+		'deconnexion',
+	]
+)->name('deconnexion');
 
 Route::get(
 	'ajout_tag',
