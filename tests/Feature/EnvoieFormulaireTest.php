@@ -15,33 +15,37 @@ class EnvoieFormulaireTest extends TestCase
 {
 	use RefreshDatabase;
 
+	private array $user;
+
+	private array $tag;
+
+	private array $recette;
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->user = config('donnee_de_test.user');
+		$this->tag = config('donnee_de_test.tag');
+		$this->recette = config('donnee_de_test.recette');
+	}
+
 	public function testInscription(): void
 	{
-		$response = $this->post('/inscription', [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-			'email_verified_at' => '2023-06-06 06:06:06',
-			'password_confirmation' => 'password',
-		]);
+		$this->user['password_confirmation'] = 'password';
+
+		$response = $this->post('/inscription', $this->user);
 
 		$response->assertStatus(201);
 	}
 
 	public function testConnexion(): void
 	{
-		User::factory()->create([
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-			'email_verified_at' => '2023-06-06 06:06:06',
-			'derniere_connexion' => '06-06-2023 06:06:06',
-		]);
+		User::factory()->create($this->user);
 
-		$response = $this->post('/connexion', [
-			'email' => 'email@test.fr',
-			'password' => 'password',
-		]);
+		unset($this->user['nom']);
+
+		$response = $this->post('/connexion', $this->user);
 
 		$response->assertStatus(201);
 	}
@@ -59,16 +63,7 @@ class EnvoieFormulaireTest extends TestCase
 
 	public function testAjoutRecette(): void
 	{
-		$response = $this->post('/ajout_recette', [
-			'temps_preparation' => 1,
-			'temps_cuisson' => 2,
-			'temps_repos' => 3,
-			'lien' => null,
-			'instruction' => 'Eplucher les carottes',
-			'description' => 'Recette simple et rapide',
-			'reference_livre' => 'Tous en cuisine page 12',
-			'nom' => 'Carotte simple',
-		]);
+		$response = $this->post('/ajout_recette', $this->recette);
 
 		$response->assertStatus(201);
 	}

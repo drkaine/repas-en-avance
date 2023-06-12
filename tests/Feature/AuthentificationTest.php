@@ -16,32 +16,29 @@ class AuthentificationTest extends TestCase
 {
 	use RefreshDatabase;
 
+	private array $user;
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->user = config('donnee_de_test.user');
+	}
+
 	public function testConnexion(): void
 	{
-		$donnee_user = [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-		];
+		$user = User::factory()->create($this->user);
 
-		$user = User::factory()->create($donnee_user);
+		unset($this->user['nom']);
 
-		unset($donnee_user['nom']);
-
-		$this->post('/connexion', $donnee_user);
+		$this->post('/connexion', $this->user);
 
 		$this->assertSame($user->id, Auth::user()->id);
 	}
 
 	public function testDeconnexion(): void
 	{
-		$donnee_user = [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-		];
-
-		$user = User::factory()->create($donnee_user);
+		$user = User::factory()->create($this->user);
 
 		$this->actingAs($user);
 

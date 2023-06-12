@@ -18,37 +18,44 @@ class ModeleDesTablesSQLTest extends TestCase
 {
 	use RefreshDatabase;
 
+	private array $user;
+
+	private array $tag;
+
+	private array $recette;
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->user = config('donnee_de_test.user');
+		$this->tag = config('donnee_de_test.tag');
+		$this->recette = config('donnee_de_test.recette');
+	}
+
 	public function testDeLaTableUsers(): void
 	{
-		$user = [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-			'email_verified_at' => '2023-06-06 06:06:06',
-			'derniere_connexion' => '06-06-2023 06:06:06',
-		];
+		$this->user['email_verified_at'] = '2023-06-06 06:06:06';
 
-		User::factory()->create($user);
+		$this->user['derniere_connexion'] = '06-06-2023 06:06:06';
 
-		unset($user['password']);
+		User::factory()->create($this->user);
 
-		$this->assertDatabaseHas('users', $user);
+		unset($this->user['password']);
+
+		$this->assertDatabaseHas('users', $this->user);
 	}
 
 	public function testDeLaTableTags(): void
 	{
-		$tag = [
-			'nom' => 'Catégorie',
-		];
+		Tag::factory()->create($this->tag);
 
-		Tag::factory()->create($tag);
-
-		$this->assertDatabaseHas('tags', $tag);
+		$this->assertDatabaseHas('tags', $this->tag);
 	}
 
 	public function testDeLaTableRelationTags(): void
 	{
-		Tag::factory()->create(['nom' => 'Catégorie', ]);
+		Tag::factory()->create($this->tag);
 		Tag::factory()->create(['nom' => 'Plat', ]);
 
 		$relation_tag = [
@@ -63,19 +70,8 @@ class ModeleDesTablesSQLTest extends TestCase
 
 	public function testDeLaTableRecette(): void
 	{
-		$recette = [
-			'temps_preparation' => 1,
-			'temps_cuisson' => 2,
-			'temps_repos' => 3,
-			'lien' => 'https://ici.fr',
-			'instruction' => 'Eplucher les carottes',
-			'description' => 'Recette simple et rapide',
-			'reference_livre' => 'Tous en cuisine page 12',
-			'nom' => 'Carotte simple',
-		];
+		Recette::factory()->create($this->recette);
 
-		Recette::factory()->create($recette);
-
-		$this->assertDatabaseHas('recettes', $recette);
+		$this->assertDatabaseHas('recettes', $this->recette);
 	}
 }

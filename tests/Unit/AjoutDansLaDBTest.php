@@ -15,38 +15,44 @@ class AjoutDansLaDBTest extends TestCase
 {
 	use RefreshDatabase;
 
+	private array $user;
+
+	private array $tag;
+
+	private array $recette;
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->user = config('donnee_de_test.user');
+		$this->tag = config('donnee_de_test.tag');
+		$this->recette = config('donnee_de_test.recette');
+	}
+
 	public function testCreationDUnUserApresLInscription(): void
 	{
-		$user = [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-			'password_confirmation' => 'password',
-		];
+		$this->user['password_confirmation'] = 'password';
 
-		$this->post('/inscription', $user);
+		$this->post('/inscription', $this->user);
 
-		unset($user['password'], $user['password_confirmation']);
+		unset($this->user['password'], $this->user['password_confirmation']);
 
-		$this->assertDatabaseHas('users', $user);
+		$this->assertDatabaseHas('users', $this->user);
 	}
 
 	public function testCreationDUnTag(): void
 	{
-		$tag = [
-			'nom' => 'Catégorie',
-		];
+		$this->post('/ajout_tag', $this->tag);
 
-		$this->post('/ajout_tag', $tag);
-
-		$this->assertDatabaseHas('tags', $tag);
+		$this->assertDatabaseHas('tags', $this->tag);
 	}
 
 	public function testCreationDUneRelationTagParent(): void
 	{
-		Tag::factory()->create(['nom' => 'Catégorie', ]);
+		Tag::factory()->create($this->tag);
 
-		$tag = [
+		$this->tag = [
 			'nom' => 'Plat',
 			'nom_tags_parent' => [
 				'Catégorie',
@@ -54,7 +60,7 @@ class AjoutDansLaDBTest extends TestCase
 			'nom_tags_enfant' => [],
 		];
 
-		$this->post('/ajout_tag', $tag);
+		$this->post('/ajout_tag', $this->tag);
 
 		$this->assertDatabaseHas('relation_tags', [
 			'nom_tag_parent' => 'Catégorie',
@@ -64,9 +70,9 @@ class AjoutDansLaDBTest extends TestCase
 
 	public function testCreationDUneRelationTagEnfant(): void
 	{
-		Tag::factory()->create(['nom' => 'Catégorie', ]);
+		Tag::factory()->create($this->tag);
 
-		$tag = [
+		$this->tag = [
 			'nom' => 'Plat',
 			'nom_tags_parent' => [],
 			'nom_tags_enfant' => [
@@ -74,7 +80,7 @@ class AjoutDansLaDBTest extends TestCase
 			],
 		];
 
-		$this->post('/ajout_tag', $tag);
+		$this->post('/ajout_tag', $this->tag);
 
 		$this->assertDatabaseHas('relation_tags', [
 			'nom_tag_parent' => 'Plat',
@@ -84,19 +90,8 @@ class AjoutDansLaDBTest extends TestCase
 
 	public function testCreationDUneRecette(): void
 	{
-		$recette = [
-			'temps_preparation' => 1,
-			'temps_cuisson' => 3,
-			'temps_repos' => 2,
-			'lien' => 'https://ici.fr',
-			'instruction' => 'Eplucher les carottes',
-			'description' => 'Recette simple et rapide',
-			'reference_livre' => 'page 12 tout le monde peut cuisiner',
-			'nom' => 'Carotte simple',
-		];
+		$this->post('/ajout_recette', $this->recette);
 
-		$this->post('/ajout_recette', $recette);
-
-		$this->assertDatabaseHas('recettes', $recette);
+		$this->assertDatabaseHas('recettes', $this->recette);
 	}
 }

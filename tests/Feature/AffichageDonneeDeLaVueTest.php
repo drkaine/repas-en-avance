@@ -15,9 +15,18 @@ class AffichageDonneeDeLaVueTest extends TestCase
 {
 	use RefreshDatabase;
 
+	private array $tag;
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->tag = config('donnee_de_test.tag');
+	}
+
 	public function testTagDansLaPageAjoutTag(): void
 	{
-		Tag::factory()->create(['nom' => 'Catégorie', ]);
+		Tag::factory()->create($this->tag);
 
 		$response = $this->get('/ajout_tag');
 

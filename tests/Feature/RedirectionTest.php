@@ -15,6 +15,15 @@ class RedirectionTest extends TestCase
 {
 	use RefreshDatabase;
 
+	private array $user;
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->user = config('donnee_de_test.user');
+	}
+
 	public function testDeconnexion(): void
 	{
 		$response = $this->get('deconnexion');
@@ -24,12 +33,7 @@ class RedirectionTest extends TestCase
 
 	public function testAnonymisationUser(): void
 	{
-		$donnee_user = [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-		];
-		$user = User::factory()->create($donnee_user);
+		$user = User::factory()->create($this->user);
 
 		$this->actingAs($user);
 
@@ -40,19 +44,13 @@ class RedirectionTest extends TestCase
 
 	public function testModificationDesDonneesDuUser(): void
 	{
-		$donnee_user = [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-		];
-
-		$user = User::factory()->create($donnee_user);
+		$user = User::factory()->create($this->user);
 
 		$this->actingAs($user);
 
-		unset($donnee_user['password']);
+		unset($this->user['password']);
 
-		$response = $this->post('/modification_user', $donnee_user);
+		$response = $this->post('/modification_user', $this->user);
 
 		$response->assertRedirect('/');
 	}

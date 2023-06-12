@@ -15,29 +15,31 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 {
 	use RefreshDatabase;
 
+	private array $user;
+
+	private array $user_modifie;
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->user = config('donnee_de_test.user');
+
+		$this->user_modifie = config('donnee_de_test.user_modifie');
+	}
+
 	public function testModificationDuUser(): void
 	{
-		$donnee_user = [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-		];
+		$user = User::factory()->create($this->user);
 
-		$donnee_user_modifie = [
-			'nom' => 'Test user modifié',
-			'email' => 'email_modifie@test.fr',
-		];
-
-		$user = User::factory()->create($donnee_user);
-
-		unset($donnee_user['password']);
+		unset($this->user['password']);
 
 		$this->actingAs($user);
 
-		$this->post('/modification_user', $donnee_user_modifie);
+		$this->post('/modification_user', $this->user_modifie);
 
-		$this->assertDatabaseMissing('users', $donnee_user);
+		$this->assertDatabaseMissing('users', $this->user);
 
-		$this->assertDatabaseHas('users', $donnee_user_modifie);
+		$this->assertDatabaseHas('users', $this->user_modifie);
 	}
 }

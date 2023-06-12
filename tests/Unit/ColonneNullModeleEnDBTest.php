@@ -16,145 +16,94 @@ class ColonneNullModeleEnDBTest extends TestCase
 {
 	use RefreshDatabase;
 
+	private array $user;
+
+	private array $tag;
+
+	private array $recette;
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->user = config('donnee_de_test.user');
+		$this->tag = config('donnee_de_test.tag');
+		$this->recette = config('donnee_de_test.recette');
+	}
+
 	public function testDeLaTableUsersChampsEmailVerifiedAt(): void
 	{
-		$user = [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-			'email_verified_at' => null,
-			'derniere_connexion' => '06-06-2023 06:06:06',
-		];
+		$this->user['email_verified_at'] = null;
 
-		User::factory()->create($user);
+		User::factory()->create($this->user);
 
-		unset($user['password']);
+		unset($this->user['password']);
 
-		$this->assertDatabaseHas('users', $user);
+		$this->assertDatabaseHas('users', $this->user);
 	}
 
 	public function testDeLaTableUsersChampsDerniereConnexion(): void
 	{
-		$user = [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-			'email_verified_at' => '2023-06-06 06:06:06',
-			'derniere_connexion' => null,
-		];
+		$this->user['derniere_connexion'] = null;
 
-		User::factory()->create($user);
+		User::factory()->create($this->user);
 
-		unset($user['password']);
+		unset($this->user['password']);
 
-		$this->assertDatabaseHas('users', $user);
+		$this->assertDatabaseHas('users', $this->user);
 	}
 
 	public function testDeLaTableRecetteChampsTempsCuisson(): void
 	{
-		$recette = [
-			'temps_preparation' => 1,
-			'temps_cuisson' => null,
-			'temps_repos' => 3,
-			'lien' => 'https://ici.fr',
-			'instruction' => 'Eplucher les carottes',
-			'description' => 'Recette simple et rapide',
-			'reference_livre' => 'Tous en cuisine page 12',
-			'nom' => 'Carotte simple',
-		];
+		$this->recette['temps_cuisson'] = null;
 
-		Recette::factory()->create($recette);
+		Recette::factory()->create($this->recette);
 
-		$this->assertDatabaseHas('recettes', $recette);
+		$this->assertDatabaseHas('recettes', $this->recette);
 	}
 
 	public function testDeLaTableRecetteChampsTempsRepos(): void
 	{
-		$recette = [
-			'temps_preparation' => 1,
-			'temps_cuisson' => 3,
-			'temps_repos' => null,
-			'lien' => 'https://ici.fr',
-			'instruction' => 'Eplucher les carottes',
-			'description' => 'Recette simple et rapide',
-			'reference_livre' => 'Tous en cuisine page 12',
-			'nom' => 'Carotte simple',
-		];
+		$this->recette['temps_repos'] = null;
 
-		Recette::factory()->create($recette);
+		Recette::factory()->create($this->recette);
 
-		$this->assertDatabaseHas('recettes', $recette);
+		$this->assertDatabaseHas('recettes', $this->recette);
 	}
 
 	public function testDeLaTableRecetteChampsLien(): void
 	{
-		$recette = [
-			'temps_preparation' => 1,
-			'temps_cuisson' => 3,
-			'temps_repos' => 2,
-			'lien' => null,
-			'instruction' => 'Eplucher les carottes',
-			'description' => 'Recette simple et rapide',
-			'reference_livre' => 'Tous en cuisine page 12',
-			'nom' => 'Carotte simple',
-		];
+		$this->recette['lien'] = null;
 
-		Recette::factory()->create($recette);
+		Recette::factory()->create($this->recette);
 
-		$this->assertDatabaseHas('recettes', $recette);
+		$this->assertDatabaseHas('recettes', $this->recette);
 	}
 
 	public function testDeLaTableRecetteChampsInstruction(): void
 	{
-		$recette = [
-			'temps_preparation' => 1,
-			'temps_cuisson' => 3,
-			'temps_repos' => 2,
-			'lien' => 'https://ici.fr',
-			'instruction' => null,
-			'description' => 'Recette simple et rapide',
-			'reference_livre' => 'Tous en cuisine page 12',
-			'nom' => 'Carotte simple',
-		];
+		$this->recette['instruction'] = null;
 
-		Recette::factory()->create($recette);
+		Recette::factory()->create($this->recette);
 
-		$this->assertDatabaseHas('recettes', $recette);
+		$this->assertDatabaseHas('recettes', $this->recette);
 	}
 
 	public function testDeLaTableRecetteChampsDescription(): void
 	{
-		$recette = [
-			'temps_preparation' => 1,
-			'temps_cuisson' => 3,
-			'temps_repos' => 2,
-			'lien' => 'https://ici.fr',
-			'instruction' => 'Eplucher les carottes',
-			'description' => null,
-			'reference_livre' => 'Tous en cuisine page 12',
-			'nom' => 'Carotte simple',
-		];
+		$this->recette['description'] = null;
 
-		Recette::factory()->create($recette);
+		Recette::factory()->create($this->recette);
 
-		$this->assertDatabaseHas('recettes', $recette);
+		$this->assertDatabaseHas('recettes', $this->recette);
 	}
 
 	public function testDeLaTableRecetteChampsReferenceLivre(): void
 	{
-		$recette = [
-			'temps_preparation' => 1,
-			'temps_cuisson' => 3,
-			'temps_repos' => 2,
-			'lien' => 'https://ici.fr',
-			'instruction' => 'Eplucher les carottes',
-			'description' => 'Recette simple et rapide',
-			'reference_livre' => null,
-			'nom' => 'Carotte simple',
-		];
+		$this->recette['reference_livre'] = null;
 
-		Recette::factory()->create($recette);
+		Recette::factory()->create($this->recette);
 
-		$this->assertDatabaseHas('recettes', $recette);
+		$this->assertDatabaseHas('recettes', $this->recette);
 	}
 }

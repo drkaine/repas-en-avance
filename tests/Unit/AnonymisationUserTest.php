@@ -15,25 +15,26 @@ class AnonymisationUserTest extends TestCase
 {
 	use RefreshDatabase;
 
+	private array $user;
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->user = config('donnee_de_test.user');
+	}
+
 	public function testAnonymisationUser(): void
 	{
-		$donnee_user = [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-			'email_verified_at' => '2023-06-06 06:06:06',
-			'derniere_connexion' => '06-06-2023 06:06:06',
-		];
+		$user = User::factory()->create($this->user);
 
-		$user = User::factory()->create($donnee_user);
-
-		unset($donnee_user['password']);
+		unset($this->user['password']);
 
 		$this->actingAs($user);
 
 		$this->get('/anonymisation_du_compte');
 
-		$this->assertDatabaseMissing('users', $donnee_user);
+		$this->assertDatabaseMissing('users', $this->user);
 
 		$this->assertDatabaseHas('users', [
 			'email' => 'anonyme' . $user->id . '@anonyme.fr',

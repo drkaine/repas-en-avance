@@ -5,16 +5,10 @@ parameters:
         - app/
         - database/
         - config/
-        - tests/
 
     excludePaths:
         - app/Http/Controllers
-        - tests/Browser
-        - tests/DuskTestCase.php
-        - tests/Feature
         - app/Controller/CreationEnDBController.php
-        - tests/Unit/AnonymisationUserTest
-        - tests/Unit/ModificationDeDonneesDansLaDBTest
 
     ignoreErrors:
 
