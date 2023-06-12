@@ -24,4 +24,11 @@ class RedirectionSiUserNonAuthentifieTest extends TestCase
 
 		$response->assertRedirect('inscription');
 	}
+
+	public function testAjoutRecette(): void
+	{
+		$response = $this->get('ajout_recette');
+
+		$response->assertRedirect('inscription');
+	}
 }

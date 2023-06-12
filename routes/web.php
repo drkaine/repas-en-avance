@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 use App\Http\Controllers\AffichageDonneeDesVueController;
 use App\Http\Controllers\AnonymisationDunUserController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\DeconnexionUserController;
 use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireAjoutRecetteController;
 use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireAjoutTagController;
@@ -86,9 +87,10 @@ Route::post(
 
 Route::get(
 	'ajout_recette',
-	function () {
-		return view('ajout_recette');
-	}
+	[
+		Controller::class,
+		'affichageAjoutRecette',
+	]
 )->name('ajout_recette');
 
 Route::post(

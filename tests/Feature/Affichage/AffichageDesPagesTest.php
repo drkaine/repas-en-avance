@@ -61,6 +61,10 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testAjoutRecette(): void
 	{
+		$user = User::factory()->create($this->user);
+
+		$this->actingAs($user);
+
 		$response = $this->get('ajout_recette');
 
 		$response->assertStatus(200);

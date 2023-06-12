@@ -57,6 +57,7 @@ Redirection (Tests\Feature\Redirection)
 Redirection Si User Non Authentifie (Tests\Feature\RedirectionSiUserNonAuthentifie)
  [x] Mon compte
  [x] Ajout tag
+ [x] Ajout recette
 
 Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireConnexion)
  [x] Champs email
