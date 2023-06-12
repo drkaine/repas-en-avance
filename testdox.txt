@@ -1,4 +1,4 @@
-Affichage Des Pages (Tests\Feature\AffichageDesPages)
+Affichage Des Pages (Tests\Feature\Affichage\AffichageDesPages)
  [x] Accueil
  [x] Inscription
  [x] Connexion
@@ -6,7 +6,7 @@ Affichage Des Pages (Tests\Feature\AffichageDesPages)
  [x] Ajout recette
  [x] Mon compte
 
-Affichage Donnee De La Vue (Tests\Feature\AffichageDonneeDeLaVue)
+Affichage Donnee De La Vue (Tests\Feature\Affichage\AffichageDonneeDeLaVue)
  [x] Tag dans la page ajout tag
  [x] Donnee user connecte
 
@@ -17,7 +17,7 @@ Ajout Dans La DB (Tests\Unit\TestDansLaDB\AjoutDansLaDB)
  [x] Creation d une relation tag enfant
  [x] Creation d une recette
 
-Anonymisation User (Tests\Unit\AnonymisationUser)
+Anonymisation User (Tests\Unit\TestDansLaDB\AnonymisationUser)
  [x] Anonymisation user
 
 Authentification (Tests\Feature\Authentification)
