@@ -33,7 +33,7 @@ class RedirectionTest extends TestCase
 
 		$this->actingAs($user);
 
-		$response = $this->get('/supression_du_compte');
+		$response = $this->get('/anonymisation_du_compte');
 
 		$response->assertRedirect('/');
 	}

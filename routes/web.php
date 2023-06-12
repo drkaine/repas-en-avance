@@ -3,12 +3,12 @@
 declare(strict_types = 1);
 
 use App\Http\Controllers\AffichageDonneeDesVueController;
+use App\Http\Controllers\AnonymisationDunUserController;
 use App\Http\Controllers\DeconnexionUserController;
 use App\Http\Controllers\EnvoieFormulaireAjoutRecetteController;
 use App\Http\Controllers\EnvoieFormulaireAjoutTagController;
 use App\Http\Controllers\EnvoieFormulaireConnexionController;
 use App\Http\Controllers\EnvoieFormulaireInscriptionController;
-use App\Http\Controllers\SupressionDunUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -106,9 +106,9 @@ Route::get(
 )->name('mon_compte');
 
 Route::get(
-	'supression_du_compte',
+	'anonymisation_du_compte',
 	[
-		SupressionDunUserController::class,
-		'anonymisation_du_compte',
+		AnonymisationDunUserController::class,
+		'anonymisationDuCompte',
 	]
-)->name('supression_du_compte');
+)->name('anonymisation_du_compte');
