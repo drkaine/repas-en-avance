@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Unit;
+namespace Tests\Unit\TestDansLaDB;
 
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;

@@ -9,7 +9,7 @@ Affichage Des Pages (Tests\Feature\AffichageDesPages)
 Affichage Donnee De La Vue (Tests\Feature\AffichageDonneeDeLaVue)
  [x] Tag dans la page ajout tag
 
-Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
+Ajout Dans La DB (Tests\Unit\TestDansLaDB\AjoutDansLaDB)
  [x] Creation d un user apres l inscription
  [x] Creation d un tag
  [x] Creation d une relation tag parent
@@ -23,7 +23,7 @@ Authentification (Tests\Feature\Authentification)
  [x] Connexion
  [x] Deconnexion
 
-Colonne Null Modele En DB (Tests\Unit\ColonneNullModeleEnDB)
+Colonne Null Des Tables SQL (Tests\Unit\TableSQL\ColonneNullDesTablesSQL)
  [x] De la table users champs email verified at
  [x] De la table users champs derniere connexion
  [x] De la table recette champs temps cuisson
@@ -39,13 +39,13 @@ Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Ajout tag
  [x] Ajout recette
 
-Modele Des Tables SQL (Tests\Unit\ModeleDesTablesSQL)
+Modele Des Tables SQL (Tests\Unit\TableSQL\ModeleDesTablesSQL)
  [x] De la table users
  [x] De la table tags
  [x] De la table relation tags
  [x] De la table recette
 
-Modification De Donnees Dans La DB (Tests\Unit\ModificationDeDonneesDansLaDB)
+Modification De Donnees Dans La DB (Tests\Unit\TestDansLaDB\ModificationDeDonneesDansLaDB)
  [x] Modification du user
 
 Redirection (Tests\Feature\Redirection)
@@ -53,23 +53,23 @@ Redirection (Tests\Feature\Redirection)
  [x] Anonymisation user
  [x] Modification des donnees du user
 
-Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaireConnexion)
+Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireConnexion)
  [x] Champs email
  [x] Longueur maximum champs email
  [x] Format champs email
  [x] Champs password
  [x] Longueur minimum champs password
 
-Validation Champs Formulaire DAjout Recette (Tests\Feature\ValidationChampsFormulaireDAjoutRecette)
+Validation Champs Formulaire DAjout Recette (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireDAjoutRecette)
  [x] Champs nom
  [x] Longueur maximum champs nom
  [x] Champs temps de preparation
 
-Validation Champs Formulaire DAjout Tag (Tests\Feature\ValidationChampsFormulaireDAjoutTag)
+Validation Champs Formulaire DAjout Tag (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireDAjoutTag)
  [x] Champs nom
  [x] Longueur maximum champs nom
 
-Validation Champs Formulaire Inscription (Tests\Feature\ValidationChampsFormulaireInscription)
+Validation Champs Formulaire Inscription (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireInscription)
  [x] Champs nom
  [x] Longueur maximum champs nom
  [x] Champs email

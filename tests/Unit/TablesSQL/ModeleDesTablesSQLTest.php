@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Unit;
+namespace Tests\Unit\TableSQL;
 
 use App\Models\Recette;
 use App\Models\RelationTag;

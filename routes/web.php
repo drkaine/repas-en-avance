@@ -5,10 +5,10 @@ declare(strict_types = 1);
 use App\Http\Controllers\AffichageDonneeDesVueController;
 use App\Http\Controllers\AnonymisationDunUserController;
 use App\Http\Controllers\DeconnexionUserController;
-use App\Http\Controllers\EnvoieFormulaireAjoutRecetteController;
-use App\Http\Controllers\EnvoieFormulaireAjoutTagController;
-use App\Http\Controllers\EnvoieFormulaireConnexionController;
-use App\Http\Controllers\EnvoieFormulaireInscriptionController;
+use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireAjoutRecetteController;
+use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireAjoutTagController;
+use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireConnexionController;
+use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireInscriptionController;
 use App\Http\Controllers\ModificationDesDonneesDunUserController;
 use Illuminate\Support\Facades\Route;
 

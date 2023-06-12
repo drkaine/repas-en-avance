@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Unit;
+namespace Tests\Unit\TableSQL;
 
 use App\Models\Recette;
 use App\Models\User;
@@ -12,7 +12,7 @@ use Tests\TestCase;
 /**
  * @coversNothing
  */
-class ColonneNullModeleEnDBTest extends TestCase
+class ColonneNullDesTablesSQLTest extends TestCase
 {
 	use RefreshDatabase;
 
