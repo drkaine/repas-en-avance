@@ -54,6 +54,9 @@ Redirection (Tests\Feature\Redirection)
  [x] Anonymisation user
  [x] Modification des donnees du user
 
+Redirection Si User Non Authentifie (Tests\Feature\RedirectionSiUserNonAuthentifie)
+ [ ] Mon compte
+
 Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireConnexion)
  [x] Champs email
  [x] Longueur maximum champs email
