@@ -31,6 +31,10 @@ class AffichageDonneeDeLaVueTest extends TestCase
 
 	public function testTagDansLaPageAjoutTag(): void
 	{
+		$user = User::factory()->create($this->user);
+
+		$this->actingAs($user);
+
 		Tag::factory()->create($this->tag);
 
 		$response = $this->get('/ajout_tag');

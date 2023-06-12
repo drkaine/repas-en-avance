@@ -11,8 +11,14 @@ use Illuminate\View\View;
 
 class AffichageDonneeDesVueController extends Controller
 {
-	public function ajoutTag(): View
+	public function ajoutTag(): View | RedirectResponse | Redirector
 	{
+		$user = auth()->user();
+
+		if (! $user) {
+			return redirect('inscription');
+		}
+
 		$tags = new Tag;
 		$tags = $tags->select('nom')->get();
 

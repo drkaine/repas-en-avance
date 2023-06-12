@@ -17,4 +17,11 @@ class RedirectionSiUserNonAuthentifieTest extends TestCase
 
 		$response->assertRedirect('inscription');
 	}
+
+	public function testAjoutTag(): void
+	{
+		$response = $this->get('ajout_tag');
+
+		$response->assertRedirect('inscription');
+	}
 }

@@ -48,6 +48,10 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testAjoutTag(): void
 	{
+		$user = User::factory()->create($this->user);
+
+		$this->actingAs($user);
+
 		Tag::factory()->create(['nom' => 'Catégorie', ]);
 
 		$response = $this->get('ajout_tag');
