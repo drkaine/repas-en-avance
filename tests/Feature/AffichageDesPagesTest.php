@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Tests\Feature;
 
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -14,6 +15,15 @@ use Tests\TestCase;
 class AffichageDesPagesTest extends TestCase
 {
 	use RefreshDatabase;
+
+	private array $user;
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->user = config('donnee_de_test.user');
+	}
 
 	public function testAccueil(): void
 	{
@@ -54,6 +64,10 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testMonCompte(): void
 	{
+		$user = User::factory()->create($this->user);
+
+		$this->actingAs($user);
+
 		$response = $this->get('mon_compte');
 
 		$response->assertStatus(200);

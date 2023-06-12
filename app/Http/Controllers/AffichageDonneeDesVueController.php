@@ -16,4 +16,11 @@ class AffichageDonneeDesVueController extends Controller
 
 		return view('ajout_tag', compact('tags'));
 	}
+
+	public function user(): View
+	{
+		$user = auth()->user();
+
+		return view('mon_compte', compact('user'));
+	}
 }

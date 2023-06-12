@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Tests\Feature;
 
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -17,11 +18,15 @@ class AffichageDonneeDeLaVueTest extends TestCase
 
 	private array $tag;
 
+	private array $user;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
 
 		$this->tag = config('donnee_de_test.tag');
+
+		$this->user = config('donnee_de_test.user');
 	}
 
 	public function testTagDansLaPageAjoutTag(): void
@@ -35,5 +40,20 @@ class AffichageDonneeDeLaVueTest extends TestCase
 		foreach ($tags as $tag) {
 			$response->assertSee($tag->nom);
 		}
+	}
+
+	public function testDonneeUserConnecte(): void
+	{
+		$user = User::factory()->create($this->user);
+
+		$this->actingAs($user);
+
+		$response = $this->get('mon_compte');
+
+		$donnee_user = $response->viewData('user');
+
+		$response->assertSee($donnee_user->nom);
+
+		$response->assertSee($donnee_user->email);
 	}
 }

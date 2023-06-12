@@ -101,9 +101,10 @@ Route::post(
 
 Route::get(
 	'mon_compte',
-	function () {
-		return view('mon_compte');
-	}
+	[
+		AffichageDonneeDesVueController::class,
+		'user',
+	]
 )->name('mon_compte');
 
 Route::get(
