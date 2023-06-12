@@ -9,6 +9,7 @@ use App\Http\Controllers\EnvoieFormulaireAjoutRecetteController;
 use App\Http\Controllers\EnvoieFormulaireAjoutTagController;
 use App\Http\Controllers\EnvoieFormulaireConnexionController;
 use App\Http\Controllers\EnvoieFormulaireInscriptionController;
+use App\Http\Controllers\ModificationDesDonneesDunUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -112,3 +113,11 @@ Route::get(
 		'anonymisationDuCompte',
 	]
 )->name('anonymisation_du_compte');
+
+Route::post(
+	'modification_user',
+	[
+		ModificationDesDonneesDunUserController::class,
+		'ModificationUser',
+	]
+)->name('modification_user');

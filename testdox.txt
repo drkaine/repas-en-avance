@@ -48,6 +48,7 @@ Modele Des Tables SQL (Tests\Unit\ModeleDesTablesSQL)
 Redirection (Tests\Feature\Redirection)
  [x] Deconnexion
  [x] Anonymisation user
+ [x] Modification des donnees du user
 
 Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaireConnexion)
  [x] Champs email

@@ -37,4 +37,25 @@ class RedirectionTest extends TestCase
 
 		$response->assertRedirect('deconnexion');
 	}
+
+	public function testModificationDesDonneesDuUser(): void
+	{
+		$donnee_user = [
+			'nom' => 'Test user',
+			'email' => 'email@test.fr',
+			'password' => 'password',
+		];
+
+		User::factory()->create($donnee_user);
+
+		$donnee_user_modifie = [
+			'nom' => 'Test user modifié',
+			'email' => 'email_modifie@test.fr',
+			'password' => 'password',
+		];
+
+		$response = $this->post('/modification_user', $donnee_user_modifie);
+
+		$response->assertRedirect('/');
+	}
 }
