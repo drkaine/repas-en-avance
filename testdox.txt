@@ -16,6 +16,9 @@ Ajout Dans La DB (Tests\Unit\AjoutDansLaDB)
  [x] Creation d une relation tag enfant
  [x] Creation d une recette
 
+Anonymisation User (Tests\Unit\AnonymisationUser)
+ [x] Anonymisation user
+
 Authentification (Tests\Feature\Authentification)
  [x] Connexion
  [x] Deconnexion

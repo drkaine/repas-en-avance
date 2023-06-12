@@ -13,6 +13,7 @@ parameters:
         - tests/DuskTestCase.php
         - tests/Feature
         - app/Controller/CreationEnDBController.php
+        - tests/Unit/AnonymisationUserTest
 
     ignoreErrors:
 
