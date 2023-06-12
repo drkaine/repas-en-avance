@@ -35,6 +35,6 @@ class RedirectionTest extends TestCase
 
 		$response = $this->get('/anonymisation_du_compte');
 
-		$response->assertRedirect('/');
+		$response->assertRedirect('deconnexion');
 	}
 }

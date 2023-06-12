@@ -21,6 +21,6 @@ class AnonymisationDunUserController extends Controller
 
 		$user->save();
 
-		return redirect('/');
+		return redirect('deconnexion');
 	}
 }
