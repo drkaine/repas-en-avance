@@ -46,15 +46,13 @@ class RedirectionTest extends TestCase
 			'password' => 'password',
 		];
 
-		User::factory()->create($donnee_user);
+		$user = User::factory()->create($donnee_user);
 
-		$donnee_user_modifie = [
-			'nom' => 'Test user modifié',
-			'email' => 'email_modifie@test.fr',
-			'password' => 'password',
-		];
+		$this->actingAs($user);
 
-		$response = $this->post('/modification_user', $donnee_user_modifie);
+		unset($donnee_user['password']);
+
+		$response = $this->post('/modification_user', $donnee_user);
 
 		$response->assertRedirect('/');
 	}

@@ -12,6 +12,13 @@ class ModificationDesDonneesDunUserController extends Controller
 {
 	public function ModificationUser(Request $request): RedirectResponse | Redirector
 	{
+		$user = auth()->user();
+
+		$user->nom = $request->nom;
+		$user->email = $request->email;
+
+		$user->save();
+
 		return redirect('/');
 	}
 }

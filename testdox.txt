@@ -45,6 +45,9 @@ Modele Des Tables SQL (Tests\Unit\ModeleDesTablesSQL)
  [x] De la table relation tags
  [x] De la table recette
 
+Modification De Donnees Dans La DB (Tests\Unit\ModificationDeDonneesDansLaDB)
+ [x] Modification du user
+
 Redirection (Tests\Feature\Redirection)
  [x] Deconnexion
  [x] Anonymisation user
