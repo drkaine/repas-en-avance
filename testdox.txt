@@ -44,7 +44,8 @@ Modele Des Tables SQL (Tests\Unit\TableSQL\ModeleDesTablesSQL)
  [x] De la table users
  [x] De la table tags
  [x] De la table relation tags
- [x] De la table recette
+ [x] De la table recettes
+ [x] De la table tags user
 
 Modification De Donnees Dans La DB (Tests\Unit\TestDansLaDB\ModificationDeDonneesDansLaDB)
  [x] Modification du user

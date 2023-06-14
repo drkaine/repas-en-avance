@@ -7,6 +7,7 @@ namespace Tests\Unit\TableSQL;
 use App\Models\Recette;
 use App\Models\RelationTag;
 use App\Models\Tag;
+use App\Models\TagUser;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -68,10 +69,27 @@ class ModeleDesTablesSQLTest extends TestCase
 		$this->assertDatabaseHas('relation_tags', $relation_tag);
 	}
 
-	public function testDeLaTableRecette(): void
+	public function testDeLaTableRecettes(): void
 	{
 		Recette::factory()->create($this->recette);
 
 		$this->assertDatabaseHas('recettes', $this->recette);
+	}
+
+	public function testDeLaTableTagsUser(): void
+	{
+		User::factory()->create($this->user);
+
+		Tag::factory()->create($this->tag);
+
+		TagUser::factory()->create([
+			'id_user' => 1,
+			'id_tag' => 1,
+		]);
+
+		$this->assertDatabaseHas('tags_user', [
+			'id_user' => 1,
+			'id_tag' => 1,
+		]);
 	}
 }
