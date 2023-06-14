@@ -26,32 +26,34 @@ class AjoutEnDBController extends Controller
 		]);
 	}
 
-	public function tag(): void
+	public function tag(): int
 	{
-		Tag::create([
+		$tag = Tag::create([
 			'nom' => $this->request->nom,
 		]);
+
+		return $tag->id;
 	}
 
-	public function RelationTagsParent(): void
+	public function RelationTagsParent(int $id_tag_enfant): void
 	{
-		foreach ($this->request->nom_tags_parent as $tag_parent) {
-			$this->RelationTag($tag_parent, $this->request->nom);
+		foreach ($this->request->id_tags_parent as $id_tag_parent) {
+			$this->RelationTag($id_tag_parent, $id_tag_enfant);
 		}
 	}
 
-	public function RelationTagsEnfant(): void
+	public function RelationTagsEnfant(int $id_tag_parent): void
 	{
-		foreach ($this->request->nom_tags_enfant as $tag_enfant) {
-			$this->RelationTag($this->request->nom, $tag_enfant);
+		foreach ($this->request->id_tags_enfant as $id_tag_enfant) {
+			$this->RelationTag($id_tag_parent, $id_tag_enfant);
 		}
 	}
 
-	public function RelationTag(string $nom_tag_parent, string $nom_tag_enfant): void
+	public function RelationTag(int $id_tag_parent, int $id_tag_enfant): void
 	{
 		RelationTag::create([
-			'nom_tag_parent' => $nom_tag_parent,
-			'nom_tag_enfant' => $nom_tag_enfant,
+			'id_tag_parent' => $id_tag_parent,
+			'id_tag_enfant' => $id_tag_enfant,
 		]);
 	}
 

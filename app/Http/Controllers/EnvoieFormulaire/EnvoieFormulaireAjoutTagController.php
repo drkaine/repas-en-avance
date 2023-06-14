@@ -19,11 +19,11 @@ class EnvoieFormulaireAjoutTagController extends Controller
 
 		$ajout_en_db = new AjoutEnDBController($request);
 
-		$ajout_en_db->tag();
+		$id_tag = $ajout_en_db->tag();
 
-		$ajout_en_db->RelationTagsparent();
+		$ajout_en_db->RelationTagsparent($id_tag);
 
-		$ajout_en_db->RelationTagsEnfant();
+		$ajout_en_db->RelationTagsEnfant($id_tag);
 
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}

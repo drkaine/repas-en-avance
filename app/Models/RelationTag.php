@@ -12,7 +12,7 @@ class RelationTag extends Model
 	use HasFactory;
 
 	protected $fillable = [
-		'nom_tag_parent',
-		'nom_tag_enfant',
+		'id_tag_parent',
+		'id_tag_enfant',
 	];
 }

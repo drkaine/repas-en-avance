@@ -15,7 +15,7 @@
         <label for="nom_tags_parent">Tag parent</label>
         <select name="nom_tags_parent[]" multiple>
             @foreach($tags as $tag)
-                <option value="{{  $tag->nom  }}">{{  $tag->nom  }}</option>
+                <option value="{{  $tag->id  }}">{{  $tag->nom  }}</option>
             @endforeach
         </select>
         @error('nom_tags_parent')
@@ -27,7 +27,7 @@
         <label for="nom_tags_enfant">Tag enfant</label>
         <select name="nom_tags_enfant[]" multiple>
             @foreach($tags as $tag)
-                <option value="{{  $tag->nom  }}">{{  $tag->nom  }}</option>
+                <option value="{{  $tag->id  }}">{{  $tag->nom  }}</option>
             @endforeach
         </select>
         @error('tags')

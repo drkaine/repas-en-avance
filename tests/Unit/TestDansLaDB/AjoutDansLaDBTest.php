@@ -54,17 +54,17 @@ class AjoutDansLaDBTest extends TestCase
 
 		$this->tag = [
 			'nom' => 'Plat',
-			'nom_tags_parent' => [
-				'Catégorie',
+			'id_tags_parent' => [
+				1,
 			],
-			'nom_tags_enfant' => [],
+			'id_tags_enfant' => [],
 		];
 
 		$this->post('/ajout_tag', $this->tag);
 
 		$this->assertDatabaseHas('relation_tags', [
-			'nom_tag_parent' => 'Catégorie',
-			'nom_tag_enfant' => 'Plat',
+			'id_tag_parent' => 1,
+			'id_tag_enfant' => 2,
 		]);
 	}
 
@@ -74,17 +74,17 @@ class AjoutDansLaDBTest extends TestCase
 
 		$this->tag = [
 			'nom' => 'Plat',
-			'nom_tags_parent' => [],
-			'nom_tags_enfant' => [
-				'Catégorie',
+			'id_tags_parent' => [],
+			'id_tags_enfant' => [
+				1,
 			],
 		];
 
 		$this->post('/ajout_tag', $this->tag);
 
 		$this->assertDatabaseHas('relation_tags', [
-			'nom_tag_parent' => 'Plat',
-			'nom_tag_enfant' => 'Catégorie',
+			'id_tag_parent' => 2,
+			'id_tag_enfant' => 1,
 		]);
 	}
 

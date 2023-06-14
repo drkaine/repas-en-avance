@@ -60,8 +60,8 @@ class ModeleDesTablesSQLTest extends TestCase
 		Tag::factory()->create(['nom' => 'Plat', ]);
 
 		$relation_tag = [
-			'nom_tag_parent' => 'Catégorie',
-			'nom_tag_enfant' => 'Plat',
+			'id_tag_parent' => 'Catégorie',
+			'id_tag_enfant' => 'Plat',
 		];
 
 		RelationTag::factory()->create($relation_tag);

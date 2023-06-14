@@ -20,8 +20,8 @@ class RelationTagFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			'nom_tag_parent' => Str::random(10),
-			'nom_tag_enfant' => Str::random(10),
+			'id_tag_parent' => Str::random(10),
+			'id_tag_enfant' => Str::random(10),
 		];
 	}
 }

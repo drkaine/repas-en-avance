@@ -54,8 +54,8 @@ class EnvoieFormulaireTest extends TestCase
 	{
 		$response = $this->post('/ajout_tag', [
 			'nom' => 'Catégorie',
-			'nom_tags_parent' => [],
-			'nom_tags_enfant' => [],
+			'id_tags_parent' => [],
+			'id_tags_enfant' => [],
 		]);
 
 		$response->assertStatus(201);
