@@ -56,9 +56,6 @@ class ModeleDesTablesSQLTest extends TestCase
 
 	public function testDeLaTableRelationTags(): void
 	{
-		Tag::factory()->create($this->tag);
-		Tag::factory()->create(['nom' => 'Plat', ]);
-
 		$relation_tag = [
 			'id_tag_parent' => 'Catégorie',
 			'id_tag_enfant' => 'Plat',
@@ -78,10 +75,6 @@ class ModeleDesTablesSQLTest extends TestCase
 
 	public function testDeLaTableTagsUser(): void
 	{
-		User::factory()->create($this->user);
-
-		Tag::factory()->create($this->tag);
-
 		TagUser::factory()->create([
 			'id_user' => 1,
 			'id_tag' => 1,
