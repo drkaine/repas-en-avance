@@ -20,7 +20,7 @@ class AffichageDonneeDesVueController extends Controller
 		}
 
 		$tags = new Tag;
-		$tags = $tags->select('nom')->get();
+		$tags = $tags->select('id', 'nom')->get();
 
 		return view('ajout_tag', compact('tags'));
 	}
