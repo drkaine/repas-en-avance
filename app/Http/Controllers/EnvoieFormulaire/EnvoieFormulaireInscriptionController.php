@@ -4,13 +4,15 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers\EnvoieFormulaire;
 
-use App\Http\Controllers\AjoutEnDBController;
+use App\Taits\AjoutEnDBtrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class EnvoieFormulaireInscriptionController extends Controller
 {
+    use AjoutEnDBtrait;
+
 	public function inscription(Request $request): JsonResponse
 	{
 		$request->validate([
@@ -19,9 +21,7 @@ class EnvoieFormulaireInscriptionController extends Controller
 			'password' => 'required|string|min:8|confirmed',
 		]);
 
-		$ajout_en_db = new AjoutEnDBController($request);
-
-		$ajout_en_db->user();
+		$this->user($request);
 
 		return response()->json(['message' => 'Inscription réussie'], 201);
 	}

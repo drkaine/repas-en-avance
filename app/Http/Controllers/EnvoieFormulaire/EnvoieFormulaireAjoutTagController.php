@@ -4,26 +4,26 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers\EnvoieFormulaire;
 
-use App\Http\Controllers\AjoutEnDBController;
+use App\Taits\AjoutEnDBtrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class EnvoieFormulaireAjoutTagController extends Controller
 {
+    use AjoutEnDBtrait;
+
 	public function ajoutTag(Request $request): JsonResponse
 	{
 		$request->validate([
 			'nom' => 'required|string|max:100',
 		]);
 
-		$ajout_en_db = new AjoutEnDBController($request);
+		$id_tag = $this->tag($request);
 
-		$id_tag = $ajout_en_db->tag();
+		$this->RelationTagsparent($id_tag, $request);
 
-		$ajout_en_db->RelationTagsparent($id_tag);
-
-		$ajout_en_db->RelationTagsEnfant($id_tag);
+		$this->RelationTagsEnfant($id_tag, $request);
 
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}
