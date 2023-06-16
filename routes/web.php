@@ -33,9 +33,10 @@ Route::get(
 
 Route::get(
 	'inscription',
-	function () {
-		return view('inscription');
-	}
+	[
+		AffichageDonneeDesVueController::class,
+		'inscription',
+	]
 )->name('inscription');
 
 Route::post(

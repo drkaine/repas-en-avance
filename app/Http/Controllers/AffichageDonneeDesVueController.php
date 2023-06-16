@@ -35,4 +35,16 @@ class AffichageDonneeDesVueController extends Controller
 
 		return view('mon_compte', compact('user'));
 	}
+
+	public function inscription(): View
+	{
+		$tag = new Tag;
+		$id_tag_parent = $tag->select('id')->
+			where('nom', 'Régime alimentaire')->
+			first();
+
+		$regimes_alimentaires = $id_tag_parent->tagEnfants;
+
+		return view('inscription', compact('regimes_alimentaires'));
+	}
 }

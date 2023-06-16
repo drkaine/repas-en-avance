@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\Affichage;
 
+use App\Models\RelationTag;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -34,6 +35,19 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testInscription(): void
 	{
+		Tag::factory()->create([
+			'nom' => 'Régime alimentaire',
+		]);
+
+		Tag::factory()->create([
+			'nom' => 'Végan',
+		]);
+
+		RelationTag::factory()->create([
+			'id_tag_parent' => 1,
+			'id_tag_enfant' => 2,
+		]);
+
 		$response = $this->get('inscription');
 
 		$response->assertStatus(200);
