@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\TestDansLaDB;
 
-use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Traits\CreationModelDeTestTrait;
 
 /**
  * @coversNothing
@@ -14,6 +14,7 @@ use Tests\TestCase;
 class AjoutDansLaDBTest extends TestCase
 {
 	use RefreshDatabase;
+	use CreationModelDeTestTrait;
 
 	private array $user;
 
@@ -50,7 +51,7 @@ class AjoutDansLaDBTest extends TestCase
 
 	public function testCreationDUneRelationTagParent(): void
 	{
-		$this->creationTag();
+		$this->tag();
 
 		$this->tag = [
 			'nom' => 'Plat',
@@ -70,7 +71,7 @@ class AjoutDansLaDBTest extends TestCase
 
 	public function testCreationDUneRelationTagEnfant(): void
 	{
-		$this->creationTag();
+		$this->tag();
 
 		$this->tag = [
 			'nom' => 'Plat',
@@ -93,10 +94,5 @@ class AjoutDansLaDBTest extends TestCase
 		$this->post('/ajout_recette', $this->recette);
 
 		$this->assertDatabaseHas('recettes', $this->recette);
-	}
-
-	private function creationTag(): void
-	{
-		Tag::factory()->create($this->tag);
 	}
 }

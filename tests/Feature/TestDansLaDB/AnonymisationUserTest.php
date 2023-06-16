@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\TestDansLaDB;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Traits\CreationModelDeTestTrait;
 
 /**
  * @coversNothing
@@ -14,6 +14,7 @@ use Tests\TestCase;
 class AnonymisationUserTest extends TestCase
 {
 	use RefreshDatabase;
+	use CreationModelDeTestTrait;
 
 	private array $user;
 
@@ -26,7 +27,7 @@ class AnonymisationUserTest extends TestCase
 
 	public function testAnonymisationUser(): void
 	{
-		$user = User::factory()->create($this->user);
+		$user = $this->user();
 
 		unset($this->user['password']);
 

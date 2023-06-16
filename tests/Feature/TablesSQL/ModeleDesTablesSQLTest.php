@@ -4,13 +4,12 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\TableSQL;
 
-use App\Models\Recette;
 use App\Models\RelationTag;
-use App\Models\Tag;
 use App\Models\TagUser;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Traits\CreationModelDeTestTrait;
 
 /**
  * @coversNothing
@@ -18,6 +17,7 @@ use Tests\TestCase;
 class ModeleDesTablesSQLTest extends TestCase
 {
 	use RefreshDatabase;
+	use CreationModelDeTestTrait;
 
 	private array $user;
 
@@ -49,7 +49,7 @@ class ModeleDesTablesSQLTest extends TestCase
 
 	public function testDeLaTableTags(): void
 	{
-		Tag::factory()->create($this->tag);
+		$this->tag();
 
 		$this->assertDatabaseHas('tags', $this->tag);
 	}
@@ -57,8 +57,8 @@ class ModeleDesTablesSQLTest extends TestCase
 	public function testDeLaTableRelationTags(): void
 	{
 		$relation_tag = [
-			'id_tag_parent' => 'Catégorie',
-			'id_tag_enfant' => 'Plat',
+			'id_tag_parent' => 1,
+			'id_tag_enfant' => 2,
 		];
 
 		RelationTag::factory()->create($relation_tag);
@@ -68,7 +68,7 @@ class ModeleDesTablesSQLTest extends TestCase
 
 	public function testDeLaTableRecettes(): void
 	{
-		Recette::factory()->create($this->recette);
+		$this->recette();
 
 		$this->assertDatabaseHas('recettes', $this->recette);
 	}

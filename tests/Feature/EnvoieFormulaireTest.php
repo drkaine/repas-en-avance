@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Traits\CreationModelDeTestTrait;
 
 /**
  * @coversNothing
@@ -14,10 +14,9 @@ use Tests\TestCase;
 class EnvoieFormulaireTest extends TestCase
 {
 	use RefreshDatabase;
+	use CreationModelDeTestTrait;
 
 	private array $user;
-
-	private array $tag;
 
 	private array $recette;
 
@@ -26,7 +25,6 @@ class EnvoieFormulaireTest extends TestCase
 		parent::setUp();
 
 		$this->user = config('donnee_de_test.user');
-		$this->tag = config('donnee_de_test.tag');
 		$this->recette = config('donnee_de_test.recette');
 	}
 
@@ -41,7 +39,7 @@ class EnvoieFormulaireTest extends TestCase
 
 	public function testConnexion(): void
 	{
-		User::factory()->create($this->user);
+		$this->user();
 
 		unset($this->user['nom']);
 

@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\TestDansLaDB;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Traits\CreationModelDeTestTrait;
 
 /**
  * @coversNothing
@@ -14,6 +14,7 @@ use Tests\TestCase;
 class ModificationDeDonneesDansLaDBTest extends TestCase
 {
 	use RefreshDatabase;
+	use CreationModelDeTestTrait;
 
 	private array $user;
 
@@ -30,7 +31,7 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 
 	public function testModificationDuUser(): void
 	{
-		$user = User::factory()->create($this->user);
+		$user = $this->user();
 
 		unset($this->user['password']);
 
