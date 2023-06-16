@@ -90,6 +90,19 @@ class AffichageDesPagesTest extends TestCase
 
 		$this->actingAs($user);
 
+		Tag::factory()->create([
+			'nom' => 'Régime alimentaire',
+		]);
+
+		Tag::factory()->create([
+			'nom' => 'Végan',
+		]);
+
+		RelationTag::factory()->create([
+			'id_tag_parent' => 1,
+			'id_tag_enfant' => 2,
+		]);
+
 		$response = $this->get('mon_compte');
 
 		$response->assertStatus(200);

@@ -47,8 +47,21 @@ class AffichageDonneeDeLaVueTest extends TestCase
 		}
 	}
 
-	public function testDonneeUserConnecte(): void
+	public function testDonneeUserMonCompte(): void
 	{
+		Tag::factory()->create([
+			'nom' => 'Régime alimentaire',
+		]);
+
+		Tag::factory()->create([
+			'nom' => 'Végan',
+		]);
+
+		RelationTag::factory()->create([
+			'id_tag_parent' => 1,
+			'id_tag_enfant' => 2,
+		]);
+
 		$user = User::factory()->create($this->user);
 
 		$this->actingAs($user);
@@ -78,6 +91,36 @@ class AffichageDonneeDeLaVueTest extends TestCase
 		]);
 
 		$response = $this->get('inscription');
+
+		$regimes_alimentaires = $response->viewData('regimes_alimentaires');
+
+		foreach ($regimes_alimentaires as $regime_alimentaire) {
+			$response->assertSee($regime_alimentaire->nom);
+
+			$response->assertSee($regime_alimentaire->id);
+		}
+	}
+
+	public function testTagDansMonCompte(): void
+	{
+		Tag::factory()->create([
+			'nom' => 'Régime alimentaire',
+		]);
+
+		Tag::factory()->create([
+			'nom' => 'Végan',
+		]);
+
+		RelationTag::factory()->create([
+			'id_tag_parent' => 1,
+			'id_tag_enfant' => 2,
+		]);
+
+		$user = User::factory()->create($this->user);
+
+		$this->actingAs($user);
+
+		$response = $this->get('mon_compte');
 
 		$regimes_alimentaires = $response->viewData('regimes_alimentaires');
 

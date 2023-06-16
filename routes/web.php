@@ -106,7 +106,7 @@ Route::get(
 	'mon_compte',
 	[
 		AffichageDonneeDesVueController::class,
-		'user',
+		'monCompte',
 	]
 )->name('mon_compte');
 

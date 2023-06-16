@@ -31,7 +31,7 @@ class AffichageDonneeDesVueController extends Controller
 		return view('ajout_tag', compact('tags'));
 	}
 
-	public function user(): View | RedirectResponse | Redirector
+	public function monCompte(): View | RedirectResponse | Redirector
 	{
 		$user = auth()->user();
 
@@ -39,7 +39,13 @@ class AffichageDonneeDesVueController extends Controller
 			return redirect('inscription');
 		}
 
-		return view('mon_compte', compact('user'));
+		$id_tag_parent = $this->tag->select('id')->
+			where('nom', 'Régime alimentaire')->
+			first();
+
+		$regimes_alimentaires = $id_tag_parent->tagEnfants;
+
+		return view('mon_compte', compact('user', 'regimes_alimentaires'));
 	}
 
 	public function inscription(): View
