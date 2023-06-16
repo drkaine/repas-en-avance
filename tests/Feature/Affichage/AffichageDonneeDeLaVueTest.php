@@ -84,7 +84,7 @@ class AffichageDonneeDeLaVueTest extends TestCase
 		foreach ($regimes_alimentaires as $regime_alimentaire) {
 			$response->assertSee($regime_alimentaire->nom);
 
-			// 	$response->assertSee($regime_alimentaire->id);
+			$response->assertSee($regime_alimentaire->id);
 		}
 	}
 }
