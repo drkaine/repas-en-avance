@@ -12,14 +12,25 @@ use Illuminate\Http\Request;
 
 class AjoutEnDBController extends Controller
 {
+	private User $user;
+
+	private Tag $tag;
+
+	private RelationTag $relation_tag;
+
+	private Recette $recette;
+
 	public function __construct(private Request $request)
 	{
-
+		$this->user = new User;
+		$this->tag = new Tag;
+		$this->relation_tag = new RelationTag;
+		$this->recette = new Recette;
 	}
 
 	public function user(): void
 	{
-		User::create([
+		$this->user->create([
 			'nom' => $this->request->nom,
 			'email' => $this->request->email,
 			'password' => bcrypt($this->request->password),
@@ -28,7 +39,7 @@ class AjoutEnDBController extends Controller
 
 	public function tag(): int
 	{
-		$tag = Tag::create([
+		$tag = $this->tag->create([
 			'nom' => $this->request->nom,
 		]);
 
@@ -51,7 +62,7 @@ class AjoutEnDBController extends Controller
 
 	public function RelationTag(int $id_tag_parent, int $id_tag_enfant): void
 	{
-		RelationTag::create([
+		$this->relation_tag->create([
 			'id_tag_parent' => $id_tag_parent,
 			'id_tag_enfant' => $id_tag_enfant,
 		]);
@@ -59,7 +70,7 @@ class AjoutEnDBController extends Controller
 
 	public function recette(): void
 	{
-		Recette::create([
+		$this->recette->create([
 			'nom' => $this->request->nom,
 			'temps_preparation' => $this->request->temps_preparation,
 			'temps_cuisson' => $this->request->temps_cuisson,

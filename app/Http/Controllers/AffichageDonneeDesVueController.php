@@ -11,6 +11,13 @@ use Illuminate\View\View;
 
 class AffichageDonneeDesVueController extends Controller
 {
+	private Tag $tag;
+
+	public function __construct()
+	{
+		$this->tag = new Tag;
+	}
+
 	public function ajoutTag(): View | RedirectResponse | Redirector
 	{
 		$user = auth()->user();
@@ -19,8 +26,7 @@ class AffichageDonneeDesVueController extends Controller
 			return redirect('inscription');
 		}
 
-		$tags = new Tag;
-		$tags = $tags->select('id', 'nom')->get();
+		$tags = $this->tag->select('id', 'nom')->get();
 
 		return view('ajout_tag', compact('tags'));
 	}
@@ -38,8 +44,7 @@ class AffichageDonneeDesVueController extends Controller
 
 	public function inscription(): View
 	{
-		$tag = new Tag;
-		$id_tag_parent = $tag->select('id')->
+		$id_tag_parent = $this->tag->select('id')->
 			where('nom', 'Régime alimentaire')->
 			first();
 

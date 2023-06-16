@@ -8,7 +8,6 @@ parameters:
 
     excludePaths:
         - app/Http/Controllers
-        - app/Controller/CreationEnDBController.php
 
     ignoreErrors:
 
