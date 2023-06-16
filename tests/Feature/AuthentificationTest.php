@@ -27,7 +27,7 @@ class AuthentificationTest extends TestCase
 
 	public function testConnexion(): void
 	{
-		$user = User::factory()->create($this->user);
+		$user = $this->creationUser();
 
 		unset($this->user['nom']);
 
@@ -38,12 +38,21 @@ class AuthentificationTest extends TestCase
 
 	public function testDeconnexion(): void
 	{
-		$user = User::factory()->create($this->user);
+		$user = $this->creationUser();
 
 		$this->actingAs($user);
 
 		$this->get('deconnexion');
 
 		$this->assertGuest();
+	}
+
+	private function creationUser(): User
+	{
+		$user = new User;
+
+		$user = $user->factory()->create($this->user);
+
+		return $user;
 	}
 }

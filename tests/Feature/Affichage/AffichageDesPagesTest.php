@@ -35,18 +35,7 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testInscription(): void
 	{
-		Tag::factory()->create([
-			'nom' => 'Régime alimentaire',
-		]);
-
-		Tag::factory()->create([
-			'nom' => 'Végan',
-		]);
-
-		RelationTag::factory()->create([
-			'id_tag_parent' => 1,
-			'id_tag_enfant' => 2,
-		]);
+		$this->creationRegimeAlimentaire();
 
 		$response = $this->get('inscription');
 
@@ -62,11 +51,11 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testAjoutTag(): void
 	{
-		$user = User::factory()->create($this->user);
+		$this->creationUserConnecte();
 
-		$this->actingAs($user);
+		$tag = new Tag;
 
-		Tag::factory()->create(['nom' => 'Catégorie', ]);
+		$tag->factory()->create(['nom' => 'Catégorie', ]);
 
 		$response = $this->get('ajout_tag');
 
@@ -75,9 +64,7 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testAjoutRecette(): void
 	{
-		$user = User::factory()->create($this->user);
-
-		$this->actingAs($user);
+		$this->creationUserConnecte();
 
 		$response = $this->get('ajout_recette');
 
@@ -86,25 +73,41 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testMonCompte(): void
 	{
-		$user = User::factory()->create($this->user);
+		$this->creationUserConnecte();
 
-		$this->actingAs($user);
-
-		Tag::factory()->create([
-			'nom' => 'Régime alimentaire',
-		]);
-
-		Tag::factory()->create([
-			'nom' => 'Végan',
-		]);
-
-		RelationTag::factory()->create([
-			'id_tag_parent' => 1,
-			'id_tag_enfant' => 2,
-		]);
+		$this->creationRegimeAlimentaire();
 
 		$response = $this->get('mon_compte');
 
 		$response->assertStatus(200);
+	}
+
+	private function creationRegimeAlimentaire(): void
+	{
+		$tag = new Tag;
+
+		$tag->factory()->create([
+			'nom' => 'Régime alimentaire',
+		]);
+
+		$tag->factory()->create([
+			'nom' => 'Végan',
+		]);
+
+		$relation_tag = new RelationTag;
+
+		$relation_tag->factory()->create([
+			'id_tag_parent' => 1,
+			'id_tag_enfant' => 2,
+		]);
+	}
+
+	private function creationUserConnecte(): void
+	{
+		$user = new User;
+
+		$user = $user->factory()->create($this->user);
+
+		$this->actingAs($user);
 	}
 }

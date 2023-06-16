@@ -33,9 +33,7 @@ class RedirectionTest extends TestCase
 
 	public function testAnonymisationUser(): void
 	{
-		$user = User::factory()->create($this->user);
-
-		$this->actingAs($user);
+		$this->creationUserConnecte();
 
 		$response = $this->get('/anonymisation_du_compte');
 
@@ -44,14 +42,21 @@ class RedirectionTest extends TestCase
 
 	public function testModificationDesDonneesDuUser(): void
 	{
-		$user = User::factory()->create($this->user);
-
-		$this->actingAs($user);
+		$this->creationUserConnecte();
 
 		unset($this->user['password']);
 
 		$response = $this->post('/modification_user', $this->user);
 
 		$response->assertRedirect('/');
+	}
+
+	private function creationUserConnecte(): void
+	{
+		$user = new User;
+
+		$user = $user->factory()->create($this->user);
+
+		$this->actingAs($user);
 	}
 }

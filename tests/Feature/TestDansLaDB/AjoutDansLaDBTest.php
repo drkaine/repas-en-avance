@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Unit\TestDansLaDB;
+namespace Tests\Feature\TestDansLaDB;
 
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -50,7 +50,7 @@ class AjoutDansLaDBTest extends TestCase
 
 	public function testCreationDUneRelationTagParent(): void
 	{
-		Tag::factory()->create($this->tag);
+		$this->creationTag();
 
 		$this->tag = [
 			'nom' => 'Plat',
@@ -70,7 +70,7 @@ class AjoutDansLaDBTest extends TestCase
 
 	public function testCreationDUneRelationTagEnfant(): void
 	{
-		Tag::factory()->create($this->tag);
+		$this->creationTag();
 
 		$this->tag = [
 			'nom' => 'Plat',
@@ -93,5 +93,10 @@ class AjoutDansLaDBTest extends TestCase
 		$this->post('/ajout_recette', $this->recette);
 
 		$this->assertDatabaseHas('recettes', $this->recette);
+	}
+
+	private function creationTag(): void
+	{
+		Tag::factory()->create($this->tag);
 	}
 }

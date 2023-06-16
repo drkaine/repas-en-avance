@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Unit\TableSQL;
+namespace Tests\Feature\TableSQL;
 
 use App\Models\Recette;
 use App\Models\User;
@@ -35,7 +35,7 @@ class ColonneNullDesTablesSQLTest extends TestCase
 	{
 		$this->user['email_verified_at'] = null;
 
-		User::factory()->create($this->user);
+		$this->creationUser();
 
 		unset($this->user['password']);
 
@@ -46,7 +46,7 @@ class ColonneNullDesTablesSQLTest extends TestCase
 	{
 		$this->user['derniere_connexion'] = null;
 
-		User::factory()->create($this->user);
+		$this->creationUser();
 
 		unset($this->user['password']);
 
@@ -57,7 +57,7 @@ class ColonneNullDesTablesSQLTest extends TestCase
 	{
 		$this->recette['temps_cuisson'] = null;
 
-		Recette::factory()->create($this->recette);
+		$this->creationRecette();
 
 		$this->assertDatabaseHas('recettes', $this->recette);
 	}
@@ -66,7 +66,7 @@ class ColonneNullDesTablesSQLTest extends TestCase
 	{
 		$this->recette['temps_repos'] = null;
 
-		Recette::factory()->create($this->recette);
+		$this->creationRecette();
 
 		$this->assertDatabaseHas('recettes', $this->recette);
 	}
@@ -75,7 +75,7 @@ class ColonneNullDesTablesSQLTest extends TestCase
 	{
 		$this->recette['lien'] = null;
 
-		Recette::factory()->create($this->recette);
+		$this->creationRecette();
 
 		$this->assertDatabaseHas('recettes', $this->recette);
 	}
@@ -84,7 +84,7 @@ class ColonneNullDesTablesSQLTest extends TestCase
 	{
 		$this->recette['instruction'] = null;
 
-		Recette::factory()->create($this->recette);
+		$this->creationRecette();
 
 		$this->assertDatabaseHas('recettes', $this->recette);
 	}
@@ -93,7 +93,7 @@ class ColonneNullDesTablesSQLTest extends TestCase
 	{
 		$this->recette['description'] = null;
 
-		Recette::factory()->create($this->recette);
+		$this->creationRecette();
 
 		$this->assertDatabaseHas('recettes', $this->recette);
 	}
@@ -102,8 +102,18 @@ class ColonneNullDesTablesSQLTest extends TestCase
 	{
 		$this->recette['reference_livre'] = null;
 
-		Recette::factory()->create($this->recette);
+		$this->creationRecette();
 
 		$this->assertDatabaseHas('recettes', $this->recette);
+	}
+
+	private function creationUser(): void
+	{
+		User::factory()->create($this->user);
+	}
+
+	private function creationRecette(): void
+	{
+		Recette::factory()->create($this->recette);
 	}
 }

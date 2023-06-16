@@ -12,21 +12,21 @@ Affichage Donnee De La Vue (Tests\Feature\Affichage\AffichageDonneeDeLaVue)
  [x] Tag dans l inscription
  [x] Tag dans mon compte
 
-Ajout Dans La DB (Tests\Unit\TestDansLaDB\AjoutDansLaDB)
+Ajout Dans La DB (Tests\Feature\TestDansLaDB\AjoutDansLaDB)
  [x] Creation d un user apres l inscription
  [x] Creation d un tag
  [x] Creation d une relation tag parent
  [x] Creation d une relation tag enfant
  [x] Creation d une recette
 
-Anonymisation User (Tests\Unit\TestDansLaDB\AnonymisationUser)
+Anonymisation User (Tests\Feature\TestDansLaDB\AnonymisationUser)
  [x] Anonymisation user
 
 Authentification (Tests\Feature\Authentification)
  [x] Connexion
  [x] Deconnexion
 
-Colonne Null Des Tables SQL (Tests\Unit\TableSQL\ColonneNullDesTablesSQL)
+Colonne Null Des Tables SQL (Tests\Feature\TableSQL\ColonneNullDesTablesSQL)
  [x] De la table users champs email verified at
  [x] De la table users champs derniere connexion
  [x] De la table recette champs temps cuisson
@@ -42,14 +42,14 @@ Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Ajout tag
  [x] Ajout recette
 
-Modele Des Tables SQL (Tests\Unit\TableSQL\ModeleDesTablesSQL)
+Modele Des Tables SQL (Tests\Feature\TableSQL\ModeleDesTablesSQL)
  [x] De la table users
  [x] De la table tags
  [x] De la table relation tags
  [x] De la table recettes
  [x] De la table tags user
 
-Modification De Donnees Dans La DB (Tests\Unit\TestDansLaDB\ModificationDeDonneesDansLaDB)
+Modification De Donnees Dans La DB (Tests\Feature\TestDansLaDB\ModificationDeDonneesDansLaDB)
  [x] Modification du user
 
 Redirection (Tests\Feature\Redirection)

@@ -32,9 +32,7 @@ class AffichageDonneeDeLaVueTest extends TestCase
 
 	public function testTagDansLaPageAjoutTag(): void
 	{
-		$user = User::factory()->create($this->user);
-
-		$this->actingAs($user);
+		$this->creationUserConnecte();
 
 		Tag::factory()->create($this->tag);
 
@@ -49,22 +47,9 @@ class AffichageDonneeDeLaVueTest extends TestCase
 
 	public function testDonneeUserMonCompte(): void
 	{
-		Tag::factory()->create([
-			'nom' => 'Régime alimentaire',
-		]);
+		$this->creationRegimeAlimentaire();
 
-		Tag::factory()->create([
-			'nom' => 'Végan',
-		]);
-
-		RelationTag::factory()->create([
-			'id_tag_parent' => 1,
-			'id_tag_enfant' => 2,
-		]);
-
-		$user = User::factory()->create($this->user);
-
-		$this->actingAs($user);
+		$this->creationUserConnecte();
 
 		$response = $this->get('mon_compte');
 
@@ -77,18 +62,7 @@ class AffichageDonneeDeLaVueTest extends TestCase
 
 	public function testTagDansLInscription(): void
 	{
-		Tag::factory()->create([
-			'nom' => 'Régime alimentaire',
-		]);
-
-		Tag::factory()->create([
-			'nom' => 'Végan',
-		]);
-
-		RelationTag::factory()->create([
-			'id_tag_parent' => 1,
-			'id_tag_enfant' => 2,
-		]);
+		$this->creationRegimeAlimentaire();
 
 		$response = $this->get('inscription');
 
@@ -103,22 +77,9 @@ class AffichageDonneeDeLaVueTest extends TestCase
 
 	public function testTagDansMonCompte(): void
 	{
-		Tag::factory()->create([
-			'nom' => 'Régime alimentaire',
-		]);
+		$this->creationRegimeAlimentaire();
 
-		Tag::factory()->create([
-			'nom' => 'Végan',
-		]);
-
-		RelationTag::factory()->create([
-			'id_tag_parent' => 1,
-			'id_tag_enfant' => 2,
-		]);
-
-		$user = User::factory()->create($this->user);
-
-		$this->actingAs($user);
+		$this->creationUserConnecte();
 
 		$response = $this->get('mon_compte');
 
@@ -129,5 +90,34 @@ class AffichageDonneeDeLaVueTest extends TestCase
 
 			$response->assertSee($regime_alimentaire->id);
 		}
+	}
+
+	private function creationRegimeAlimentaire(): void
+	{
+		$tag = new Tag;
+
+		$tag->factory()->create([
+			'nom' => 'Régime alimentaire',
+		]);
+
+		$tag->factory()->create([
+			'nom' => 'Végan',
+		]);
+
+		$relation_tag = new RelationTag;
+
+		$relation_tag->factory()->create([
+			'id_tag_parent' => 1,
+			'id_tag_enfant' => 2,
+		]);
+	}
+
+	private function creationUserConnecte(): void
+	{
+		$user = new User;
+
+		$user = $user->factory()->create($this->user);
+
+		$this->actingAs($user);
 	}
 }

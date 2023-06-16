@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Unit\TestDansLaDB;
+namespace Tests\Feature\TestDansLaDB;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -11,24 +11,20 @@ use Tests\TestCase;
 /**
  * @coversNothing
  */
-class ModificationDeDonneesDansLaDBTest extends TestCase
+class AnonymisationUserTest extends TestCase
 {
 	use RefreshDatabase;
 
 	private array $user;
-
-	private array $user_modifie;
 
 	protected function setUp(): void
 	{
 		parent::setUp();
 
 		$this->user = config('donnee_de_test.user');
-
-		$this->user_modifie = config('donnee_de_test.user_modifie');
 	}
 
-	public function testModificationDuUser(): void
+	public function testAnonymisationUser(): void
 	{
 		$user = User::factory()->create($this->user);
 
@@ -36,10 +32,15 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 
 		$this->actingAs($user);
 
-		$this->post('/modification_user', $this->user_modifie);
+		$this->get('/anonymisation_du_compte');
 
 		$this->assertDatabaseMissing('users', $this->user);
 
-		$this->assertDatabaseHas('users', $this->user_modifie);
+		$this->assertDatabaseHas('users', [
+			'email' => 'anonyme' . $user->id . '@anonyme.fr',
+			'nom' => 'Anonyme',
+			'derniere_connexion' => null,
+			'email_verified_at' => null,
+		]);
 	}
 }
