@@ -4,14 +4,14 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers\EnvoieFormulaire;
 
-use App\Taits\AjoutEnDBtrait;
 use App\Http\Controllers\Controller;
+use App\Traits\AjoutEnDBTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class EnvoieFormulaireInscriptionController extends Controller
 {
-    use AjoutEnDBtrait;
+	use AjoutEnDBTrait;
 
 	public function inscription(Request $request): JsonResponse
 	{

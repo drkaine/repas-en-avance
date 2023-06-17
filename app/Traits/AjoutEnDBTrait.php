@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Taits;
+declare(strict_types = 1);
+
+namespace App\Traits;
 
 use App\Models\Recette;
 use App\Models\RelationTag;
@@ -8,11 +10,11 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-trait AjoutEnDbTrait
+trait AjoutEnDBTrait
 {
 	public function user(Request $request): void
 	{
-        $user = new User;
+		$user = new User;
 		$user->create([
 			'nom' => $request->nom,
 			'email' => $request->email,
@@ -22,7 +24,7 @@ trait AjoutEnDbTrait
 
 	public function tag(Request $request): int
 	{
-        $tag = new Tag;
+		$tag = new Tag;
 		$tag = $tag->create([
 			'nom' => $request->nom,
 		]);
@@ -46,7 +48,7 @@ trait AjoutEnDbTrait
 
 	public function RelationTag(int $id_tag_parent, int $id_tag_enfant): void
 	{
-        $relation_tag = new RelationTag;
+		$relation_tag = new RelationTag;
 		$relation_tag->create([
 			'id_tag_parent' => $id_tag_parent,
 			'id_tag_enfant' => $id_tag_enfant,
@@ -55,7 +57,7 @@ trait AjoutEnDbTrait
 
 	public function recette(Request $request): void
 	{
-        $recette = new Recette;
+		$recette = new Recette;
 		$recette->create([
 			'nom' => $request->nom,
 			'temps_preparation' => $request->temps_preparation,
