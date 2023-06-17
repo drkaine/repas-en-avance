@@ -78,4 +78,23 @@ class AffichageDonneeDeLaVueTest extends TestCase
 			$response->assertSee($regime_alimentaire->id);
 		}
 	}
+
+	public function testTagsUserDansMonCompte(): void
+	{
+		$this->regimeAlimentaire();
+
+		$this->userConnecte();
+
+		$this->tagsUser();
+
+		$response = $this->get('mon_compte');
+
+		$tags_user = $response->viewData('tags_user');
+
+		foreach ($tags_user as $tag_user) {
+			$response->assertSee($tag_user->nom);
+
+			$response->assertSee($tag_user->id);
+		}
+	}
 }

@@ -27,7 +27,7 @@
                 <label for="regimes_alimentaires">Régime alimentaire</label>
                 <select name="regimes_alimentaires" multiple>
                     @foreach($regimes_alimentaires as $regime_alimentaire)
-                        <option value="{{  $regime_alimentaire->id  }}"{{  $regime_alimentaire->nom  }}</option>
+                        <option value="{{  $regime_alimentaire->id  }}">{{  $regime_alimentaire->nom  }}</option>
                     @endforeach
                 </select>
                 @error('regimes_alimentaires')

@@ -7,6 +7,7 @@ namespace Tests\Traits;
 use App\Models\Recette;
 use App\Models\RelationTag;
 use App\Models\Tag;
+use App\Models\TagUser;
 use App\Models\User;
 
 trait CreationModelDeTestTrait
@@ -73,6 +74,16 @@ trait CreationModelDeTestTrait
 		$relation_tag->factory()->create([
 			'id_tag_parent' => 1,
 			'id_tag_enfant' => 2,
+		]);
+	}
+
+	public function tagsUser(): void
+	{
+		$tags_user = new TagUser;
+
+		$tags_user->factory()->create([
+			'id_user' => 1,
+			'id_tag' => 2,
 		]);
 	}
 }

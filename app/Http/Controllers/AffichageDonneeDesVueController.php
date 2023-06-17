@@ -45,7 +45,9 @@ class AffichageDonneeDesVueController extends Controller
 
 		$regimes_alimentaires = $id_tag_parent->tagEnfants;
 
-		return view('mon_compte', compact('user', 'regimes_alimentaires'));
+		$tags_user = $user->tags;
+
+		return view('mon_compte', compact('user', 'regimes_alimentaires', 'tags_user'));
 	}
 
 	public function inscription(): View
