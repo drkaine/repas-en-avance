@@ -7,19 +7,22 @@ namespace App\Traits;
 use App\Models\Recette;
 use App\Models\RelationTag;
 use App\Models\Tag;
+use App\Models\TagUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 trait AjoutEnDBTrait
 {
-	public function user(Request $request): void
+	public function user(Request $request): User
 	{
 		$user = new User;
-		$user->create([
+		$user = $user->create([
 			'nom' => $request->nom,
 			'email' => $request->email,
 			'password' => bcrypt($request->password),
 		]);
+
+		return $user;
 	}
 
 	public function tag(Request $request): int
@@ -67,6 +70,23 @@ trait AjoutEnDBTrait
 			'instruction' => $request->instruction,
 			'description' => $request->description,
 			'reference_livre' => $request->reference_livre,
+		]);
+	}
+
+	public function tagsUser(Request $request, int $id_user): void
+	{
+		foreach ($request->regimes_alimentaires as $id_tag) {
+			$this->TagUser($id_tag, $id_user);
+		}
+	}
+
+	private function tagUser(int $id_tag, $id_user): void
+	{
+		$user_tag = new TagUser;
+
+		$user_tag->create([
+			'id_user' => $id_user,
+			'id_tag' => $id_tag,
 		]);
 	}
 }

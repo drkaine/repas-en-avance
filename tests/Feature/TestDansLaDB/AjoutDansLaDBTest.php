@@ -42,6 +42,24 @@ class AjoutDansLaDBTest extends TestCase
 		$this->assertDatabaseHas('users', $this->user);
 	}
 
+	public function testCreationDeUserTagApresLInscription(): void
+	{
+		$this->user['password_confirmation'] = 'password';
+
+		$this->user['regimes_alimentaires'] = [
+			'Catégotie' => 1,
+		];
+
+		$this->post('/inscription', $this->user);
+
+		$this->tag();
+
+		$this->assertDatabaseHas('tags_user', [
+			'id_user' => 1,
+			'id_tag' => 1,
+		]);
+	}
+
 	public function testCreationDUnTag(): void
 	{
 		$this->post('/ajout_tag', $this->tag);

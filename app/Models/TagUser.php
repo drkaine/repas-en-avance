@@ -12,4 +12,9 @@ class TagUser extends Model
 	use HasFactory;
 
 	protected $table = 'tags_user';
+
+	protected $fillable = [
+		'id_user',
+		'id_tag',
+	];
 }

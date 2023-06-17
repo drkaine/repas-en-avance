@@ -14,6 +14,7 @@ Affichage Donnee De La Vue (Tests\Feature\Affichage\AffichageDonneeDeLaVue)
 
 Ajout Dans La DB (Tests\Feature\TestDansLaDB\AjoutDansLaDB)
  [x] Creation d un user apres l inscription
+ [x] Creation de user tag apres l inscription
  [x] Creation d un tag
  [x] Creation d une relation tag parent
  [x] Creation d une relation tag enfant
@@ -43,7 +44,7 @@ Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Ajout recette
 
 Example (Tests\Unit\Example)
- [ ] Example
+ [x] Example
 
 Modele Des Tables SQL (Tests\Feature\TableSQL\ModeleDesTablesSQL)
  [x] De la table users

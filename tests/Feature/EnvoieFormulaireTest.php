@@ -32,6 +32,8 @@ class EnvoieFormulaireTest extends TestCase
 	{
 		$this->user['password_confirmation'] = 'password';
 
+		$this->user['regimes_alimentaires'] = [];
+
 		$response = $this->post('/inscription', $this->user);
 
 		$response->assertStatus(201);

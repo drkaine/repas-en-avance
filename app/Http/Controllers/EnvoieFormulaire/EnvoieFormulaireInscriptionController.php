@@ -21,7 +21,9 @@ class EnvoieFormulaireInscriptionController extends Controller
 			'password' => 'required|string|min:8|confirmed',
 		]);
 
-		$this->user($request);
+		$user = $this->user($request);
+
+		$this->tagsUser($request, $user->id);
 
 		return response()->json(['message' => 'Inscription réussie'], 201);
 	}
