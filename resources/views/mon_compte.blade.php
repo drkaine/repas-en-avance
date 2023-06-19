@@ -4,7 +4,7 @@
             <a href="{{ route('anonymisation_du_compte') }}">Supprimer mon compte</a>
         </div>
 
-        <form method="POST" action="{{ route('mon_compte') }}">
+        <form method="POST" action="{{ route('modification_user') }}">
             @csrf
 
             <div>
