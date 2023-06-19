@@ -49,9 +49,10 @@ Route::post(
 
 Route::get(
 	'connexion',
-	function () {
-		return view('connexion');
-	}
+	[
+		Controller::class,
+		'affichageConnexion',
+	]
 )->name('connexion');
 
 Route::post(

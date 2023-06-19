@@ -24,4 +24,13 @@ class RedirectionSiUserConnecteTest extends TestCase
 
 		$response->assertRedirect('mon_compte');
 	}
+
+	public function testConnexion(): void
+	{
+		$this->userConnecte();
+
+		$response = $this->get('connexion');
+
+		$response->assertRedirect('mon_compte');
+	}
 }

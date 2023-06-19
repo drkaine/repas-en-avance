@@ -26,4 +26,15 @@ class Controller extends BaseController
 
 		return view('ajout_recette');
 	}
+
+	public function affichageConnexion(): View | RedirectResponse | Redirector
+	{
+		$user = auth()->user();
+
+		if ($user) {
+			return redirect('mon_compte');
+		}
+
+		return view('connexion');
+	}
 }
