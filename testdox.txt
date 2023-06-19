@@ -62,6 +62,9 @@ Redirection (Tests\Feature\Redirection)
  [x] Anonymisation user
  [x] Modification des donnees du user
 
+Redirection Si User Connecte (Tests\Feature\RedirectionSiUserConnecte)
+ [x] Inscription
+
 Redirection Si User Non Authentifie (Tests\Feature\RedirectionSiUserNonAuthentifie)
  [x] Mon compte
  [x] Ajout tag

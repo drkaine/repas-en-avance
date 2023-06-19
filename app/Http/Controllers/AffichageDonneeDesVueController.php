@@ -50,8 +50,14 @@ class AffichageDonneeDesVueController extends Controller
 		return view('mon_compte', compact('user', 'regimes_alimentaires', 'tags_user'));
 	}
 
-	public function inscription(): View
+	public function inscription(): View | RedirectResponse | Redirector
 	{
+		$user = auth()->user();
+
+		if ($user) {
+			return redirect('mon_compte');
+		}
+
 		$id_tag_parent = $this->tag->select('id')->
 			where('nom', 'Régime alimentaire')->
 			first();
