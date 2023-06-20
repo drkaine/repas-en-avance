@@ -69,11 +69,20 @@ trait CreationModelDeTestTrait
 			'nom' => 'Végan',
 		]);
 
+		$tag->factory()->create([
+			'nom' => 'Végétarien',
+		]);
+
 		$relation_tag = new RelationTag;
 
 		$relation_tag->factory()->create([
 			'id_tag_parent' => 1,
 			'id_tag_enfant' => 2,
+		]);
+
+		$relation_tag->factory()->create([
+			'id_tag_parent' => 1,
+			'id_tag_enfant' => 3,
 		]);
 	}
 

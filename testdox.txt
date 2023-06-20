@@ -56,6 +56,7 @@ Modele Des Tables SQL (Tests\Feature\TableSQL\ModeleDesTablesSQL)
 
 Modification De Donnees Dans La DB (Tests\Feature\TestDansLaDB\ModificationDeDonneesDansLaDB)
  [x] Modification du user
+ [x] Modification du regime alimentaire
 
 Redirection (Tests\Feature\Redirection)
  [x] Deconnexion

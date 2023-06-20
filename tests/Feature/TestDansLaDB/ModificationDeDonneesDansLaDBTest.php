@@ -43,4 +43,33 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 
 		$this->assertDatabaseHas('users', $this->user_modifie);
 	}
+
+	public function testModificationDuRegimeAlimentaire(): void
+	{
+		$user = $this->user();
+
+		$this->regimeAlimentaire();
+
+		$this->tagsUser();
+
+		unset($this->user['password']);
+
+		$this->actingAs($user);
+
+		$this->user_modifie['regimes_alimentaires'] = [
+			3,
+		];
+
+		$this->post('/modification_user', $this->user_modifie);
+
+		$this->assertDatabaseMissing('tags_user', [
+			'id_user' => 1,
+			'id_tag' => 2,
+		]);
+
+		$this->assertDatabaseHas('tags_user', [
+			'id_user' => 1,
+			'id_tag' => 3,
+		]);
+	}
 }

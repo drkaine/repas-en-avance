@@ -47,6 +47,8 @@ class RedirectionTest extends TestCase
 
 		unset($this->user['password']);
 
+		$this->user['regimes_alimentaires'] = [];
+
 		$response = $this->post('/modification_user', $this->user);
 
 		$response->assertRedirect('/');
