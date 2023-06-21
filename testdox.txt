@@ -23,7 +23,7 @@ Ajout Dans La DB (Tests\Feature\TestDansLaDB\AjoutDansLaDB)
 
 Anonymisation User (Tests\Feature\TestDansLaDB\AnonymisationUser)
  [x] Anonymisation user
- [x] Anonymisation users inactif
+ [ ] Anonymisation users inactif
 
 Authentification (Tests\Feature\Authentification)
  [x] Connexion
@@ -55,11 +55,6 @@ Modele Des Tables SQL (Tests\Feature\TableSQL\ModeleDesTablesSQL)
  [x] De la table recettes
  [x] De la table tags user
 
-Modification De Donnees Dans La DB (Tests\Feature\TestDansLaDB\ModificationDeDonneesDansLaDB)
- [x] Modification du user
- [x] Modification du regime alimentaire
- [x] Modification de la derniere connexion du user
-
 Redirection (Tests\Feature\Redirection)
  [x] Deconnexion
  [x] Anonymisation user
@@ -73,30 +68,4 @@ Redirection Si User Non Authentifie (Tests\Feature\RedirectionSiUserNonAuthentif
  [x] Mon compte
  [x] Ajout tag
  [x] Ajout recette
-
-Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireConnexion)
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Format champs email
- [x] Champs password
- [x] Longueur minimum champs password
-
-Validation Champs Formulaire DAjout Recette (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireDAjoutRecette)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Champs temps de preparation
-
-Validation Champs Formulaire DAjout Tag (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireDAjoutTag)
- [x] Champs nom
- [x] Longueur maximum champs nom
-
-Validation Champs Formulaire Inscription (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireInscription)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Format champs email
- [x] Champs password
- [x] Longueur minimum password
- [x] Champs password confirmation
 

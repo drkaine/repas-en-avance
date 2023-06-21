@@ -8,7 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class AnonymisationUserInactifHelper
+class GestionUsersInactifHelper
 {
 	public function anonymiser(): void
 	{
