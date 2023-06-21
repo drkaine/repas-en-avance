@@ -25,4 +25,12 @@ class GestionUsersInactifHelper
 				'email_verified_at' => null,
 			]);
 	}
+
+	public function supprimer(): void
+	{
+		$users = new User;
+
+		$users->orWhereNull('derniere_connexion')->
+			delete();
+	}
 }
