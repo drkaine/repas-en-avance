@@ -72,4 +72,19 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 			'id_tag' => 3,
 		]);
 	}
+
+	public function testModificationDeLaDerniereConnexionDuUser(): void
+	{
+		$this->user();
+
+		unset($this->user['nom']);
+
+		$this->post('/connexion', $this->user);
+
+		unset($this->user['password']);
+
+		$this->user['derniere_connexion'] = date('Y-m-d');
+
+		$this->assertDatabaseHas('users', $this->user);
+	}
 }

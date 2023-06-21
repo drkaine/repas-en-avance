@@ -20,6 +20,11 @@ class EnvoieFormulaireConnexionController extends Controller
 
 		Auth::attempt($user);
 
+		$user_authentifie = auth()->user();
+
+		$user_authentifie->derniere_connexion = date('Y-m-d');
+		$user_authentifie->save();
+
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}
 }

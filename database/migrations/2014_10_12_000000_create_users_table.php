@@ -17,7 +17,7 @@ return new class extends Migration {
 			$table->string('nom');
 			$table->string('email')->unique();
 			$table->timestamp('email_verified_at')->nullable();
-			$table->timestamp('derniere_connexion')->nullable();
+			$table->date('derniere_connexion')->nullable();
 			$table->string('password');
 			$table->rememberToken();
 			$table->timestamps();
