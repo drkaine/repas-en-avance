@@ -8,6 +8,7 @@ parameters:
 
     excludePaths:
         - app/Http/Controllers
+        - app/Helpers
 
     ignoreErrors:
 

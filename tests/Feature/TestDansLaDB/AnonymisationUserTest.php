@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\TestDansLaDB;
 
+use App\Helpers\AnonymisationUserInactifHelper;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Tests\Traits\CreationModelDeTestTrait;
@@ -34,6 +36,30 @@ class AnonymisationUserTest extends TestCase
 		$this->actingAs($user);
 
 		$this->get('/anonymisation_du_compte');
+
+		$this->assertDatabaseMissing('users', $this->user);
+
+		$this->assertDatabaseHas('users', [
+			'email' => 'anonyme' . $user->id . '@anonyme.fr',
+			'nom' => 'Anonyme',
+			'derniere_connexion' => null,
+			'email_verified_at' => null,
+		]);
+	}
+
+	public function testAnonymisationUsersInactif(): void
+	{
+		$date = new Carbon;
+
+		$user = $this->user();
+
+		$user->derniere_connexion = $date->now()->subMonths(4);
+
+		$user->save();
+
+		$anonymisation_helper = new AnonymisationUserInactifHelper;
+
+		$anonymisation_helper->anonymiser();
 
 		$this->assertDatabaseMissing('users', $this->user);
 

@@ -23,6 +23,7 @@ Ajout Dans La DB (Tests\Feature\TestDansLaDB\AjoutDansLaDB)
 
 Anonymisation User (Tests\Feature\TestDansLaDB\AnonymisationUser)
  [x] Anonymisation user
+ [x] Anonymisation users inactif
 
 Authentification (Tests\Feature\Authentification)
  [x] Connexion
