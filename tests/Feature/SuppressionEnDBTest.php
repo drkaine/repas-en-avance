@@ -6,6 +6,7 @@ namespace Tests\Feature;
 
 use App\Helpers\GestionUsersInactifHelper;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -18,12 +19,14 @@ class SuppressionEnDBTest extends TestCase
 
 	public function testSuppressionUsersAnonyme(): void
 	{
+		$date = new Carbon;
+
 		$donnee_user = [
 			'email' => 'anonyme1@anonyme.fr',
 			'nom' => 'Anonyme',
 			'password' => bcrypt('anonyme'),
-			'derniere_connexion' => null,
 			'email_verified_at' => null,
+			'derniere_connexion' => $date->now()->subMonths(7),
 		];
 
 		$user = new User;

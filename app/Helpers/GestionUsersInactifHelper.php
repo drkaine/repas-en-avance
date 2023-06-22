@@ -20,7 +20,6 @@ class GestionUsersInactifHelper
 			update([
 				'nom' => 'Anonyme',
 				'email' => DB::raw('\'anonyme\' || id || \'@anonyme.fr\''),
-				'derniere_connexion' => null,
 				'password' => bcrypt('anonyme'),
 				'email_verified_at' => null,
 			]);
@@ -28,9 +27,11 @@ class GestionUsersInactifHelper
 
 	public function supprimer(): void
 	{
+		$date = new Carbon;
+
 		$users = new User;
 
-		$users->orWhereNull('derniere_connexion')->
+		$users->whereDate('derniere_connexion', '<', $date->now()->subMonths(6))->
 			delete();
 	}
 }

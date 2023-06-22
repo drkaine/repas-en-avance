@@ -42,7 +42,6 @@ class AnonymisationUserTest extends TestCase
 		$this->assertDatabaseHas('users', [
 			'email' => 'anonyme' . $user->id . '@anonyme.fr',
 			'nom' => 'Anonyme',
-			'derniere_connexion' => null,
 			'email_verified_at' => null,
 		]);
 	}
@@ -66,7 +65,6 @@ class AnonymisationUserTest extends TestCase
 		$this->assertDatabaseHas('users', [
 			'email' => 'anonyme' . $user->id . '@anonyme.fr',
 			'nom' => 'Anonyme',
-			'derniere_connexion' => null,
 			'email_verified_at' => null,
 		]);
 	}
