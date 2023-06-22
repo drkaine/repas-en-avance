@@ -61,6 +61,9 @@ Modification De Donnees Dans La DB (Tests\Feature\TestDansLaDB\ModificationDeDon
  [x] Modification du regime alimentaire
  [x] Modification de la derniere connexion du user
 
+Recuperation Compte En Anonyme (Tests\Feature\RecuperationCompteEnAnonyme)
+ [x] Recuperation
+
 Redirection (Tests\Feature\Redirection)
  [x] Deconnexion
  [x] Anonymisation user

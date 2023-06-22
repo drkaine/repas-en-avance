@@ -73,7 +73,7 @@ class AffichageDesPagesTest extends TestCase
 		$response->assertStatus(200);
 	}
 
-    public function testRecuperatoinCompte(): void
+	public function testRecuperatoinCompte(): void
 	{
 		$response = $this->get('recuperation_compte');
 

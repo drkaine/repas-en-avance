@@ -11,6 +11,7 @@ use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireAjoutTagController;
 use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireConnexionController;
 use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireInscriptionController;
 use App\Http\Controllers\ModificationDesDonneesDunUserController;
+use App\Http\Controllers\RecuperationCompteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,13 +31,6 @@ Route::get(
 		return view('accueil');
 	}
 )->name('accueil');
-
-Route::get(
-	'recuperation_compte',
-	function () {
-		return view('recuperation_compte');
-	}
-)->name('recuperation_compte');
 
 Route::get(
 	'inscription',
@@ -133,3 +127,18 @@ Route::post(
 		'ModificationUser',
 	]
 )->name('modification_user');
+
+Route::get(
+	'recuperation_compte',
+	function () {
+		return view('recuperation_compte');
+	}
+)->name('recuperation_compte');
+
+Route::post(
+	'recuperation_compte',
+	[
+		RecuperationCompteController::class,
+		'ModificationUser',
+	]
+)->name('recuperation_compte');
