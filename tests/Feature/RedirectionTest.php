@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Tests\Traits\CreationModelDeTestTrait;
@@ -50,6 +51,28 @@ class RedirectionTest extends TestCase
 		$this->user['regimes_alimentaires'] = [];
 
 		$response = $this->post('/modification_user', $this->user);
+
+		$response->assertRedirect('/');
+	}
+
+	public function testRecuperationCompte(): void
+	{
+		$donnee_user_recupere = [
+			'email_anonyme' => 'anonyme1@anonyme.fr',
+			'email' => 'test@test.fr',
+			'nom' => 'test',
+			'password' => 'anonyme',
+		];
+
+		$user = new User;
+
+		$user->create([
+			'email' => 'anonyme1@anonyme.fr',
+			'nom' => 'Anonyme',
+			'password' => bcrypt('anonyme'),
+		]);
+
+		$response = $this->post('/recuperation_compte', $donnee_user_recupere);
 
 		$response->assertRedirect('/');
 	}

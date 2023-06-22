@@ -68,6 +68,7 @@ Redirection (Tests\Feature\Redirection)
  [x] Deconnexion
  [x] Anonymisation user
  [x] Modification des donnees du user
+ [x] Recuperation compte
 
 Redirection Si User Connecte (Tests\Feature\RedirectionSiUserConnecte)
  [x] Inscription
