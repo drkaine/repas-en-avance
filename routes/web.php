@@ -32,6 +32,13 @@ Route::get(
 )->name('accueil');
 
 Route::get(
+	'recuperation_compte',
+	function () {
+		return view('recuperation_compte');
+	}
+)->name('recuperation_compte');
+
+Route::get(
 	'inscription',
 	[
 		AffichageDonneeDesVueController::class,

@@ -5,6 +5,7 @@ Affichage Des Pages (Tests\Feature\Affichage\AffichageDesPages)
  [x] Ajout tag
  [x] Ajout recette
  [x] Mon compte
+ [x] Recuperatoin compte
 
 Affichage Donnee De La Vue (Tests\Feature\Affichage\AffichageDonneeDeLaVue)
  [x] Tag dans la page ajout tag
