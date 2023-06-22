@@ -75,7 +75,8 @@ Redirection Si User Non Authentifie (Tests\Feature\RedirectionSiUserNonAuthentif
  [x] Ajout recette
 
 Suppression En DB (Tests\Feature\SuppressionEnDB)
- [x] Suppression users anonyme
+ [x] Suppression users anonymes
+ [x] Suppression tags user des users anonymes
 
 Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireConnexion)
  [x] Champs email

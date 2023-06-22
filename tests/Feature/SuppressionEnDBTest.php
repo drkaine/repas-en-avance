@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Tests\Feature;
 
 use App\Helpers\GestionUsersInactifHelper;
+use App\Models\TagUser;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,7 +18,7 @@ class SuppressionEnDBTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function testSuppressionUsersAnonyme(): void
+	public function testSuppressionUsersAnonymes(): void
 	{
 		$date = new Carbon;
 
@@ -38,5 +39,36 @@ class SuppressionEnDBTest extends TestCase
 		$anonymisation_helper->supprimer();
 
 		$this->assertDatabaseMissing('users', $donnee_user);
+	}
+
+	public function testSuppressionTagsUserDesUsersAnonymes(): void
+	{
+		$date = new Carbon;
+
+		$donnee_user = [
+			'email' => 'anonyme1@anonyme.fr',
+			'nom' => 'Anonyme',
+			'password' => bcrypt('anonyme'),
+			'email_verified_at' => null,
+			'derniere_connexion' => $date->now()->subMonths(7),
+		];
+
+		$donnee_tags_user = [
+			'id_user' => 1,
+			'id_tag' => 1,
+		];
+
+		$user = new User;
+
+		$user->create($donnee_user);
+
+		$tags_user = new TagUser;
+		$tags_user->factory()->create($donnee_tags_user);
+
+		$anonymisation_helper = new GestionUsersInactifHelper;
+
+		$anonymisation_helper->supprimer();
+
+		$this->assertDatabaseMissing('tags_user', $donnee_tags_user);
 	}
 }

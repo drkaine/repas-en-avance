@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Helpers;
 
+use App\Models\TagUser;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +32,15 @@ class GestionUsersInactifHelper
 
 		$users = new User;
 
-		$users->whereDate('derniere_connexion', '<', $date->now()->subMonths(6))->
+		$tags_user = new TagUser;
+
+		$id_users_anonymes = $users->whereDate('derniere_connexion', '<', $date->now()->subMonths(6))->
+			pluck('id');
+
+		$users->whereIn('id', $id_users_anonymes)->
+			delete();
+
+		$tags_user->whereIn('id_user', $id_users_anonymes)->
 			delete();
 	}
 }
