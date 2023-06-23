@@ -15,7 +15,6 @@ class AnonymisationDunUserController extends Controller
 
 		$user->nom = 'Anonyme';
 		$user->email = 'anonyme' . $user->id . '@anonyme.fr';
-		$user->password = bcrypt('anonyme');
 		$user->email_verified_at = null;
 
 		$user->save();

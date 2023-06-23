@@ -21,7 +21,6 @@ class GestionUsersInactifHelper
 			update([
 				'nom' => 'Anonyme',
 				'email' => DB::raw('\'anonyme\' || id || \'@anonyme.fr\''),
-				'password' => bcrypt('anonyme'),
 				'email_verified_at' => null,
 			]);
 	}
