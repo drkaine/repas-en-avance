@@ -145,7 +145,8 @@ Route::post(
 
 Route::get(
 	'recettes',
-	function () {
-		return view('recettes');
-	}
+	[
+		AffichageDonneeDesVueController::class,
+		'recettes',
+	]
 )->name('recettes');

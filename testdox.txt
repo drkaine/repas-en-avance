@@ -14,6 +14,7 @@ Affichage Donnee De La Vue (Tests\Feature\Affichage\AffichageDonneeDeLaVue)
  [x] Tag dans l inscription
  [x] Tag dans mon compte
  [x] Tags user dans mon compte
+ [x] Recettes dans recettes
 
 Ajout Dans La DB (Tests\Feature\TestDansLaDB\AjoutDansLaDB)
  [x] Creation d un user apres l inscription

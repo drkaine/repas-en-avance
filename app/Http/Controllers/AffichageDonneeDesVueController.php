@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Recette;
 use App\Models\Tag;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
@@ -13,9 +14,13 @@ class AffichageDonneeDesVueController extends Controller
 {
 	private Tag $tag;
 
+	private Recette $recette;
+
 	public function __construct()
 	{
 		$this->tag = new Tag;
+
+		$this->recette = new Recette;
 	}
 
 	public function ajoutTag(): View | RedirectResponse | Redirector
@@ -65,5 +70,12 @@ class AffichageDonneeDesVueController extends Controller
 		$regimes_alimentaires = $id_tag_parent->tagEnfants;
 
 		return view('inscription', compact('regimes_alimentaires'));
+	}
+
+	public function recettes(): View
+	{
+		$recettes = $this->recette->get();
+
+		return view('recettes', compact('recettes'));
 	}
 }

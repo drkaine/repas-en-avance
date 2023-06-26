@@ -97,4 +97,37 @@ class AffichageDonneeDeLaVueTest extends TestCase
 			$response->assertSee($tag_user->id);
 		}
 	}
+
+	public function testRecettesDansRecettes(): void
+	{
+		$this->recette();
+
+		$this->userConnecte();
+
+		$this->tagsUser();
+
+		$response = $this->get('recettes');
+
+		$recettes = $response->viewData('recettes');
+
+		foreach ($recettes as $recette) {
+			$response->assertSee($recette->temps_preparation);
+
+			$response->assertSee($recette->nom);
+
+			$response->assertSee($recette->temps_cuisson);
+
+			$response->assertSee($recette->temps_repos);
+
+			$response->assertSee($recette->lien);
+
+			$response->assertSee($recette->instruction);
+
+			$response->assertSee($recette->description);
+
+			$response->assertSee($recette->reference_livre);
+
+			$response->assertSee($recette->id);
+		}
+	}
 }
