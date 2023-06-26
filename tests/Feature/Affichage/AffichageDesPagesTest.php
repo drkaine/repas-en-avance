@@ -79,4 +79,11 @@ class AffichageDesPagesTest extends TestCase
 
 		$response->assertStatus(200);
 	}
+
+	public function testRecettes(): void
+	{
+		$response = $this->get('recettes');
+
+		$response->assertStatus(200);
+	}
 }

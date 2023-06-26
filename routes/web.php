@@ -142,3 +142,10 @@ Route::post(
 		'ModificationUser',
 	]
 )->name('recuperation_compte');
+
+Route::get(
+	'recettes',
+	function () {
+		return view('recettes');
+	}
+)->name('recettes');
