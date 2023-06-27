@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\TestDansLaDB;
 
-use App\Helpers\GestionUsersInactifHelper;
+use App\Services\GestionUsersInactifServices;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -56,7 +56,7 @@ class AnonymisationUserTest extends TestCase
 
 		$user->save();
 
-		$anonymisation_helper = new GestionUsersInactifHelper;
+		$anonymisation_helper = new GestionUsersInactifServices;
 
 		$anonymisation_helper->anonymiser();
 

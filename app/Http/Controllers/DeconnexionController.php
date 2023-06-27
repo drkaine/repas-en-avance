@@ -8,9 +8,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
-class DeconnexionUserController extends Controller
+class DeconnexionController extends Controller
 {
-	public function deconnexion(): RedirectResponse | Redirector
+	public function user(): RedirectResponse | Redirector
 	{
 		Auth::logout();
 

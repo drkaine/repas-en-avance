@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Tests\Feature;
 
-use App\Helpers\GestionUsersInactifHelper;
 use App\Models\TagUser;
 use App\Models\User;
+use App\Services\GestionUsersInactifServices;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -34,7 +34,7 @@ class SuppressionEnDBTest extends TestCase
 
 		$user->create($donnee_user);
 
-		$anonymisation_helper = new GestionUsersInactifHelper;
+		$anonymisation_helper = new GestionUsersInactifServices;
 
 		$anonymisation_helper->supprimer();
 
@@ -65,7 +65,7 @@ class SuppressionEnDBTest extends TestCase
 		$tags_user = new TagUser;
 		$tags_user->factory()->create($donnee_tags_user);
 
-		$anonymisation_helper = new GestionUsersInactifHelper;
+		$anonymisation_helper = new GestionUsersInactifServices;
 
 		$anonymisation_helper->supprimer();
 

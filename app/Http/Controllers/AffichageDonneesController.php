@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 
-class AffichageDonneeDesVueController extends Controller
+class AffichageDonneesController extends Controller
 {
 	private Tag $tag;
 
@@ -23,7 +23,7 @@ class AffichageDonneeDesVueController extends Controller
 		$this->recette = new Recette;
 	}
 
-	public function ajoutTag(): View | RedirectResponse | Redirector
+	public function pageAjoutTag(): View | RedirectResponse | Redirector
 	{
 		$user = auth()->user();
 
@@ -36,7 +36,7 @@ class AffichageDonneeDesVueController extends Controller
 		return view('ajout_tag', compact('tags'));
 	}
 
-	public function monCompte(): View | RedirectResponse | Redirector
+	public function pageMonCompte(): View | RedirectResponse | Redirector
 	{
 		$user = auth()->user();
 
@@ -48,14 +48,14 @@ class AffichageDonneeDesVueController extends Controller
 			where('nom', 'Régime alimentaire')->
 			first();
 
-		$regimes_alimentaires = $id_tag_parent->tagEnfants;
+		$regimes_alimentaires = $id_tag_parent->recuperationTagEnfants;
 
-		$tags_user = $user->tags;
+		$tags_user = $user->recuperationTags;
 
 		return view('mon_compte', compact('user', 'regimes_alimentaires', 'tags_user'));
 	}
 
-	public function inscription(): View | RedirectResponse | Redirector
+	public function pageInscription(): View | RedirectResponse | Redirector
 	{
 		$user = auth()->user();
 
@@ -67,12 +67,12 @@ class AffichageDonneeDesVueController extends Controller
 			where('nom', 'Régime alimentaire')->
 			first();
 
-		$regimes_alimentaires = $id_tag_parent->tagEnfants;
+		$regimes_alimentaires = $id_tag_parent->recuperationTagEnfants;
 
 		return view('inscription', compact('regimes_alimentaires'));
 	}
 
-	public function recettes(): View
+	public function pageRecettes(): View
 	{
 		$recettes = $this->recette->get();
 

@@ -2,16 +2,16 @@
 
 declare(strict_types = 1);
 
-use App\Http\Controllers\AffichageDonneeDesVueController;
-use App\Http\Controllers\AnonymisationDunUserController;
+use App\Http\Controllers\AffichageDonneesController;
+use App\Http\Controllers\AnonymisationDeDonneesController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\DeconnexionUserController;
-use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireAjoutRecetteController;
-use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireAjoutTagController;
-use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireConnexionController;
-use App\Http\Controllers\EnvoieFormulaire\EnvoieFormulaireInscriptionController;
-use App\Http\Controllers\ModificationDesDonneesDunUserController;
-use App\Http\Controllers\RecuperationCompteController;
+use App\Http\Controllers\DeconnexionController;
+use App\Http\Controllers\EnvoieFormulaire\AjoutRecetteController;
+use App\Http\Controllers\EnvoieFormulaire\AjoutTagController;
+use App\Http\Controllers\EnvoieFormulaire\ConnexionController;
+use App\Http\Controllers\EnvoieFormulaire\InscriptionController;
+use App\Http\Controllers\EnvoieFormulaire\RecuperationDoneesAnonymiserController;
+use App\Http\Controllers\ModificationDeDonneesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,15 +35,15 @@ Route::get(
 Route::get(
 	'inscription',
 	[
-		AffichageDonneeDesVueController::class,
-		'inscription',
+		AffichageDonneesController::class,
+		'pageinscription',
 	]
 )->name('inscription');
 
 Route::post(
 	'inscription',
 	[
-		EnvoieFormulaireInscriptionController::class,
+		InscriptionController::class,
 		'inscription',
 	]
 )->name('inscription');
@@ -59,7 +59,7 @@ Route::get(
 Route::post(
 	'connexion',
 	[
-		EnvoieFormulaireConnexionController::class,
+		ConnexionController::class,
 		'connexion',
 	]
 )->name('connexion');
@@ -67,23 +67,23 @@ Route::post(
 Route::get(
 	'deconnexion',
 	[
-		DeconnexionUserController::class,
-		'deconnexion',
+		DeconnexionController::class,
+		'user',
 	]
 )->name('deconnexion');
 
 Route::get(
 	'ajout_tag',
 	[
-		AffichageDonneeDesVueController::class,
-		'ajoutTag',
+		AffichageDonneesController::class,
+		'pageAjoutTag',
 	]
 )->name('ajout_tag');
 
 Route::post(
 	'ajout_tag',
 	[
-		EnvoieFormulaireAjoutTagController::class,
+		AjoutTagController::class,
 		'ajoutTag',
 	]
 )->name('ajout_tag');
@@ -99,7 +99,7 @@ Route::get(
 Route::post(
 	'ajout_recette',
 	[
-		EnvoieFormulaireAjoutrecetteController::class,
+		AjoutRecetteController::class,
 		'ajoutRecette',
 	]
 )->name('ajout_recette');
@@ -107,24 +107,24 @@ Route::post(
 Route::get(
 	'mon_compte',
 	[
-		AffichageDonneeDesVueController::class,
-		'monCompte',
+		AffichageDonneesController::class,
+		'pageMonCompte',
 	]
 )->name('mon_compte');
 
 Route::get(
 	'anonymisation_du_compte',
 	[
-		AnonymisationDunUserController::class,
-		'anonymisationDuCompte',
+		AnonymisationDeDonneesController::class,
+		'compteUser',
 	]
 )->name('anonymisation_du_compte');
 
 Route::post(
 	'modification_user',
 	[
-		ModificationDesDonneesDunUserController::class,
-		'ModificationUser',
+		ModificationDeDonneesController::class,
+		'monCompte',
 	]
 )->name('modification_user');
 
@@ -138,15 +138,15 @@ Route::get(
 Route::post(
 	'recuperation_compte',
 	[
-		RecuperationCompteController::class,
-		'ModificationUser',
+		RecuperationDoneesAnonymiserController::class,
+		'monCompte',
 	]
 )->name('recuperation_compte');
 
 Route::get(
 	'recettes',
 	[
-		AffichageDonneeDesVueController::class,
-		'recettes',
+		AffichageDonneesController::class,
+		'pageRecettes',
 	]
 )->name('recettes');

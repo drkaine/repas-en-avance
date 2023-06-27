@@ -9,7 +9,7 @@ use App\Traits\AjoutEnDBTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class EnvoieFormulaireAjoutRecetteController extends Controller
+class AjoutRecetteController extends Controller
 {
 	use AjoutEnDBTrait;
 
@@ -20,7 +20,7 @@ class EnvoieFormulaireAjoutRecetteController extends Controller
 			'temps_preparation' => 'required|integer',
 		]);
 
-		$this->recette($request);
+		$this->nouvelleRecette($request);
 
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}

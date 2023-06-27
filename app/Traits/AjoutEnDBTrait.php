@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 
 trait AjoutEnDBTrait
 {
-	public function user(Request $request): User
+	public function nouveauUser(Request $request): User
 	{
 		$user = new User;
 		$user = $user->create([
@@ -25,7 +25,7 @@ trait AjoutEnDBTrait
 		return $user;
 	}
 
-	public function tag(Request $request): int
+	public function nouveauTag(Request $request): int
 	{
 		$tag = new Tag;
 		$tag = $tag->create([
@@ -35,21 +35,21 @@ trait AjoutEnDBTrait
 		return $tag->id;
 	}
 
-	public function RelationTagsParent(int $id_tag_enfant, Request $request): void
+	public function relationTagsParent(int $id_tag_enfant, Request $request): void
 	{
 		foreach ($request->id_tags_parent as $id_tag_parent) {
-			$this->RelationTag($id_tag_parent, $id_tag_enfant);
+			$this->nouvelleRelationTag($id_tag_parent, $id_tag_enfant);
 		}
 	}
 
-	public function RelationTagsEnfant(int $id_tag_parent, Request $request): void
+	public function relationTagsEnfant(int $id_tag_parent, Request $request): void
 	{
 		foreach ($request->id_tags_enfant as $id_tag_enfant) {
-			$this->RelationTag($id_tag_parent, $id_tag_enfant);
+			$this->nouvelleRelationTag($id_tag_parent, $id_tag_enfant);
 		}
 	}
 
-	public function RelationTag(int $id_tag_parent, int $id_tag_enfant): void
+	public function nouvelleRelationTag(int $id_tag_parent, int $id_tag_enfant): void
 	{
 		$relation_tag = new RelationTag;
 		$relation_tag->create([
@@ -58,7 +58,7 @@ trait AjoutEnDBTrait
 		]);
 	}
 
-	public function recette(Request $request): void
+	public function nouvelleRecette(Request $request): void
 	{
 		$recette = new Recette;
 		$recette->create([
@@ -76,11 +76,11 @@ trait AjoutEnDBTrait
 	public function tagsUser(Request $request, int $id_user): void
 	{
 		foreach ($request->regimes_alimentaires as $id_tag) {
-			$this->TagUser($id_tag, $id_user);
+			$this->nouveauTagUser($id_tag, $id_user);
 		}
 	}
 
-	private function tagUser(int $id_tag, $id_user): void
+	private function nouveauTagUser(int $id_tag, $id_user): void
 	{
 		$user_tag = new TagUser;
 

@@ -2,14 +2,14 @@
 
 declare(strict_types = 1);
 
-namespace App\Helpers;
+namespace App\Services;
 
 use App\Models\TagUser;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class GestionUsersInactifHelper
+class GestionUsersInactifServices
 {
 	public function anonymiser(): void
 	{

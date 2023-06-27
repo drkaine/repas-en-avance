@@ -49,7 +49,7 @@ class User extends Authenticatable
 		'password' => 'hashed',
 	];
 
-	public function tags(): BelongsToMany
+	public function recuperationTags(): BelongsToMany
 	{
 		return $this->belongsToMany(Tag::class, 'tags_user', 'id_user', 'id_tag');
 	}

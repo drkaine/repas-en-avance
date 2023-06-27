@@ -9,7 +9,7 @@ use App\Traits\AjoutEnDBTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class EnvoieFormulaireAjoutTagController extends Controller
+class AjoutTagController extends Controller
 {
 	use AjoutEnDBTrait;
 
@@ -19,11 +19,11 @@ class EnvoieFormulaireAjoutTagController extends Controller
 			'nom' => 'required|string|max:100',
 		]);
 
-		$id_tag = $this->tag($request);
+		$id_tag = $this->nouveauTag($request);
 
-		$this->RelationTagsparent($id_tag, $request);
+		$this->relationTagsparent($id_tag, $request);
 
-		$this->RelationTagsEnfant($id_tag, $request);
+		$this->relationTagsEnfant($id_tag, $request);
 
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}

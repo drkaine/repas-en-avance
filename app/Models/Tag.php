@@ -16,17 +16,17 @@ class Tag extends Model
 		'nom',
 	];
 
-	public function tagParents(): BelongsToMany
+	public function recuperationTagParents(): BelongsToMany
 	{
 		return $this->belongsToMany(Tag::class, 'relation_tags', 'id_tag_enfant', 'id_tag_parent');
 	}
 
-	public function tagEnfants(): BelongsToMany
+	public function recuperationTagEnfants(): BelongsToMany
 	{
 		return $this->belongsToMany(Tag::class, 'relation_tags', 'id_tag_parent', 'id_tag_enfant');
 	}
 
-	public function users(): BelongsToMany
+	public function recuperationUsers(): BelongsToMany
 	{
 		return $this->belongsToMany(User::class, 'tags_users', 'id_tag', 'id_user');
 	}

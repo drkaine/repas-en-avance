@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EnvoieFormulaireConnexionController extends Controller
+class ConnexionController extends Controller
 {
 	public function connexion(Request $request): JsonResponse
 	{

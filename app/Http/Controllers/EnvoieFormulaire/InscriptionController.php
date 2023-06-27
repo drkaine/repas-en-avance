@@ -9,7 +9,7 @@ use App\Traits\AjoutEnDBTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class EnvoieFormulaireInscriptionController extends Controller
+class InscriptionController extends Controller
 {
 	use AjoutEnDBTrait;
 
@@ -21,7 +21,7 @@ class EnvoieFormulaireInscriptionController extends Controller
 			'password' => 'required|string|min:8|confirmed',
 		]);
 
-		$user = $this->user($request);
+		$user = $this->nouveauUser($request);
 
 		$this->tagsUser($request, $user->id);
 

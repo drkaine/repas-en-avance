@@ -9,9 +9,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 
-class ModificationDesDonneesDunUserController extends Controller
+class ModificationDeDonneesController extends Controller
 {
-	public function ModificationUser(Request $request): RedirectResponse | Redirector
+	public function monCompte(Request $request): RedirectResponse | Redirector
 	{
 		$user = auth()->user();
 

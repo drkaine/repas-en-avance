@@ -7,9 +7,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 
-class AnonymisationDunUserController extends Controller
+class AnonymisationDeDonneesController extends Controller
 {
-	public function anonymisationDuCompte(): RedirectResponse | Redirector
+	public function compteUser(): RedirectResponse | Redirector
 	{
 		$user = auth()->user();
 
