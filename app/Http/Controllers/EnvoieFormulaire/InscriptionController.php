@@ -15,11 +15,7 @@ class InscriptionController extends Controller
 
 	public function inscription(Request $request): JsonResponse
 	{
-		$request->validate([
-			'nom' => 'required|string|max:100',
-			'email' => 'required|string|email|unique:users|max:255',
-			'password' => 'required|string|min:8|confirmed',
-		]);
+		$request->validate(config('validationFormulaire.inscription'));
 
 		$user = $this->nouveauUser($request);
 

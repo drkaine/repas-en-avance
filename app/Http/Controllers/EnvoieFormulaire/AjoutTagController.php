@@ -15,9 +15,7 @@ class AjoutTagController extends Controller
 
 	public function ajoutTag(Request $request): JsonResponse
 	{
-		$request->validate([
-			'nom' => 'required|string|max:100',
-		]);
+		$request->validate(config('validationFormulaire.ajoutTag'));
 
 		$id_tag = $this->nouveauTag($request);
 

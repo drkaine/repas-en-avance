@@ -15,10 +15,7 @@ class AjoutRecetteController extends Controller
 
 	public function ajoutRecette(Request $request): JsonResponse
 	{
-		$request->validate([
-			'nom' => 'required|string|max:255',
-			'temps_preparation' => 'required|integer',
-		]);
+		$request->validate(config('validationFormulaire.ajoutRecette'));
 
 		$this->nouvelleRecette($request);
 

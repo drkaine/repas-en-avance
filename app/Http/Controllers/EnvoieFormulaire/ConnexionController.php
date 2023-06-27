@@ -13,10 +13,7 @@ class ConnexionController extends Controller
 {
 	public function connexion(Request $request): JsonResponse
 	{
-		$user = $request->validate([
-			'email' => 'required|string|email|max:255',
-			'password' => 'required|string|min:8',
-		]);
+		$user = $request->validate(config('validationFormulaire.connexion'));
 
 		Auth::attempt($user);
 
