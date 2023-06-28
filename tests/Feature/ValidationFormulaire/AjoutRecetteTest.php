@@ -101,7 +101,7 @@ class AjoutRecetteTest extends TestCase
 			'temps_preparation' => 1,
 			'temps_cuisson' => 2,
 			'temps_repos' => 3,
-			'lien' => 'https://.fr',
+			'lien' => 'https://ici.fr',
 			'instruction' => 'Eplu',
 			'description' => 'Recette simple et rapide',
 			'reference_livre' => 'Tous en cuisine page 12',
@@ -117,10 +117,26 @@ class AjoutRecetteTest extends TestCase
 			'temps_preparation' => 1,
 			'temps_cuisson' => 2,
 			'temps_repos' => 3,
-			'lien' => 'https://.fr',
-			'instruction' => 'Eplu',
+			'lien' => 'https://ici.fr',
+			'instruction' => 'Eplucher les carottes',
 			'description' => 'Rece',
 			'reference_livre' => 'Tous en cuisine page 12',
+		]);
+
+		$response->assertStatus(302);
+	}
+
+	public function testLongueurMinimumChampsReference(): void
+	{
+		$response = $this->post('/ajout_recette', [
+			'nom' => 'Carotte simple',
+			'temps_preparation' => 1,
+			'temps_cuisson' => 2,
+			'temps_repos' => 3,
+			'lien' => 'https://ici.fr',
+			'instruction' => 'Eplucher les carottes',
+			'description' => 'Recette simple et rapide',
+			'reference_livre' => 'Tous',
 		]);
 
 		$response->assertStatus(302);

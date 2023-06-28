@@ -24,6 +24,7 @@ Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
  [x] Longueur minimum champs lien
  [x] Longueur minimum champs instruction
  [x] Longueur minimum champs description
+ [x] Longueur minimum champs reference
 
 Ajout Tag (Tests\Feature\ValidationFormulaire\AjoutTag)
  [x] Champs nom
