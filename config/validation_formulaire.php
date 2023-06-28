@@ -15,7 +15,7 @@ return [
 		'password' => 'required|string|min:8',
 	],
 	'inscription' => [
-		'nom' => 'required|string|max:100',
+		'nom' => 'required|string|max:100|min:3',
 		'email' => 'required|string|email|unique:users|max:255',
 		'password' => 'required|string|min:8|confirmed',
 	],

@@ -70,6 +70,7 @@ Example (Tests\Unit\Example)
 Inscription (Tests\Feature\ValidationFormulaire\Inscription)
  [x] Champs nom
  [x] Longueur maximum champs nom
+ [x] Longueur minimum champs nom
  [x] Champs email
  [x] Longueur maximum champs email
  [x] Format champs email
