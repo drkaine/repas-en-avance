@@ -34,6 +34,16 @@ class ConnexionTest extends TestCase
 		$response->assertStatus(302);
 	}
 
+	public function testLongueurMinimumChampsEmail(): void
+	{
+		$response = $this->post('/connexion', [
+			'email' => 'a@afr',
+			'password' => 'password',
+		]);
+
+		$response->assertStatus(302);
+	}
+
 	public function testFormatChampsEmail(): void
 	{
 		$response = $this->post('/connexion', [

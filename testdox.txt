@@ -47,6 +47,7 @@ Colonne Null (Tests\Feature\TableSQL\ColonneNull)
 Connexion (Tests\Feature\ValidationFormulaire\Connexion)
  [x] Champs email
  [x] Longueur maximum champs email
+ [x] Longueur minimum champs email
  [x] Format champs email
  [x] Champs password
  [x] Longueur minimum champs password
