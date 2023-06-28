@@ -19,6 +19,7 @@ Affichage Donnees (Tests\Feature\Affichage\AffichageDonnees)
 Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
  [x] Champs nom
  [x] Longueur maximum champs nom
+ [x] Longueur miniimum champs nom
  [x] Champs temps de preparation
 
 Ajout Tag (Tests\Feature\ValidationFormulaire\AjoutTag)

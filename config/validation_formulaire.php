@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 return [
 	'ajoutRecette' => [
-		'nom' => 'required|string|max:255',
+		'nom' => 'required|string|max:255|min:3',
 		'temps_preparation' => 'required|integer',
 	],
 	'ajoutTag' => [
