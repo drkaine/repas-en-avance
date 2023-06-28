@@ -4,10 +4,9 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\Affichage;
 
-use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Tests\Traits\CreationModelDeTestTrait;
+use Tests\Traits\ModelDeTestTrait;
 
 /**
  * @coversNothing
@@ -15,7 +14,7 @@ use Tests\Traits\CreationModelDeTestTrait;
 class AffichageDesPagesTest extends TestCase
 {
 	use RefreshDatabase;
-	use CreationModelDeTestTrait;
+	use ModelDeTestTrait;
 
 	public function testAccueil(): void
 	{
@@ -26,7 +25,7 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testInscription(): void
 	{
-		$this->RegimesAlimentaire();
+		$this->creationRegimesAlimentaire();
 
 		$response = $this->get('inscription');
 
@@ -44,9 +43,7 @@ class AffichageDesPagesTest extends TestCase
 	{
 		$this->userConnecte();
 
-		$tag = new Tag;
-
-		$tag->factory()->create(['nom' => 'Catégorie', ]);
+		$this->creationTag();
 
 		$response = $this->get('ajout_tag');
 
@@ -66,7 +63,7 @@ class AffichageDesPagesTest extends TestCase
 	{
 		$this->userConnecte();
 
-		$this->regimesAlimentaire();
+		$this->creationRegimesAlimentaire();
 
 		$response = $this->get('mon_compte');
 

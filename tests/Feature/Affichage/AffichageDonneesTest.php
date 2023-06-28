@@ -6,7 +6,7 @@ namespace Tests\Feature\Affichage;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Tests\Traits\CreationModelDeTestTrait;
+use Tests\Traits\ModelDeTestTrait;
 
 /**
  * @coversNothing
@@ -14,13 +14,13 @@ use Tests\Traits\CreationModelDeTestTrait;
 class AffichageDonneesTest extends TestCase
 {
 	use RefreshDatabase;
-	use CreationModelDeTestTrait;
+	use ModelDeTestTrait;
 
 	public function testTagDansAjoutTag(): void
 	{
 		$this->userConnecte();
 
-		$this->tag();
+		$this->creationTag();
 
 		$response = $this->get('/ajout_tag');
 
@@ -33,7 +33,7 @@ class AffichageDonneesTest extends TestCase
 
 	public function testUserDansMonCompte(): void
 	{
-		$this->regimesAlimentaire();
+		$this->creationRegimesAlimentaire();
 
 		$this->userConnecte();
 
@@ -48,7 +48,7 @@ class AffichageDonneesTest extends TestCase
 
 	public function testTagDansLInscription(): void
 	{
-		$this->regimesAlimentaire();
+		$this->creationRegimesAlimentaire();
 
 		$response = $this->get('inscription');
 
@@ -63,7 +63,7 @@ class AffichageDonneesTest extends TestCase
 
 	public function testTagDansMonCompte(): void
 	{
-		$this->regimesAlimentaire();
+		$this->creationRegimesAlimentaire();
 
 		$this->userConnecte();
 
@@ -80,11 +80,11 @@ class AffichageDonneesTest extends TestCase
 
 	public function testTagUserDansMonCompte(): void
 	{
-		$this->regimesAlimentaire();
+		$this->creationRegimesAlimentaire();
 
 		$this->userConnecte();
 
-		$this->tagsUser();
+		$this->creationTagsUser();
 
 		$response = $this->get('mon_compte');
 
@@ -99,11 +99,11 @@ class AffichageDonneesTest extends TestCase
 
 	public function testRecettesDansRecettes(): void
 	{
-		$this->recette();
+		$this->creationRecette();
 
 		$this->userConnecte();
 
-		$this->tagsUser();
+		$this->creationTagsUser();
 
 		$response = $this->get('recettes');
 

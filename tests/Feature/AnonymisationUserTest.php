@@ -8,7 +8,7 @@ use App\Services\GestionUsersInactifServices;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Tests\Traits\CreationModelDeTestTrait;
+use Tests\Traits\ModelDeTestTrait;
 use Tests\Traits\RecuperationDonneesDeTestTrait;
 
 /**
@@ -17,7 +17,7 @@ use Tests\Traits\RecuperationDonneesDeTestTrait;
 class AnonymisationUserTest extends TestCase
 {
 	use RefreshDatabase;
-	use CreationModelDeTestTrait;
+	use ModelDeTestTrait;
 	use RecuperationDonneesDeTestTrait;
 
 	private array $donnees_user;
@@ -31,7 +31,7 @@ class AnonymisationUserTest extends TestCase
 
 	public function testAnonymisationUser(): void
 	{
-		$user = $this->user();
+		$user = $this->creationUser();
 
 		unset($this->donnees_user['password']);
 
@@ -52,7 +52,7 @@ class AnonymisationUserTest extends TestCase
 	{
 		$date = new Carbon;
 
-		$user = $this->user();
+		$user = $this->creationUser();
 
 		$user->derniere_connexion = $date->now()->subMonths(4);
 

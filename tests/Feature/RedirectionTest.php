@@ -7,7 +7,7 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Tests\Traits\CreationModelDeTestTrait;
+use Tests\Traits\ModelDeTestTrait;
 use Tests\Traits\RecuperationDonneesDeTestTrait;
 
 /**
@@ -16,7 +16,7 @@ use Tests\Traits\RecuperationDonneesDeTestTrait;
 class RedirectionTest extends TestCase
 {
 	use RefreshDatabase;
-	use CreationModelDeTestTrait;
+	use ModelDeTestTrait;
 	use RecuperationDonneesDeTestTrait;
 
 	private array $donnees_user;

@@ -6,7 +6,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Tests\Traits\CreationModelDeTestTrait;
+use Tests\Traits\ModelDeTestTrait;
 
 /**
  * @coversNothing
@@ -14,7 +14,7 @@ use Tests\Traits\CreationModelDeTestTrait;
 class EnvoieFormulaireTest extends TestCase
 {
 	use RefreshDatabase;
-	use CreationModelDeTestTrait;
+	use ModelDeTestTrait;
 
 	private array $donnees_user;
 
@@ -41,7 +41,7 @@ class EnvoieFormulaireTest extends TestCase
 
 	public function testConnexion(): void
 	{
-		$this->user();
+		$this->creationUser();
 
 		unset($this->donnees_user['nom']);
 

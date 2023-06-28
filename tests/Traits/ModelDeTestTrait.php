@@ -10,18 +10,18 @@ use App\Models\Tag;
 use App\Models\TagUser;
 use App\Models\User;
 
-trait CreationModelDeTestTrait
+trait ModelDeTestTrait
 {
 	use RecuperationDonneesDeTestTrait;
 
 	public function userConnecte(): void
 	{
-		$user = $this->user();
+		$user = $this->creationUser();
 
 		$this->actingAs($user);
 	}
 
-	public function user(): User
+	public function creationUser(): User
 	{
 		$user = new User;
 
@@ -30,28 +30,28 @@ trait CreationModelDeTestTrait
 		return $user;
 	}
 
-	public function tag(): void
+	public function creationTag(): void
 	{
 		$tag = new Tag;
 
 		$tag->factory()->create($this->donneesTag());
 	}
 
-	public function recette(): void
+	public function creationRecette(): void
 	{
 		$recette = new Recette;
 
 		$recette->factory()->create($this->donneesRecette());
 	}
 
-	public function regimesAlimentaire(): void
+	public function creationregimesAlimentaire(): void
 	{
-		$this->tagsRegimesAlimentaire();
+		$this->creationTagsRegimesAlimentaire();
 
-		$this->relationTags();
+		$this->creationRelationTags();
 	}
 
-	public function tagsUser(): void
+	public function creationTagsUser(): void
 	{
 		$tags_user = new TagUser;
 
@@ -61,7 +61,7 @@ trait CreationModelDeTestTrait
 		]);
 	}
 
-	public function tagsRegimesAlimentaire(): void
+	public function creationTagsRegimesAlimentaire(): void
 	{
 		$tag = new Tag;
 
@@ -70,7 +70,7 @@ trait CreationModelDeTestTrait
 		}
 	}
 
-	public function relationTags(): void
+	public function creationRelationTags(): void
 	{
 		$relation_tag = new RelationTag;
 

@@ -7,7 +7,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
-use Tests\Traits\CreationModelDeTestTrait;
+use Tests\Traits\ModelDeTestTrait;
 
 /**
  * @coversNothing
@@ -15,7 +15,7 @@ use Tests\Traits\CreationModelDeTestTrait;
 class AuthentificationTest extends TestCase
 {
 	use RefreshDatabase;
-	use CreationModelDeTestTrait;
+	use ModelDeTestTrait;
 
 	private array $donnees_user;
 
@@ -28,7 +28,7 @@ class AuthentificationTest extends TestCase
 
 	public function testConnexion(): void
 	{
-		$user = $this->user();
+		$user = $this->creationUser();
 
 		unset($this->donnees_user['nom']);
 

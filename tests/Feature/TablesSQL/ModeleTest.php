@@ -5,11 +5,10 @@ declare(strict_types = 1);
 namespace Tests\Feature\TableSQL;
 
 use App\Models\RelationTag;
-use App\Models\TagUser;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Tests\Traits\CreationModelDeTestTrait;
+use Tests\Traits\ModelDeTestTrait;
 
 /**
  * @coversNothing
@@ -17,7 +16,7 @@ use Tests\Traits\CreationModelDeTestTrait;
 class ModeleTest extends TestCase
 {
 	use RefreshDatabase;
-	use CreationModelDeTestTrait;
+	use ModelDeTestTrait;
 
 	private array $donnees_user;
 
@@ -49,7 +48,7 @@ class ModeleTest extends TestCase
 
 	public function testTags(): void
 	{
-		$this->tag();
+		$this->creationTag();
 
 		$this->assertDatabaseHas('tags', $this->donnees_tag);
 	}
@@ -68,21 +67,18 @@ class ModeleTest extends TestCase
 
 	public function testRecettes(): void
 	{
-		$this->recette();
+		$this->creationRecette();
 
 		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
 	public function testTagsUser(): void
 	{
-		TagUser::factory()->create([
-			'id_user' => 1,
-			'id_tag' => 1,
-		]);
+		$this->creationTagsUser();
 
 		$this->assertDatabaseHas('tags_user', [
 			'id_user' => 1,
-			'id_tag' => 1,
+			'id_tag' => 2,
 		]);
 	}
 }

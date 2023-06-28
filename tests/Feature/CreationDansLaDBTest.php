@@ -6,7 +6,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Tests\Traits\CreationModelDeTestTrait;
+use Tests\Traits\ModelDeTestTrait;
 use Tests\Traits\RecuperationDonneesDeTestTrait;
 
 /**
@@ -15,7 +15,7 @@ use Tests\Traits\RecuperationDonneesDeTestTrait;
 class CreationDansLaDBTest extends TestCase
 {
 	use RefreshDatabase;
-	use CreationModelDeTestTrait;
+	use ModelDeTestTrait;
 	use RecuperationDonneesDeTestTrait;
 
 	private array $donnees_user;
@@ -54,7 +54,7 @@ class CreationDansLaDBTest extends TestCase
 
 		$this->post('/inscription', $this->donnees_user);
 
-		$this->tag();
+		$this->creationTag();
 
 		$this->assertDatabaseHas('tags_user', [
 			'id_user' => 1,
@@ -71,7 +71,7 @@ class CreationDansLaDBTest extends TestCase
 
 	public function testRelationTagParent(): void
 	{
-		$this->tag();
+		$this->creationTag();
 
 		$this->donnees_tag = [
 			'nom' => 'Plat',
@@ -91,7 +91,7 @@ class CreationDansLaDBTest extends TestCase
 
 	public function testRelationTagEnfant(): void
 	{
-		$this->tag();
+		$this->creationTag();
 
 		$this->donnees_tag = [
 			'nom' => 'Plat',

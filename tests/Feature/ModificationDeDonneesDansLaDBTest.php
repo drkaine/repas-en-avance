@@ -6,7 +6,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Tests\Traits\CreationModelDeTestTrait;
+use Tests\Traits\ModelDeTestTrait;
 
 /**
  * @coversNothing
@@ -14,7 +14,7 @@ use Tests\Traits\CreationModelDeTestTrait;
 class ModificationDeDonneesDansLaDBTest extends TestCase
 {
 	use RefreshDatabase;
-	use CreationModelDeTestTrait;
+	use ModelDeTestTrait;
 
 	private array $donnees_user;
 
@@ -35,7 +35,7 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 
 	public function testModificationDuUser(): void
 	{
-		$user = $this->user();
+		$user = $this->creationUser();
 
 		unset($this->donnees_user['password']);
 
@@ -50,11 +50,11 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 
 	public function testModificationDuRegimeAlimentaire(): void
 	{
-		$user = $this->user();
+		$user = $this->creationUser();
 
-		$this->regimesAlimentaire();
+		$this->creationRegimesAlimentaire();
 
-		$this->tagsUser();
+		$this->creationTagsUser();
 
 		unset($this->donnees_user['password']);
 
@@ -79,7 +79,7 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 
 	public function testModificationDeLaDerniereConnexionDuUser(): void
 	{
-		$this->user();
+		$this->creationUser();
 
 		unset($this->donnees_user['nom']);
 
