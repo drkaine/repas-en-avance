@@ -7,6 +7,7 @@ return [
 		'nom' => 'required|string|max:255|min:3',
 		'temps_preparation' => 'required|integer',
 		'lien' => 'string|min:12',
+		'instruction' => 'string|min:5',
 	],
 	'ajoutTag' => [
 		'nom' => 'required|string|max:100|min:3',
