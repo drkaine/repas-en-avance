@@ -51,6 +51,7 @@ Connexion (Tests\Feature\ValidationFormulaire\Connexion)
  [x] Format champs email
  [x] Champs password
  [x] Longueur minimum champs password
+ [x] Longueur maximum champs password
 
 Creation Dans La DB (Tests\Feature\CreationDansLaDB)
  [x] User apres l inscription

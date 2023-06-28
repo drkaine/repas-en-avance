@@ -73,4 +73,14 @@ class ConnexionTest extends TestCase
 
 		$response->assertStatus(302);
 	}
+
+	public function testLongueurMaximumChampsPassword(): void
+	{
+		$response = $this->post('/connexion', [
+			'email' => 'email.test.fr',
+			'password' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio',
+		]);
+
+		$response->assertStatus(302);
+	}
 }

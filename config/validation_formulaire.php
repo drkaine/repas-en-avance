@@ -12,7 +12,7 @@ return [
 	],
 	'connexion' => [
 		'email' => 'required|string|email|max:255|min:6',
-		'password' => 'required|string|min:8',
+		'password' => 'required|string|min:8|max:255',
 	],
 	'inscription' => [
 		'nom' => 'required|string|max:100|min:3',
