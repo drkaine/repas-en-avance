@@ -15,7 +15,7 @@ class AjoutRecetteController extends Controller
 
 	public function ajoutRecette(Request $request): JsonResponse
 	{
-		$request->validate(config('validationFormulaire.ajoutRecette'));
+		$request->validate(config('validation_formulaire.ajoutRecette'));
 
 		$this->nouvelleRecette($request);
 

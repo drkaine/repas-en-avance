@@ -15,7 +15,7 @@ class InscriptionController extends Controller
 
 	public function inscription(Request $request): JsonResponse
 	{
-		$request->validate(config('validationFormulaire.inscription'));
+		$request->validate(config('validation_formulaire.inscription'));
 
 		$user = $this->nouveauUser($request);
 
