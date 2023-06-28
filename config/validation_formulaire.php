@@ -16,7 +16,7 @@ return [
 	],
 	'inscription' => [
 		'nom' => 'required|string|max:100|min:3',
-		'email' => 'required|string|email|unique:users|max:255',
+		'email' => 'required|string|email|unique:users|max:255|min:6',
 		'password' => 'required|string|min:8|confirmed',
 	],
 ];

@@ -73,6 +73,7 @@ Inscription (Tests\Feature\ValidationFormulaire\Inscription)
  [x] Longueur minimum champs nom
  [x] Champs email
  [x] Longueur maximum champs email
+ [x] Longueur minimum champs email
  [x] Format champs email
  [x] Champs password
  [x] Longueur minimum password

@@ -79,6 +79,19 @@ class InscriptionTest extends TestCase
 		$response->assertStatus(302);
 	}
 
+	public function testLongueurMinimumChampsEmail(): void
+	{
+		$response = $this->post('/inscription', [
+			'nom' => 'Test user',
+			'email' => 'a@.fr',
+			'password' => 'password',
+			'email_verified_at' => '2023-06-06 06:06:06',
+			'password_confirmation' => 'password',
+		]);
+
+		$response->assertStatus(302);
+	}
+
 	public function testFormatChampsEmail(): void
 	{
 		$response = $this->post('/inscription', [
