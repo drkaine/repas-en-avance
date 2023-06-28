@@ -24,6 +24,7 @@ Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
 Ajout Tag (Tests\Feature\ValidationFormulaire\AjoutTag)
  [x] Champs nom
  [x] Longueur maximum champs nom
+ [x] Longueur minimum champs nom
 
 Anonymisation User (Tests\Feature\AnonymisationUser)
  [x] Anonymisation user

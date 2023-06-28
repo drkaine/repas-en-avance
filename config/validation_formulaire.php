@@ -8,7 +8,7 @@ return [
 		'temps_preparation' => 'required|integer',
 	],
 	'ajoutTag' => [
-		'nom' => 'required|string|max:100',
+		'nom' => 'required|string|max:100|min:3',
 	],
 	'connexion' => [
 		'email' => 'required|string|email|max:255',

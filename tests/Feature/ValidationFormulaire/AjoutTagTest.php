@@ -31,4 +31,13 @@ class AjoutTagTest extends TestCase
 
 		$response->assertStatus(302);
 	}
+
+	public function testLongueurMinimumChampsNom(): void
+	{
+		$response = $this->post('/ajout_tag', [
+			'nom' => 'az',
+		]);
+
+		$response->assertStatus(302);
+	}
 }
