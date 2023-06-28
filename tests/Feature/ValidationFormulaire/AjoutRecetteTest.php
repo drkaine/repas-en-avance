@@ -109,4 +109,20 @@ class AjoutRecetteTest extends TestCase
 
 		$response->assertStatus(302);
 	}
+
+	public function testLongueurMinimumChampsDescription(): void
+	{
+		$response = $this->post('/ajout_recette', [
+			'nom' => 'Carotte simple',
+			'temps_preparation' => 1,
+			'temps_cuisson' => 2,
+			'temps_repos' => 3,
+			'lien' => 'https://.fr',
+			'instruction' => 'Eplu',
+			'description' => 'Rece',
+			'reference_livre' => 'Tous en cuisine page 12',
+		]);
+
+		$response->assertStatus(302);
+	}
 }
