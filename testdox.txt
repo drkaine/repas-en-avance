@@ -80,6 +80,7 @@ Inscription (Tests\Feature\ValidationFormulaire\Inscription)
  [x] Format champs email
  [x] Champs password
  [x] Longueur minimum password
+ [x] Longueur maximum password
  [x] Champs password confirmation
 
 Modele (Tests\Feature\TableSQL\Modele)

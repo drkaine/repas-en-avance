@@ -131,6 +131,19 @@ class InscriptionTest extends TestCase
 		$response->assertStatus(302);
 	}
 
+	public function testLongueurMaximumPassword(): void
+	{
+		$response = $this->post('/inscription', [
+			'nom' => 'Test user',
+			'email' => 'email@test.fr',
+			'password' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio',
+			'email_verified_at' => '2023-06-06 06:06:06',
+			'password_confirmation' => 'password',
+		]);
+
+		$response->assertStatus(302);
+	}
+
 	public function testChampsPasswordConfirmation(): void
 	{
 		$response = $this->post('/inscription', [
