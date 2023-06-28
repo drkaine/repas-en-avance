@@ -15,6 +15,17 @@ return [
 	'tag' => [
 		'nom' => 'Catégorie',
 	],
+	'tags_regimes_alimentaire' => [
+		[
+			'nom' => 'Régime alimentaire',
+		],
+		[
+			'nom' => 'Végan',
+		],
+		[
+			'nom' => 'Végétarien',
+		],
+	],
 	'recette' => [
 		'temps_preparation' => 1,
 		'temps_cuisson' => 2,

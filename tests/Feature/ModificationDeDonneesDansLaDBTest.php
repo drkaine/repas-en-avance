@@ -16,51 +16,55 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 	use RefreshDatabase;
 	use CreationModelDeTestTrait;
 
-	private array $user;
+	private array $donnees_user;
 
-	private array $user_modifie;
+	private array $donnees_user_modifie;
+
+	private array $tags_regimes_alimentaire;
 
 	protected function setUp(): void
 	{
 		parent::setUp();
 
-		$this->user = config('donnee_de_test.user');
+		$this->donnees_user = $this->donneesUser();
 
-		$this->user_modifie = config('donnee_de_test.user_modifie');
+		$this->donnees_user_modifie = $this->donneesUserModifie();
+
+		$this->tags_regimes_alimentaire = config('donnee_de_test.tags_regimes_alimentaire');
 	}
 
 	public function testModificationDuUser(): void
 	{
 		$user = $this->user();
 
-		unset($this->user['password']);
+		unset($this->donnees_user['password']);
 
 		$this->actingAs($user);
 
-		$this->post('/modification_user', $this->user_modifie);
+		$this->post('/modification_user', $this->donnees_user_modifie);
 
-		$this->assertDatabaseMissing('users', $this->user);
+		$this->assertDatabaseMissing('users', $this->donnees_user);
 
-		$this->assertDatabaseHas('users', $this->user_modifie);
+		$this->assertDatabaseHas('users', $this->donnees_user_modifie);
 	}
 
 	public function testModificationDuRegimeAlimentaire(): void
 	{
 		$user = $this->user();
 
-		$this->regimeAlimentaire();
+		$this->regimesAlimentaire();
 
 		$this->tagsUser();
 
-		unset($this->user['password']);
+		unset($this->donnees_user['password']);
 
 		$this->actingAs($user);
 
-		$this->user_modifie['regimes_alimentaires'] = [
+		$this->donnees_user_modifie['regimes_alimentaires'] = [
 			3,
 		];
 
-		$this->post('/modification_user', $this->user_modifie);
+		$this->post('/modification_user', $this->donnees_user_modifie);
 
 		$this->assertDatabaseMissing('tags_user', [
 			'id_user' => 1,
@@ -77,14 +81,14 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 	{
 		$this->user();
 
-		unset($this->user['nom']);
+		unset($this->donnees_user['nom']);
 
-		$this->post('/connexion', $this->user);
+		$this->post('/connexion', $this->donnees_user);
 
-		unset($this->user['password']);
+		unset($this->donnees_user['password']);
 
-		$this->user['derniere_connexion'] = date('Y-m-d');
+		$this->donnees_user['derniere_connexion'] = date('Y-m-d');
 
-		$this->assertDatabaseHas('users', $this->user);
+		$this->assertDatabaseHas('users', $this->donnees_user);
 	}
 }

@@ -26,7 +26,7 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testInscription(): void
 	{
-		$this->RegimeAlimentaire();
+		$this->RegimesAlimentaire();
 
 		$response = $this->get('inscription');
 
@@ -66,7 +66,7 @@ class AffichageDesPagesTest extends TestCase
 	{
 		$this->userConnecte();
 
-		$this->regimeAlimentaire();
+		$this->regimesAlimentaire();
 
 		$response = $this->get('mon_compte');
 

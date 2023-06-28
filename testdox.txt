@@ -107,3 +107,7 @@ Redirection Si User Non Authentifie (Tests\Feature\RedirectionSiUserNonAuthentif
  [x] Ajout tag
  [x] Ajout recette
 
+Suppression En DB (Tests\Feature\SuppressionEnDB)
+ [x] Users anonymes
+ [x] Tags user des users anonymes
+

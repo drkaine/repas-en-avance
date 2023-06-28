@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Tests\Traits\CreationModelDeTestTrait;
+use Tests\Traits\RecuperationDonneesDeTestTrait;
 
 /**
  * @coversNothing
@@ -16,14 +17,15 @@ class RedirectionTest extends TestCase
 {
 	use RefreshDatabase;
 	use CreationModelDeTestTrait;
+	use RecuperationDonneesDeTestTrait;
 
-	private array $user;
+	private array $donnees_user;
 
 	protected function setUp(): void
 	{
 		parent::setUp();
 
-		$this->user = config('donnee_de_test.user');
+		$this->donnees_user = $this->donneesUser();
 	}
 
 	public function testDeconnexion(): void
@@ -46,11 +48,11 @@ class RedirectionTest extends TestCase
 	{
 		$this->userConnecte();
 
-		unset($this->user['password']);
+		unset($this->donnees_user['password']);
 
-		$this->user['regimes_alimentaires'] = [];
+		$this->donnees_user['regimes_alimentaires'] = [];
 
-		$response = $this->post('/modification_user', $this->user);
+		$response = $this->post('/modification_user', $this->donnees_user);
 
 		$response->assertRedirect('/');
 	}

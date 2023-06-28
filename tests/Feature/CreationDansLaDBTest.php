@@ -7,6 +7,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Tests\Traits\CreationModelDeTestTrait;
+use Tests\Traits\RecuperationDonneesDeTestTrait;
 
 /**
  * @coversNothing
@@ -15,42 +16,43 @@ class CreationDansLaDBTest extends TestCase
 {
 	use RefreshDatabase;
 	use CreationModelDeTestTrait;
+	use RecuperationDonneesDeTestTrait;
 
-	private array $user;
+	private array $donnees_user;
 
-	private array $tag;
+	private array $donnees_tag;
 
-	private array $recette;
+	private array $donnees_recette;
 
 	protected function setUp(): void
 	{
 		parent::setUp();
 
-		$this->user = config('donnee_de_test.user');
-		$this->tag = config('donnee_de_test.tag');
-		$this->recette = config('donnee_de_test.recette');
+		$this->donnees_user = $this->donneesUser();
+		$this->donnees_tag = $this->donneesTag();
+		$this->donnees_recette = $this->donneesRecette();
 	}
 
 	public function testUserApresLInscription(): void
 	{
-		$this->user['password_confirmation'] = 'password';
+		$this->donnees_user['password_confirmation'] = 'password';
 
-		$this->post('/inscription', $this->user);
+		$this->post('/inscription', $this->donnees_user);
 
-		unset($this->user['password'], $this->user['password_confirmation']);
+		unset($this->donnees_user['password'], $this->donnees_user['password_confirmation']);
 
-		$this->assertDatabaseHas('users', $this->user);
+		$this->assertDatabaseHas('users', $this->donnees_user);
 	}
 
 	public function testUserTagApresLInscription(): void
 	{
-		$this->user['password_confirmation'] = 'password';
+		$this->donnees_user['password_confirmation'] = 'password';
 
-		$this->user['regimes_alimentaires'] = [
+		$this->donnees_user['regimes_alimentaires'] = [
 			'Catégotie' => 1,
 		];
 
-		$this->post('/inscription', $this->user);
+		$this->post('/inscription', $this->donnees_user);
 
 		$this->tag();
 
@@ -62,16 +64,16 @@ class CreationDansLaDBTest extends TestCase
 
 	public function testTag(): void
 	{
-		$this->post('/ajout_tag', $this->tag);
+		$this->post('/ajout_tag', $this->donnees_tag);
 
-		$this->assertDatabaseHas('tags', $this->tag);
+		$this->assertDatabaseHas('tags', $this->donnees_tag);
 	}
 
 	public function testRelationTagParent(): void
 	{
 		$this->tag();
 
-		$this->tag = [
+		$this->donnees_tag = [
 			'nom' => 'Plat',
 			'id_tags_parent' => [
 				1,
@@ -79,7 +81,7 @@ class CreationDansLaDBTest extends TestCase
 			'id_tags_enfant' => [],
 		];
 
-		$this->post('/ajout_tag', $this->tag);
+		$this->post('/ajout_tag', $this->donnees_tag);
 
 		$this->assertDatabaseHas('relation_tags', [
 			'id_tag_parent' => 1,
@@ -91,7 +93,7 @@ class CreationDansLaDBTest extends TestCase
 	{
 		$this->tag();
 
-		$this->tag = [
+		$this->donnees_tag = [
 			'nom' => 'Plat',
 			'id_tags_parent' => [],
 			'id_tags_enfant' => [
@@ -99,7 +101,7 @@ class CreationDansLaDBTest extends TestCase
 			],
 		];
 
-		$this->post('/ajout_tag', $this->tag);
+		$this->post('/ajout_tag', $this->donnees_tag);
 
 		$this->assertDatabaseHas('relation_tags', [
 			'id_tag_parent' => 2,
@@ -109,8 +111,8 @@ class CreationDansLaDBTest extends TestCase
 
 	public function testRecette(): void
 	{
-		$this->post('/ajout_recette', $this->recette);
+		$this->post('/ajout_recette', $this->donnees_recette);
 
-		$this->assertDatabaseHas('recettes', $this->recette);
+		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 }

@@ -17,22 +17,22 @@ class AuthentificationTest extends TestCase
 	use RefreshDatabase;
 	use CreationModelDeTestTrait;
 
-	private array $user;
+	private array $donnees_user;
 
 	protected function setUp(): void
 	{
 		parent::setUp();
 
-		$this->user = config('donnee_de_test.user');
+		$this->donnees_user = $this->donneesUser();
 	}
 
 	public function testConnexion(): void
 	{
 		$user = $this->user();
 
-		unset($this->user['nom']);
+		unset($this->donnees_user['nom']);
 
-		$this->post('/connexion', $this->user);
+		$this->post('/connexion', $this->donnees_user);
 
 		$this->assertSame($user->id, Auth::user()->id);
 	}

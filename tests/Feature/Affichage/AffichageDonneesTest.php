@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\Affichage;
 
-use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Tests\Traits\CreationModelDeTestTrait;
@@ -21,7 +20,7 @@ class AffichageDonneesTest extends TestCase
 	{
 		$this->userConnecte();
 
-		Tag::factory()->create($this->tag);
+		$this->tag();
 
 		$response = $this->get('/ajout_tag');
 
@@ -34,7 +33,7 @@ class AffichageDonneesTest extends TestCase
 
 	public function testUserDansMonCompte(): void
 	{
-		$this->regimeAlimentaire();
+		$this->regimesAlimentaire();
 
 		$this->userConnecte();
 
@@ -49,7 +48,7 @@ class AffichageDonneesTest extends TestCase
 
 	public function testTagDansLInscription(): void
 	{
-		$this->regimeAlimentaire();
+		$this->regimesAlimentaire();
 
 		$response = $this->get('inscription');
 
@@ -64,7 +63,7 @@ class AffichageDonneesTest extends TestCase
 
 	public function testTagDansMonCompte(): void
 	{
-		$this->regimeAlimentaire();
+		$this->regimesAlimentaire();
 
 		$this->userConnecte();
 
@@ -81,7 +80,7 @@ class AffichageDonneesTest extends TestCase
 
 	public function testTagUserDansMonCompte(): void
 	{
-		$this->regimeAlimentaire();
+		$this->regimesAlimentaire();
 
 		$this->userConnecte();
 

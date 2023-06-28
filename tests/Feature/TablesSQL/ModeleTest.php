@@ -19,39 +19,39 @@ class ModeleTest extends TestCase
 	use RefreshDatabase;
 	use CreationModelDeTestTrait;
 
-	private array $user;
+	private array $donnees_user;
 
-	private array $tag;
+	private array $donnees_tag;
 
-	private array $recette;
+	private array $donnees_recette;
 
 	protected function setUp(): void
 	{
 		parent::setUp();
 
-		$this->user = config('donnee_de_test.user');
-		$this->tag = config('donnee_de_test.tag');
-		$this->recette = config('donnee_de_test.recette');
+		$this->donnees_user = $this->donneesUser();
+		$this->donnees_tag = $this->donneesTag();
+		$this->donnees_recette = $this->donneesRecette();
 	}
 
 	public function testUsers(): void
 	{
-		$this->user['email_verified_at'] = '2023-06-06 06:06:06';
+		$this->donnees_user['email_verified_at'] = '2023-06-06 06:06:06';
 
-		$this->user['derniere_connexion'] = '06-06-2023 06:06:06';
+		$this->donnees_user['derniere_connexion'] = '06-06-2023 06:06:06';
 
-		User::factory()->create($this->user);
+		User::factory()->create($this->donnees_user);
 
-		unset($this->user['password']);
+		unset($this->donnees_user['password']);
 
-		$this->assertDatabaseHas('users', $this->user);
+		$this->assertDatabaseHas('users', $this->donnees_user);
 	}
 
 	public function testTags(): void
 	{
 		$this->tag();
 
-		$this->assertDatabaseHas('tags', $this->tag);
+		$this->assertDatabaseHas('tags', $this->donnees_tag);
 	}
 
 	public function testRelationTags(): void
@@ -70,7 +70,7 @@ class ModeleTest extends TestCase
 	{
 		$this->recette();
 
-		$this->assertDatabaseHas('recettes', $this->recette);
+		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
 	public function testTagsUser(): void

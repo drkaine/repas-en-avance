@@ -12,20 +12,7 @@ use App\Models\User;
 
 trait CreationModelDeTestTrait
 {
-	private array $user;
-
-	private array $tag;
-
-	private array $recette;
-
-	protected function setUp(): void
-	{
-		parent::setUp();
-
-		$this->user = config('donnee_de_test.user');
-		$this->tag = config('donnee_de_test.tag');
-		$this->recette = config('donnee_de_test.recette');
-	}
+	use RecuperationDonneesDeTestTrait;
 
 	public function userConnecte(): void
 	{
@@ -38,7 +25,7 @@ trait CreationModelDeTestTrait
 	{
 		$user = new User;
 
-		$user = $user->factory()->create($this->user);
+		$user = $user->factory()->create($this->donneesUser());
 
 		return $user;
 	}
@@ -47,32 +34,44 @@ trait CreationModelDeTestTrait
 	{
 		$tag = new Tag;
 
-		$tag->factory()->create($this->tag);
+		$tag->factory()->create($this->donneesTag());
 	}
 
 	public function recette(): void
 	{
 		$recette = new Recette;
 
-		$recette->factory()->create($this->recette);
+		$recette->factory()->create($this->donneesRecette());
 	}
 
-	public function regimeAlimentaire(): void
+	public function regimesAlimentaire(): void
+	{
+		$this->tagsRegimesAlimentaire();
+
+		$this->relationTags();
+	}
+
+	public function tagsUser(): void
+	{
+		$tags_user = new TagUser;
+
+		$tags_user->factory()->create([
+			'id_user' => 1,
+			'id_tag' => 2,
+		]);
+	}
+
+	public function tagsRegimesAlimentaire(): void
 	{
 		$tag = new Tag;
 
-		$tag->factory()->create([
-			'nom' => 'Régime alimentaire',
-		]);
+		foreach ($this->donneesTagsRegimesAlimentaire() as $tag_regime_alimentaire) {
+			$tag->factory()->create($tag_regime_alimentaire);
+		}
+	}
 
-		$tag->factory()->create([
-			'nom' => 'Végan',
-		]);
-
-		$tag->factory()->create([
-			'nom' => 'Végétarien',
-		]);
-
+	public function relationTags(): void
+	{
 		$relation_tag = new RelationTag;
 
 		$relation_tag->factory()->create([
@@ -83,16 +82,6 @@ trait CreationModelDeTestTrait
 		$relation_tag->factory()->create([
 			'id_tag_parent' => 1,
 			'id_tag_enfant' => 3,
-		]);
-	}
-
-	public function tagsUser(): void
-	{
-		$tags_user = new TagUser;
-
-		$tags_user->factory()->create([
-			'id_user' => 1,
-			'id_tag' => 2,
 		]);
 	}
 }

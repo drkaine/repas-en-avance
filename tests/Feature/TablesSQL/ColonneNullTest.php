@@ -8,6 +8,7 @@ use App\Models\Recette;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Traits\RecuperationDonneesDeTestTrait;
 
 /**
  * @coversNothing
@@ -15,105 +16,103 @@ use Tests\TestCase;
 class ColonneNullTest extends TestCase
 {
 	use RefreshDatabase;
+	use RecuperationDonneesDeTestTrait;
 
-	private array $user;
+	private array $donnees_user;
 
-	private array $tag;
-
-	private array $recette;
+	private array $donnees_recette;
 
 	protected function setUp(): void
 	{
 		parent::setUp();
 
-		$this->user = config('donnee_de_test.user');
-		$this->tag = config('donnee_de_test.tag');
-		$this->recette = config('donnee_de_test.recette');
+		$this->donnees_user = $this->donneesUser();
+		$this->donnees_recette = $this->donneesRecette();
 	}
 
 	public function testDeLaTableUsersChampsEmailVerifiedAt(): void
 	{
-		$this->user['email_verified_at'] = null;
+		$this->donnees_user['email_verified_at'] = null;
 
 		$this->creationUser();
 
-		unset($this->user['password']);
+		unset($this->donnees_user['password']);
 
-		$this->assertDatabaseHas('users', $this->user);
+		$this->assertDatabaseHas('users', $this->donnees_user);
 	}
 
 	public function testDeLaTableUsersChampsDerniereConnexion(): void
 	{
-		$this->user['derniere_connexion'] = null;
+		$this->donnees_user['derniere_connexion'] = null;
 
 		$this->creationUser();
 
-		unset($this->user['password']);
+		unset($this->donnees_user['password']);
 
-		$this->assertDatabaseHas('users', $this->user);
+		$this->assertDatabaseHas('users', $this->donnees_user);
 	}
 
 	public function testDeLaTableRecetteChampsTempsCuisson(): void
 	{
-		$this->recette['temps_cuisson'] = null;
+		$this->donnees_recette['temps_cuisson'] = null;
 
 		$this->creationRecette();
 
-		$this->assertDatabaseHas('recettes', $this->recette);
+		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
 	public function testDeLaTableRecetteChampsTempsRepos(): void
 	{
-		$this->recette['temps_repos'] = null;
+		$this->donnees_recette['temps_repos'] = null;
 
 		$this->creationRecette();
 
-		$this->assertDatabaseHas('recettes', $this->recette);
+		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
 	public function testDeLaTableRecetteChampsLien(): void
 	{
-		$this->recette['lien'] = null;
+		$this->donnees_recette['lien'] = null;
 
 		$this->creationRecette();
 
-		$this->assertDatabaseHas('recettes', $this->recette);
+		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
 	public function testDeLaTableRecetteChampsInstruction(): void
 	{
-		$this->recette['instruction'] = null;
+		$this->donnees_recette['instruction'] = null;
 
 		$this->creationRecette();
 
-		$this->assertDatabaseHas('recettes', $this->recette);
+		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
 	public function testDeLaTableRecetteChampsDescription(): void
 	{
-		$this->recette['description'] = null;
+		$this->donnees_recette['description'] = null;
 
 		$this->creationRecette();
 
-		$this->assertDatabaseHas('recettes', $this->recette);
+		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
 	public function testDeLaTableRecetteChampsReferenceLivre(): void
 	{
-		$this->recette['reference_livre'] = null;
+		$this->donnees_recette['reference_livre'] = null;
 
 		$this->creationRecette();
 
-		$this->assertDatabaseHas('recettes', $this->recette);
+		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
 	private function creationUser(): void
 	{
-		User::factory()->create($this->user);
+		User::factory()->create($this->donnees_user);
 	}
 
 	private function creationRecette(): void
 	{
-		Recette::factory()->create($this->recette);
+		Recette::factory()->create($this->donnees_recette);
 	}
 }

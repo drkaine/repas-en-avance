@@ -16,25 +16,25 @@ class EnvoieFormulaireTest extends TestCase
 	use RefreshDatabase;
 	use CreationModelDeTestTrait;
 
-	private array $user;
+	private array $donnees_user;
 
-	private array $recette;
+	private array $donnees_recette;
 
 	protected function setUp(): void
 	{
 		parent::setUp();
 
-		$this->user = config('donnee_de_test.user');
-		$this->recette = config('donnee_de_test.recette');
+		$this->donnees_user = $this->donneesUser();
+		$this->donnees_recette = $this->donneesRecette();
 	}
 
 	public function testInscription(): void
 	{
-		$this->user['password_confirmation'] = 'password';
+		$this->donnees_user['password_confirmation'] = 'password';
 
-		$this->user['regimes_alimentaires'] = [];
+		$this->donnees_user['regimes_alimentaires'] = [];
 
-		$response = $this->post('/inscription', $this->user);
+		$response = $this->post('/inscription', $this->donnees_user);
 
 		$response->assertStatus(201);
 	}
@@ -43,9 +43,9 @@ class EnvoieFormulaireTest extends TestCase
 	{
 		$this->user();
 
-		unset($this->user['nom']);
+		unset($this->donnees_user['nom']);
 
-		$response = $this->post('/connexion', $this->user);
+		$response = $this->post('/connexion', $this->donnees_user);
 
 		$response->assertStatus(201);
 	}
@@ -63,7 +63,7 @@ class EnvoieFormulaireTest extends TestCase
 
 	public function testAjoutRecette(): void
 	{
-		$response = $this->post('/ajout_recette', $this->recette);
+		$response = $this->post('/ajout_recette', $this->donnees_recette);
 
 		$response->assertStatus(201);
 	}
