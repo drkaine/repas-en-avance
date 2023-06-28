@@ -18,7 +18,7 @@ class SuppressionEnDBTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function testSuppressionUsersAnonymes(): void
+	public function testUsersAnonymes(): void
 	{
 		$date = new Carbon;
 
@@ -41,7 +41,7 @@ class SuppressionEnDBTest extends TestCase
 		$this->assertDatabaseMissing('users', $donnee_user);
 	}
 
-	public function testSuppressionTagsUserDesUsersAnonymes(): void
+	public function testTagsUserDesUsersAnonymes(): void
 	{
 		$date = new Carbon;
 

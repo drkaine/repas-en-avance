@@ -12,12 +12,12 @@ use Tests\Traits\CreationModelDeTestTrait;
 /**
  * @coversNothing
  */
-class AffichageDonneeDeLaVueTest extends TestCase
+class AffichageDonneesTest extends TestCase
 {
 	use RefreshDatabase;
 	use CreationModelDeTestTrait;
 
-	public function testTagDansLaPageAjoutTag(): void
+	public function testTagDansAjoutTag(): void
 	{
 		$this->userConnecte();
 
@@ -32,7 +32,7 @@ class AffichageDonneeDeLaVueTest extends TestCase
 		}
 	}
 
-	public function testDonneeUserMonCompte(): void
+	public function testUserDansMonCompte(): void
 	{
 		$this->regimeAlimentaire();
 
@@ -79,7 +79,7 @@ class AffichageDonneeDeLaVueTest extends TestCase
 		}
 	}
 
-	public function testTagsUserDansMonCompte(): void
+	public function testTagUserDansMonCompte(): void
 	{
 		$this->regimeAlimentaire();
 

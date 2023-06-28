@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Feature\TestDansLaDB;
+namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -11,7 +11,7 @@ use Tests\Traits\CreationModelDeTestTrait;
 /**
  * @coversNothing
  */
-class AjoutDansLaDBTest extends TestCase
+class CreationDansLaDBTest extends TestCase
 {
 	use RefreshDatabase;
 	use CreationModelDeTestTrait;
@@ -31,7 +31,7 @@ class AjoutDansLaDBTest extends TestCase
 		$this->recette = config('donnee_de_test.recette');
 	}
 
-	public function testCreationDUnUserApresLInscription(): void
+	public function testUserApresLInscription(): void
 	{
 		$this->user['password_confirmation'] = 'password';
 
@@ -42,7 +42,7 @@ class AjoutDansLaDBTest extends TestCase
 		$this->assertDatabaseHas('users', $this->user);
 	}
 
-	public function testCreationDeUserTagApresLInscription(): void
+	public function testUserTagApresLInscription(): void
 	{
 		$this->user['password_confirmation'] = 'password';
 
@@ -60,14 +60,14 @@ class AjoutDansLaDBTest extends TestCase
 		]);
 	}
 
-	public function testCreationDUnTag(): void
+	public function testTag(): void
 	{
 		$this->post('/ajout_tag', $this->tag);
 
 		$this->assertDatabaseHas('tags', $this->tag);
 	}
 
-	public function testCreationDUneRelationTagParent(): void
+	public function testRelationTagParent(): void
 	{
 		$this->tag();
 
@@ -87,7 +87,7 @@ class AjoutDansLaDBTest extends TestCase
 		]);
 	}
 
-	public function testCreationDUneRelationTagEnfant(): void
+	public function testRelationTagEnfant(): void
 	{
 		$this->tag();
 
@@ -107,7 +107,7 @@ class AjoutDansLaDBTest extends TestCase
 		]);
 	}
 
-	public function testCreationDUneRecette(): void
+	public function testRecette(): void
 	{
 		$this->post('/ajout_recette', $this->recette);
 

@@ -12,7 +12,7 @@ use Tests\TestCase;
 /**
  * @coversNothing
  */
-class ColonneNullDesTablesSQLTest extends TestCase
+class ColonneNullTest extends TestCase
 {
 	use RefreshDatabase;
 

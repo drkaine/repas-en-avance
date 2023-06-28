@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Feature\ValidationChampsFormulaire;
+namespace Tests\Feature\ValidationFormulaire;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -10,7 +10,7 @@ use Tests\TestCase;
 /**
  * @coversNothing
  */
-class ValidationChampsFormulaireDAjoutTagTest extends TestCase
+class AjoutTagTest extends TestCase
 {
 	use RefreshDatabase;
 

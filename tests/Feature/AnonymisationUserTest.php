@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Feature\TestDansLaDB;
+namespace Tests\Feature;
 
 use App\Services\GestionUsersInactifServices;
 use Carbon\Carbon;

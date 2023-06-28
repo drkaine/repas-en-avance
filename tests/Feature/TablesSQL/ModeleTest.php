@@ -14,7 +14,7 @@ use Tests\Traits\CreationModelDeTestTrait;
 /**
  * @coversNothing
  */
-class ModeleDesTablesSQLTest extends TestCase
+class ModeleTest extends TestCase
 {
 	use RefreshDatabase;
 	use CreationModelDeTestTrait;
@@ -34,7 +34,7 @@ class ModeleDesTablesSQLTest extends TestCase
 		$this->recette = config('donnee_de_test.recette');
 	}
 
-	public function testDeLaTableUsers(): void
+	public function testUsers(): void
 	{
 		$this->user['email_verified_at'] = '2023-06-06 06:06:06';
 
@@ -47,14 +47,14 @@ class ModeleDesTablesSQLTest extends TestCase
 		$this->assertDatabaseHas('users', $this->user);
 	}
 
-	public function testDeLaTableTags(): void
+	public function testTags(): void
 	{
 		$this->tag();
 
 		$this->assertDatabaseHas('tags', $this->tag);
 	}
 
-	public function testDeLaTableRelationTags(): void
+	public function testRelationTags(): void
 	{
 		$relation_tag = [
 			'id_tag_parent' => 1,
@@ -66,14 +66,14 @@ class ModeleDesTablesSQLTest extends TestCase
 		$this->assertDatabaseHas('relation_tags', $relation_tag);
 	}
 
-	public function testDeLaTableRecettes(): void
+	public function testRecettes(): void
 	{
 		$this->recette();
 
 		$this->assertDatabaseHas('recettes', $this->recette);
 	}
 
-	public function testDeLaTableTagsUser(): void
+	public function testTagsUser(): void
 	{
 		TagUser::factory()->create([
 			'id_user' => 1,

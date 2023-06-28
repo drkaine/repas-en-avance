@@ -11,11 +11,11 @@ use Tests\TestCase;
 /**
  * @coversNothing
  */
-class RecuperationCompteEnAnonymeTest extends TestCase
+class RecuperationDonneesAnonymiserTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function testRecuperation(): void
+	public function testRecuperationCompteUser(): void
 	{
 		$donnee_user = [
 			'email' => 'anonyme1@anonyme.fr',

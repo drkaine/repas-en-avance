@@ -8,23 +8,24 @@ Affichage Des Pages (Tests\Feature\Affichage\AffichageDesPages)
  [x] Recuperatoin compte
  [x] Recettes
 
-Affichage Donnee De La Vue (Tests\Feature\Affichage\AffichageDonneeDeLaVue)
- [x] Tag dans la page ajout tag
- [x] Donnee user mon compte
+Affichage Donnees (Tests\Feature\Affichage\AffichageDonnees)
+ [x] Tag dans ajout tag
+ [x] User dans mon compte
  [x] Tag dans l inscription
  [x] Tag dans mon compte
- [x] Tags user dans mon compte
+ [x] Tag user dans mon compte
  [x] Recettes dans recettes
 
-Ajout Dans La DB (Tests\Feature\TestDansLaDB\AjoutDansLaDB)
- [x] Creation d un user apres l inscription
- [x] Creation de user tag apres l inscription
- [x] Creation d un tag
- [x] Creation d une relation tag parent
- [x] Creation d une relation tag enfant
- [x] Creation d une recette
+Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
+ [x] Champs nom
+ [x] Longueur maximum champs nom
+ [x] Champs temps de preparation
 
-Anonymisation User (Tests\Feature\TestDansLaDB\AnonymisationUser)
+Ajout Tag (Tests\Feature\ValidationFormulaire\AjoutTag)
+ [x] Champs nom
+ [x] Longueur maximum champs nom
+
+Anonymisation User (Tests\Feature\AnonymisationUser)
  [x] Anonymisation user
  [x] Anonymisation users inactif
 
@@ -32,7 +33,7 @@ Authentification (Tests\Feature\Authentification)
  [x] Connexion
  [x] Deconnexion
 
-Colonne Null Des Tables SQL (Tests\Feature\TableSQL\ColonneNullDesTablesSQL)
+Colonne Null (Tests\Feature\TableSQL\ColonneNull)
  [x] De la table users champs email verified at
  [x] De la table users champs derniere connexion
  [x] De la table recette champs temps cuisson
@@ -41,6 +42,21 @@ Colonne Null Des Tables SQL (Tests\Feature\TableSQL\ColonneNullDesTablesSQL)
  [x] De la table recette champs instruction
  [x] De la table recette champs description
  [x] De la table recette champs reference livre
+
+Connexion (Tests\Feature\ValidationFormulaire\Connexion)
+ [x] Champs email
+ [x] Longueur maximum champs email
+ [x] Format champs email
+ [x] Champs password
+ [x] Longueur minimum champs password
+
+Creation Dans La DB (Tests\Feature\CreationDansLaDB)
+ [x] User apres l inscription
+ [x] User tag apres l inscription
+ [x] Tag
+ [x] Relation tag parent
+ [x] Relation tag enfant
+ [x] Recette
 
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription
@@ -51,20 +67,30 @@ Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
 Example (Tests\Unit\Example)
  [x] Example
 
-Modele Des Tables SQL (Tests\Feature\TableSQL\ModeleDesTablesSQL)
- [x] De la table users
- [x] De la table tags
- [x] De la table relation tags
- [x] De la table recettes
- [x] De la table tags user
+Inscription (Tests\Feature\ValidationFormulaire\Inscription)
+ [x] Champs nom
+ [x] Longueur maximum champs nom
+ [x] Champs email
+ [x] Longueur maximum champs email
+ [x] Format champs email
+ [x] Champs password
+ [x] Longueur minimum password
+ [x] Champs password confirmation
 
-Modification De Donnees Dans La DB (Tests\Feature\TestDansLaDB\ModificationDeDonneesDansLaDB)
+Modele (Tests\Feature\TableSQL\Modele)
+ [x] Users
+ [x] Tags
+ [x] Relation tags
+ [x] Recettes
+ [x] Tags user
+
+Modification De Donnees Dans La DB (Tests\Feature\ModificationDeDonneesDansLaDB)
  [x] Modification du user
  [x] Modification du regime alimentaire
  [x] Modification de la derniere connexion du user
 
-Recuperation Compte En Anonyme (Tests\Feature\RecuperationCompteEnAnonyme)
- [x] Recuperation
+Recuperation Donnees Anonymiser (Tests\Feature\RecuperationDonneesAnonymiser)
+ [x] Recuperation compte user
 
 Redirection (Tests\Feature\Redirection)
  [x] Deconnexion
@@ -80,34 +106,4 @@ Redirection Si User Non Authentifie (Tests\Feature\RedirectionSiUserNonAuthentif
  [x] Mon compte
  [x] Ajout tag
  [x] Ajout recette
-
-Suppression En DB (Tests\Feature\SuppressionEnDB)
- [x] Suppression users anonymes
- [x] Suppression tags user des users anonymes
-
-Validation Champs Formulaire Connexion (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireConnexion)
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Format champs email
- [x] Champs password
- [x] Longueur minimum champs password
-
-Validation Champs Formulaire DAjout Recette (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireDAjoutRecette)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Champs temps de preparation
-
-Validation Champs Formulaire DAjout Tag (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireDAjoutTag)
- [x] Champs nom
- [x] Longueur maximum champs nom
-
-Validation Champs Formulaire Inscription (Tests\Feature\ValidationChampsFormulaire\ValidationChampsFormulaireInscription)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Format champs email
- [x] Champs password
- [x] Longueur minimum password
- [x] Champs password confirmation
 
