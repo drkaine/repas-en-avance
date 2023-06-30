@@ -4,44 +4,43 @@ declare(strict_types = 1);
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Traits\ModelDeTestTrait;
+use Tests\Traits\RecuperationDonneesDeTestTrait;
 
 /**
  * @coversNothing
  */
 class RecuperationDonneesAnonymiserTest extends TestCase
 {
+	use RecuperationDonneesDeTestTrait;
+	use ModelDeTestTrait;
 	use RefreshDatabase;
+
+	private array $donnees_user_anonyme;
+
+	private array $donnees_user_anonyme_recupere;
+
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->donnees_user_anonyme = $this->donneesUser();
+
+		$this->donnees_user_anonyme_recupere = $this->donneesUserAnonymeRecupere();
+
+		$this->creationUserAnonyme();
+	}
 
 	public function testRecuperationCompteUser(): void
 	{
-		$donnee_user = [
-			'email' => 'anonyme1@anonyme.fr',
-			'nom' => 'Anonyme',
-			'password' => bcrypt('anonyme'),
-		];
+		$this->post('/recuperation_compte', $this->donnees_user_anonyme_recupere);
 
-		$donnee_user_recupere = [
-			'email_anonyme' => 'anonyme1@anonyme.fr',
-			'email' => 'test@test.fr',
-			'nom' => 'test',
-			'password' => 'anonyme',
-		];
+		unset($this->donnees_user_anonyme_recupere['email_anonyme'], $this->donnees_user_anonyme_recupere['password']);
 
-		$user = new User;
+		$this->assertDatabaseMissing('users', $this->donnees_user_anonyme);
 
-		$user->create($donnee_user);
-
-		unset($donnee_user['password']);
-
-		$this->post('/recuperation_compte', $donnee_user_recupere);
-
-		unset($donnee_user_recupere['email_anonyme'], $donnee_user_recupere['password']);
-
-		$this->assertDatabaseMissing('users', $donnee_user);
-
-		$this->assertDatabaseHas('users', $donnee_user_recupere);
+		$this->assertDatabaseHas('users', $this->donnees_user_anonyme_recupere);
 	}
 }

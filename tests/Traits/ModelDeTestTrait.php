@@ -30,6 +30,13 @@ trait ModelDeTestTrait
 		return $user;
 	}
 
+	public function creationUserAnonyme(): void
+	{
+		$user = new User;
+
+		$user = $user->factory()->create($this->donneesUserAnonyme());
+	}
+
 	public function creationTag(): void
 	{
 		$tag = new Tag;
@@ -53,12 +60,9 @@ trait ModelDeTestTrait
 
 	public function creationTagsUser(): void
 	{
-		$tags_user = new TagUser;
+		$tag_user = new TagUser;
 
-		$tags_user->factory()->create([
-			'id_user' => 1,
-			'id_tag' => 2,
-		]);
+		$tag_user->factory()->create($this->donneesTagUser());
 	}
 
 	public function creationTagsRegimesAlimentaire(): void
@@ -74,14 +78,15 @@ trait ModelDeTestTrait
 	{
 		$relation_tag = new RelationTag;
 
-		$relation_tag->factory()->create([
-			'id_tag_parent' => 1,
-			'id_tag_enfant' => 2,
-		]);
+		foreach ($this->donneesRelationTags() as $donnees_relation_tag) {
+			$relation_tag->factory()->create($donnees_relation_tag);
+		}
+	}
 
-		$relation_tag->factory()->create([
-			'id_tag_parent' => 1,
-			'id_tag_enfant' => 3,
-		]);
+	public function creationRelationTag(): void
+	{
+		$relation_tag = new RelationTag;
+
+		$relation_tag->factory()->create($this->donneesRelationTag());
 	}
 }

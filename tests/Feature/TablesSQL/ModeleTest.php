@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\TableSQL;
 
-use App\Models\RelationTag;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -55,14 +54,9 @@ class ModeleTest extends TestCase
 
 	public function testRelationTags(): void
 	{
-		$relation_tag = [
-			'id_tag_parent' => 1,
-			'id_tag_enfant' => 2,
-		];
+		$this->creationRelationTag();
 
-		RelationTag::factory()->create($relation_tag);
-
-		$this->assertDatabaseHas('relation_tags', $relation_tag);
+		$this->assertDatabaseHas('relation_tags', $this->donneesRelationTag());
 	}
 
 	public function testRecettes(): void
@@ -76,9 +70,6 @@ class ModeleTest extends TestCase
 	{
 		$this->creationTagsUser();
 
-		$this->assertDatabaseHas('tags_user', [
-			'id_user' => 1,
-			'id_tag' => 2,
-		]);
+		$this->assertDatabaseHas('tags_user', $this->donneesTagUser());
 	}
 }

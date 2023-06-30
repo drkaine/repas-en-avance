@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Tests\Traits\ModelDeTestTrait;
@@ -21,11 +20,17 @@ class RedirectionTest extends TestCase
 
 	private array $donnees_user;
 
+	private array $donnees_user_anonyme;
+
+	private array $donnees_user_anonyme_recupere;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
 
 		$this->donnees_user = $this->donneesUser();
+		$this->donnees_user_anonyme = $this->donneesUserAnonyme();
+		$this->donnees_user_anonyme_recupere = $this->donneesUserAnonymeRecupere();
 	}
 
 	public function testDeconnexion(): void
@@ -59,22 +64,9 @@ class RedirectionTest extends TestCase
 
 	public function testRecuperationCompte(): void
 	{
-		$donnee_user_recupere = [
-			'email_anonyme' => 'anonyme1@anonyme.fr',
-			'email' => 'test@test.fr',
-			'nom' => 'test',
-			'password' => 'anonyme',
-		];
+		$this->creationUserAnonyme();
 
-		$user = new User;
-
-		$user->create([
-			'email' => 'anonyme1@anonyme.fr',
-			'nom' => 'Anonyme',
-			'password' => bcrypt('anonyme'),
-		]);
-
-		$response = $this->post('/recuperation_compte', $donnee_user_recupere);
+		$response = $this->post('/recuperation_compte', $this->donnees_user_anonyme_recupere);
 
 		$response->assertRedirect('/');
 	}

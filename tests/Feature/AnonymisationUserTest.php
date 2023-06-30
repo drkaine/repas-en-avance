@@ -22,11 +22,16 @@ class AnonymisationUserTest extends TestCase
 
 	private array $donnees_user;
 
+	private array $donnees_user_anonyme;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
 
 		$this->donnees_user = $this->donneesUser();
+		$this->donnees_user_anonyme = $this->donneesUserAnonyme();
+		unset($this->donnees_user_anonyme['password'], $this->donnees_user_anonyme['derniere_connexion']);
+
 	}
 
 	public function testAnonymisationUser(): void
@@ -41,11 +46,7 @@ class AnonymisationUserTest extends TestCase
 
 		$this->assertDatabaseMissing('users', $this->donnees_user);
 
-		$this->assertDatabaseHas('users', [
-			'email' => 'anonyme' . $user->id . '@anonyme.fr',
-			'nom' => 'Anonyme',
-			'email_verified_at' => null,
-		]);
+		$this->assertDatabaseHas('users', $this->donnees_user_anonyme);
 	}
 
 	public function testAnonymisationUsersInactif(): void
@@ -64,10 +65,6 @@ class AnonymisationUserTest extends TestCase
 
 		$this->assertDatabaseMissing('users', $this->donnees_user);
 
-		$this->assertDatabaseHas('users', [
-			'email' => 'anonyme' . $user->id . '@anonyme.fr',
-			'nom' => 'Anonyme',
-			'email_verified_at' => null,
-		]);
+		$this->assertDatabaseHas('users', $this->donnees_user_anonyme);
 	}
 }

@@ -49,17 +49,14 @@ class CreationDansLaDBTest extends TestCase
 		$this->donnees_user['password_confirmation'] = 'password';
 
 		$this->donnees_user['regimes_alimentaires'] = [
-			'Catégotie' => 1,
+			'Catégorie' => 2,
 		];
 
 		$this->post('/inscription', $this->donnees_user);
 
 		$this->creationTag();
 
-		$this->assertDatabaseHas('tags_user', [
-			'id_user' => 1,
-			'id_tag' => 1,
-		]);
+		$this->assertDatabaseHas('tags_user', $this->donneesTagUser());
 	}
 
 	public function testTag(): void
@@ -83,10 +80,7 @@ class CreationDansLaDBTest extends TestCase
 
 		$this->post('/ajout_tag', $this->donnees_tag);
 
-		$this->assertDatabaseHas('relation_tags', [
-			'id_tag_parent' => 1,
-			'id_tag_enfant' => 2,
-		]);
+		$this->assertDatabaseHas('relation_tags', $this->donneesRelationTag());
 	}
 
 	public function testRelationTagEnfant(): void
@@ -103,10 +97,7 @@ class CreationDansLaDBTest extends TestCase
 
 		$this->post('/ajout_tag', $this->donnees_tag);
 
-		$this->assertDatabaseHas('relation_tags', [
-			'id_tag_parent' => 2,
-			'id_tag_enfant' => 1,
-		]);
+		$this->assertDatabaseHas('relation_tags', $this->donneesRelationTagInverse());
 	}
 
 	public function testRecette(): void

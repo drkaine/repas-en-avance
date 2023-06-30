@@ -66,15 +66,9 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 
 		$this->post('/modification_user', $this->donnees_user_modifie);
 
-		$this->assertDatabaseMissing('tags_user', [
-			'id_user' => 1,
-			'id_tag' => 2,
-		]);
+		$this->assertDatabaseMissing('tags_user', $this->donneesTagUser());
 
-		$this->assertDatabaseHas('tags_user', [
-			'id_user' => 1,
-			'id_tag' => 3,
-		]);
+		$this->assertDatabaseHas('tags_user', $this->donneesTagUserModifie());
 	}
 
 	public function testModificationDeLaDerniereConnexionDuUser(): void
