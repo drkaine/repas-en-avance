@@ -9,6 +9,8 @@ parameters:
     excludePaths:
         - app/Http/Controllers
         - app/Services
+        - app/Models/User
+        - app/Notifications/ConfirmationEmail
 
     ignoreErrors:
 

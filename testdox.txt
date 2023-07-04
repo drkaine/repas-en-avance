@@ -72,6 +72,9 @@ Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Ajout tag
  [x] Ajout recette
 
+Envoie Notification (Tests\Feature\EnvoieNotification)
+ [x] Verification email is sent
+
 Example (Tests\Unit\Example)
  [x] Example
 

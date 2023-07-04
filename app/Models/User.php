@@ -23,6 +23,7 @@ class User extends Authenticatable
 	 * @var array<int, string>
 	 */
 	protected $fillable = [
+		'id',
 		'nom',
 		'email',
 		'password',
@@ -52,5 +53,10 @@ class User extends Authenticatable
 	public function recuperationTags(): BelongsToMany
 	{
 		return $this->belongsToMany(Tag::class, 'tags_user', 'id_user', 'id_tag');
+	}
+
+	public function routeNotificationForMail(): string
+	{
+		return $this->email;
 	}
 }
