@@ -50,6 +50,9 @@ Colonne Null (Tests\Feature\TableSQL\ColonneNull)
  [x] De la table recette champs description
  [x] De la table recette champs reference livre
 
+Confirmation (Tests\Feature\Confirmation)
+ [x] Inscription user
+
 Connexion (Tests\Feature\ValidationFormulaire\Connexion)
  [x] Champs email
  [x] Longueur maximum champs email

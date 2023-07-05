@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 use App\Http\Controllers\AffichageDonneesController;
 use App\Http\Controllers\AnonymisationDeDonneesController;
+use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DeconnexionController;
 use App\Http\Controllers\EnvoieFormulaire\AjoutRecetteController;
@@ -49,10 +50,11 @@ Route::post(
 )->name('inscription');
 
 Route::get(
-	'confirmation_email',
-	function () {
-		return view('confirmation_email');
-	}
+	'confirmation_email/{id_user}',
+	[
+		ConfirmationController::class,
+		'confirmationEmail',
+	]
 )->name('confirmation_email');
 
 Route::get(

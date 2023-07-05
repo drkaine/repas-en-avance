@@ -86,7 +86,9 @@ class AffichageDesPagesTest extends TestCase
 
 	public function testConfirmationEmail(): void
 	{
-		$response = $this->get('confirmation_email');
+		$user = $this->creationUser();
+
+		$response = $this->get('confirmation_email/' . $user->id);
 
 		$response->assertStatus(200);
 	}
