@@ -78,4 +78,8 @@ return [
 		'id_user' => 1,
 		'id_tag' => 3,
 	],
+	'tag_recette' => [
+		'id_recette' => 1,
+		'id_tag' => 1,
+	],
 ];

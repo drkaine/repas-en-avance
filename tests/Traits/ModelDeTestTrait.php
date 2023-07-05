@@ -7,6 +7,7 @@ namespace Tests\Traits;
 use App\Models\Recette;
 use App\Models\RelationTag;
 use App\Models\Tag;
+use App\Models\TagRecette;
 use App\Models\TagUser;
 use App\Models\User;
 
@@ -88,5 +89,12 @@ trait ModelDeTestTrait
 		$relation_tag = new RelationTag;
 
 		$relation_tag->factory()->create($this->donneesRelationTag());
+	}
+
+	public function creationTagsRecette(): void
+	{
+		$tag_recette = new TagRecette;
+
+		$tag_recette->factory()->create($this->donneesTagRecette());
 	}
 }

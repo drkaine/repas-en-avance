@@ -101,6 +101,7 @@ Modele (Tests\Feature\TableSQL\Modele)
  [x] Relation tags
  [x] Recettes
  [x] Tags user
+ [x] Tags recette
 
 Modification De Donnees Dans La DB (Tests\Feature\ModificationDeDonneesDansLaDB)
  [x] Modification du user

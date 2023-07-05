@@ -38,7 +38,9 @@ class ModeleTest extends TestCase
 
 		$this->donnees_user['derniere_connexion'] = '06-06-2023 06:06:06';
 
-		User::factory()->create($this->donnees_user);
+		$user = new User;
+
+		$user->factory()->create($this->donnees_user);
 
 		unset($this->donnees_user['password']);
 
@@ -71,5 +73,12 @@ class ModeleTest extends TestCase
 		$this->creationTagsUser();
 
 		$this->assertDatabaseHas('tags_user', $this->donneesTagUser());
+	}
+
+	public function testTagsRecette(): void
+	{
+		$this->creationTagsRecette();
+
+		$this->assertDatabaseHas('tags_recette', $this->donneesTagRecette());
 	}
 }

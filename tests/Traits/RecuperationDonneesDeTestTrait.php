@@ -65,4 +65,9 @@ trait RecuperationDonneesDeTestTrait
 	{
 		return config('donnee_de_test.tag_user_modifie');
 	}
+
+	public function donneesTagRecette(): array
+	{
+		return config('donnee_de_test.tag_recette');
+	}
 }
