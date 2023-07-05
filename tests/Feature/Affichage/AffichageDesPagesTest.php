@@ -83,4 +83,11 @@ class AffichageDesPagesTest extends TestCase
 
 		$response->assertStatus(200);
 	}
+
+	public function testConfirmationEmail(): void
+	{
+		$response = $this->get('confirmation_email');
+
+		$response->assertStatus(200);
+	}
 }

@@ -7,6 +7,7 @@ Affichage Des Pages (Tests\Feature\Affichage\AffichageDesPages)
  [x] Mon compte
  [x] Recuperatoin compte
  [x] Recettes
+ [x] Confirmation email
 
 Affichage Donnees (Tests\Feature\Affichage\AffichageDonnees)
  [x] Tag dans ajout tag

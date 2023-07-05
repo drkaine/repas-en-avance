@@ -49,6 +49,13 @@ Route::post(
 )->name('inscription');
 
 Route::get(
+	'confirmation_email',
+	function () {
+		return view('confirmation_email');
+	}
+)->name('confirmation_email');
+
+Route::get(
 	'connexion',
 	[
 		Controller::class,
