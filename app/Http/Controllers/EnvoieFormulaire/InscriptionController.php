@@ -20,7 +20,13 @@ class InscriptionController extends Controller
 
 		$user = $this->nouveauUser($request);
 
-		$this->tagsUser($request, $user->id);
+		$regimes_alimentaires = $request->regimes_alimentaires;
+
+		if (! $request->filled('regimes_alimentaires')) {
+			$regimes_alimentaires = [];
+		}
+
+		$this->tagsUser($regimes_alimentaires, $user->id);
 
 		$user->notify(new ConfirmationEmail);
 

@@ -37,9 +37,11 @@ class CreationDansLaDBTest extends TestCase
 	{
 		$this->donnees_user['password_confirmation'] = 'password';
 
+		$this->donnees_user['regimes_alimentaires'] = null;
+
 		$this->post('/inscription', $this->donnees_user);
 
-		unset($this->donnees_user['password'], $this->donnees_user['password_confirmation']);
+		unset($this->donnees_user['password'], $this->donnees_user['password_confirmation'], $this->donnees_user['regimes_alimentaires']);
 
 		$this->assertDatabaseHas('users', $this->donnees_user);
 	}

@@ -130,20 +130,20 @@ class AffichageDonneesTest extends TestCase
 		}
 	}
 
-	// public function testUstensileDansAjoutRecette(): void
-	// {
-	// 	$this->creationTagsAjoutRecette();
+	public function testUstensileDansAjoutRecette(): void
+	{
+		$this->creationTagsAjoutRecette();
 
-	// 	$this->userConnecte();
+		$this->userConnecte();
 
-	// 	$response = $this->get('ajout_recette');
+		$response = $this->get('ajout_recette');
 
-	// 	$ustensiles = $response->viewData('ustensiles');
+		$ustensiles = $response->viewData('ustensiles');
 
-	// 	foreach ($ustensiles as $ustensile) {
-	// 		$response->assertSee($ustensile->nom);
-	// 	}
-	// }
+		foreach ($ustensiles as $ustensile) {
+			$response->assertSee($ustensile->nom);
+		}
+	}
 
 	public function testModeDeCuissonDansAjoutRecette(): void
 	{

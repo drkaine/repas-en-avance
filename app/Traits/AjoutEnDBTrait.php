@@ -73,9 +73,9 @@ trait AjoutEnDBTrait
 		]);
 	}
 
-	public function tagsUser(Request $request, int $id_user): void
+	public function tagsUser(array $regimes_alimentaires, int $id_user): void
 	{
-		foreach ($request->regimes_alimentaires as $id_tag) {
+		foreach ($regimes_alimentaires as $id_tag) {
 			$this->nouveauTagUser($id_tag, $id_user);
 		}
 	}
