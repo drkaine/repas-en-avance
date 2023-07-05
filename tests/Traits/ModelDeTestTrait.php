@@ -98,8 +98,10 @@ trait ModelDeTestTrait
 		$tag_recette->factory()->create($this->donneesTagRecette());
 	}
 
-	public function creationUstensile(): void
+	public function creationTagsAjoutRecette(): void
 	{
+		$this->creationTagModeDeCuisson();
+
 		$this->creationTagUstensile();
 
 		$this->creationRelationTags();
@@ -111,6 +113,15 @@ trait ModelDeTestTrait
 
 		foreach ($this->donneesUstensile() as $ustensile) {
 			$tag->factory()->create($ustensile);
+		}
+	}
+
+	public function creationTagModeDeCuisson(): void
+	{
+		$tag = new Tag;
+
+		foreach ($this->donneesModeDeCuisson() as $mode_de_cuisson) {
+			$tag->factory()->create($mode_de_cuisson);
 		}
 	}
 }

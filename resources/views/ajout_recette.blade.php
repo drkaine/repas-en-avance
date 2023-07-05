@@ -83,6 +83,18 @@
     </div>
 
     <div>
+        <label for="mode_de_cuissons">Mode de cuisson</label>
+        <select name="mode_de_cuissons[]" multiple>
+            @foreach($mode_de_cuissons as $mode_de_cuisson)
+                <option value="{{  $mode_de_cuisson->id  }}">{{  $mode_de_cuisson->nom  }}</option>
+            @endforeach
+        </select>
+        @error('mode_de_cuissons')
+            <span>{{ $message }}</span>
+        @enderror
+    </div>
+
+    <div>
         <button type="submit">Ajouter la recette</button>
     </div>
 </form>

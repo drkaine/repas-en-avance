@@ -58,9 +58,42 @@ return [
 			'id_tag_enfant' => 2,
 		],
 		[
-			'id_tag_parent' => 1,
+			'id_tag_parent' => 2,
+			'id_tag_enfant' => 1,
+		],
+		[
+			'id_tag_parent' => 2,
 			'id_tag_enfant' => 3,
 		],
+		[
+			'id_tag_parent' => 3,
+			'id_tag_enfant' => 4,
+		],
+		[
+			'id_tag_parent' => 4,
+			'id_tag_enfant' => 5,
+		],
+		[
+			'id_tag_parent' => 5,
+			'id_tag_enfant' => 6,
+		],
+		[
+			'id_tag_parent' => 6,
+			'id_tag_enfant' => 7,
+		],
+		[
+			'id_tag_parent' => 7,
+			'id_tag_enfant' => 8,
+		],
+		[
+			'id_tag_parent' => 8,
+			'id_tag_enfant' => 9,
+		],
+		[
+			'id_tag_parent' => 9,
+			'id_tag_enfant' => 10,
+		],
+
 	],
 	'relation_tag' => [
 		'id_tag_parent' => 1,
@@ -88,6 +121,14 @@ return [
 		],
 		[
 			'nom' => 'Cuillère',
+		],
+	],
+	'mode_de_cuisson' => [
+		[
+			'nom' => 'Mode de cuisson',
+		],
+		[
+			'nom' => 'Four',
 		],
 	],
 ];

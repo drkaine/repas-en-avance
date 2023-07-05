@@ -54,7 +54,7 @@ class AffichageDesPagesTest extends TestCase
 	{
 		$this->userConnecte();
 
-		$this->creationUstensile();
+		$this->creationTagsAjoutRecette();
 
 		$response = $this->get('ajout_recette');
 

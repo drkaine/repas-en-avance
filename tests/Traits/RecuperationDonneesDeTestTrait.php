@@ -75,4 +75,9 @@ trait RecuperationDonneesDeTestTrait
 	{
 		return config('donnee_de_test.ustensile');
 	}
+
+	public function donneesModeDeCuisson(): array
+	{
+		return config('donnee_de_test.mode_de_cuisson');
+	}
 }
