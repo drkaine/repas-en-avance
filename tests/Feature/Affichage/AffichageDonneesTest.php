@@ -97,7 +97,7 @@ class AffichageDonneesTest extends TestCase
 		}
 	}
 
-	public function testRecettesDansRecettes(): void
+	public function testRecetteDansRecettes(): void
 	{
 		$this->creationRecette();
 
