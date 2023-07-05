@@ -88,7 +88,7 @@ class AffichageDesPagesTest extends TestCase
 	{
 		$user = $this->creationUser();
 
-		$response = $this->get('confirmation_email/' . $user->id);
+		$response = $this->get('confirmation_email/' . $user->email);
 
 		$response->assertStatus(200);
 	}

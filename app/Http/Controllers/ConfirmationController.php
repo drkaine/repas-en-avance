@@ -10,13 +10,14 @@ use Illuminate\Contracts\View\View;
 
 class ConfirmationController extends Controller
 {
-	public function confirmationEmail(int $id_user): View
+	public function confirmationEmail(string $email_user): View
 	{
 		$date = new Carbon;
 
 		$user = new User;
 
-		$user = $user->findOrFail($id_user);
+		$user = $user->where('email', $email_user)->
+			firstOrFail();
 
 		$user->email_verified_at = $date->now();
 

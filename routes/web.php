@@ -50,7 +50,7 @@ Route::post(
 )->name('inscription');
 
 Route::get(
-	'confirmation_email/{id_user}',
+	'confirmation_email/{email_user}',
 	[
 		ConfirmationController::class,
 		'confirmationEmail',

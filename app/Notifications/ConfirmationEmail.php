@@ -34,7 +34,7 @@ class ConfirmationEmail extends Notification
 	 */
 	public function toMail(object $notifiable): MailMessage
 	{
-		$lien_de_confirmation = url('/verify-email/' . $notifiable->id);
+		$lien_de_confirmation = url('/email_confirmation/' . $notifiable->email);
 
 		return (new MailMessage)->
 			subject('Confirmation de l\'adresse e-mail')->
