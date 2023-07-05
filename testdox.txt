@@ -16,6 +16,7 @@ Affichage Donnees (Tests\Feature\Affichage\AffichageDonnees)
  [x] Tag dans mon compte
  [x] Tag user dans mon compte
  [x] Recettes dans recettes
+ [x] Ustensile dans ajout recette
 
 Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
  [x] Champs nom

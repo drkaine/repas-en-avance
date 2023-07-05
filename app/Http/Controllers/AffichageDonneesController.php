@@ -36,6 +36,23 @@ class AffichageDonneesController extends Controller
 		return view('ajout_tag', compact('tags'));
 	}
 
+	public function affichageAjoutRecette(): View | RedirectResponse | Redirector
+	{
+		$user = auth()->user();
+
+		if (! $user) {
+			return redirect('inscription');
+		}
+
+		$id_tag_ustensiles = $this->tag->select('id')->
+			where('nom', 'Ustensiles')->
+			first();
+
+		$ustensiles = $id_tag_ustensiles->recuperationTagEnfants;
+
+		return view('ajout_recette', compact('ustensiles'));
+	}
+
 	public function pageMonCompte(): View | RedirectResponse | Redirector
 	{
 		$user = auth()->user();

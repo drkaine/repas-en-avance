@@ -97,4 +97,20 @@ trait ModelDeTestTrait
 
 		$tag_recette->factory()->create($this->donneesTagRecette());
 	}
+
+	public function creationUstensile(): void
+	{
+		$this->creationTagUstensile();
+
+		$this->creationRelationTags();
+	}
+
+	public function creationTagUstensile(): void
+	{
+		$tag = new Tag;
+
+		foreach ($this->donneesUstensile() as $ustensile) {
+			$tag->factory()->create($ustensile);
+		}
+	}
 }

@@ -80,6 +80,14 @@ return [
 	],
 	'tag_recette' => [
 		'id_recette' => 1,
-		'id_tag' => 1,
+		'id_tag' => 2,
+	],
+	'ustensile' => [
+		[
+			'nom' => 'Ustensiles',
+		],
+		[
+			'nom' => 'Cuillère',
+		],
 	],
 ];

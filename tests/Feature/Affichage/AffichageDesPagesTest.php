@@ -54,6 +54,8 @@ class AffichageDesPagesTest extends TestCase
 	{
 		$this->userConnecte();
 
+		$this->creationUstensile();
+
 		$response = $this->get('ajout_recette');
 
 		$response->assertStatus(200);

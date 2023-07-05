@@ -71,6 +71,18 @@
     </div>
 
     <div>
+        <label for="ustensiles">Ustensiles</label>
+        <select name="ustensiles[]" multiple>
+            @foreach($ustensiles as $ustensile)
+                <option value="{{  $ustensile->id  }}">{{  $ustensile->nom  }}</option>
+            @endforeach
+        </select>
+        @error('ustensiles')
+            <span>{{ $message }}</span>
+        @enderror
+    </div>
+
+    <div>
         <button type="submit">Ajouter la recette</button>
     </div>
 </form>

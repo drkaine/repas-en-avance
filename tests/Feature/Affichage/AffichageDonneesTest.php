@@ -129,4 +129,19 @@ class AffichageDonneesTest extends TestCase
 			$response->assertSee($recette->id);
 		}
 	}
+
+	public function testUstensileDansAjoutRecette(): void
+	{
+		$this->creationUstensile();
+
+		$this->userConnecte();
+
+		$response = $this->get('ajout_recette');
+
+		$ustensiles = $response->viewData('ustensiles');
+
+		foreach ($ustensiles as $ustensile) {
+			$response->assertSee($ustensile->nom);
+		}
+	}
 }

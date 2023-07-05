@@ -100,7 +100,7 @@ Route::post(
 Route::get(
 	'ajout_recette',
 	[
-		Controller::class,
+		AffichageDonneesController::class,
 		'affichageAjoutRecette',
 	]
 )->name('ajout_recette');

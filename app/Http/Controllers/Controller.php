@@ -16,17 +16,6 @@ class Controller extends BaseController
 	use AuthorizesRequests;
 	use ValidatesRequests;
 
-	public function affichageAjoutRecette(): View | RedirectResponse | Redirector
-	{
-		$user = auth()->user();
-
-		if (! $user) {
-			return redirect('inscription');
-		}
-
-		return view('ajout_recette');
-	}
-
 	public function affichageConnexion(): View | RedirectResponse | Redirector
 	{
 		$user = auth()->user();
