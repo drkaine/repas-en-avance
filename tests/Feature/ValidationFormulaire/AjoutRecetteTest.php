@@ -23,6 +23,10 @@ class AjoutRecetteTest extends TestCase
 		parent::setUp();
 
 		$this->donnees_recette = $this->donneesRecette();
+
+		$this->donnees_recette['ingredients'] = [
+			'Carotte' => 2,
+		];
 	}
 
 	public function testChampsNom(): void
@@ -91,6 +95,15 @@ class AjoutRecetteTest extends TestCase
 	public function testLongueurMinimumChampsReference(): void
 	{
 		$this->donnees_recette['reference_livre'] = 'Tous';
+
+		$response = $this->post('/ajout_recette', $this->donnees_recette);
+
+		$response->assertStatus(302);
+	}
+
+	public function testChampsIngredient(): void
+	{
+		unset($this->donnees_recette['ingredients']);
 
 		$response = $this->post('/ajout_recette', $this->donnees_recette);
 

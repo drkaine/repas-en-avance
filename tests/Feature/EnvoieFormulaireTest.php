@@ -26,6 +26,10 @@ class EnvoieFormulaireTest extends TestCase
 
 		$this->donnees_user = $this->donneesUser();
 		$this->donnees_recette = $this->donneesRecette();
+
+		$this->donnees_recette['ingredients'] = [
+			'Carotte' => 2,
+		];
 	}
 
 	public function testInscription(): void
