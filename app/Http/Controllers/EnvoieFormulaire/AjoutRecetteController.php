@@ -17,7 +17,15 @@ class AjoutRecetteController extends Controller
 	{
 		$request->validate(config('validation_formulaire.ajoutRecette'));
 
-		$this->nouvelleRecette($request);
+		$ustensiles = $request->ustensiles;
+
+		if (! $request->filled('ustensiles')) {
+			$ustensiles = [];
+		}
+
+		$recette = $this->nouvelleRecette($request);
+
+		$this->tagsRecette($ustensiles, $recette->id);
 
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}

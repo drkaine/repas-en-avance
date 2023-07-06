@@ -72,6 +72,7 @@ Creation Dans La DB (Tests\Feature\CreationDansLaDB)
  [x] Relation tag parent
  [x] Relation tag enfant
  [x] Recette
+ [x] Tag recette ustensiles
 
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription

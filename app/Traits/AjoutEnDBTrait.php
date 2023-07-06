@@ -7,6 +7,7 @@ namespace App\Traits;
 use App\Models\Recette;
 use App\Models\RelationTag;
 use App\Models\Tag;
+use App\Models\TagRecette;
 use App\Models\TagUser;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -58,10 +59,10 @@ trait AjoutEnDBTrait
 		]);
 	}
 
-	public function nouvelleRecette(Request $request): void
+	public function nouvelleRecette(Request $request): Recette
 	{
 		$recette = new Recette;
-		$recette->create([
+		$recette = $recette->create([
 			'nom' => $request->nom,
 			'temps_preparation' => $request->temps_preparation,
 			'temps_cuisson' => $request->temps_cuisson,
@@ -71,6 +72,8 @@ trait AjoutEnDBTrait
 			'description' => $request->description,
 			'reference_livre' => $request->reference_livre,
 		]);
+
+		return $recette;
 	}
 
 	public function tagsUser(array $regimes_alimentaires, int $id_user): void
@@ -80,12 +83,29 @@ trait AjoutEnDBTrait
 		}
 	}
 
+	public function tagsRecette(array $tag, int $id_recette): void
+	{
+		foreach ($tag as $id_tag) {
+			$this->nouveauTagRecette($id_tag, $id_recette);
+		}
+	}
+
 	private function nouveauTagUser(int $id_tag, $id_user): void
 	{
 		$user_tag = new TagUser;
 
 		$user_tag->create([
 			'id_user' => $id_user,
+			'id_tag' => $id_tag,
+		]);
+	}
+
+	private function nouveauTagRecette(int $id_tag, $id_recette): void
+	{
+		$recette_tag = new TagRecette;
+
+		$recette_tag->create([
+			'id_recette' => $id_recette,
 			'id_tag' => $id_tag,
 		]);
 	}
