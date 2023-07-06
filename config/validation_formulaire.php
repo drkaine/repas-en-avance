@@ -11,6 +11,7 @@ return [
 		'description' => 'string|min:5',
 		'reference_livre' => 'string|min:5',
 		'ingredients' => 'required|array',
+		'quantites' => 'required|array',
 	],
 	'ajoutTag' => [
 		'nom' => 'required|string|max:100|min:3',

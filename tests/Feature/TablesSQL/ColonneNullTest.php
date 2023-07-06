@@ -34,6 +34,10 @@ class ColonneNullTest extends TestCase
 		$this->donnees_recette['ingredients'] = [
 			'Carotte' => 2,
 		];
+
+		$this->donnees_recette['quantites'] = [
+			'Carotte' => 1,
+		];
 	}
 
 	public function testDeLaTableUsersChampsEmailVerifiedAt(): void
@@ -129,7 +133,7 @@ class ColonneNullTest extends TestCase
 	{
 		$recette = new Recette;
 
-		unset($this->donnees_recette['ingredients']);
+		unset($this->donnees_recette['ingredients'], $this->donnees_recette['quantites']);
 
 		$recette->factory()->create($this->donnees_recette);
 	}

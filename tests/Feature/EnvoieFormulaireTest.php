@@ -30,6 +30,10 @@ class EnvoieFormulaireTest extends TestCase
 		$this->donnees_recette['ingredients'] = [
 			'Carotte' => 2,
 		];
+
+		$this->donnees_recette['quantites'] = [
+			'Carotte' => 1,
+		];
 	}
 
 	public function testInscription(): void
@@ -67,14 +71,6 @@ class EnvoieFormulaireTest extends TestCase
 
 	public function testAjoutRecette(): void
 	{
-		$this->donnees_recette['ingredients'] = [
-			'Carotte' => 2,
-		];
-
-		$this->donnees_recette['quantites'] = [
-			'Carotte' => 1,
-		];
-
 		$response = $this->post('/ajout_recette', $this->donnees_recette);
 
 		$response->assertStatus(201);

@@ -30,6 +30,7 @@ Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
  [x] Longueur minimum champs description
  [x] Longueur minimum champs reference
  [x] Champs ingredient
+ [x] Champs quantite
 
 Ajout Tag (Tests\Feature\ValidationFormulaire\AjoutTag)
  [x] Champs nom

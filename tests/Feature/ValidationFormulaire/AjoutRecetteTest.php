@@ -27,6 +27,10 @@ class AjoutRecetteTest extends TestCase
 		$this->donnees_recette['ingredients'] = [
 			'Carotte' => 2,
 		];
+
+		$this->donnees_recette['quantites'] = [
+			'Carotte' => 1,
+		];
 	}
 
 	public function testChampsNom(): void
@@ -104,6 +108,15 @@ class AjoutRecetteTest extends TestCase
 	public function testChampsIngredient(): void
 	{
 		unset($this->donnees_recette['ingredients']);
+
+		$response = $this->post('/ajout_recette', $this->donnees_recette);
+
+		$response->assertStatus(302);
+	}
+
+	public function testChampsQuantite(): void
+	{
+		unset($this->donnees_recette['quantites']);
 
 		$response = $this->post('/ajout_recette', $this->donnees_recette);
 
