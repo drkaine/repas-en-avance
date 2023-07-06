@@ -32,7 +32,7 @@ class EnvoieFormulaireTest extends TestCase
 	{
 		$this->donnees_user['password_confirmation'] = 'password';
 
-		$this->donnees_user['regimes_alimentaires'] = null;
+		$this->donnees_user['regimes_alimentaires'] = [];
 
 		$response = $this->post('/inscription', $this->donnees_user);
 
