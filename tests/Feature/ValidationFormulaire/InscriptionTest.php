@@ -123,12 +123,7 @@ class InscriptionTest extends TestCase
 	{
 		unset($this->donnees_user['password_confirmation']);
 
-		$response = $this->post('/inscription', [
-			'nom' => 'Test user',
-			'email' => 'email@test.fr',
-			'password' => 'password',
-			'email_verified_at' => '2023-06-06 06:06:06',
-		]);
+		$response = $this->post('/inscription', $this->donnees_user);
 
 		$response->assertStatus(302);
 	}
