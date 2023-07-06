@@ -121,11 +121,10 @@ trait AjoutEnDBTrait
 	{
 		$recette_tag = new TagRecette;
 
-		$t = $recette_tag->create([
+		$recette_tag->create([
 			'id_recette' => $id_recette,
 			'id_tag' => $id_tag,
 			'quantite' => $quantite,
 		]);
-		var_dump($t);
 	}
 }
