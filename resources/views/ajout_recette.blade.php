@@ -95,6 +95,18 @@
     </div>
 
     <div>
+        <label for="ingredients">Ingredients</label>
+        <select name="ingredients[]" multiple required>
+            @foreach($ingredients as $ingredient)
+                <option value="{{  $ingredient->id  }}">{{  $ingredient->nom  }}</option>
+            @endforeach
+        </select>
+        @error('ingredients')
+            <span>{{ $message }}</span>
+        @enderror
+    </div>
+
+    <div>
         <button type="submit">Ajouter la recette</button>
     </div>
 </form>

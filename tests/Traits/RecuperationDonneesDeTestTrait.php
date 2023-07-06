@@ -80,4 +80,9 @@ trait RecuperationDonneesDeTestTrait
 	{
 		return config('donnee_de_test.mode_de_cuisson');
 	}
+
+	public function donneesIngredient(): array
+	{
+		return config('donnee_de_test.ingredient');
+	}
 }

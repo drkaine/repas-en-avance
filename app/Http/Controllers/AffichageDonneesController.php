@@ -56,7 +56,13 @@ class AffichageDonneesController extends Controller
 
 		$mode_de_cuissons = $id_tag_mode_de_cuissons->recuperationTagEnfants;
 
-		return view('ajout_recette', compact('mode_de_cuissons', 'ustensiles'));
+		$id_tag_ingredients = $this->tag->select('id')->
+			where('nom', 'Ingrédients')->
+			first();
+
+		$ingredients = $id_tag_ingredients->recuperationTagEnfants;
+
+		return view('ajout_recette', compact('mode_de_cuissons', 'ustensiles', 'ingredients'));
 	}
 
 	public function pageMonCompte(): View | RedirectResponse | Redirector

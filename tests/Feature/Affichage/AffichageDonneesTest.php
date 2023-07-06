@@ -160,4 +160,20 @@ class AffichageDonneesTest extends TestCase
 			$response->assertSee($mode_de_cuisson->nom);
 		}
 	}
+
+	public function testIngredientDansAjoutRecette(): void
+	{
+
+		$this->creationTagsAjoutRecette();
+
+		$this->userConnecte();
+
+		$response = $this->get('ajout_recette');
+
+		$ingredients = $response->viewData('ingredients');
+
+		foreach ($ingredients as $ingredient) {
+			$response->assertSee($ingredient->nom);
+		}
+	}
 }

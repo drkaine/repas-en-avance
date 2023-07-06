@@ -131,4 +131,13 @@ return [
 			'nom' => 'Four',
 		],
 	],
+
+	'ingredient' => [
+		[
+			'nom' => 'Ingrédients',
+		],
+		[
+			'nom' => 'Carotte',
+		],
+	],
 ];
