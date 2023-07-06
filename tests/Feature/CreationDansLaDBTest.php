@@ -26,6 +26,8 @@ class CreationDansLaDBTest extends TestCase
 
 	private array $donnees_tag_recette;
 
+	private array $donnees_tag_recette_ingredient;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
@@ -34,6 +36,7 @@ class CreationDansLaDBTest extends TestCase
 		$this->donnees_tag = $this->donneesTag();
 		$this->donnees_recette = $this->donneesRecette();
 		$this->donnees_tag_recette = $this->donneesTagRecette();
+		$this->donnees_tag_recette_ingredient = $this->donneesTagRecetteIngredient();
 	}
 
 	public function testUserApresLInscription(): void
@@ -132,5 +135,20 @@ class CreationDansLaDBTest extends TestCase
 		$this->post('/ajout_recette', $this->donnees_recette);
 
 		$this->assertDatabaseHas('tags_recette', $this->donnees_tag_recette);
+	}
+
+	public function testTagRecetteIngredient(): void
+	{
+		$this->donnees_recette['ingredients'] = [
+			'Carotte' => 2,
+		];
+
+		$this->donnees_recette['quantites'] = [
+			'Carotte' => 1,
+		];
+
+		$this->post('/ajout_recette', $this->donnees_recette);
+
+		$this->assertDatabaseHas('tags_recette', $this->donnees_tag_recette_ingredient);
 	}
 }

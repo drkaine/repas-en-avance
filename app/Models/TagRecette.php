@@ -16,5 +16,6 @@ class TagRecette extends Model
 	protected $fillable = [
 		'id_recette',
 		'id_tag',
+		'quantite',
 	];
 }

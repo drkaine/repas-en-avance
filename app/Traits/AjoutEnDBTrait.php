@@ -90,6 +90,13 @@ trait AjoutEnDBTrait
 		}
 	}
 
+	public function tagsRecetteIngredient(array $tag, array $quantites, int $id_recette): void
+	{
+		foreach ($tag as $nom_tag => $id_tag) {
+			$this->nouveauTagRecetteIngredient($id_tag, $quantites[$nom_tag], $id_recette);
+		}
+	}
+
 	private function nouveauTagUser(int $id_tag, $id_user): void
 	{
 		$user_tag = new TagUser;
@@ -108,5 +115,17 @@ trait AjoutEnDBTrait
 			'id_recette' => $id_recette,
 			'id_tag' => $id_tag,
 		]);
+	}
+
+	private function nouveauTagRecetteIngredient(int $id_tag, int $quantite, $id_recette): void
+	{
+		$recette_tag = new TagRecette;
+
+		$t = $recette_tag->create([
+			'id_recette' => $id_recette,
+			'id_tag' => $id_tag,
+			'quantite' => $quantite,
+		]);
+		var_dump($t);
 	}
 }
