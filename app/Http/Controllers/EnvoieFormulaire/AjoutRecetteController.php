@@ -23,9 +23,17 @@ class AjoutRecetteController extends Controller
 			$ustensiles = [];
 		}
 
+		$mode_de_cuissons = $request->mode_de_cuissons;
+
+		if (! $request->filled('mode_de_cuissons')) {
+			$mode_de_cuissons = [];
+		}
+
 		$recette = $this->nouvelleRecette($request);
 
 		$this->tagsRecette($ustensiles, $recette->id);
+
+		$this->tagsRecette($mode_de_cuissons, $recette->id);
 
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}

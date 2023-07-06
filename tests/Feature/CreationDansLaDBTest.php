@@ -112,10 +112,21 @@ class CreationDansLaDBTest extends TestCase
 		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
-	public function testTagRecetteUstensiles(): void
+	public function testTagRecetteUstensile(): void
 	{
 		$this->donnees_recette['ustensiles'] = [
 			'Cuillière' => 2,
+		];
+
+		$this->post('/ajout_recette', $this->donnees_recette);
+
+		$this->assertDatabaseHas('tags_recette', $this->donnees_tag_recette);
+	}
+
+	public function testTagRecetteModeDeCuisson(): void
+	{
+		$this->donnees_recette['mode_de_cuissons'] = [
+			'Four' => 2,
 		];
 
 		$this->post('/ajout_recette', $this->donnees_recette);
