@@ -71,6 +71,11 @@ trait RecuperationDonneesDeTestTrait
 		return config('donnee_de_test.tag_recette');
 	}
 
+	public function donneesTagRecetteIngredient(): array
+	{
+		return config('donnee_de_test.tag_recette_ingredient');
+	}
+
 	public function donneesUstensile(): array
 	{
 		return config('donnee_de_test.ustensile');

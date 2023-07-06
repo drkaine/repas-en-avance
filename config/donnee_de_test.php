@@ -115,6 +115,11 @@ return [
 		'id_recette' => 1,
 		'id_tag' => 2,
 	],
+	'tag_recette_ingredient' => [
+		'id_recette' => 1,
+		'id_tag' => 2,
+		'quantite' => 1,
+	],
 	'ustensile' => [
 		[
 			'nom' => 'Ustensiles',

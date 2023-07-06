@@ -17,6 +17,7 @@ return new class extends Migration {
 		Schema::create('tags_recette', function (Blueprint $table): void {
 			$table->foreignIdFor(Tag::class, 'id_tag');
 			$table->foreignIdFor(Recette::class, 'id_recette');
+			$table->integer('quantite')->nullable();
 			$table->timestamps();
 		});
 	}

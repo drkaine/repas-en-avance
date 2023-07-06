@@ -8,6 +8,7 @@ use App\Models\Recette;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Traits\ModelDeTestTrait;
 use Tests\Traits\RecuperationDonneesDeTestTrait;
 
 /**
@@ -17,6 +18,7 @@ class ColonneNullTest extends TestCase
 {
 	use RefreshDatabase;
 	use RecuperationDonneesDeTestTrait;
+	use ModelDeTestTrait;
 
 	private array $donnees_user;
 
@@ -106,13 +108,22 @@ class ColonneNullTest extends TestCase
 		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
+	public function testTagsRecette(): void
+	{
+		$this->creationTagsRecette();
+
+		$this->assertDatabaseHas('tags_recette', $this->donneesTagRecette());
+	}
+
 	private function creationUser(): void
 	{
-		User::factory()->create($this->donnees_user);
+		$user = new User;
+		$user->factory()->create($this->donnees_user);
 	}
 
 	private function creationRecette(): void
 	{
-		Recette::factory()->create($this->donnees_recette);
+		$recette = new Recette;
+		$recette->factory()->create($this->donnees_recette);
 	}
 }

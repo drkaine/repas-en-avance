@@ -52,6 +52,7 @@ Colonne Null (Tests\Feature\TableSQL\ColonneNull)
  [x] De la table recette champs instruction
  [x] De la table recette champs description
  [x] De la table recette champs reference livre
+ [x] Tags recette
 
 Confirmation (Tests\Feature\Confirmation)
  [x] Inscription user

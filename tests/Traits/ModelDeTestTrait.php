@@ -98,6 +98,13 @@ trait ModelDeTestTrait
 		$tag_recette->factory()->create($this->donneesTagRecette());
 	}
 
+	public function creationTagsRecetteIngredient(): void
+	{
+		$tag_recette = new TagRecette;
+
+		$tag_recette->factory()->create($this->donneesTagRecetteIngredient());
+	}
+
 	public function creationTagsAjoutRecette(): void
 	{
 		$this->creationTagModeDeCuisson();

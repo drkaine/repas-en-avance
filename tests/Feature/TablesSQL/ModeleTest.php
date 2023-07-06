@@ -77,8 +77,8 @@ class ModeleTest extends TestCase
 
 	public function testTagsRecette(): void
 	{
-		$this->creationTagsRecette();
+		$this->creationTagsRecetteIngredient();
 
-		$this->assertDatabaseHas('tags_recette', $this->donneesTagRecette());
+		$this->assertDatabaseHas('tags_recette', $this->donneesTagRecetteIngredient());
 	}
 }
