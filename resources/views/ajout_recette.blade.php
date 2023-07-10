@@ -1,6 +1,6 @@
 @include('composants.head')
 
-<form method="POST" action="{{ route('ajout_recette') }}">
+<form method="POST" action="{{ route('ajout-recette') }}">
     @csrf
 
     <div>

@@ -50,12 +50,12 @@ Route::post(
 )->name('inscription');
 
 Route::get(
-	'confirmation_email/{email_user}',
+	'confirmation-email/{email_user}',
 	[
 		ConfirmationController::class,
 		'confirmationEmail',
 	]
-)->name('confirmation_email');
+)->name('confirmation-email');
 
 Route::get(
 	'connexion',
@@ -82,80 +82,80 @@ Route::get(
 )->name('deconnexion');
 
 Route::get(
-	'ajout_tag',
+	'ajout-tag',
 	[
 		AffichageDonneesController::class,
 		'pageAjoutTag',
 	]
-)->name('ajout_tag');
+)->name('ajout-tag');
 
 Route::post(
-	'ajout_tag',
+	'ajout-tag',
 	[
 		AjoutTagController::class,
 		'ajoutTag',
 	]
-)->name('ajout_tag');
+)->name('ajout-tag');
 
 Route::get(
-	'ajout_recette',
+	'ajout-recette',
 	[
 		AffichageDonneesController::class,
 		'affichageAjoutRecette',
 	]
-)->name('ajout_recette');
+)->name('ajout-recette');
 
 Route::post(
-	'ajout_recette',
+	'ajout-recette',
 	[
 		AjoutRecetteController::class,
 		'ajoutRecette',
 	]
-)->name('ajout_recette');
+)->name('ajout-recette');
 
 Route::get(
-	'mon_compte',
+	'mon-compte',
 	[
 		AffichageDonneesController::class,
 		'pageMonCompte',
 	]
-)->name('mon_compte');
+)->name('mon-compte');
 
 Route::get(
-	'anonymisation_du_compte',
+	'anonymisation-du-compte',
 	[
 		AnonymisationDeDonneesController::class,
 		'compteUser',
 	]
-)->name('anonymisation_du_compte');
+)->name('anonymisation-du-compte');
 
 Route::post(
-	'modification_user',
+	'modification-user',
 	[
 		ModificationDeDonneesController::class,
 		'monCompte',
 	]
-)->name('modification_user');
+)->name('modification-user');
 
 Route::get(
-	'recuperation_compte',
+	'recuperation-compte',
 	function () {
 		return view('recuperation_compte');
 	}
-)->name('recuperation_compte');
+)->name('recuperation-compte');
 
 Route::post(
-	'recuperation_compte',
+	'recuperation-compte',
 	[
 		RecuperationDoneesAnonymiserController::class,
 		'monCompte',
 	]
-)->name('recuperation_compte');
+)->name('recuperation-compte');
 
 Route::get(
-	'catalogue_recettes',
+	'catalogue-recettes',
 	[
 		AffichageDonneesController::class,
 		'pageCatalogueRecettes',
 	]
-)->name('catalogue_recettes');
+)->name('catalogue-recettes');

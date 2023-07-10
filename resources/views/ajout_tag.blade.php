@@ -1,6 +1,6 @@
 @include('composants.head')
 
-<form method="POST" action="{{ route('ajout_tag') }}">
+<form method="POST" action="{{ route('ajout-tag') }}">
     @csrf
 
     <div>

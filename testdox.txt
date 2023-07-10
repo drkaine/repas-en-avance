@@ -5,7 +5,7 @@ Affichage Des Pages (Tests\Feature\Affichage\AffichageDesPages)
  [x] Ajout tag
  [x] Ajout recette
  [x] Mon compte
- [x] Recuperatoin compte
+ [x] Recuperation compte
  [x] Catalogue recettes
  [x] Confirmation email
 

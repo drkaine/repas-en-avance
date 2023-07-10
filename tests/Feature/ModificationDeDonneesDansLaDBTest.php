@@ -41,7 +41,7 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 
 		$this->actingAs($user);
 
-		$this->post('/modification_user', $this->donnees_user_modifie);
+		$this->post('/modification-user', $this->donnees_user_modifie);
 
 		$this->assertDatabaseMissing('users', $this->donnees_user);
 
@@ -64,7 +64,7 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 			3,
 		];
 
-		$this->post('/modification_user', $this->donnees_user_modifie);
+		$this->post('/modification-user', $this->donnees_user_modifie);
 
 		$this->assertDatabaseMissing('tags_user', $this->donneesTagUser());
 

@@ -1,10 +1,10 @@
 @include('composants.head')
 
         <div>
-            <a href="{{ route('anonymisation_du_compte') }}">Supprimer mon compte</a>
+            <a href="{{ route('anonymisation-du-compte') }}">Supprimer mon compte</a>
         </div>
 
-        <form method="POST" action="{{ route('modification_user') }}">
+        <form method="POST" action="{{ route('modification-user') }}">
             @csrf
 
             <div>

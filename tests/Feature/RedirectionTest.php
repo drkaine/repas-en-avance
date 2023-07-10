@@ -44,7 +44,7 @@ class RedirectionTest extends TestCase
 	{
 		$this->userConnecte();
 
-		$response = $this->get('/anonymisation_du_compte');
+		$response = $this->get('/anonymisation-du-compte');
 
 		$response->assertRedirect('deconnexion');
 	}
@@ -57,7 +57,7 @@ class RedirectionTest extends TestCase
 
 		$this->donnees_user['regimes_alimentaires'] = [];
 
-		$response = $this->post('/modification_user', $this->donnees_user);
+		$response = $this->post('/modification-user', $this->donnees_user);
 
 		$response->assertRedirect('/');
 	}
@@ -66,7 +66,7 @@ class RedirectionTest extends TestCase
 	{
 		$this->creationUserAnonyme();
 
-		$response = $this->post('/recuperation_compte', $this->donnees_user_anonyme_recupere);
+		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
 		$response->assertRedirect('/');
 	}

@@ -45,7 +45,7 @@ class AffichageDesPagesTest extends TestCase
 
 		$this->creationTag();
 
-		$response = $this->get('ajout_tag');
+		$response = $this->get('ajout-tag');
 
 		$response->assertStatus(200);
 	}
@@ -56,7 +56,7 @@ class AffichageDesPagesTest extends TestCase
 
 		$this->creationTagsAjoutRecette();
 
-		$response = $this->get('ajout_recette');
+		$response = $this->get('ajout-recette');
 
 		$response->assertStatus(200);
 	}
@@ -67,21 +67,23 @@ class AffichageDesPagesTest extends TestCase
 
 		$this->creationRegimesAlimentaire();
 
-		$response = $this->get('mon_compte');
+		$response = $this->get('mon-compte');
 
 		$response->assertStatus(200);
 	}
 
-	public function testRecuperatoinCompte(): void
+	public function testRecuperationCompte(): void
 	{
-		$response = $this->get('recuperation_compte');
+		$response = $this->get('recuperation-compte');
 
 		$response->assertStatus(200);
 	}
 
 	public function testCatalogueRecettes(): void
 	{
-		$response = $this->get('catalogue_recettes');
+		$this->creationRecette();
+
+		$response = $this->get('catalogue-recettes');
 
 		$response->assertStatus(200);
 	}
@@ -90,7 +92,7 @@ class AffichageDesPagesTest extends TestCase
 	{
 		$user = $this->creationUser();
 
-		$response = $this->get('confirmation_email/' . $user->email);
+		$response = $this->get('confirmation-email/' . $user->email);
 
 		$response->assertStatus(200);
 	}

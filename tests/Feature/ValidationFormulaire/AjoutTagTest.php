@@ -16,7 +16,7 @@ class AjoutTagTest extends TestCase
 
 	public function testChampsNom(): void
 	{
-		$response = $this->post('/ajout_tag', [
+		$response = $this->post('/ajout-tag', [
 			'nom' => null,
 		]);
 
@@ -25,7 +25,7 @@ class AjoutTagTest extends TestCase
 
 	public function testLongueurMaximumChampsNom(): void
 	{
-		$response = $this->post('/ajout_tag', [
+		$response = $this->post('/ajout-tag', [
 			'nom' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv',
 		]);
 
@@ -34,7 +34,7 @@ class AjoutTagTest extends TestCase
 
 	public function testLongueurMinimumChampsNom(): void
 	{
-		$response = $this->post('/ajout_tag', [
+		$response = $this->post('/ajout-tag', [
 			'nom' => 'az',
 		]);
 

@@ -35,7 +35,7 @@ class RecuperationDonneesAnonymiserTest extends TestCase
 
 	public function testRecuperationCompteUser(): void
 	{
-		$this->post('/recuperation_compte', $this->donnees_user_anonyme_recupere);
+		$this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
 		unset($this->donnees_user_anonyme_recupere['email_anonyme'], $this->donnees_user_anonyme_recupere['password']);
 

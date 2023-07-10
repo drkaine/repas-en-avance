@@ -37,7 +37,7 @@ class AjoutRecetteTest extends TestCase
 	{
 		$this->donnees_recette['nom'] = null;
 
-		$response = $this->post('/ajout_recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(302);
 	}
@@ -46,7 +46,7 @@ class AjoutRecetteTest extends TestCase
 	{
 		$this->donnees_recette['nom'] = 'azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv';
 
-		$response = $this->post('/ajout_recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(302);
 	}
@@ -55,7 +55,7 @@ class AjoutRecetteTest extends TestCase
 	{
 		$this->donnees_recette['nom'] = 'az';
 
-		$response = $this->post('/ajout_recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(302);
 	}
@@ -64,7 +64,7 @@ class AjoutRecetteTest extends TestCase
 	{
 		$this->donnees_recette['temps_preparation'] = null;
 
-		$response = $this->post('/ajout_recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(302);
 	}
@@ -73,7 +73,7 @@ class AjoutRecetteTest extends TestCase
 	{
 		$this->donnees_recette['lien'] = 'https://.fr';
 
-		$response = $this->post('/ajout_recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(302);
 	}
@@ -82,7 +82,7 @@ class AjoutRecetteTest extends TestCase
 	{
 		$this->donnees_recette['instruction'] = 'Eplu';
 
-		$response = $this->post('/ajout_recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(302);
 	}
@@ -91,7 +91,7 @@ class AjoutRecetteTest extends TestCase
 	{
 		$this->donnees_recette['description'] = 'Rece';
 
-		$response = $this->post('/ajout_recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(302);
 	}
@@ -100,7 +100,7 @@ class AjoutRecetteTest extends TestCase
 	{
 		$this->donnees_recette['reference_livre'] = 'Tous';
 
-		$response = $this->post('/ajout_recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(302);
 	}
@@ -109,7 +109,7 @@ class AjoutRecetteTest extends TestCase
 	{
 		unset($this->donnees_recette['ingredients']);
 
-		$response = $this->post('/ajout_recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(302);
 	}
@@ -118,7 +118,7 @@ class AjoutRecetteTest extends TestCase
 	{
 		unset($this->donnees_recette['quantites']);
 
-		$response = $this->post('/ajout_recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(302);
 	}

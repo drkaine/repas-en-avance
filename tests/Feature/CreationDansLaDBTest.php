@@ -77,7 +77,7 @@ class CreationDansLaDBTest extends TestCase
 
 	public function testTag(): void
 	{
-		$this->post('/ajout_tag', $this->donnees_tag);
+		$this->post('/ajout-tag', $this->donnees_tag);
 
 		$this->assertDatabaseHas('tags', $this->donnees_tag);
 	}
@@ -94,7 +94,7 @@ class CreationDansLaDBTest extends TestCase
 			'id_tags_enfant' => [],
 		];
 
-		$this->post('/ajout_tag', $this->donnees_tag);
+		$this->post('/ajout-tag', $this->donnees_tag);
 
 		$this->assertDatabaseHas('relation_tags', $this->donneesRelationTag());
 	}
@@ -111,14 +111,14 @@ class CreationDansLaDBTest extends TestCase
 			],
 		];
 
-		$this->post('/ajout_tag', $this->donnees_tag);
+		$this->post('/ajout-tag', $this->donnees_tag);
 
 		$this->assertDatabaseHas('relation_tags', $this->donneesRelationTagInverse());
 	}
 
 	public function testRecette(): void
 	{
-		$this->post('/ajout_recette', $this->donnees_recette);
+		$this->post('/ajout-recette', $this->donnees_recette);
 
 		unset($this->donnees_recette['ingredients'], $this->donnees_recette['quantites']);
 
@@ -131,7 +131,7 @@ class CreationDansLaDBTest extends TestCase
 			'Cuillière' => 2,
 		];
 
-		$this->post('/ajout_recette', $this->donnees_recette);
+		$this->post('/ajout-recette', $this->donnees_recette);
 
 		unset($this->donnees_recette['ingredients']);
 
@@ -144,7 +144,7 @@ class CreationDansLaDBTest extends TestCase
 			'Four' => 2,
 		];
 
-		$this->post('/ajout_recette', $this->donnees_recette);
+		$this->post('/ajout-recette', $this->donnees_recette);
 
 		unset($this->donnees_recette['ingredients']);
 
@@ -153,7 +153,7 @@ class CreationDansLaDBTest extends TestCase
 
 	public function testTagRecetteIngredient(): void
 	{
-		$this->post('/ajout_recette', $this->donnees_recette);
+		$this->post('/ajout-recette', $this->donnees_recette);
 
 		$this->assertDatabaseHas('tags_recette', $this->donnees_tag_recette_ingredient);
 	}

@@ -26,7 +26,7 @@ class ConfirmationTest extends TestCase
 
 		$donnees_user['email_verified_at'] = null;
 
-		$this->get('confirmation_email/' . $user->email);
+		$this->get('confirmation-email/' . $user->email);
 
 		$this->assertDatabaseMissing('users', $donnees_user);
 

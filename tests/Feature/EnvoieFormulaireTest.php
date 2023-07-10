@@ -60,7 +60,7 @@ class EnvoieFormulaireTest extends TestCase
 
 	public function testAjoutTag(): void
 	{
-		$response = $this->post('/ajout_tag', [
+		$response = $this->post('/ajout-tag', [
 			'nom' => 'Catégorie',
 			'id_tags_parent' => [],
 			'id_tags_enfant' => [],
@@ -71,7 +71,7 @@ class EnvoieFormulaireTest extends TestCase
 
 	public function testAjoutRecette(): void
 	{
-		$response = $this->post('/ajout_recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(201);
 	}

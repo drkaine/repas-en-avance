@@ -22,7 +22,7 @@ class AffichageDonneesTest extends TestCase
 
 		$this->creationTag();
 
-		$response = $this->get('/ajout_tag');
+		$response = $this->get('/ajout-tag');
 
 		$tags = $response->viewData('tags');
 
@@ -37,7 +37,7 @@ class AffichageDonneesTest extends TestCase
 
 		$this->userConnecte();
 
-		$response = $this->get('mon_compte');
+		$response = $this->get('mon-compte');
 
 		$donnee_user = $response->viewData('user');
 
@@ -67,7 +67,7 @@ class AffichageDonneesTest extends TestCase
 
 		$this->userConnecte();
 
-		$response = $this->get('mon_compte');
+		$response = $this->get('mon-compte');
 
 		$regimes_alimentaires = $response->viewData('regimes_alimentaires');
 
@@ -86,7 +86,7 @@ class AffichageDonneesTest extends TestCase
 
 		$this->creationTagsUser();
 
-		$response = $this->get('mon_compte');
+		$response = $this->get('mon-compte');
 
 		$tags_user = $response->viewData('tags_user');
 
@@ -101,11 +101,7 @@ class AffichageDonneesTest extends TestCase
 	{
 		$this->creationRecette();
 
-		$this->userConnecte();
-
-		$this->creationTagsUser();
-
-		$response = $this->get('catalogue_recettes');
+		$response = $this->get('catalogue-recettes');
 
 		$recettes = $response->viewData('recettes');
 
@@ -136,7 +132,7 @@ class AffichageDonneesTest extends TestCase
 
 		$this->userConnecte();
 
-		$response = $this->get('ajout_recette');
+		$response = $this->get('ajout-recette');
 
 		$ustensiles = $response->viewData('ustensiles');
 
@@ -152,7 +148,7 @@ class AffichageDonneesTest extends TestCase
 
 		$this->userConnecte();
 
-		$response = $this->get('ajout_recette');
+		$response = $this->get('ajout-recette');
 
 		$mode_de_cuissons = $response->viewData('mode_de_cuissons');
 
@@ -168,7 +164,7 @@ class AffichageDonneesTest extends TestCase
 
 		$this->userConnecte();
 
-		$response = $this->get('ajout_recette');
+		$response = $this->get('ajout-recette');
 
 		$ingredients = $response->viewData('ingredients');
 

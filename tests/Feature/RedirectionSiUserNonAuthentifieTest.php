@@ -13,21 +13,21 @@ class RedirectionSiUserNonAuthentifieTest extends TestCase
 {
 	public function testMonCompte(): void
 	{
-		$response = $this->get('mon_compte');
+		$response = $this->get('mon-compte');
 
 		$response->assertRedirect('inscription');
 	}
 
 	public function testAjoutTag(): void
 	{
-		$response = $this->get('ajout_tag');
+		$response = $this->get('ajout-tag');
 
 		$response->assertRedirect('inscription');
 	}
 
 	public function testAjoutRecette(): void
 	{
-		$response = $this->get('ajout_recette');
+		$response = $this->get('ajout-recette');
 
 		$response->assertRedirect('inscription');
 	}

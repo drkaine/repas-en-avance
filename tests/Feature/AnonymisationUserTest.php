@@ -42,7 +42,7 @@ class AnonymisationUserTest extends TestCase
 
 		$this->actingAs($user);
 
-		$this->get('/anonymisation_du_compte');
+		$this->get('/anonymisation-du-compte');
 
 		$this->assertDatabaseMissing('users', $this->donnees_user);
 
