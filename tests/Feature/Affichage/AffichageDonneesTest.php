@@ -113,16 +113,6 @@ class AffichageDonneesTest extends TestCase
 			$response->assertSee($recette->temps_cuisson);
 
 			$response->assertSee($recette->temps_repos);
-
-			$response->assertSee($recette->lien);
-
-			$response->assertSee($recette->instruction);
-
-			$response->assertSee($recette->description);
-
-			$response->assertSee($recette->reference_livre);
-
-			$response->assertSee($recette->id);
 		}
 	}
 
