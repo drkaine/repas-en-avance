@@ -97,7 +97,7 @@ class AffichageDonneesTest extends TestCase
 		}
 	}
 
-	public function testRecetteDansRecettes(): void
+	public function testRecetteDansCatalogueRecettes(): void
 	{
 		$this->creationRecette();
 
@@ -105,7 +105,7 @@ class AffichageDonneesTest extends TestCase
 
 		$this->creationTagsUser();
 
-		$response = $this->get('recettes');
+		$response = $this->get('catalogue_recettes');
 
 		$recettes = $response->viewData('recettes');
 

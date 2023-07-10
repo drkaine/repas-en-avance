@@ -6,7 +6,7 @@ Affichage Des Pages (Tests\Feature\Affichage\AffichageDesPages)
  [x] Ajout recette
  [x] Mon compte
  [x] Recuperatoin compte
- [x] Recettes
+ [x] Catalogue recettes
  [x] Confirmation email
 
 Affichage Donnees (Tests\Feature\Affichage\AffichageDonnees)
@@ -15,7 +15,7 @@ Affichage Donnees (Tests\Feature\Affichage\AffichageDonnees)
  [x] Tag dans l inscription
  [x] Tag dans mon compte
  [x] Tag user dans mon compte
- [x] Recette dans recettes
+ [x] Recette dans catalogue recettes
  [x] Ustensile dans ajout recette
  [x] Mode de cuisson dans ajout recette
  [x] Ingredient dans ajout recette

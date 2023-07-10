@@ -153,9 +153,9 @@ Route::post(
 )->name('recuperation_compte');
 
 Route::get(
-	'recettes',
+	'catalogue_recettes',
 	[
 		AffichageDonneesController::class,
-		'pageRecettes',
+		'pageCatalogueRecettes',
 	]
-)->name('recettes');
+)->name('catalogue_recettes');

@@ -101,10 +101,10 @@ class AffichageDonneesController extends Controller
 		return view('inscription', compact('regimes_alimentaires'));
 	}
 
-	public function pageRecettes(): View
+	public function pageCatalogueRecettes(): View
 	{
 		$recettes = $this->recette->get();
 
-		return view('recettes', compact('recettes'));
+		return view('catalogue_recettes', compact('recettes'));
 	}
 }
