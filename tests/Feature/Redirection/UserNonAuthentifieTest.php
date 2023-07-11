@@ -9,7 +9,7 @@ use Tests\TestCase;
 /**
  * @coversNothing
  */
-class RedirectionSiUserNonAuthentifieTest extends TestCase
+class UserNonAuthentifieTest extends TestCase
 {
 	public function testMonCompte(): void
 	{

@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Feature;
+namespace Tests\Feature\Envoie;
 
 use App\Notifications\ConfirmationEmail;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -14,7 +14,7 @@ use Tests\Traits\RecuperationDonneesDeTestTrait;
 /**
  * @coversNothing
  */
-class EnvoieNotificationTest extends TestCase
+class NotificationTest extends TestCase
 {
 	use RefreshDatabase;
 	use ModelDeTestTrait;

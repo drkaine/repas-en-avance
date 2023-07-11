@@ -1,21 +1,4 @@
-Affichage Des Pages (Tests\Feature\Affichage\AffichageDesPages)
- [x] Accueil
- [x] Inscription
- [x] Connexion
- [x] Ajout tag
- [x] Ajout recette
- [x] Mon compte
- [x] Recuperation compte
- [x] Catalogue recettes
- [x] Confirmation email
-
-Affichage Donnees (Tests\Feature\Affichage\AffichageDonnees)
- [x] Tag dans ajout tag
- [x] User dans mon compte
- [x] Tag dans l inscription
- [x] Tag dans mon compte
- [x] Tag user dans mon compte
- [x] Recette dans catalogue recettes
+Ajout Recette (Tests\Feature\Affichage\AjoutRecette)
  [x] Ustensile dans ajout recette
  [x] Mode de cuisson dans ajout recette
  [x] Ingredient dans ajout recette
@@ -32,18 +15,44 @@ Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
  [x] Champs ingredient
  [x] Champs quantite
 
+Ajout Tag (Tests\Feature\Affichage\Donnees\AjoutTag)
+ [x] Tag dans ajout tag
+
 Ajout Tag (Tests\Feature\ValidationFormulaire\AjoutTag)
  [x] Champs nom
  [x] Longueur maximum champs nom
  [x] Longueur minimum champs nom
 
-Anonymisation User (Tests\Feature\AnonymisationUser)
+Anonymisation (Tests\Feature\DansLaBaseDeDonnee\User\Anonymisation)
  [x] Anonymisation user
  [x] Anonymisation users inactif
+
+Apres LAjout Recette (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLAjoutRecette)
+ [x] Recette
+ [x] Ustensile dans ajout recette
+ [x] Mode de cuisson dans ajout recette
+ [x] Ingredient dans ajout recette
+
+Apres LInscription (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLInscription)
+ [x] User apres l inscription
+ [x] User tag apres l inscription
+
+Apres Lajout Tag (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLajoutTag)
+ [x] Tag
+ [x] Relation tag parent
+ [x] Relation tag enfant
 
 Authentification (Tests\Feature\Authentification)
  [x] Connexion
  [x] Deconnexion
+
+Avec User Connecte (Tests\Feature\Affichage\DesPages\AvecUserConnecte)
+ [x] Ajout tag
+ [x] Ajout recette
+ [x] Mon compte
+
+Catalogue Recettes (Tests\Feature\Affichage\CatalogueRecettes)
+ [x] Recette dans catalogue recettes
 
 Colonne Null (Tests\Feature\TableSQL\ColonneNull)
  [x] De la table users champs email verified at
@@ -67,28 +76,17 @@ Connexion (Tests\Feature\ValidationFormulaire\Connexion)
  [x] Longueur minimum champs password
  [x] Longueur maximum champs password
 
-Creation Dans La DB (Tests\Feature\CreationDansLaDB)
- [x] User apres l inscription
- [x] User tag apres l inscription
- [x] Tag
- [x] Relation tag parent
- [x] Relation tag enfant
- [x] Recette
- [x] Ustensile dans ajout recette
- [x] Mode de cuisson dans ajout recette
- [x] Ingredient dans ajout recette
+Dans LInscription (Tests\Feature\Affichage\DansLInscription)
+ [x] Tag dans l inscription
 
-Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
+Example (Tests\Unit\Example)
+ [x] Example
+
+Formulaire (Tests\Feature\Envoie\Formulaire)
  [x] Inscription
  [x] Connexion
  [x] Ajout tag
  [x] Ajout recette
-
-Envoie Notification (Tests\Feature\EnvoieNotification)
- [x] Verification email is sent
-
-Example (Tests\Unit\Example)
- [x] Example
 
 Inscription (Tests\Feature\ValidationFormulaire\Inscription)
  [x] Champs nom
@@ -113,12 +111,20 @@ Modele (Tests\Feature\TableSQL\Modele)
  [x] Ustensile
  [x] Mode de cuisson
 
-Modification De Donnees Dans La DB (Tests\Feature\ModificationDeDonneesDansLaDB)
+Modification (Tests\Feature\DansLaBaseDeDonnee\User\Modification)
  [x] Modification du user
  [x] Modification du regime alimentaire
  [x] Modification de la derniere connexion du user
 
-Recuperation Donnees Anonymiser (Tests\Feature\RecuperationDonneesAnonymiser)
+Mon Compte (Tests\Feature\Affichage\MonCompte)
+ [x] User dans mon compte
+ [x] Tag dans mon compte
+ [x] Tag user dans mon compte
+
+Notification (Tests\Feature\Envoie\Notification)
+ [x] Verification email is sent
+
+Recuperation Donnees Anonymiser (Tests\Feature\DansLaBaseDeDonnee\User\RecuperationDonneesAnonymiser)
  [x] Recuperation compte user
 
 Redirection (Tests\Feature\Redirection)
@@ -127,16 +133,24 @@ Redirection (Tests\Feature\Redirection)
  [x] Modification des donnees du user
  [x] Recuperation compte
 
-Redirection Si User Connecte (Tests\Feature\RedirectionSiUserConnecte)
+Sans User Connecte (Tests\Feature\Affichage\DesPages\SansUserConnecte)
+ [x] Accueil
+ [x] Inscription
+ [x] Connexion
+ [x] Recuperation compte
+ [x] Catalogue recettes
+ [x] Confirmation email
+
+Suppression (Tests\Feature\DansLaBaseDeDonnee\User\Suppression)
+ [x] Users anonymes
+ [x] Tags user des users anonymes
+
+User Connecte (Tests\Feature\UserConnecte)
  [x] Inscription
  [x] Connexion
 
-Redirection Si User Non Authentifie (Tests\Feature\RedirectionSiUserNonAuthentifie)
+User Non Authentifie (Tests\Feature\UserNonAuthentifie)
  [x] Mon compte
  [x] Ajout tag
  [x] Ajout recette
-
-Suppression En DB (Tests\Feature\SuppressionEnDB)
- [x] Users anonymes
- [x] Tags user des users anonymes
 

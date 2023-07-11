@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Feature;
+namespace Tests\Feature\DansLaBaseDeDonnee\User;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -11,7 +11,7 @@ use Tests\Traits\ModelDeTestTrait;
 /**
  * @coversNothing
  */
-class ModificationDeDonneesDansLaDBTest extends TestCase
+class ModificationTest extends TestCase
 {
 	use RefreshDatabase;
 	use ModelDeTestTrait;

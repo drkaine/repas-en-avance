@@ -11,7 +11,7 @@ use Tests\Traits\ModelDeTestTrait;
 /**
  * @coversNothing
  */
-class RedirectionSiUserConnecteTest extends TestCase
+class UserConnecteTest extends TestCase
 {
 	use RefreshDatabase;
 	use ModelDeTestTrait;

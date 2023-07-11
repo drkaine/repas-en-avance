@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Feature;
+namespace Tests\Feature\DansLaBaseDeDonnee\User;
 
 use App\Services\GestionUsersInactifServices;
 use Carbon\Carbon;
@@ -14,7 +14,7 @@ use Tests\Traits\RecuperationDonneesDeTestTrait;
 /**
  * @coversNothing
  */
-class AnonymisationUserTest extends TestCase
+class AnonymisationTest extends TestCase
 {
 	use RefreshDatabase;
 	use ModelDeTestTrait;

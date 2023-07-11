@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Feature\Affichage;
+namespace Tests\Feature\Affichage\DesPages;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -11,7 +11,7 @@ use Tests\Traits\ModelDeTestTrait;
 /**
  * @coversNothing
  */
-class AffichageDesPagesTest extends TestCase
+class SansUserConnecteTest extends TestCase
 {
 	use RefreshDatabase;
 	use ModelDeTestTrait;
@@ -35,39 +35,6 @@ class AffichageDesPagesTest extends TestCase
 	public function testConnexion(): void
 	{
 		$response = $this->get('connexion');
-
-		$response->assertStatus(200);
-	}
-
-	public function testAjoutTag(): void
-	{
-		$this->userConnecte();
-
-		$this->creationTag();
-
-		$response = $this->get('ajout-tag');
-
-		$response->assertStatus(200);
-	}
-
-	public function testAjoutRecette(): void
-	{
-		$this->userConnecte();
-
-		$this->creationTagsAjoutRecette();
-
-		$response = $this->get('ajout-recette');
-
-		$response->assertStatus(200);
-	}
-
-	public function testMonCompte(): void
-	{
-		$this->userConnecte();
-
-		$this->creationRegimesAlimentaire();
-
-		$response = $this->get('mon-compte');
 
 		$response->assertStatus(200);
 	}
