@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Traits;
 
+use App\Models\Ingredient;
 use App\Models\Recette;
 use App\Models\RelationTag;
 use App\Models\Tag;
@@ -141,5 +142,12 @@ trait ModelDeTestTrait
 		foreach ($this->donneesIngredient() as $ingredient) {
 			$tag->factory()->create($ingredient);
 		}
+	}
+
+	public function creationIngredient(): void
+	{
+		$ingredient = new Ingredient;
+
+		$ingredient->factory()->create($this->donneesTagRecetteIngredient());
 	}
 }
