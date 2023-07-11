@@ -22,7 +22,7 @@ class InscriptionTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->donnees_user = $this->donneesUser();
+		$this->donnees_user = $this->donnees('user');
 
 		$this->donnees_user['email_verified_at'] = '2023-06-06 06:06:06';
 

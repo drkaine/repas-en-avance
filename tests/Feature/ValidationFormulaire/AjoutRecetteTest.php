@@ -22,7 +22,7 @@ class AjoutRecetteTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->donnees_recette = $this->donneesRecette();
+		$this->donnees_recette = $this->donnees('recette');
 
 		$this->donnees_recette['ingredients'] = [
 			'Carotte' => 2,

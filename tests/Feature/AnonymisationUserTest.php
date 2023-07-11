@@ -28,8 +28,8 @@ class AnonymisationUserTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->donnees_user = $this->donneesUser();
-		$this->donnees_user_anonyme = $this->donneesUserAnonyme();
+		$this->donnees_user = $this->donnees('user');
+		$this->donnees_user_anonyme = $this->donnees('user_anonyme');
 		unset($this->donnees_user_anonyme['password'], $this->donnees_user_anonyme['derniere_connexion']);
 
 	}

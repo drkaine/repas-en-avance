@@ -23,7 +23,7 @@ class AuthentificationTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->donnees_user = $this->donneesUser();
+		$this->donnees_user = $this->donnees('user');
 	}
 
 	public function testConnexion(): void

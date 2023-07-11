@@ -34,12 +34,12 @@ class CreationDansLaDBTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->donnees_user = $this->donneesUser();
-		$this->donnees_tag = $this->donneesTag();
-		$this->donnees_recette = $this->donneesRecette();
-		$this->donnees_ustensile = $this->donneesUstensile();
-		$this->donnees_mode_de_cuisson = $this->donneesModeDeCuisson();
-		$this->donnees_ingredient = $this->donneesIngredient();
+		$this->donnees_user = $this->donnees('user');
+		$this->donnees_tag = $this->donnees('tag');
+		$this->donnees_recette = $this->donnees('recette');
+		$this->donnees_ustensile = $this->donnees('ustensile');
+		$this->donnees_mode_de_cuisson = $this->donnees('mode_de_cuisson');
+		$this->donnees_ingredient = $this->donnees('ingredient');
 
 		$this->donnees_recette['ingredients'] = [
 			'Carotte' => 2,
@@ -75,7 +75,7 @@ class CreationDansLaDBTest extends TestCase
 
 		$this->creationTag();
 
-		$this->assertDatabaseHas('tags_user', $this->donneesTagUser());
+		$this->assertDatabaseHas('tags_user', $this->donnees('tag_user'));
 	}
 
 	public function testTag(): void
@@ -99,7 +99,7 @@ class CreationDansLaDBTest extends TestCase
 
 		$this->post('/ajout-tag', $this->donnees_tag);
 
-		$this->assertDatabaseHas('relation_tags', $this->donneesRelationTag());
+		$this->assertDatabaseHas('relation_tags', $this->donnees('relation_tag'));
 	}
 
 	public function testRelationTagEnfant(): void
@@ -116,7 +116,7 @@ class CreationDansLaDBTest extends TestCase
 
 		$this->post('/ajout-tag', $this->donnees_tag);
 
-		$this->assertDatabaseHas('relation_tags', $this->donneesRelationTagInverse());
+		$this->assertDatabaseHas('relation_tags', $this->donnees('relation_tag_inverse'));
 	}
 
 	public function testRecette(): void

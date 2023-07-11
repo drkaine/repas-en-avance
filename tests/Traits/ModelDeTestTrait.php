@@ -28,7 +28,7 @@ trait ModelDeTestTrait
 	{
 		$user = new User;
 
-		$user = $user->factory()->create($this->donneesUser());
+		$user = $user->factory()->create($this->donnees('user'));
 
 		return $user;
 	}
@@ -37,21 +37,21 @@ trait ModelDeTestTrait
 	{
 		$user = new User;
 
-		$user = $user->factory()->create($this->donneesUserAnonyme());
+		$user = $user->factory()->create($this->donnees('user_anonyme'));
 	}
 
 	public function creationTag(): void
 	{
 		$tag = new Tag;
 
-		$tag->factory()->create($this->donneesTag());
+		$tag->factory()->create($this->donnees('tag'));
 	}
 
 	public function creationRecette(): void
 	{
 		$recette = new Recette;
 
-		$recette->factory()->create($this->donneesRecette());
+		$recette->factory()->create($this->donnees('recette'));
 	}
 
 	public function creationregimesAlimentaire(): void
@@ -65,14 +65,14 @@ trait ModelDeTestTrait
 	{
 		$tag_user = new TagUser;
 
-		$tag_user->factory()->create($this->donneesTagUser());
+		$tag_user->factory()->create($this->donnees('tag_user'));
 	}
 
 	public function creationTagsRegimesAlimentaire(): void
 	{
 		$tag = new Tag;
 
-		foreach ($this->donneesTagsRegimesAlimentaire() as $tag_regime_alimentaire) {
+		foreach ($this->donnees('tags_regimes_alimentaire') as $tag_regime_alimentaire) {
 			$tag->factory()->create($tag_regime_alimentaire);
 		}
 	}
@@ -81,7 +81,7 @@ trait ModelDeTestTrait
 	{
 		$relation_tag = new RelationTag;
 
-		foreach ($this->donneesRelationTags() as $donnees_relation_tag) {
+		foreach ($this->donnees('relation_tags') as $donnees_relation_tag) {
 			$relation_tag->factory()->create($donnees_relation_tag);
 		}
 	}
@@ -90,7 +90,7 @@ trait ModelDeTestTrait
 	{
 		$relation_tag = new RelationTag;
 
-		$relation_tag->factory()->create($this->donneesRelationTag());
+		$relation_tag->factory()->create($this->donnees('relation_tag'));
 	}
 
 	public function creationTagsAjoutRecette(): void
@@ -108,7 +108,7 @@ trait ModelDeTestTrait
 	{
 		$tag = new Tag;
 
-		foreach ($this->donneesTagUstensile() as $ustensile) {
+		foreach ($this->donnees('tag_ustensile') as $ustensile) {
 			$tag->factory()->create($ustensile);
 		}
 	}
@@ -117,7 +117,7 @@ trait ModelDeTestTrait
 	{
 		$tag = new Tag;
 
-		foreach ($this->donneesTagModeDeCuisson() as $mode_de_cuisson) {
+		foreach ($this->donnees('tag_mode_de_cuisson') as $mode_de_cuisson) {
 			$tag->factory()->create($mode_de_cuisson);
 		}
 	}
@@ -126,7 +126,7 @@ trait ModelDeTestTrait
 	{
 		$tag = new Tag;
 
-		foreach ($this->donneesTagIngredient() as $ingredient) {
+		foreach ($this->donnees('tag_ingredient') as $ingredient) {
 			$tag->factory()->create($ingredient);
 		}
 	}
@@ -135,20 +135,20 @@ trait ModelDeTestTrait
 	{
 		$ingredient = new Ingredient;
 
-		$ingredient->factory()->create($this->donneesIngredient());
+		$ingredient->factory()->create($this->donnees('ingredient'));
 	}
 
 	public function creationUstensile(): void
 	{
 		$ustensile = new Ustensile;
 
-		$ustensile->factory()->create($this->donneesUstensile());
+		$ustensile->factory()->create($this->donnees('ustensile'));
 	}
 
 	public function creationModeDeCuisson(): void
 	{
 		$ustensile = new ModeDeCuisson;
 
-		$ustensile->factory()->create($this->donneesModeDeCuisson());
+		$ustensile->factory()->create($this->donnees('mode_de_cuisson'));
 	}
 }

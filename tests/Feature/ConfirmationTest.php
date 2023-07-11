@@ -22,7 +22,7 @@ class ConfirmationTest extends TestCase
 	{
 		$user = $this->creationUser();
 
-		$donnees_user = $this->donneesUser();
+		$donnees_user = $this->donnees('user');
 
 		$donnees_user['email_verified_at'] = null;
 

@@ -28,9 +28,9 @@ class RedirectionTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->donnees_user = $this->donneesUser();
-		$this->donnees_user_anonyme = $this->donneesUserAnonyme();
-		$this->donnees_user_anonyme_recupere = $this->donneesUserAnonymeRecupere();
+		$this->donnees_user = $this->donnees('user');
+		$this->donnees_user_anonyme = $this->donnees('user_anonyme');
+		$this->donnees_user_anonyme_recupere = $this->donnees('user_anonyme_recupere');
 	}
 
 	public function testDeconnexion(): void

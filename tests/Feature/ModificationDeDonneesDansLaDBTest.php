@@ -26,9 +26,9 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->donnees_user = $this->donneesUser();
+		$this->donnees_user = $this->donnees('user');
 
-		$this->donnees_user_modifie = $this->donneesUserModifie();
+		$this->donnees_user_modifie = $this->donnees('user_modifie');
 
 		$this->tags_regimes_alimentaire = config('donnee_de_test.tags_regimes_alimentaire');
 	}
@@ -66,9 +66,9 @@ class ModificationDeDonneesDansLaDBTest extends TestCase
 
 		$this->post('/modification-user', $this->donnees_user_modifie);
 
-		$this->assertDatabaseMissing('tags_user', $this->donneesTagUser());
+		$this->assertDatabaseMissing('tags_user', $this->donnees('tag_user'));
 
-		$this->assertDatabaseHas('tags_user', $this->donneesTagUserModifie());
+		$this->assertDatabaseHas('tags_user', $this->donnees('tag_user_modifie'));
 	}
 
 	public function testModificationDeLaDerniereConnexionDuUser(): void

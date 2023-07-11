@@ -24,8 +24,8 @@ class EnvoieFormulaireTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->donnees_user = $this->donneesUser();
-		$this->donnees_recette = $this->donneesRecette();
+		$this->donnees_user = $this->donnees('user');
+		$this->donnees_recette = $this->donnees('recette');
 
 		$this->donnees_recette['ingredients'] = [
 			'Carotte' => 2,

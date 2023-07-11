@@ -27,9 +27,9 @@ class ModeleTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->donnees_user = $this->donneesUser();
-		$this->donnees_tag = $this->donneesTag();
-		$this->donnees_recette = $this->donneesRecette();
+		$this->donnees_user = $this->donnees('user');
+		$this->donnees_tag = $this->donnees('tag');
+		$this->donnees_recette = $this->donnees('recette');
 	}
 
 	public function testUsers(): void
@@ -58,7 +58,7 @@ class ModeleTest extends TestCase
 	{
 		$this->creationRelationTag();
 
-		$this->assertDatabaseHas('relation_tags', $this->donneesRelationTag());
+		$this->assertDatabaseHas('relation_tags', $this->donnees('relation_tag'));
 	}
 
 	public function testRecettes(): void
@@ -72,27 +72,27 @@ class ModeleTest extends TestCase
 	{
 		$this->creationTagsUser();
 
-		$this->assertDatabaseHas('tags_user', $this->donneesTagUser());
+		$this->assertDatabaseHas('tags_user', $this->donnees('tag_user'));
 	}
 
 	public function testIngredient(): void
 	{
 		$this->creationIngredient();
 
-		$this->assertDatabaseHas('ingredients', $this->donneesIngredient());
+		$this->assertDatabaseHas('ingredients', $this->donnees('ingredient'));
 	}
 
 	public function testUstensile(): void
 	{
 		$this->creationUstensile();
 
-		$this->assertDatabaseHas('ustensiles', $this->donneesUstensile());
+		$this->assertDatabaseHas('ustensiles', $this->donnees('ustensile'));
 	}
 
 	public function testModeDeCuisson(): void
 	{
 		$this->creationModeDeCuisson();
 
-		$this->assertDatabaseHas('mode_de_cuissons', $this->donneesModeDeCuisson());
+		$this->assertDatabaseHas('mode_de_cuissons', $this->donnees('mode_de_cuisson'));
 	}
 }

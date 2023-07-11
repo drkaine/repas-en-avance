@@ -28,7 +28,7 @@ class SuppressionEnDBTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->donnees_user_anonyme = $this->donneesUser();
+		$this->donnees_user_anonyme = $this->donnees('user');
 
 		$this->anonymisation_helper = new GestionUsersInactifServices;
 
@@ -52,6 +52,6 @@ class SuppressionEnDBTest extends TestCase
 
 		$this->anonymisation_helper->supprimer();
 
-		$this->assertDatabaseMissing('tags_user', $this->donneesTagUser());
+		$this->assertDatabaseMissing('tags_user', $this->donnees('tag_user'));
 	}
 }

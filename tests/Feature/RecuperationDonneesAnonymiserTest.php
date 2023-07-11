@@ -26,9 +26,9 @@ class RecuperationDonneesAnonymiserTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->donnees_user_anonyme = $this->donneesUser();
+		$this->donnees_user_anonyme = $this->donnees('user');
 
-		$this->donnees_user_anonyme_recupere = $this->donneesUserAnonymeRecupere();
+		$this->donnees_user_anonyme_recupere = $this->donnees('user_anonyme_recupere');
 
 		$this->creationUserAnonyme();
 	}
