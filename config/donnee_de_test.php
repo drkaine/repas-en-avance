@@ -111,16 +111,21 @@ return [
 		'id_user' => 1,
 		'id_tag' => 3,
 	],
-	'tag_recette' => [
+	'ustensile' => [
 		'id_recette' => 1,
 		'id_tag' => 2,
 	],
-	'tag_recette_ingredient' => [
+
+	'mode_de_cuisson' => [
+		'id_recette' => 1,
+		'id_tag' => 2,
+	],
+	'ingredient' => [
 		'id_recette' => 1,
 		'id_tag' => 2,
 		'quantite' => 1,
 	],
-	'ustensile' => [
+	'tag_ustensile' => [
 		[
 			'nom' => 'Ustensiles',
 		],
@@ -128,7 +133,7 @@ return [
 			'nom' => 'Cuillère',
 		],
 	],
-	'mode_de_cuisson' => [
+	'tag_mode_de_cuisson' => [
 		[
 			'nom' => 'Mode de cuisson',
 		],
@@ -137,7 +142,7 @@ return [
 		],
 	],
 
-	'ingredient' => [
+	'tag_ingredient' => [
 		[
 			'nom' => 'Ingrédients',
 		],

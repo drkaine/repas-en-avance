@@ -54,7 +54,6 @@ Colonne Null (Tests\Feature\TableSQL\ColonneNull)
  [x] De la table recette champs instruction
  [x] De la table recette champs description
  [x] De la table recette champs reference livre
- [x] Tags recette
 
 Confirmation (Tests\Feature\Confirmation)
  [x] Inscription user
@@ -75,9 +74,9 @@ Creation Dans La DB (Tests\Feature\CreationDansLaDB)
  [x] Relation tag parent
  [x] Relation tag enfant
  [x] Recette
- [x] Tag recette ustensile
- [x] Tag recette mode de cuisson
- [x] Tag recette ingredient
+ [x] Ustensile dans ajout recette
+ [x] Mode de cuisson dans ajout recette
+ [x] Ingredient dans ajout recette
 
 Envoie Formulaire (Tests\Feature\EnvoieFormulaire)
  [x] Inscription
@@ -110,7 +109,6 @@ Modele (Tests\Feature\TableSQL\Modele)
  [x] Relation tags
  [x] Recettes
  [x] Tags user
- [x] Tags recette
  [x] Ingredient
  [x] Ustensile
  [x] Mode de cuisson

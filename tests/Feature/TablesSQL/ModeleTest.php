@@ -75,31 +75,24 @@ class ModeleTest extends TestCase
 		$this->assertDatabaseHas('tags_user', $this->donneesTagUser());
 	}
 
-	public function testTagsRecette(): void
-	{
-		$this->creationTagsRecetteIngredient();
-
-		$this->assertDatabaseHas('tags_recette', $this->donneesTagRecetteIngredient());
-	}
-
 	public function testIngredient(): void
 	{
 		$this->creationIngredient();
 
-		$this->assertDatabaseHas('ingredients', $this->donneesTagRecetteIngredient());
+		$this->assertDatabaseHas('ingredients', $this->donneesIngredient());
 	}
 
 	public function testUstensile(): void
 	{
 		$this->creationUstensile();
 
-		$this->assertDatabaseHas('ustensiles', $this->donneesTagRecetteUstensile());
+		$this->assertDatabaseHas('ustensiles', $this->donneesUstensile());
 	}
 
 	public function testModeDeCuisson(): void
 	{
 		$this->creationModeDeCuisson();
 
-		$this->assertDatabaseHas('mode_de_cuissons', $this->donneesTagRecetteModeDeCuisson());
+		$this->assertDatabaseHas('mode_de_cuissons', $this->donneesModeDeCuisson());
 	}
 }

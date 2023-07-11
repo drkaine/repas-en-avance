@@ -66,16 +66,6 @@ trait RecuperationDonneesDeTestTrait
 		return config('donnee_de_test.tag_user_modifie');
 	}
 
-	public function donneesTagRecette(): array
-	{
-		return config('donnee_de_test.tag_recette');
-	}
-
-	public function donneesTagRecetteIngredient(): array
-	{
-		return config('donnee_de_test.tag_recette_ingredient');
-	}
-
 	public function donneesUstensile(): array
 	{
 		return config('donnee_de_test.ustensile');
@@ -91,13 +81,18 @@ trait RecuperationDonneesDeTestTrait
 		return config('donnee_de_test.ingredient');
 	}
 
-	public function donneesTagRecetteUstensile(): array
+	public function donneesTagUstensile(): array
 	{
-		return config('donnee_de_test.tag_recette');
+		return config('donnee_de_test.tag_ustensile');
 	}
 
-	public function donneesTagRecetteModeDeCuisson(): array
+	public function donneesTagModeDeCuisson(): array
 	{
-		return config('donnee_de_test.tag_recette');
+		return config('donnee_de_test.tag_mode_de_cuisson');
+	}
+
+	public function donneesTagIngredient(): array
+	{
+		return config('donnee_de_test.tag_ingredient');
 	}
 }

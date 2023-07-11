@@ -31,11 +31,11 @@ class AjoutRecetteController extends Controller
 
 		$recette = $this->nouvelleRecette($request);
 
-		$this->tagsRecette($ustensiles, $recette->id);
+		$this->ustensile($ustensiles, $recette->id);
 
-		$this->tagsRecette($mode_de_cuissons, $recette->id);
+		$this->modeDeCuisson($mode_de_cuissons, $recette->id);
 
-		$this->tagsRecetteIngredient($request->ingredients, $request->quantites, $recette->id);
+		$this->Ingredient($request->ingredients, $request->quantites, $recette->id);
 
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}

@@ -9,7 +9,6 @@ use App\Models\ModeDeCuisson;
 use App\Models\Recette;
 use App\Models\RelationTag;
 use App\Models\Tag;
-use App\Models\TagRecette;
 use App\Models\TagUser;
 use App\Models\User;
 use App\Models\Ustensile;
@@ -94,20 +93,6 @@ trait ModelDeTestTrait
 		$relation_tag->factory()->create($this->donneesRelationTag());
 	}
 
-	public function creationTagsRecette(): void
-	{
-		$tag_recette = new TagRecette;
-
-		$tag_recette->factory()->create($this->donneesTagRecette());
-	}
-
-	public function creationTagsRecetteIngredient(): void
-	{
-		$tag_recette = new TagRecette;
-
-		$tag_recette->factory()->create($this->donneesTagRecetteIngredient());
-	}
-
 	public function creationTagsAjoutRecette(): void
 	{
 		$this->creationTagModeDeCuisson();
@@ -123,7 +108,7 @@ trait ModelDeTestTrait
 	{
 		$tag = new Tag;
 
-		foreach ($this->donneesUstensile() as $ustensile) {
+		foreach ($this->donneesTagUstensile() as $ustensile) {
 			$tag->factory()->create($ustensile);
 		}
 	}
@@ -132,7 +117,7 @@ trait ModelDeTestTrait
 	{
 		$tag = new Tag;
 
-		foreach ($this->donneesModeDeCuisson() as $mode_de_cuisson) {
+		foreach ($this->donneesTagModeDeCuisson() as $mode_de_cuisson) {
 			$tag->factory()->create($mode_de_cuisson);
 		}
 	}
@@ -141,7 +126,7 @@ trait ModelDeTestTrait
 	{
 		$tag = new Tag;
 
-		foreach ($this->donneesIngredient() as $ingredient) {
+		foreach ($this->donneesTagIngredient() as $ingredient) {
 			$tag->factory()->create($ingredient);
 		}
 	}
@@ -150,20 +135,20 @@ trait ModelDeTestTrait
 	{
 		$ingredient = new Ingredient;
 
-		$ingredient->factory()->create($this->donneesTagRecetteIngredient());
+		$ingredient->factory()->create($this->donneesIngredient());
 	}
 
 	public function creationUstensile(): void
 	{
 		$ustensile = new Ustensile;
 
-		$ustensile->factory()->create($this->donneesTagRecetteUstensile());
+		$ustensile->factory()->create($this->donneesUstensile());
 	}
 
 	public function creationModeDeCuisson(): void
 	{
 		$ustensile = new ModeDeCuisson;
 
-		$ustensile->factory()->create($this->donneesTagRecetteModeDeCuisson());
+		$ustensile->factory()->create($this->donneesModeDeCuisson());
 	}
 }

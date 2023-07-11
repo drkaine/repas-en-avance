@@ -10,4 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 class Ustensile extends Model
 {
 	use HasFactory;
+
+	protected $fillable = [
+		'id_recette',
+		'id_tag',
+	];
 }

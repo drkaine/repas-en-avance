@@ -24,9 +24,11 @@ class CreationDansLaDBTest extends TestCase
 
 	private array $donnees_recette;
 
-	private array $donnees_tag_recette;
+	private array $donnees_ustensile;
 
-	private array $donnees_tag_recette_ingredient;
+	private array $donnees_mode_de_cuisson;
+
+	private array $donnees_ingredient;
 
 	protected function setUp(): void
 	{
@@ -35,8 +37,9 @@ class CreationDansLaDBTest extends TestCase
 		$this->donnees_user = $this->donneesUser();
 		$this->donnees_tag = $this->donneesTag();
 		$this->donnees_recette = $this->donneesRecette();
-		$this->donnees_tag_recette = $this->donneesTagRecette();
-		$this->donnees_tag_recette_ingredient = $this->donneesTagRecetteIngredient();
+		$this->donnees_ustensile = $this->donneesUstensile();
+		$this->donnees_mode_de_cuisson = $this->donneesModeDeCuisson();
+		$this->donnees_ingredient = $this->donneesIngredient();
 
 		$this->donnees_recette['ingredients'] = [
 			'Carotte' => 2,
@@ -125,7 +128,7 @@ class CreationDansLaDBTest extends TestCase
 		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
-	public function testTagRecetteUstensile(): void
+	public function testUstensileDansAjoutRecette(): void
 	{
 		$this->donnees_recette['ustensiles'] = [
 			'Cuillière' => 2,
@@ -133,12 +136,10 @@ class CreationDansLaDBTest extends TestCase
 
 		$this->post('/ajout-recette', $this->donnees_recette);
 
-		unset($this->donnees_recette['ingredients']);
-
-		$this->assertDatabaseHas('tags_recette', $this->donnees_tag_recette);
+		$this->assertDatabaseHas('ustensiles', $this->donnees_ustensile);
 	}
 
-	public function testTagRecetteModeDeCuisson(): void
+	public function testModeDeCuissonDansAjoutRecette(): void
 	{
 		$this->donnees_recette['mode_de_cuissons'] = [
 			'Four' => 2,
@@ -146,15 +147,13 @@ class CreationDansLaDBTest extends TestCase
 
 		$this->post('/ajout-recette', $this->donnees_recette);
 
-		unset($this->donnees_recette['ingredients']);
-
-		$this->assertDatabaseHas('tags_recette', $this->donnees_tag_recette);
+		$this->assertDatabaseHas('mode_de_cuissons', $this->donnees_mode_de_cuisson);
 	}
 
-	public function testTagRecetteIngredient(): void
+	public function testIngredientDansAjoutRecette(): void
 	{
 		$this->post('/ajout-recette', $this->donnees_recette);
 
-		$this->assertDatabaseHas('tags_recette', $this->donnees_tag_recette_ingredient);
+		$this->assertDatabaseHas('ingredients', $this->donnees_ingredient);
 	}
 }

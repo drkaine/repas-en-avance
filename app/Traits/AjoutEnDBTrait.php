@@ -4,12 +4,14 @@ declare(strict_types = 1);
 
 namespace App\Traits;
 
+use App\Models\Ingredient;
+use App\Models\ModeDeCuisson;
 use App\Models\Recette;
 use App\Models\RelationTag;
 use App\Models\Tag;
-use App\Models\TagRecette;
 use App\Models\TagUser;
 use App\Models\User;
+use App\Models\Ustensile;
 use Illuminate\Http\Request;
 
 trait AjoutEnDBTrait
@@ -83,17 +85,24 @@ trait AjoutEnDBTrait
 		}
 	}
 
-	public function tagsRecette(array $tag, int $id_recette): void
+	public function ustensile(array $tag, int $id_recette): void
 	{
 		foreach ($tag as $id_tag) {
-			$this->nouveauTagRecette($id_tag, $id_recette);
+			$this->nouvelUstensile($id_tag, $id_recette);
 		}
 	}
 
-	public function tagsRecetteIngredient(array $tag, array $quantites, int $id_recette): void
+	public function modeDeCuisson(array $tag, int $id_recette): void
+	{
+		foreach ($tag as $id_tag) {
+			$this->nouveauModeDeCuisson($id_tag, $id_recette);
+		}
+	}
+
+	public function ingredient(array $tag, array $quantites, int $id_recette): void
 	{
 		foreach ($tag as $nom_tag => $id_tag) {
-			$this->nouveauTagRecetteIngredient($id_tag, $quantites[$nom_tag], $id_recette);
+			$this->nouvelIngredient($id_tag, $quantites[$nom_tag], $id_recette);
 		}
 	}
 
@@ -107,9 +116,9 @@ trait AjoutEnDBTrait
 		]);
 	}
 
-	private function nouveauTagRecette(int $id_tag, $id_recette): void
+	private function nouvelUstensile(int $id_tag, $id_recette): void
 	{
-		$recette_tag = new TagRecette;
+		$recette_tag = new Ustensile;
 
 		$recette_tag->create([
 			'id_recette' => $id_recette,
@@ -117,9 +126,19 @@ trait AjoutEnDBTrait
 		]);
 	}
 
-	private function nouveauTagRecetteIngredient(int $id_tag, int $quantite, $id_recette): void
+	private function nouveauModeDeCuisson(int $id_tag, $id_recette): void
 	{
-		$recette_tag = new TagRecette;
+		$recette_tag = new ModeDeCuisson;
+
+		$recette_tag->create([
+			'id_recette' => $id_recette,
+			'id_tag' => $id_tag,
+		]);
+	}
+
+	private function nouvelIngredient(int $id_tag, int $quantite, $id_recette): void
+	{
+		$recette_tag = new Ingredient;
 
 		$recette_tag->create([
 			'id_recette' => $id_recette,

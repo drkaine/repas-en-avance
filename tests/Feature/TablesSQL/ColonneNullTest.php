@@ -116,13 +116,6 @@ class ColonneNullTest extends TestCase
 		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
-	public function testTagsRecette(): void
-	{
-		$this->creationTagsRecette();
-
-		$this->assertDatabaseHas('tags_recette', $this->donneesTagRecette());
-	}
-
 	private function creationUser(): void
 	{
 		$user = new User;
