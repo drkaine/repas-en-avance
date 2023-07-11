@@ -90,4 +90,9 @@ trait RecuperationDonneesDeTestTrait
 	{
 		return config('donnee_de_test.ingredient');
 	}
+
+	public function donneesTagRecetteUstensile(): array
+	{
+		return config('donnee_de_test.tag_recette');
+	}
 }

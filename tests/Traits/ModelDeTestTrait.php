@@ -11,6 +11,7 @@ use App\Models\Tag;
 use App\Models\TagRecette;
 use App\Models\TagUser;
 use App\Models\User;
+use App\Models\Ustensile;
 
 trait ModelDeTestTrait
 {
@@ -149,5 +150,12 @@ trait ModelDeTestTrait
 		$ingredient = new Ingredient;
 
 		$ingredient->factory()->create($this->donneesTagRecetteIngredient());
+	}
+
+	public function creationUstensile(): void
+	{
+		$ustensile = new Ustensile;
+
+		$ustensile->factory()->create($this->donneesTagRecetteUstensile());
 	}
 }

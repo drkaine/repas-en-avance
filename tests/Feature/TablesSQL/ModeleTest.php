@@ -88,4 +88,11 @@ class ModeleTest extends TestCase
 
 		$this->assertDatabaseHas('ingredients', $this->donneesTagRecetteIngredient());
 	}
+
+	public function testUstensile(): void
+	{
+		$this->creationUstensile();
+
+		$this->assertDatabaseHas('ustensiles', $this->donneesTagRecetteUstensile());
+	}
 }
