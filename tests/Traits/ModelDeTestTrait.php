@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Tests\Traits;
 
 use App\Models\Ingredient;
+use App\Models\ModeDeCuisson;
 use App\Models\Recette;
 use App\Models\RelationTag;
 use App\Models\Tag;
@@ -157,5 +158,12 @@ trait ModelDeTestTrait
 		$ustensile = new Ustensile;
 
 		$ustensile->factory()->create($this->donneesTagRecetteUstensile());
+	}
+
+	public function creationModeDeCuisson(): void
+	{
+		$ustensile = new ModeDeCuisson;
+
+		$ustensile->factory()->create($this->donneesTagRecetteModeDeCuisson());
 	}
 }

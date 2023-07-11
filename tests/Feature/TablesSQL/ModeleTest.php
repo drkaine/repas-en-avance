@@ -95,4 +95,11 @@ class ModeleTest extends TestCase
 
 		$this->assertDatabaseHas('ustensiles', $this->donneesTagRecetteUstensile());
 	}
+
+	public function testModeDeCuisson(): void
+	{
+		$this->creationModeDeCuisson();
+
+		$this->assertDatabaseHas('mode_de_cuissons', $this->donneesTagRecetteModeDeCuisson());
+	}
 }

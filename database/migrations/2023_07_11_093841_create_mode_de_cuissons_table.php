@@ -14,7 +14,7 @@ return new class extends Migration {
 	 */
 	public function up(): void
 	{
-		Schema::create('ustensiles', function (Blueprint $table): void {
+		Schema::create('mode_de_cuissons', function (Blueprint $table): void {
 			$table->foreignIdFor(Tag::class, 'id_tag');
 			$table->foreignIdFor(Recette::class, 'id_recette');
 			$table->timestamps();
@@ -26,6 +26,6 @@ return new class extends Migration {
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('ustensiles');
+		Schema::dropIfExists('mode_de_cuissons');
 	}
 };

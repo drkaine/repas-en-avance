@@ -95,4 +95,9 @@ trait RecuperationDonneesDeTestTrait
 	{
 		return config('donnee_de_test.tag_recette');
 	}
+
+	public function donneesTagRecetteModeDeCuisson(): array
+	{
+		return config('donnee_de_test.tag_recette');
+	}
 }
