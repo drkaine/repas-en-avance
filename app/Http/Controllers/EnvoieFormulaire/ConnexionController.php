@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
+use App\Services\ModificationUserService;
 use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -22,8 +23,11 @@ class ConnexionController extends Controller
 
 		$user_authentifie = auth()->user();
 
-		$user_authentifie->derniere_connexion = date('Y-m-d');
-		$user_authentifie->save();
+		$modification_user = new ModificationUserService($user_authentifie);
+
+		$modification_user->derniereConnexion();
+
+		$modification_user->sauvegarde();
 
 		return response()->json(['message' => 'connexion réussie'], 201);
 	}

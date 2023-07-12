@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use app\Models\User;
+use App\Services\ModificationUserService;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 
@@ -19,9 +20,11 @@ class ConfirmationController extends Controller
 		$user = $user->where('email', $email_user)->
 			firstOrFail();
 
-		$user->email_verified_at = $date->now();
+		$modification_user = new ModificationUserService($user);
 
-		$user->save();
+		$modification_user->emailVerifiedAt($date->now());
+
+		$modification_user->sauvegarde();
 
 		return view('confirmation_email');
 	}

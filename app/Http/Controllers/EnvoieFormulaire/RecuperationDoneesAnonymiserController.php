@@ -6,6 +6,7 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\ModificationUserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -20,10 +21,13 @@ class RecuperationDoneesAnonymiserController extends Controller
 			first();
 
 		if (password_verify($request->password, $user_recupere->password)) {
-			$user_recupere->nom = $request->nom;
-			$user_recupere->email = $request->email;
+			$modification_user = new ModificationUserService($user_recupere);
 
-			$user_recupere->save();
+			$modification_user->nom($request->nom);
+
+			$modification_user->email($request->email);
+
+			$modification_user->sauvegarde();
 		}
 
 		return redirect('/');

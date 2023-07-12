@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\DansLaBaseDeDonnee\User;
 
-use App\Services\GestionUsersInactifServices;
+use App\Services\GestionUsersInactifService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -22,7 +22,7 @@ class SuppressionTest extends TestCase
 
 	private array $donnees_user_anonyme;
 
-	private GestionUsersInactifServices $anonymisation_helper;
+	private GestionUsersInactifService $anonymisation_helper;
 
 	protected function setUp(): void
 	{
@@ -30,7 +30,7 @@ class SuppressionTest extends TestCase
 
 		$this->donnees_user_anonyme = $this->donnees('user');
 
-		$this->anonymisation_helper = new GestionUsersInactifServices;
+		$this->anonymisation_helper = new GestionUsersInactifService;
 
 		$this->creationUserAnonyme();
 	}

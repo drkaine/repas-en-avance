@@ -9,7 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class GestionUsersInactifServices
+class GestionUsersInactifService
 {
 	public function anonymiser(): void
 	{

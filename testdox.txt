@@ -112,9 +112,9 @@ Modele (Tests\Feature\TableSQL\Modele)
  [x] Mode de cuisson
 
 Modification (Tests\Feature\DansLaBaseDeDonnee\User\Modification)
- [x] Modification du user
- [x] Modification du regime alimentaire
- [x] Modification de la derniere connexion du user
+ [x] Du user
+ [x] Du regime alimentaire
+ [x] De la derniere connexion du user
 
 Mon Compte (Tests\Feature\Affichage\MonCompte)
  [x] User dans mon compte

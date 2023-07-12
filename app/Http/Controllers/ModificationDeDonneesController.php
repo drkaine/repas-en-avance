@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use App\Models\RegimeAlimentaire;
+use App\Services\ModificationUserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -15,10 +16,13 @@ class ModificationDeDonneesController extends Controller
 	{
 		$user = auth()->user();
 
-		$user->nom = $request->nom;
-		$user->email = $request->email;
+		$modification_user = new ModificationUserService($user);
 
-		$user->save();
+		$modification_user->nom($request->nom);
+
+		$modification_user->email($request->email);
+
+		$modification_user->sauvegarde();
 
 		$regime_alimentaire = new RegimeAlimentaire;
 

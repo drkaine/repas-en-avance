@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\DansLaBaseDeDonnee\User;
 
-use App\Services\GestionUsersInactifServices;
+use App\Services\GestionUsersInactifService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -59,7 +59,7 @@ class AnonymisationTest extends TestCase
 
 		$user->save();
 
-		$anonymisation_helper = new GestionUsersInactifServices;
+		$anonymisation_helper = new GestionUsersInactifService;
 
 		$anonymisation_helper->anonymiser();
 

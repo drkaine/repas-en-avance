@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Services\ModificationUserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 
@@ -13,11 +14,15 @@ class AnonymisationDeDonneesController extends Controller
 	{
 		$user = auth()->user();
 
-		$user->nom = 'Anonyme';
-		$user->email = 'anonyme' . $user->id . '@anonyme.fr';
-		$user->email_verified_at = null;
+		$modification_user = new ModificationUserService($user);
 
-		$user->save();
+		$modification_user->nom('Anonyme');
+
+		$modification_user->email('anonyme' . $user->id . '@anonyme.fr');
+
+		$modification_user->emailVerifiedAt(null);
+
+		$modification_user->sauvegarde();
 
 		return redirect('deconnexion');
 	}

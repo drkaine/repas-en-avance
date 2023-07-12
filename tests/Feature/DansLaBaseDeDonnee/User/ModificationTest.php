@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\DansLaBaseDeDonnee\User;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Tests\Traits\ModelDeTestTrait;
@@ -33,7 +34,7 @@ class ModificationTest extends TestCase
 		$this->tags_regimes_alimentaire = config('donnee_de_test.tags_regimes_alimentaire');
 	}
 
-	public function testModificationDuUser(): void
+	public function testDuUser(): void
 	{
 		$user = $this->creationUser();
 
@@ -48,7 +49,7 @@ class ModificationTest extends TestCase
 		$this->assertDatabaseHas('users', $this->donnees_user_modifie);
 	}
 
-	public function testModificationDuRegimeAlimentaire(): void
+	public function testDuRegimeAlimentaire(): void
 	{
 		$user = $this->creationUser();
 
@@ -71,8 +72,10 @@ class ModificationTest extends TestCase
 		$this->assertDatabaseHas('regimes_alimentaires', $this->donnees('regime_alimentaire_modifie'));
 	}
 
-	public function testModificationDeLaDerniereConnexionDuUser(): void
+	public function testDeLaDerniereConnexionDuUser(): void
 	{
+		$date = new Carbon;
+
 		$this->creationUser();
 
 		unset($this->donnees_user['nom']);
@@ -81,7 +84,7 @@ class ModificationTest extends TestCase
 
 		unset($this->donnees_user['password']);
 
-		$this->donnees_user['derniere_connexion'] = date('Y-m-d');
+		$this->donnees_user['derniere_connexion'] = $date->now();
 
 		$this->assertDatabaseHas('users', $this->donnees_user);
 	}
