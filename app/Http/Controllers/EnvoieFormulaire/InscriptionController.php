@@ -7,16 +7,18 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 use App\Http\Controllers\Controller;
 use App\Notifications\ConfirmationEmail;
 use App\Traits\AjoutEnDBTrait;
+use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class InscriptionController extends Controller
 {
 	use AjoutEnDBTrait;
+	use ValidationFormulaireTrait;
 
 	public function inscription(Request $request): JsonResponse
 	{
-		$request->validate(config('validation_formulaire.inscription'));
+		$request->validate($this->recuperationDonneesAValider('inscription'));
 
 		$user = $this->nouveauUser($request);
 

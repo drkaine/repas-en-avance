@@ -3,7 +3,7 @@
 declare(strict_types = 1);
 
 return [
-	'ajoutRecette' => [
+	'ajout_recette' => [
 		'nom' => 'required|string|max:255|min:3',
 		'temps_preparation' => 'required|integer',
 		'lien' => 'string|min:12',
@@ -13,7 +13,7 @@ return [
 		'ingredients' => 'required|array',
 		'quantites' => 'required|array',
 	],
-	'ajoutTag' => [
+	'ajout_tag' => [
 		'nom' => 'required|string|max:100|min:3',
 	],
 	'connexion' => [

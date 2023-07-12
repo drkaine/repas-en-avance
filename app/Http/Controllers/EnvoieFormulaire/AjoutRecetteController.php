@@ -6,16 +6,18 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
 use App\Traits\AjoutEnDBTrait;
+use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class AjoutRecetteController extends Controller
 {
 	use AjoutEnDBTrait;
+	use ValidationFormulaireTrait;
 
 	public function ajoutRecette(Request $request): JsonResponse
 	{
-		$request->validate(config('validation_formulaire.ajoutRecette'));
+		$request->validate($this->recuperationDonneesAValider('ajout_recette'));
 
 		$ustensiles = $request->ustensiles;
 

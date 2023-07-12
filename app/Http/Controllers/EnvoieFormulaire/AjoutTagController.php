@@ -6,16 +6,18 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
 use App\Traits\AjoutEnDBTrait;
+use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class AjoutTagController extends Controller
 {
 	use AjoutEnDBTrait;
+	use ValidationFormulaireTrait;
 
 	public function ajoutTag(Request $request): JsonResponse
 	{
-		$request->validate(config('validation_formulaire.ajoutTag'));
+		$request->validate($this->recuperationDonneesAValider('ajout_tag'));
 
 		$id_tag = $this->nouveauTag($request);
 

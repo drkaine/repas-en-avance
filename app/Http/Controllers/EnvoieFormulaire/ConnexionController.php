@@ -5,15 +5,18 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
+use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ConnexionController extends Controller
 {
+	use ValidationFormulaireTrait;
+
 	public function connexion(Request $request): JsonResponse
 	{
-		$user = $request->validate(config('validation_formulaire.connexion'));
+		$user = $request->validate($this->recuperationDonneesAValider('connexion'));
 
 		Auth::attempt($user);
 
