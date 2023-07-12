@@ -21,7 +21,7 @@ class AjoutTagController extends Controller
 
 		$id_tag = $this->nouveauTag($request);
 
-		$this->relationTagsparent($id_tag, $request);
+		$this->relationTagsParent($id_tag, $request);
 
 		$this->relationTagsEnfant($id_tag, $request);
 
