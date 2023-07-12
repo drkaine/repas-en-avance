@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recette;
 use App\Models\Tag;
+use App\Services\RecuperationTagService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
@@ -16,9 +17,13 @@ class AffichageDonneesController extends Controller
 
 	private Recette $recette;
 
+	private RecuperationTagService $recuperation_tag;
+
 	public function __construct()
 	{
 		$this->tag = new Tag;
+
+		$this->recuperation_tag = new RecuperationTagService;
 
 		$this->recette = new Recette;
 	}
@@ -44,21 +49,15 @@ class AffichageDonneesController extends Controller
 			return redirect('inscription');
 		}
 
-		$id_tag_ustensiles = $this->tag->select('id')->
-			where('nom', 'Ustensiles')->
-			first();
+		$id_tag_ustensiles = $this->recuperation_tag->premierParNom('Ustensiles');
 
 		$ustensiles = $id_tag_ustensiles->recuperationTagEnfants;
 
-		$id_tag_mode_de_cuissons = $this->tag->select('id')->
-			where('nom', 'Mode de cuisson')->
-			first();
+		$id_tag_mode_de_cuissons = $this->recuperation_tag->premierParNom('Mode de cuisson');
 
 		$mode_de_cuissons = $id_tag_mode_de_cuissons->recuperationTagEnfants;
 
-		$id_tag_ingredients = $this->tag->select('id')->
-			where('nom', 'Ingrédients')->
-			first();
+		$id_tag_ingredients = $this->recuperation_tag->premierParNom('Ingrédients');
 
 		$ingredients = $id_tag_ingredients->recuperationTagEnfants;
 
@@ -73,9 +72,7 @@ class AffichageDonneesController extends Controller
 			return redirect('inscription');
 		}
 
-		$id_tag_parent = $this->tag->select('id')->
-			where('nom', 'Régime alimentaire')->
-			first();
+		$id_tag_parent = $this->recuperation_tag->premierParNom('Régime alimentaire');
 
 		$tags_regimes_alimentaires = $id_tag_parent->recuperationTagEnfants;
 
@@ -98,9 +95,7 @@ class AffichageDonneesController extends Controller
 			return redirect('mon_compte');
 		}
 
-		$id_tag_parent = $this->tag->select('id')->
-			where('nom', 'Régime alimentaire')->
-			first();
+		$id_tag_parent = $this->recuperation_tag->premierParNom('Régime alimentaire');
 
 		$regimes_alimentaires = $id_tag_parent->recuperationTagEnfants;
 
