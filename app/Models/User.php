@@ -51,7 +51,7 @@ class User extends Authenticatable
 
 	public function recuperationTags(): BelongsToMany
 	{
-		return $this->belongsToMany(Tag::class, 'tags_user', 'id_user', 'id_tag');
+		return $this->belongsToMany(Tag::class, 'regimes_alimentaires', 'id_user', 'id_tag');
 	}
 
 	public function routeNotificationForMail(): string

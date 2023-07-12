@@ -24,13 +24,13 @@
             </div>
 
             <div>
-                <label for="regimes_alimentaires">Régime alimentaire</label>
-                <select name="regimes_alimentaires[]" multiple>
-                    @foreach($regimes_alimentaires as $regime_alimentaire)
-                        <option value="{{  $regime_alimentaire->id  }}">{{  $regime_alimentaire->nom  }}</option>
+                <label for="tags_regimes_alimentaires">Régime alimentaire</label>
+                <select name="tags_regimes_alimentaires[]" multiple>
+                    @foreach($tags_regimes_alimentaires as $tag_regime_alimentaire)
+                        <option value="{{  $tag_regime_alimentaire->id  }}">{{  $tag_regime_alimentaire->nom  }}</option>
                     @endforeach
                 </select>
-                @error('regimes_alimentaires')
+                @error('tags_regimes_alimentaires')
                     <span>{{ $message }}</span>
                 @enderror
             </div>

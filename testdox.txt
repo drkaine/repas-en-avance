@@ -106,7 +106,7 @@ Modele (Tests\Feature\TableSQL\Modele)
  [x] Tags
  [x] Relation tags
  [x] Recettes
- [x] Tags user
+ [x] Regime alimentaire
  [x] Ingredient
  [x] Ustensile
  [x] Mode de cuisson
@@ -119,7 +119,7 @@ Modification (Tests\Feature\DansLaBaseDeDonnee\User\Modification)
 Mon Compte (Tests\Feature\Affichage\MonCompte)
  [x] User dans mon compte
  [x] Tag dans mon compte
- [x] Tag user dans mon compte
+ [x] Regime alimentaire dans mon compte
 
 Notification (Tests\Feature\Envoie\Notification)
  [x] Verification email is sent
@@ -143,7 +143,7 @@ Sans User Connecte (Tests\Feature\Affichage\DesPages\SansUserConnecte)
 
 Suppression (Tests\Feature\DansLaBaseDeDonnee\User\Suppression)
  [x] Users anonymes
- [x] Tags user des users anonymes
+ [x] Regime alimentaire des users anonymes
 
 User Connecte (Tests\Feature\UserConnecte)
  [x] Inscription

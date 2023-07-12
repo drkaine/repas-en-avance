@@ -50,6 +50,6 @@ class ApresLInscriptionTest extends TestCase
 
 		$this->creationTag();
 
-		$this->assertDatabaseHas('tags_user', $this->donnees('tag_user'));
+		$this->assertDatabaseHas('regimes_alimentaires', $this->donnees('regime_alimentaire'));
 	}
 }

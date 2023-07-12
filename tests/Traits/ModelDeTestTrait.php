@@ -7,9 +7,9 @@ namespace Tests\Traits;
 use App\Models\Ingredient;
 use App\Models\ModeDeCuisson;
 use App\Models\Recette;
+use App\Models\RegimeAlimentaire;
 use App\Models\RelationTag;
 use App\Models\Tag;
-use App\Models\TagUser;
 use App\Models\User;
 use App\Models\Ustensile;
 
@@ -61,11 +61,11 @@ trait ModelDeTestTrait
 		$this->creationRelationTags();
 	}
 
-	public function creationTagsUser(): void
+	public function creationRegimeAlimentaire(): void
 	{
-		$tag_user = new TagUser;
+		$regime_alimentaire = new RegimeAlimentaire;
 
-		$tag_user->factory()->create($this->donnees('tag_user'));
+		$regime_alimentaire->factory()->create($this->donnees('regime_alimentaire'));
 	}
 
 	public function creationTagsRegimesAlimentaire(): void

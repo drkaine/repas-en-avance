@@ -8,9 +8,9 @@ use Faker\Generator;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TagUser>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RegimeAlimentaire>
  */
-class TagUserFactory extends Factory
+class RegimeAlimentaireFactory extends Factory
 {
 	/**
 	 * Define the model's default state.

@@ -54,7 +54,7 @@ class ModificationTest extends TestCase
 
 		$this->creationRegimesAlimentaire();
 
-		$this->creationTagsUser();
+		$this->creationRegimeAlimentaire();
 
 		unset($this->donnees_user['password']);
 
@@ -66,9 +66,9 @@ class ModificationTest extends TestCase
 
 		$this->post('/modification-user', $this->donnees_user_modifie);
 
-		$this->assertDatabaseMissing('tags_user', $this->donnees('tag_user'));
+		$this->assertDatabaseMissing('regimes_alimentaires', $this->donnees('regime_alimentaire'));
 
-		$this->assertDatabaseHas('tags_user', $this->donnees('tag_user_modifie'));
+		$this->assertDatabaseHas('regimes_alimentaires', $this->donnees('regime_alimentaire_modifie'));
 	}
 
 	public function testModificationDeLaDerniereConnexionDuUser(): void

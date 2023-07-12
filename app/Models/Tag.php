@@ -28,6 +28,6 @@ class Tag extends Model
 
 	public function recuperationUsers(): BelongsToMany
 	{
-		return $this->belongsToMany(User::class, 'tags_users', 'id_tag', 'id_user');
+		return $this->belongsToMany(User::class, 'regimes_alimentaires', 'id_tag', 'id_user');
 	}
 }

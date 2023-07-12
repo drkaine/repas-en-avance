@@ -39,27 +39,27 @@ class MonCompteTest extends TestCase
 	{
 		$response = $this->get('mon-compte');
 
+		$tags_regimes_alimentaires = $response->viewData('tags_regimes_alimentaires');
+
+		foreach ($tags_regimes_alimentaires as $tag_regime_alimentaire) {
+			$response->assertSee($tag_regime_alimentaire->nom);
+
+			$response->assertSee($tag_regime_alimentaire->id);
+		}
+	}
+
+	public function testRegimeAlimentaireDansMonCompte(): void
+	{
+		$this->creationRegimeAlimentaire();
+
+		$response = $this->get('mon-compte');
+
 		$regimes_alimentaires = $response->viewData('regimes_alimentaires');
 
 		foreach ($regimes_alimentaires as $regime_alimentaire) {
 			$response->assertSee($regime_alimentaire->nom);
 
 			$response->assertSee($regime_alimentaire->id);
-		}
-	}
-
-	public function testTagUserDansMonCompte(): void
-	{
-		$this->creationTagsUser();
-
-		$response = $this->get('mon-compte');
-
-		$tags_user = $response->viewData('tags_user');
-
-		foreach ($tags_user as $tag_user) {
-			$response->assertSee($tag_user->nom);
-
-			$response->assertSee($tag_user->id);
 		}
 	}
 }

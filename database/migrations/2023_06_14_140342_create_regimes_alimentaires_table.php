@@ -14,7 +14,7 @@ return new class extends Migration {
 	 */
 	public function up(): void
 	{
-		Schema::create('tags_user', function (Blueprint $table): void {
+		Schema::create('regimes_alimentaires', function (Blueprint $table): void {
 			$table->foreignIdFor(Tag::class, 'id_tag');
 			$table->foreignIdFor(User::class, 'id_user');
 			$table->timestamps();
@@ -26,6 +26,6 @@ return new class extends Migration {
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('tags_user');
+		Schema::dropIfExists('regimes_alimentaires');
 	}
 };

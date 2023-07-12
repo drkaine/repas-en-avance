@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Services;
 
-use App\Models\TagUser;
+use App\Models\RegimeAlimentaire;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +31,7 @@ class GestionUsersInactifServices
 
 		$users = new User;
 
-		$tags_user = new TagUser;
+		$regimes_alimentaires = new RegimeAlimentaire;
 
 		$id_users_anonymes = $users->whereDate('derniere_connexion', '<', $date->now()->subMonths(6))->
 			pluck('id');
@@ -39,7 +39,7 @@ class GestionUsersInactifServices
 		$users->whereIn('id', $id_users_anonymes)->
 			delete();
 
-		$tags_user->whereIn('id_user', $id_users_anonymes)->
+		$regimes_alimentaires->whereIn('id_user', $id_users_anonymes)->
 			delete();
 	}
 }

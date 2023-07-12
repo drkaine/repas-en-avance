@@ -103,11 +103,11 @@ return [
 		'id_tag_parent' => 2,
 		'id_tag_enfant' => 1,
 	],
-	'tag_user' => [
+	'regime_alimentaire' => [
 		'id_user' => 1,
 		'id_tag' => 2,
 	],
-	'tag_user_modifie' => [
+	'regime_alimentaire_modifie' => [
 		'id_user' => 1,
 		'id_tag' => 3,
 	],

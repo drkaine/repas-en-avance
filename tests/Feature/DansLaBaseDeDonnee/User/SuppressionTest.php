@@ -42,16 +42,16 @@ class SuppressionTest extends TestCase
 		$this->assertDatabaseMissing('users', $this->donnees_user_anonyme);
 	}
 
-	public function testTagsUserDesUsersAnonymes(): void
+	public function testRegimeAlimentaireDesUsersAnonymes(): void
 	{
 		$date = new Carbon;
 
 		$donnees_user_anonyme['derniere_connexion'] = $date->now()->subMonths(7);
 
-		$this->creationTagsUser();
+		$this->creationRegimeAlimentaire();
 
 		$this->anonymisation_helper->supprimer();
 
-		$this->assertDatabaseMissing('tags_user', $this->donnees('tag_user'));
+		$this->assertDatabaseMissing('regimes_alimentaires', $this->donnees('regime_alimentaire'));
 	}
 }

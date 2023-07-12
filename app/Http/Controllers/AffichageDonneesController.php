@@ -77,11 +77,11 @@ class AffichageDonneesController extends Controller
 			where('nom', 'Régime alimentaire')->
 			first();
 
-		$regimes_alimentaires = $id_tag_parent->recuperationTagEnfants;
+		$tags_regimes_alimentaires = $id_tag_parent->recuperationTagEnfants;
 
-		$tags_user = $user->recuperationTags;
+		$regimes_alimentaires = $user->recuperationTags;
 
-		return view('mon_compte', compact('user', 'regimes_alimentaires', 'tags_user'));
+		return view('mon_compte', compact('user', 'tags_regimes_alimentaires', 'regimes_alimentaires'));
 	}
 
 	public function pageInscription(): View | RedirectResponse | Redirector

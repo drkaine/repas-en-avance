@@ -7,9 +7,9 @@ namespace App\Traits;
 use App\Models\Ingredient;
 use App\Models\ModeDeCuisson;
 use App\Models\Recette;
+use App\Models\RegimeAlimentaire;
 use App\Models\RelationTag;
 use App\Models\Tag;
-use App\Models\TagUser;
 use App\Models\User;
 use App\Models\Ustensile;
 use Illuminate\Http\Request;
@@ -78,10 +78,10 @@ trait AjoutEnDBTrait
 		return $recette;
 	}
 
-	public function tagsUser(array $regimes_alimentaires, int $id_user): void
+	public function regimesAlimentaires(array $regimes_alimentaires, int $id_user): void
 	{
 		foreach ($regimes_alimentaires as $id_tag) {
-			$this->nouveauTagUser($id_tag, $id_user);
+			$this->nouveauRegimeAlimentaire($id_tag, $id_user);
 		}
 	}
 
@@ -106,9 +106,9 @@ trait AjoutEnDBTrait
 		}
 	}
 
-	private function nouveauTagUser(int $id_tag, $id_user): void
+	private function nouveauRegimeAlimentaire(int $id_tag, $id_user): void
 	{
-		$user_tag = new TagUser;
+		$user_tag = new RegimeAlimentaire;
 
 		$user_tag->create([
 			'id_user' => $id_user,

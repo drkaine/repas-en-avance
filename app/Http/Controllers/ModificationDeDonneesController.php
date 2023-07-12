@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
-use App\Models\TagUser;
+use App\Models\RegimeAlimentaire;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -20,13 +20,13 @@ class ModificationDeDonneesController extends Controller
 
 		$user->save();
 
-		$tags_user = new TagUser;
+		$regime_alimentaire = new RegimeAlimentaire;
 
-		$tags_user->where('id_user', $user->id)->
+		$regime_alimentaire->where('id_user', $user->id)->
 			delete();
 
 		foreach ($request->regimes_alimentaires as $id_tag) {
-			$tags_user->create([
+			$regime_alimentaire->create([
 				'id_user' => $user->id,
 				'id_tag' => $id_tag,
 			]);

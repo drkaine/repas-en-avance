@@ -26,7 +26,7 @@ class InscriptionController extends Controller
 			$regimes_alimentaires = [];
 		}
 
-		$this->tagsUser($regimes_alimentaires, $user->id);
+		$this->regimesAlimentaires($regimes_alimentaires, $user->id);
 
 		$user->notify(new ConfirmationEmail);
 
