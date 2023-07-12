@@ -57,9 +57,7 @@ class MonCompteTest extends TestCase
 		$regimes_alimentaires = $response->viewData('regimes_alimentaires');
 
 		foreach ($regimes_alimentaires as $regime_alimentaire) {
-			$response->assertSee($regime_alimentaire->nom);
-
-			$response->assertSee($regime_alimentaire->id);
+			$response->assertSee($regime_alimentaire);
 		}
 	}
 }

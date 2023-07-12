@@ -27,7 +27,7 @@
                 <label for="tags_regimes_alimentaires">Régime alimentaire</label>
                 <select name="tags_regimes_alimentaires[]" multiple>
                     @foreach($tags_regimes_alimentaires as $tag_regime_alimentaire)
-                        <option value="{{  $tag_regime_alimentaire->id  }}">{{  $tag_regime_alimentaire->nom  }}</option>
+                        <option value="{{  $tag_regime_alimentaire->id  }}" @if(in_array($tag_regime_alimentaire->id, $regimes_alimentaires)) selected @endif>>{{  $tag_regime_alimentaire->nom  }}</option>
                     @endforeach
                 </select>
                 @error('tags_regimes_alimentaires')

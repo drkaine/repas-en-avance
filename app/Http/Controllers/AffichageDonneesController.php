@@ -79,7 +79,13 @@ class AffichageDonneesController extends Controller
 
 		$tags_regimes_alimentaires = $id_tag_parent->recuperationTagEnfants;
 
-		$regimes_alimentaires = $user->recuperationTags;
+		$recuperationTags = $user->recuperationTags;
+
+		$regimes_alimentaires = [];
+
+		foreach ($recuperationTags as $tag) {
+			$regimes_alimentaires[] = $tag->id;
+		}
 
 		return view('mon_compte', compact('user', 'tags_regimes_alimentaires', 'regimes_alimentaires'));
 	}
