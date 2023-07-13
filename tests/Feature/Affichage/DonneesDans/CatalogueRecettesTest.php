@@ -20,6 +20,10 @@ class CatalogueRecettesTest extends TestCase
 	{
 		$this->creationRecette();
 
+		$this->creationTagIngredient();
+
+		$this->creationIngredient();
+
 		$response = $this->get('catalogue-recettes');
 
 		$recettes = $response->viewData('recettes');
@@ -32,6 +36,27 @@ class CatalogueRecettesTest extends TestCase
 			$response->assertSee($recette->temps_cuisson);
 
 			$response->assertSee($recette->temps_repos);
+		}
+	}
+
+	public function testIngredientDansCatalogueRecettes(): void
+	{
+		$this->creationRecette();
+
+		$this->creationTagIngredient();
+
+		$this->creationIngredient();
+
+		$response = $this->get('catalogue-recettes');
+
+		$recettes = $response->viewData('recettes');
+
+		foreach ($recettes as $recette) {
+			foreach ($recette->recuperationIngredient as $ingredient) {
+				$response->assertSee($ingredient->id);
+
+				$response->assertSee($ingredient->nom);
+			}
 		}
 	}
 }

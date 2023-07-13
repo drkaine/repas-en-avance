@@ -53,6 +53,7 @@ Avec User Connecte (Tests\Feature\Affichage\DesPages\AvecUserConnecte)
 
 Catalogue Recettes (Tests\Feature\Affichage\CatalogueRecettes)
  [x] Recette dans catalogue recettes
+ [x] Ingredient dans catalogue recettes
 
 Colonne Null (Tests\Feature\TableSQL\ColonneNull)
  [x] De la table users champs email verified at

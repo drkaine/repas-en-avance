@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Recette extends Model
 {
@@ -21,4 +22,9 @@ class Recette extends Model
 		'description',
 		'reference_livre',
 	];
+
+	public function recuperationIngredient(): BelongsToMany
+	{
+		return $this->belongsToMany(Tag::class, 'ingredients', 'id_recette', 'id_tag');
+	}
 }

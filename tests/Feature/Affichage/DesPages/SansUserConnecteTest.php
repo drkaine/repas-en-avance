@@ -50,6 +50,10 @@ class SansUserConnecteTest extends TestCase
 	{
 		$this->creationRecette();
 
+		$this->creationTagIngredient();
+
+		$this->creationIngredient();
+
 		$response = $this->get('catalogue-recettes');
 
 		$response->assertStatus(200);
