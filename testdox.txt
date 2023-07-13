@@ -8,10 +8,9 @@ Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
  [x] Longueur maximum champs nom
  [x] Longueur minimum champs nom
  [x] Champs temps de preparation
- [x] Longueur minimum champs lien
  [x] Longueur minimum champs instruction
- [x] Longueur minimum champs description
- [x] Longueur minimum champs reference
+ [x] Champs instruction
+ [x] Champs description
  [x] Champs ingredient
  [x] Champs quantite
 

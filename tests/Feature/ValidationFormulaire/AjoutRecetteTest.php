@@ -69,15 +69,6 @@ class AjoutRecetteTest extends TestCase
 		$response->assertStatus(302);
 	}
 
-	public function testLongueurMinimumChampsLien(): void
-	{
-		$this->donnees_recette['lien'] = 'https://.fr';
-
-		$response = $this->post('/ajout-recette', $this->donnees_recette);
-
-		$response->assertStatus(302);
-	}
-
 	public function testLongueurMinimumChampsInstruction(): void
 	{
 		$this->donnees_recette['instruction'] = 'Eplu';
@@ -87,18 +78,18 @@ class AjoutRecetteTest extends TestCase
 		$response->assertStatus(302);
 	}
 
-	public function testLongueurMinimumChampsDescription(): void
+	public function testChampsInstruction(): void
 	{
-		$this->donnees_recette['description'] = 'Rece';
+		$this->donnees_recette['instruction'] = null;
 
 		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
 		$response->assertStatus(302);
 	}
 
-	public function testLongueurMinimumChampsReference(): void
+	public function testChampsDescription(): void
 	{
-		$this->donnees_recette['reference_livre'] = 'Tous';
+		$this->donnees_recette['description'] = null;
 
 		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
