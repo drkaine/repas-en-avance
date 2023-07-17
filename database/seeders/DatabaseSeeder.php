@@ -38,6 +38,14 @@ class DatabaseSeeder extends Seeder
 			'nom' => 'Four',
 		]);
 
+		$tag->factory()->create([
+			'nom' => 'Ingrédients',
+		]);
+
+		$tag->factory()->create([
+			'nom' => 'Carotte',
+		]);
+
 		$relation_tag = new RelationTag;
 
 		$relation_tag->factory()->create([
@@ -53,6 +61,11 @@ class DatabaseSeeder extends Seeder
 		$relation_tag->factory()->create([
 			'id_tag_parent' => 5,
 			'id_tag_enfant' => 6,
+		]);
+
+		$relation_tag->factory()->create([
+			'id_tag_parent' => 7,
+			'id_tag_enfant' => 8,
 		]);
 	}
 }
