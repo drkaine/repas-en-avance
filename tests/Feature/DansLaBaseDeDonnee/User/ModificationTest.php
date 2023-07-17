@@ -61,8 +61,8 @@ class ModificationTest extends TestCase
 
 		$this->actingAs($user);
 
-		$this->donnees_user_modifie['regimes_alimentaires'] = [
-			3,
+		$this->donnees_user_modifie['tags_regimes_alimentaires'] = [
+			'3',
 		];
 
 		$this->post('/modification-user', $this->donnees_user_modifie);

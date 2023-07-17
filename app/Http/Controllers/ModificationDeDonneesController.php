@@ -7,15 +7,14 @@ namespace App\Http\Controllers;
 use App\Models\RegimeAlimentaire;
 use App\Services\ModificationUserService;
 use App\Traits\AjoutEnDBTrait;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 
 class ModificationDeDonneesController extends Controller
 {
 	use AjoutEnDBTrait;
 
-	public function monCompte(Request $request): RedirectResponse | Redirector
+	public function monCompte(Request $request): JsonResponse
 	{
 		$user = auth()->user();
 
@@ -32,8 +31,8 @@ class ModificationDeDonneesController extends Controller
 		$regime_alimentaire->where('id_user', $user->id)->
 			delete();
 
-		$this->regimesAlimentaires($request->regimes_alimentaires, $user->id);
+		$this->regimesAlimentaires($request->tags_regimes_alimentaires, $user->id);
 
-		return redirect('/');
+		return response()->json(['message' => 'modification réussie'], 201);
 	}
 }

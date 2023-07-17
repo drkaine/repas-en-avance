@@ -43,7 +43,7 @@ class ApresLInscriptionTest extends TestCase
 	public function testUserTagApresLInscription(): void
 	{
 		$this->donnees_user['regimes_alimentaires'] = [
-			'Catégorie' => 2,
+			'2',
 		];
 
 		$this->post('/inscription', $this->donnees_user);

@@ -55,7 +55,7 @@ class RedirectionTest extends TestCase
 
 		unset($this->donnees_user['password']);
 
-		$this->donnees_user['regimes_alimentaires'] = [];
+		$this->donnees_user['tags_regimes_alimentaires'] = [];
 
 		$response = $this->post('/modification-user', $this->donnees_user);
 

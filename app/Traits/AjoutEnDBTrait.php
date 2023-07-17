@@ -106,7 +106,7 @@ trait AjoutEnDBTrait
 		}
 	}
 
-	private function nouveauRegimeAlimentaire(int $id_tag, $id_user): void
+	private function nouveauRegimeAlimentaire(string $id_tag, $id_user): void
 	{
 		$user_tag = new RegimeAlimentaire;
 
