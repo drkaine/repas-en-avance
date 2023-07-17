@@ -92,7 +92,7 @@ class AffichageDonneesController extends Controller
 		$user = auth()->user();
 
 		if ($user) {
-			return redirect('mon_compte');
+			return redirect('mon-compte');
 		}
 
 		$id_tag_parent = $this->recuperation_tag->premierParNom('Régime alimentaire');

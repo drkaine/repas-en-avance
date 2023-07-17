@@ -22,7 +22,7 @@ class UserConnecteTest extends TestCase
 
 		$response = $this->get('inscription');
 
-		$response->assertRedirect('mon_compte');
+		$response->assertRedirect('mon-compte');
 	}
 
 	public function testConnexion(): void
@@ -31,6 +31,6 @@ class UserConnecteTest extends TestCase
 
 		$response = $this->get('connexion');
 
-		$response->assertRedirect('mon_compte');
+		$response->assertRedirect('mon-compte');
 	}
 }

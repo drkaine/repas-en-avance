@@ -21,7 +21,7 @@ class Controller extends BaseController
 		$user = auth()->user();
 
 		if ($user) {
-			return redirect('mon_compte');
+			return redirect('mon-compte');
 		}
 
 		return view('connexion');
