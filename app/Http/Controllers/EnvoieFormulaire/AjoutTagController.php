@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
+use App\Services\VerificationDonneeRequestService;
 use App\Traits\AjoutEnDBTrait;
 use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\JsonResponse;
@@ -21,10 +22,16 @@ class AjoutTagController extends Controller
 
 		$id_tag = $this->nouveauTag($request);
 
-		$this->relationTagsParent($id_tag, $request);
+		$verification_donnee_request = new VerificationDonneeRequestService($request);
 
-		$this->relationTagsEnfant($id_tag, $request);
+		$tags_parent = $verification_donnee_request->selectMutiple('tags_parent');
 
-		return response()->json(['message' => 'connexion réussie'], 201);
+		$tags_enfant = $verification_donnee_request->selectMutiple('tags_enfant');
+
+		$this->relationTagsParent($id_tag, $tags_parent);
+
+		$this->relationTagsEnfant($id_tag, $tags_enfant);
+
+		return response()->json(['message' => 'Tag ajouté'], 201);
 	}
 }

@@ -39,10 +39,10 @@ class ApresLajoutTagTest extends TestCase
 
 		$this->donnees_tag = [
 			'nom' => 'Plat',
-			'id_tags_parent' => [
-				1,
+			'tags_parent' => [
+				'1',
 			],
-			'id_tags_enfant' => [],
+			'tags_enfant' => null,
 		];
 
 		$this->post('/ajout-tag', $this->donnees_tag);
@@ -56,9 +56,9 @@ class ApresLajoutTagTest extends TestCase
 
 		$this->donnees_tag = [
 			'nom' => 'Plat',
-			'id_tags_parent' => [],
-			'id_tags_enfant' => [
-				1,
+			'tags_parent' => null,
+			'tags_enfant' => [
+				'1',
 			],
 		];
 

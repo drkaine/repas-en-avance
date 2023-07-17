@@ -38,17 +38,17 @@ trait AjoutEnDBTrait
 		return $tag->id;
 	}
 
-	public function relationTagsParent(int $id_tag_enfant, Request $request): void
+	public function relationTagsParent(int $id_tag_enfant, array $tags_parent): void
 	{
-		foreach ($request->id_tags_parent as $id_tag_parent) {
-			$this->nouvelleRelationTag($id_tag_parent, $id_tag_enfant);
+		foreach ($tags_parent as $id_tag_parent) {
+			$this->nouvelleRelationTag((int) $id_tag_parent, $id_tag_enfant);
 		}
 	}
 
-	public function relationTagsEnfant(int $id_tag_parent, Request $request): void
+	public function relationTagsEnfant(int $id_tag_parent, array $tags_enfant): void
 	{
-		foreach ($request->id_tags_enfant as $id_tag_enfant) {
-			$this->nouvelleRelationTag($id_tag_parent, $id_tag_enfant);
+		foreach ($tags_enfant as $id_tag_enfant) {
+			$this->nouvelleRelationTag($id_tag_parent, (int) $id_tag_enfant);
 		}
 	}
 
@@ -81,7 +81,7 @@ trait AjoutEnDBTrait
 	public function regimesAlimentaires(array $regimes_alimentaires, int $id_user): void
 	{
 		foreach ($regimes_alimentaires as $id_tag) {
-			$this->nouveauRegimeAlimentaire($id_tag, $id_user);
+			$this->nouveauRegimeAlimentaire((int) $id_tag, $id_user);
 		}
 	}
 
@@ -106,7 +106,7 @@ trait AjoutEnDBTrait
 		}
 	}
 
-	private function nouveauRegimeAlimentaire(string $id_tag, $id_user): void
+	private function nouveauRegimeAlimentaire(int $id_tag, $id_user): void
 	{
 		$user_tag = new RegimeAlimentaire;
 

@@ -4,33 +4,33 @@
     @csrf
 
     <div>
-        <label for="tag">Nom</label>
-        <input id="tag" type="text" name="tag"required autofocus>
-        @error('tag')
+        <label for="nom">Nom</label>
+        <input id="nom" type="text" name="nom"required autofocus>
+        @error('nom')
             <span>{{ $message }}</span>
         @enderror
     </div>
 
     <div>
-        <label for="nom_tags_parent">Tag parent</label>
-        <select name="nom_tags_parent[]" multiple>
+        <label for="tags_parent">Tag parent</label>
+        <select name="tags_parent[]" multiple>
             @foreach($tags as $tag)
                 <option value="{{  $tag->id  }}">{{  $tag->nom  }}</option>
             @endforeach
         </select>
-        @error('nom_tags_parent')
+        @error('tags_parent')
             <span>{{ $message }}</span>
         @enderror
     </div>
 
     <div>
-        <label for="nom_tags_enfant">Tag enfant</label>
-        <select name="nom_tags_enfant[]" multiple>
+        <label for="tags_enfant">Tag enfant</label>
+        <select name="tags_enfant[]" multiple>
             @foreach($tags as $tag)
                 <option value="{{  $tag->id  }}">{{  $tag->nom  }}</option>
             @endforeach
         </select>
-        @error('tags')
+        @error('tags_enfant')
             <span>{{ $message }}</span>
         @enderror
     </div>
