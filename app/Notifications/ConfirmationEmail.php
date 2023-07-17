@@ -37,9 +37,11 @@ class ConfirmationEmail extends Notification
 		$lien_de_confirmation = url('/confirmation-email/' . $notifiable->email);
 
 		return (new MailMessage)->
-			from('sender@example.com', 'Sender Name')->
-			subject('Confirmation de l\'adresse e-mail')->
-			line('Veuillez cliquer sur le bouton ci-dessous pour confirmer votre adresse e-mail.')->
+			from('repas_en_avance@ne_pas_repondre.fr', 'Repas en avance')->
+			subject('Confirmation de votre adresse e-mail')->
+			line('Bonjour,
+				Pour profiter de votre compte,
+				Veuillez cliquer sur le bouton ci-dessous pour confirmer votre adresse e-mail.')->
 			action('Confirmer l\'adresse e-mail', $lien_de_confirmation)->
 			line('Si vous n\'avez pas créé de compte, aucune action n\'est requise.');
 	}
