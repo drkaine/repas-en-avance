@@ -88,21 +88,21 @@ trait AjoutEnDBTrait
 	public function ustensile(array $tag, int $id_recette): void
 	{
 		foreach ($tag as $id_tag) {
-			$this->nouvelUstensile($id_tag, $id_recette);
+			$this->nouvelUstensile((int) $id_tag, $id_recette);
 		}
 	}
 
 	public function modeDeCuisson(array $tag, int $id_recette): void
 	{
 		foreach ($tag as $id_tag) {
-			$this->nouveauModeDeCuisson($id_tag, $id_recette);
+			$this->nouveauModeDeCuisson((int) $id_tag, $id_recette);
 		}
 	}
 
-	public function ingredient(array $tag, array $quantites, int $id_recette): void
+	public function ingredient(array $tag, array $quantitees, int $id_recette): void
 	{
-		foreach ($tag as $nom_tag => $id_tag) {
-			$this->nouvelIngredient($id_tag, $quantites[$nom_tag], $id_recette);
+		foreach ($tag as $id_tag) {
+			$this->nouvelIngredient((int) $id_tag, (int) $quantitees[$id_tag], $id_recette);
 		}
 	}
 
@@ -136,7 +136,7 @@ trait AjoutEnDBTrait
 		]);
 	}
 
-	private function nouvelIngredient(int $id_tag, int $quantite, $id_recette): void
+	private function nouvelIngredient(int $id_tag, int $quantite, int $id_recette): void
 	{
 		$recette_tag = new Ingredient;
 

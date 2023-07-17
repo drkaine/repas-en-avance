@@ -28,11 +28,11 @@ class FormulaireTest extends TestCase
 		$this->donnees_recette = $this->donnees('recette');
 
 		$this->donnees_recette['ingredients'] = [
-			'Carotte' => 2,
+			'Carotte' => '2',
 		];
 
-		$this->donnees_recette['quantites'] = [
-			'Carotte' => 1,
+		$this->donnees_recette['quantitees'] = [
+			'2' => '1',
 		];
 	}
 

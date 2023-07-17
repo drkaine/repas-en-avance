@@ -35,11 +35,11 @@ class ApresLAjoutRecetteTest extends TestCase
 		$this->donnees_ingredient = $this->donnees('ingredient');
 
 		$this->donnees_recette['ingredients'] = [
-			'Carotte' => 2,
+			'Carotte' => '2',
 		];
 
-		$this->donnees_recette['quantites'] = [
-			'Carotte' => 1,
+		$this->donnees_recette['quantitees'] = [
+			'2' => '1',
 		];
 	}
 
@@ -47,7 +47,7 @@ class ApresLAjoutRecetteTest extends TestCase
 	{
 		$this->post('/ajout-recette', $this->donnees_recette);
 
-		unset($this->donnees_recette['ingredients'], $this->donnees_recette['quantites']);
+		unset($this->donnees_recette['ingredients'], $this->donnees_recette['quantitees']);
 
 		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}

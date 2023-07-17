@@ -107,6 +107,16 @@
     </div>
 
     <div>
+        <label for="quantitees">quantitées</label>
+        @foreach($ingredients as $ingredient)
+            <input id="quantitees" type="text" name="quantitees[{{  $ingredient->id  }}]">
+        @endforeach
+        @error('quantitees')
+            <span>{{ $message }}</span>
+        @enderror
+    </div>
+
+    <div>
         <button type="submit">Ajouter la recette</button>
     </div>
 </form>

@@ -32,8 +32,8 @@ class AjoutRecetteController extends Controller
 
 		$this->modeDeCuisson($mode_de_cuissons, $recette->id);
 
-		$this->Ingredient($request->ingredients, $request->quantites, $recette->id);
+		$this->Ingredient($request->ingredients, $request->quantitees, $recette->id);
 
-		return response()->json(['message' => 'connexion réussie'], 201);
+		return response()->json(['message' => 'recette ajoutée'], 201);
 	}
 }

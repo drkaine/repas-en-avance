@@ -9,7 +9,7 @@ return [
 		'instruction' => 'required|string|min:5',
 		'description' => 'required|string|min:5',
 		'ingredients' => 'required|array',
-		'quantites' => 'required|array',
+		'quantitees' => 'required|array',
 	],
 	'ajout_tag' => [
 		'nom' => 'required|string|max:100|min:3',
