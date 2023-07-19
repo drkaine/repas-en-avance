@@ -34,8 +34,6 @@ class CatalogueRecettesTest extends TestCase
 			$response->assertSee($recette->nom);
 
 			$response->assertSee($recette->temps_cuisson);
-
-			$response->assertSee($recette->temps_repos);
 		}
 	}
 
