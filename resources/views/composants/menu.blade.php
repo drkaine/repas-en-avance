@@ -8,9 +8,19 @@
                 <span class="ligne"></span>
             </label>
             <ul class="liste-menu-deroulant">
-                <li>
-                    <a href="{{  route('accueil')  }}">Accueil</a>
-                </li>
+                @guest
+                    <li>
+                        <a href="{{  route('inscription')  }}">Inscription</a>
+                    </li>
+                    <li>
+                        <a href="{{  route('connexion')  }}">Connexion</a>
+                    </li>
+                @endauth
+                @if(Request::path() !== '/')
+                    <li>
+                        <a href="{{  route('accueil')  }}">Accueil</a>
+                    </li>
+                @endif
                 <li>
                     <a href="{{  route('catalogue-recettes')  }}">Catalogue de recettes</a>
                 </li>
@@ -26,13 +36,6 @@
                     </li>
                     <li>
                         <a href="{{  route('deconnexion')  }}">Déconnexion</a>
-                    </li>
-                @else
-                    <li>
-                        <a href="{{  route('inscription')  }}">Inscription</a>
-                    </li>
-                    <li>
-                        <a href="{{  route('connexion')  }}">Connexion</a>
                     </li>
                 @endauth
             </ul>
