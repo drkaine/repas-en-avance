@@ -9,11 +9,9 @@ html {
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: 999;
 }
 
 .icone-menu-deroulant {
-    display: block;
     width: 30px;
     height: 20px;
     position: absolute;
@@ -61,22 +59,15 @@ html {
 
 .liste-menu-deroulant {
     list-style: none;
-    padding: 0;
-    margin: 0;
     position: absolute;
-    top: 0;
     left: 50%; 
     transform: translateX(-50%);
     background-color: black;
     width: 50%;
     height: 100%;
-    z-index: 998;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    transition: max-height 0.5s ease;
     margin-left: -60px;
     margin-top: 30px;
 }
