@@ -3,21 +3,20 @@ html {
     color: #F5F5DC;
 }
 
-.menu-deroulant {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+#checkbox-menu-deroulant:checked + .menu-deroulant {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
 }
 
 .icone-menu-deroulant {
     width: 30px;
     height: 20px;
     position: absolute;
-    transform: translateY(-50%);
     cursor: pointer;
-    top: 15px;
+    top: 5px;
 }
 
 .ligne {
@@ -60,8 +59,7 @@ html {
 .liste-menu-deroulant {
     list-style: none;
     position: absolute;
-    left: 50%; 
-    transform: translateX(-50%);
+    left: 50px; 
     background-color: black;
     width: 50%;
     height: 100%;
