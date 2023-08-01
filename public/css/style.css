@@ -106,9 +106,18 @@ a {
   
 .liste-des-cartes {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 20px;
+}
+
+.carte-recette {
+  background-color: #300345;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(184, 178, 178, 0.74);
+  margin: 5px;
+  padding: 1px;
   width: 300px;
 }
 
@@ -127,14 +136,6 @@ a {
 .titre-de-la-carte {
   margin-top: 20px;
   margin-bottom: -5px;
-}
-
-.carte-recette {
-  background-color: #300345;
-  border-radius: 10px;
-  box-shadow: 0 1px 2px rgba(184, 178, 178, 0.74);
-  margin: 5px;
-  padding: 1px;
 }
 
 .liste-des-ingreients {
