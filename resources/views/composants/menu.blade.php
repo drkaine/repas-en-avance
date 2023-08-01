@@ -16,10 +16,10 @@
                         <a href="{{  route('connexion')  }}">Connexion</a>
                     </li>
                 @endauth
-                <li>
-                    <a href="{{  route('catalogue-recettes')  }}">Catalogue de recettes</a>
-                </li>
                 @auth
+                    <li>
+                        <a href="{{  route('deconnexion')  }}">Déconnexion</a>
+                    </li>
                     <li>
                         <a href="{{  route('ajout-tag')  }}">Ajout Tag</a>
                     </li>
@@ -29,10 +29,10 @@
                     <li>
                         <a href="{{  route('mon-compte')  }}">Mon compte</a>
                     </li>
-                    <li>
-                        <a href="{{  route('deconnexion')  }}">Déconnexion</a>
-                    </li>
                 @endauth
+                <li>
+                    <a href="{{  route('catalogue-recettes')  }}">Catalogue de recettes</a>
+                </li>
             </ul>
         </div>
         <h1 class="titre-en-tete">
