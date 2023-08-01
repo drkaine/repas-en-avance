@@ -1,5 +1,5 @@
 <body>
-    <header>
+    <header class="en-tete">
         <div class="menu-deroulant">
             <input type="checkbox" id="checkbox-menu-deroulant" />
             <label for="checkbox-menu-deroulant" class="icone-menu-deroulant">
@@ -16,11 +16,6 @@
                         <a href="{{  route('connexion')  }}">Connexion</a>
                     </li>
                 @endauth
-                @if(Request::path() !== '/')
-                    <li>
-                        <a href="{{  route('accueil')  }}">Accueil</a>
-                    </li>
-                @endif
                 <li>
                     <a href="{{  route('catalogue-recettes')  }}">Catalogue de recettes</a>
                 </li>
@@ -40,5 +35,9 @@
                 @endauth
             </ul>
         </div>
-
+        <h1 class="titre-en-tete">
+            <a href="{{  route('accueil')  }}">
+                Repas en avance
+            </a>
+        </h1>
     </header>
