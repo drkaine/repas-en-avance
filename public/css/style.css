@@ -6,6 +6,10 @@ html, body {
     padding: 0;
 }
 
+a {
+  color: #F5F5DC;
+}
+
 .en-tete {
   box-shadow: 0 1px 0 rgba(184, 178, 178, 0.74);
   height: 55px;
@@ -21,7 +25,6 @@ html, body {
 .titre-en-tete a {
   outline: none;
   text-decoration: none;
-  color: #F5F5DC;
 }
 
 #checkbox-menu-deroulant:checked + .menu-deroulant {
