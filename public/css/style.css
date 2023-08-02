@@ -169,4 +169,30 @@ a {
   padding: 6px;
   border: hidden;
 }
+
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  box-shadow: 0 2px 2px rgba(184, 178, 178, 0.74);
+}
+
+.element-formulaire {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  font-weight: bold;
+  height: 60px;
+  justify-content: space-around;
+}
   
+.element-formulaire, input {
+  border-radius: 10px;
+}
+
+.element-formulaire, select {
+  border-radius: 10px;
+  padding: 5px;
+}
