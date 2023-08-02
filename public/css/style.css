@@ -201,3 +201,10 @@ a {
   color: #452B78;
   background-color: #F5F5DC;
 }
+
+.element-formulaire textarea {
+  border-radius: 10px;
+  color: #452B78;
+  font-weight: bold;
+  background-color: #F5F5DC;
+}

@@ -29,7 +29,7 @@
 
     <div class="element-formulaire">
         <label for="instruction">Instruction</label>
-        <input id="instruction" type="text" name="instruction">
+        <textarea id="instruction" name="instruction" rows="6" cols="30"></textarea>
         @error('instruction')
             <span>{{ $message }}</span>
         @enderror
@@ -37,7 +37,7 @@
 
     <div class="element-formulaire">
         <label for="description">Description</label>
-        <input id="description" type="text" name="description">
+        <textarea id="description" name="description" rows="6" cols="30"></textarea>
         @error('description')
             <span>{{ $message }}</span>
         @enderror
