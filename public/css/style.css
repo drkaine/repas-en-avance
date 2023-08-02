@@ -188,11 +188,16 @@ a {
   justify-content: space-around;
 }
   
-.element-formulaire, input {
+.element-formulaire input {
   border-radius: 10px;
+  color: #452B78;
+  font-weight: bold;
+  background-color: #F5F5DC;
 }
 
-.element-formulaire, select {
+.element-formulaire select {
   border-radius: 10px;
   padding: 5px;
+  color: #452B78;
+  background-color: #F5F5DC;
 }
