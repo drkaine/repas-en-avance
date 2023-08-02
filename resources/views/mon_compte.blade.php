@@ -8,7 +8,7 @@
     @csrf
 
     <div class="element-formulaire">
-        <label for="email">Adresse e-mail</label>
+        <label for="email">Adresse e-mail *</label>
         <input id="email" type="email" name="email" value="{{  $user->email  }}" required autofocus>
         @error('email')
             <span>{{ $message }}</span>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="nom">Nom</label>
+        <label for="nom">Nom *</label>
         <input id="nom" type="text" name="nom" value="{{  $user->nom  }}" required>
         @error('nom')
             <span>{{ $message }}</span>
@@ -40,4 +40,8 @@
             Mettre à jour ses informations
         </button>
     </div>
+
+    <span>
+        Les champs avec une * sont obligatoire
+    </span>
 </form>

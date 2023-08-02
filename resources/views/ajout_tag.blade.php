@@ -4,7 +4,7 @@
     @csrf
 
     <div class="element-formulaire">
-        <label for="nom">Nom</label>
+        <label for="nom">Nom *</label>
         <input id="nom" type="text" name="nom"required autofocus>
         @error('nom')
             <span>{{ $message }}</span>
@@ -40,4 +40,8 @@
             Ajouter un tag
         </button>
     </div>
+
+    <span>
+        Les champs avec une * sont obligatoire
+    </span>
 </form>

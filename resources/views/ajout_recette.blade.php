@@ -4,7 +4,7 @@
     @csrf
 
     <div class="element-formulaire">
-        <label for="nom">Nom de la recette</label>
+        <label for="nom">Nom de la recette *</label>
         <input id="nom" type="text" name="nom" required autofocus>
         @error('nom')
             <span>{{ $message }}</span>
@@ -44,7 +44,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="temps_preparation">Temps de la preparation</label>
+        <label for="temps_preparation">Temps de la preparation *</label>
         <input id="temps_preparation" type="number" name="temps_preparation" placeholder="min" required>
         @error('temps_preparation')
             <span>{{ $message }}</span>
@@ -92,7 +92,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="ingredients">Ingredients</label>
+        <label for="ingredients">Ingredients *</label>
         <select name="ingredients[]" multiple required>
             @foreach($ingredients as $ingredient)
                 <option value="{{  $ingredient->id  }}">{{  $ingredient->nom  }}</option>
@@ -118,4 +118,8 @@
             Ajouter la recette
         </button>
     </div>
+
+    <span>
+        Les champs avec une * sont obligatoire
+    </span>
 </form>
