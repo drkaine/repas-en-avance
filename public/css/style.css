@@ -151,12 +151,21 @@ a {
 
 .carte-ingredient {
   text-align: center;
-  background-color: #452B78 ;
+  background-color: #452B78;
   border-radius: 10px;
   box-shadow: 0 1px 2px rgba(184, 178, 178, 0.74);
   height: fit-content;
   padding: 5px;
   margin-top: 10px;
   margin-right: 3px;
+}
+
+.bouton-formulaire {
+  border-radius: 10px;
+  color:#F5F5DC;
+  background-color: #452B78;
+  font-weight: bold;
+  padding: 6px;
+  border: hidden;
 }
   

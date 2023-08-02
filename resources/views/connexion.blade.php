@@ -24,6 +24,8 @@
     </div>
 
     <div>
-        <button type="submit">Se connecter</button>
+        <button type="submit" class="bouton-formulaire">
+            Se connecter
+        </button>
     </div>
 </form>

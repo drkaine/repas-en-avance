@@ -49,7 +49,9 @@
             </div>
 
             <div>
-                <button type="submit">S'inscrire</button>
+                <button type="submit" class="bouton-formulaire">
+                    S'inscrire
+                </button>
             </div>
         </form>
         </div>

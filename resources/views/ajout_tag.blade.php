@@ -36,6 +36,8 @@
     </div>
 
     <div>
-        <button type="submit">Ajouter un tag</button>
+        <button type="submit" class="bouton-formulaire">
+            Ajouter un tag
+        </button>
     </div>
 </form>

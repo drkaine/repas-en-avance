@@ -36,7 +36,9 @@
             </div>
 
             <div>
-                <button type="submit">Mettre à jour ses informations</button>
+                <button type="submit" class="bouton-formulaire">
+                    Mettre à jour ses informations
+                </button>
             </div>
         </form>
 

@@ -117,6 +117,8 @@
     </div>
 
     <div>
-        <button type="submit">Ajouter la recette</button>
+        <button type="submit" class="bouton-formulaire">
+            Ajouter la recette
+        </button>
     </div>
 </form>
