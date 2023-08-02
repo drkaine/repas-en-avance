@@ -58,6 +58,7 @@ a {
 }
 
 .icone-menu-deroulant {
+  user-select: none;
   width: 30px;
   position: absolute;
   cursor: pointer;
