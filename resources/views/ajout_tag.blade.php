@@ -12,27 +12,45 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="tags_parent">Tag parent</label>
-        <select name="tags_parent[]" multiple>
-            @foreach($tags as $tag)
-                <option value="{{  $tag->id  }}">{{  $tag->nom  }}</option>
-            @endforeach
-        </select>
-        @error('tags_parent')
-            <span>{{ $message }}</span>
-        @enderror
+        <label for="tags_enfant">
+            <a href="#modal-tags-parent" class="lien-modal">
+                Tag parents
+            </a>
+        </label>
+        <div id="modal-tags-parent" class="modal">
+            <div class="contenu-modal">
+                <select name="tags_enfant[]" multiple>
+                    @foreach($tags as $tag)
+                        <option value="{{  $tag->id  }}">{{  $tag->nom  }}</option>
+                    @endforeach
+                </select>
+                @error('tags_enfant')
+                    <span>{{ $message }}</span>
+                @enderror
+                <a href="#fermeture" class="fermeture-modal">Fermer</a>
+            </div>
+        </div>
     </div>
 
     <div class="element-formulaire">
-        <label for="tags_enfant">Tag enfant</label>
-        <select name="tags_enfant[]" multiple>
-            @foreach($tags as $tag)
-                <option value="{{  $tag->id  }}">{{  $tag->nom  }}</option>
-            @endforeach
-        </select>
-        @error('tags_enfant')
-            <span>{{ $message }}</span>
-        @enderror
+        <label for="tags_enfant">
+            <a href="#modal-tags-enfant" class="lien-modal">
+                Tag enfants
+            </a>
+        </label>
+        <div id="modal-tags-enfant" class="modal">
+            <div class="contenu-modal">
+                <select name="tags_enfant[]" multiple>
+                    @foreach($tags as $tag)
+                        <option value="{{  $tag->id  }}">{{  $tag->nom  }}</option>
+                    @endforeach
+                </select>
+                @error('tags_enfant')
+                    <span>{{ $message }}</span>
+                @enderror
+                <a href="#fermeture" class="fermeture-modal">Fermer</a>
+            </div>
+        </div>
     </div>
 
     <div class="element-formulaire">

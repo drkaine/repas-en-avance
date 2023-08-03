@@ -68,49 +68,101 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="ustensiles">Ustensiles</label>
-        <select name="ustensiles[]" multiple>
-            @foreach($ustensiles as $ustensile)
-                <option value="{{  $ustensile->id  }}">{{  $ustensile->nom  }}</option>
-            @endforeach
-        </select>
-        @error('ustensiles')
-            <span>{{ $message }}</span>
-        @enderror
+        <label for="ustensiles">
+            <a href="#modal-ustensiles" class="lien-modal">
+                Ustensiles
+            </a>
+        </label>
+        <div id="modal-ustensiles" class="modal">
+            <div class="contenu-modal">
+                <select name="ustensiles[]" multiple>
+                    @foreach($ustensiles as $ustensile)
+                        <option value="{{  $ustensile->id  }}">{{  $ustensile->nom  }}</option>
+                    @endforeach
+                </select>
+                @error('ustensiles')
+                    <span>{{ $message }}</span>
+                @enderror
+                <a href="#fermeture" class="fermeture-modal">Fermer</a>
+            </div>
+        </div>
     </div>
 
     <div class="element-formulaire">
-        <label for="mode_de_cuissons">Mode de cuisson</label>
-        <select name="mode_de_cuissons[]" multiple>
-            @foreach($mode_de_cuissons as $mode_de_cuisson)
-                <option value="{{  $mode_de_cuisson->id  }}">{{  $mode_de_cuisson->nom  }}</option>
-            @endforeach
-        </select>
-        @error('mode_de_cuissons')
-            <span>{{ $message }}</span>
-        @enderror
+        <label for="mode_de_cuissons">
+            <a href="#modal-mode-de-cuissons" class="lien-modal">
+                Mode de cuissons
+            </a>
+        </label>
+        <div id="modal-mode-de-cuissons" class="modal">
+            <div class="contenu-modal">
+                <select name="mode_de_cuissons[]" multiple>
+                    @foreach($mode_de_cuissons as $mode_de_cuisson)
+                        <option value="{{  $mode_de_cuisson->id  }}">{{  $mode_de_cuisson->nom  }}</option>
+                    @endforeach
+                </select>
+                @error('mode_de_cuissons')
+                    <span>{{ $message }}</span>
+                @enderror
+                <a href="#fermeture" class="fermeture-modal">Fermer</a>
+            </div>
+        </div>
     </div>
 
     <div class="element-formulaire">
-        <label for="ingredients">Ingredients *</label>
-        <select name="ingredients[]" multiple required>
-            @foreach($ingredients as $ingredient)
-                <option value="{{  $ingredient->id  }}">{{  $ingredient->nom  }}</option>
-            @endforeach
-        </select>
-        @error('ingredients')
-            <span>{{ $message }}</span>
-        @enderror
+        <label for="ingredients">
+            <a href="#modal-ingredients" class="lien-modal">
+                Ingredients *
+            </a>    
+        </label>
+        <div id="modal-ingredients" class="modal">
+            <div class="contenu-modal">
+                <select name="ingredients[]" multiple required>
+                    @foreach($ingredients as $ingredient)
+                        <option value="{{  $ingredient->id  }}">{{  $ingredient->nom  }}</option>
+                    @endforeach
+                </select>
+                @error('ingredients')
+                    <span>{{ $message }}</span>
+                @enderror
+
+                <label for="quantitees">
+                    quantitées
+                </label>
+                @foreach($ingredients as $ingredient)
+                    <span>
+                        {{  $ingredient->nom  }}
+                    </span>
+                    <input id="quantitees" type="text" name="quantitees[{{  $ingredient->id  }}]"  placeholder="quantitée et mesure" >
+                @endforeach
+                @error('quantitees')
+                    <span>{{ $message }}</span>
+                @enderror
+                <a href="#fermeture" class="fermeture-modal">Fermer</a>
+            </div>
+        </div>
     </div>
 
     <div class="element-formulaire">
-        <label for="quantitees">quantitées</label>
-        @foreach($ingredients as $ingredient)
-            <input id="quantitees" type="text" name="quantitees[{{  $ingredient->id  }}]"  placeholder="quantitée et mesure" >
-        @endforeach
-        @error('quantitees')
-            <span>{{ $message }}</span>
-        @enderror
+        <label for="quantitees">
+            <a href="#modal-quantitees" class="lien-modal">
+                quantitées
+            </a>    
+        </label>
+        <div id="modal-quantitees" class="modal">
+            <div class="contenu-modal">
+                @foreach($ingredients as $ingredient)
+                    <span>
+                        {{  $ingredient->nom  }}
+                    </span>
+                    <input id="quantitees" type="text" name="quantitees[{{  $ingredient->id  }}]"  placeholder="quantitée et mesure" >
+                @endforeach
+                @error('quantitees')
+                    <span>{{ $message }}</span>
+                @enderror
+                <a href="#fermeture" class="fermeture-modal">Fermer</a>
+            </div>
+        </div>
     </div>
 
     <div class="element-formulaire">

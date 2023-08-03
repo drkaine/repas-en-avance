@@ -36,15 +36,24 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="regimes_alimentaires">Régimes alimentaires</label>
-        <select name="regimes_alimentaires[]" multiple>
-            @foreach($regimes_alimentaires as $regime_alimentaire)
-                <option value="{{  $regime_alimentaire->id  }}">{{  $regime_alimentaire->nom  }}</option>
-            @endforeach
-        </select>
-        @error('regimes_alimentaires')
-            <span>{{ $message }}</span>
-        @enderror
+        <label for="regimes_alimentaires">
+            <a href="#modal-regimes-alimentaires" class="lien-modal">
+                Régimes alimentaires
+            </a>
+        </label>
+        <div id="modal-regimes-alimentaires" class="modal">
+            <div class="contenu-modal">
+                <select name="regimes_alimentaires[]" multiple>
+                    @foreach($regimes_alimentaires as $regime_alimentaire)
+                        <option value="{{  $regime_alimentaire->id  }}">{{  $regime_alimentaire->nom  }}</option>
+                    @endforeach
+                </select>
+                @error('regimes_alimentaires')
+                    <span>{{ $message }}</span>
+                @enderror
+                <a href="#fermeture" class="fermeture-modal">Fermer</a>
+            </div>
+        </div>
     </div>
 
     <div class="element-formulaire">
