@@ -5,10 +5,6 @@ on:
     branches: 
       - '*'
 
-  pull_request:
-    branches: 
-      - '*'
-
 jobs:
   ci-front:
     runs-on: ubuntu-latest
