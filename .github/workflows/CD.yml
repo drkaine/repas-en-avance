@@ -26,6 +26,7 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           password: ${{ secrets.PASSWORD }}
-          script: "chmod +x ~/production/repas-en-avance/.scripts/deploy.sh &&
-            ~/production/repas-en-avance/.scripts/deploy.sh"
-            
+          script: "|
+          ls
+          whoami
+          .scripts/deploy.sh"
