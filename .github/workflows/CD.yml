@@ -25,7 +25,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          script: "|
-          ls
-          whoami
-          .scripts/deploy.sh"
+          password: ${{ secrets.PASSWORD }}
+          script: "~/production/repas-en-avance/.scripts/deploy.sh"
