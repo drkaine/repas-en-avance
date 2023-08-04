@@ -27,4 +27,3 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           password: ${{ secrets.PASSWORD }}
           script: "~/production/repas-en-avance/.scripts/deploy.sh"
-            
