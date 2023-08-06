@@ -5,8 +5,7 @@ echo "Le script commence"
 cd ~/production/repas-en-avance/ &&
 
 # Pull la dernière version de l'application.
-echo "pull origin dev"
-git config pull.rebase true
+echo "pull origin main"
 git pull origin main
 echo "Le déploiement commence ..."
 
