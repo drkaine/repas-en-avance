@@ -36,6 +36,6 @@ php artisan migrate --force
 
 # Sortir du mode maintenancer
 echo "php artisan up"
-php artisan upsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+php artisan up
 
 echo "Déploiement terminé!"
