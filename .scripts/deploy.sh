@@ -36,8 +36,6 @@ php artisan migrate --force
 
 # Sortir du mode maintenancer
 echo "php artisan up"
-php artisan up
-
-chmod 755 -R storage/logs
+php artisan upsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 
 echo "Déploiement terminé!"
