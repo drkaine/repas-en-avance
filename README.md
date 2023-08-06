@@ -4,6 +4,10 @@
 <a href= "https://github.com/drkaine/repas-en-avance/actions/workflows/CI.yml"><img src="https://github.com/drkaine/repas-en-avance/actions/workflows/CI.yml/badge.svg"></a>
 </p>
 
+<p align="center">
+<a href= "https://github.com/drkaine/repas-en-avance/actions/workflows/CD.yml"><img src="https://github.com/drkaine/repas-en-avance/actions/workflows/CD.yml/badge.svg"></a>
+</p>
+
 ## Site réalisé avec laravel
 C'est un site de partage de recettes avec fonctionnalités de batch cooking et d'organisation : découvrez, planifiez et cuisinez facilement avec des recettes, une liste de courses et un calendrier intégrés.
 
