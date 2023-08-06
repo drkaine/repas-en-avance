@@ -38,6 +38,4 @@ php artisan migrate --force
 echo "php artisan up"
 php artisan up
 
-chmod 755 -R storage/logs
-
 echo "Déploiement terminé!"
