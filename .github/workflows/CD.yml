@@ -7,9 +7,6 @@ on:
   push:
     branches:
       [main]
-  pull_request:
-    branches:
-      [main]
       
 # Authentifiez-vous sur le serveur via SSH 
 # et exécutez notre script de déploiement
