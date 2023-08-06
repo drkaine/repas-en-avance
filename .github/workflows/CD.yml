@@ -7,6 +7,9 @@ on:
   push:
     branches:
       [main]
+  pull_request:
+    branches:
+      [main]
       
 # Authentifiez-vous sur le serveur via SSH 
 # et exécutez notre script de déploiement
@@ -25,3 +28,4 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: "chmod +x ~/production/repas-en-avance/.scripts/deploy.sh &&
             ~/production/repas-en-avance/.scripts/deploy.sh"
+            
