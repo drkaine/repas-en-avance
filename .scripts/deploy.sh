@@ -6,7 +6,7 @@ cd ~/production/repas-en-avance/ &&
 
 # Pull la dernière version de l'application.
 echo "pull origin main"
-git pull origin dev
+git pull
 echo "Le déploiement commence ..."
 
 # Installation des dépendances avec composer
@@ -27,8 +27,8 @@ php artisan clear-compiled
 # php artisan optimize
 
 # Compile npm assets
-# echo "npm install"
-# npm run prod
+echo "npm install"
+npm install
 
 # Lancez database migrations
 echo "php artisan migrate --force"
