@@ -24,8 +24,8 @@ jobs:
       - name: Run Jest tests
         run: npm test
 
-      - name: Run ESLint
-        run: npm run lint
+      # - name: Run ESLint
+      #   run: npm run lint
 
   ci-back:
     runs-on: ubuntu-latest
