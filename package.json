@@ -5,10 +5,11 @@
         "dev": "vite",
         "build": "vite build",
         "test": "jest",
-        "lint": "eslint resources/js/*.js"
+        "lint": "eslint resources/ts/*.ts",
+        "fix": "eslint resources/ts/*.ts --fix"
     },
     "jest": {
-        "testEnvironment": "jest-environment-jsdom",
+        "testEnvironment": "jsdom",
         "preset": "ts-jest"
     },
     "devDependencies": {
