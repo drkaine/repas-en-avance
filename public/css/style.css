@@ -1,13 +1,164 @@
+:root {
+  --noir: black;
+  --jaune-clair: #F5F5DC;
+  --voilet-fonce: #300345;
+  --voilet-clair: #452B78;
+  --gris-clair: lightgrey;
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: var(--noir);
+    color: var(--jaune-clair);
+  }
+
+  a {
+    color: var(--jaune-clair);
+  }
+
+  .ligne {
+    background-color: var(--jaune-clair);
+  }
+
+  .liste-menu-deroulant {
+    background-color: var(--noir);
+  }
+
+  .bouton-formulaire {
+    color:var(--jaune-clair);
+  }
+
+  .fermeture-modal {
+    color: var(--jaune-clair);
+  }
+
+  .carte-recette {
+    background-color: var(--voilet-fonce);
+    box-shadow: 0 1px 0 rgba(245, 245, 220, 0.5);
+  }
+
+  .en-tete {
+    box-shadow: 0 1px 0 rgba(245, 245, 220, 0.5);
+  }
+
+  .carte-ingredient {
+    background-color: var(--voilet-clair);
+    box-shadow: 0 1px 0 rgba(245, 245, 220, 0.5);
+  }
+
+  .bouton-formulaire {
+    background-color: var(--voilet-clair);
+  }
+
+  .element-formulaire input {
+    color: var(--voilet-clair);
+    background-color: var(--jaune-clair);
+  }
+  
+  .element-formulaire select {
+    color: var(--voilet-clair);
+    background-color: var(--jaune-clair);
+  }
+  
+  .element-formulaire textarea {
+    color: var(--voilet-clair);
+    background-color: var(--jaune-clair);
+  }
+  
+  .lien-modal {
+      color: var(--voilet-clair);
+  }
+  
+  .modal {
+      background-color: rgba(245, 245, 220, 0.5);
+  }
+  
+  .contenu-modal {
+      background-color: var(--voilet-clair);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html, body {
+    background-color: var(--jaune-clair);
+    color: var(--voilet-fonce);
+  }
+
+  a {
+    color: var(--voilet-fonce);
+  }
+
+  .ligne {
+    background-color: var(--voilet-fonce);
+  }
+
+  .liste-menu-deroulant {
+    background-color: var(--jaune-clair);
+  }
+
+  .bouton-formulaire {
+    color:var(--voilet-fonce);
+  }
+
+  .fermeture-modal {
+    color: var(--voilet-fonce);
+  }
+
+  .carte-recette {
+    background-color: var(--gris-clair);
+    box-shadow: 0 1px 0 rgba(48, 3, 69, 0.5);
+  }
+
+  .en-tete {
+    box-shadow: 0 1px 0 rgba(48, 3, 69, 0.5);
+  }
+
+  .carte-ingredient {
+    background-color: var(--gris-clair);
+    box-shadow: 0 1px 0 rgba(48, 3, 69, 0.5);
+  }
+
+  .bouton-formulaire {
+    background-color: var(--gris-clair);
+  }
+
+  .element-formulaire input {
+    color: var(--jaune-clair);
+    background-color: var(--voilet-clair);
+  }
+  
+  .element-formulaire select {
+    color: var(--jaune-clair);
+    background-color: var(--voilet-clair);
+  }
+  
+  .element-formulaire textarea {
+    color: var(--jaune-clair);
+    background-color: var(--voilet-clair);
+  }
+  
+  .lien-modal {
+      color: var(--jaune-clair);
+  }
+  
+  .modal {
+      background-color: rgba(245, 245, 220, 0.5);
+  }
+  
+  .contenu-modal {
+      background-color: var(--voilet-clair);
+  }
+}
+
 html, body {
-    background-color : black;
-    color: #F5F5DC;
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color : var(--noir);
 }
 
 a {
-  color: #F5F5DC;
+  color: var(--jaune-clair);
 }
 
 .en-tete {
@@ -29,10 +180,10 @@ a {
 }
 
 .liste-menu-deroulant {
+  background-color: var(--noir);
   list-style: none;
   position: absolute;
   left: 50px; 
-  background-color: black;
   width: 50%;
   height: 100%;
   max-height: 0;
@@ -67,10 +218,10 @@ a {
 }
 
 .ligne {
+  background-color: var(--jaune-clair);
   display: block;
   width: 100%;
   height: 2px;
-  background-color: #F5F5DC;
   position: absolute;
   left: 0;
   transition: transform 0.3s ease;
@@ -119,9 +270,9 @@ a {
 }
 
 .carte-recette {
-  background-color: #300345;
+  background-color: var(--voilet-fonce);
+  box-shadow: 0 1px 0 rgba(184, 178, 178, 0.74);
   border-radius: 10px;
-  box-shadow: 0 1px 2px rgba(184, 178, 178, 0.74);
   margin: 5px;
   padding: 1px;
   width: 300px;
@@ -151,10 +302,10 @@ a {
 }
 
 .carte-ingredient {
+  background-color: var(--voilet-clair);
+  box-shadow: 0 1px 0 rgba(184, 178, 178, 0.74);
   text-align: center;
-  background-color: #452B78;
   border-radius: 10px;
-  box-shadow: 0 1px 2px rgba(184, 178, 178, 0.74);
   height: fit-content;
   padding: 5px;
   margin-top: 10px;
@@ -162,9 +313,9 @@ a {
 }
 
 .bouton-formulaire {
+  color:var(--jaune-clair);
+  background-color: var(--voilet-clair);
   border-radius: 10px;
-  color:#F5F5DC;
-  background-color: #452B78;
   font-weight: bold;
   padding: 6px;
   border: hidden;
@@ -175,7 +326,6 @@ a {
   flex-direction: column;
   align-items: center;
   padding: 15px;
-  box-shadow: 0 2px 2px rgba(184, 178, 178, 0.74);
 }
 
 .element-formulaire {
@@ -189,61 +339,61 @@ a {
 }
   
 .element-formulaire input {
+  color: var(--voilet-clair);
+  background-color: var(--jaune-clair);
   border-radius: 10px;
-  color: #452B78;
   font-weight: bold;
-  background-color: #F5F5DC;
 }
 
 .element-formulaire select {
+  color: var(--voilet-clair);
+  background-color: var(--jaune-clair);
   border-radius: 10px;
   padding: 5px;
-  color: #452B78;
-  background-color: #F5F5DC;
 }
 
 .element-formulaire textarea {
+  color: var(--voilet-clair);
+  background-color: var(--jaune-clair);
   border-radius: 10px;
-  color: #452B78;
   font-weight: bold;
-  background-color: #F5F5DC;
 }
 
 .lien-modal {
-    display: block;
-    text-align: center;
-    margin-top: 50px;
-    text-decoration: none;
-    color: #452B78;
+  color: var(--voilet-clair);
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+  text-decoration: none;
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(245, 245, 220, 0.5);
+  background-color: rgba(245, 245, 220, 0.5);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .contenu-modal {
-    background-color: #452B78;
-    margin: 100px auto;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 160px;
-    width: 280px;
-    display: flex;
-    flex-direction: column;
+  background-color: var(--voilet-clair);
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 160px;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
 }
 
 .fermeture-modal {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    text-decoration: none;
-    color: #F5F5DC;
+  color: var(--jaune-clair);
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  text-decoration: none;
 }
 
 .modal:target {
