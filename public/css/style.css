@@ -154,15 +154,9 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color : var(--noir);
-}
-
-a {
-  color: var(--jaune-clair);
 }
 
 .en-tete {
-  box-shadow: 0 1px 0 rgba(184, 178, 178, 0.74);
   height: 55px;
   display: flex;
   justify-content: center;
@@ -180,7 +174,6 @@ a {
 }
 
 .liste-menu-deroulant {
-  background-color: var(--noir);
   list-style: none;
   position: absolute;
   left: 50px; 
@@ -218,7 +211,6 @@ a {
 }
 
 .ligne {
-  background-color: var(--jaune-clair);
   display: block;
   width: 100%;
   height: 2px;
@@ -270,8 +262,6 @@ a {
 }
 
 .carte-recette {
-  background-color: var(--voilet-fonce);
-  box-shadow: 0 1px 0 rgba(184, 178, 178, 0.74);
   border-radius: 10px;
   margin: 5px;
   padding: 1px;
@@ -302,8 +292,6 @@ a {
 }
 
 .carte-ingredient {
-  background-color: var(--voilet-clair);
-  box-shadow: 0 1px 0 rgba(184, 178, 178, 0.74);
   text-align: center;
   border-radius: 10px;
   height: fit-content;
@@ -313,8 +301,6 @@ a {
 }
 
 .bouton-formulaire {
-  color:var(--jaune-clair);
-  background-color: var(--voilet-clair);
   border-radius: 10px;
   font-weight: bold;
   padding: 6px;
@@ -339,28 +325,21 @@ a {
 }
   
 .element-formulaire input {
-  color: var(--voilet-clair);
-  background-color: var(--jaune-clair);
   border-radius: 10px;
   font-weight: bold;
 }
 
 .element-formulaire select {
-  color: var(--voilet-clair);
-  background-color: var(--jaune-clair);
   border-radius: 10px;
   padding: 5px;
 }
 
 .element-formulaire textarea {
-  color: var(--voilet-clair);
-  background-color: var(--jaune-clair);
   border-radius: 10px;
   font-weight: bold;
 }
 
 .lien-modal {
-  color: var(--voilet-clair);
   display: block;
   text-align: center;
   margin-top: 50px;
@@ -368,7 +347,6 @@ a {
 }
 
 .modal {
-  background-color: rgba(245, 245, 220, 0.5);
   display: none;
   position: fixed;
   top: 0;
@@ -378,7 +356,6 @@ a {
 }
 
 .contenu-modal {
-  background-color: var(--voilet-clair);
   margin: 100px auto;
   padding: 20px;
   border-radius: 10px;
@@ -389,7 +366,6 @@ a {
 }
 
 .fermeture-modal {
-  color: var(--jaune-clair);
   display: block;
   text-align: center;
   margin-top: 20px;
