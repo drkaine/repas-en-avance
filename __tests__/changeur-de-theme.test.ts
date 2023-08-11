@@ -1,4 +1,4 @@
-import { pasDePreference, basculeSurThemeSombre } from '../resources/ts/changeur-de-theme.ts';
+import { pasDePreference, basculeSurThemeSombre, basculeSurThemeClair } from '../resources/ts/changeur-de-theme.ts';
 
 describe('Changeur de thème', () => {
   it('Il ne doit pas détecter de préférence de thème', () => {
@@ -13,5 +13,12 @@ describe('Changeur de thème', () => {
 
     basculeSurThemeSombre();
     expect(document.documentElement.setAttribute).toHaveBeenCalledWith('data-theme', 'dark');
+  });
+
+  it('Il doit basculer sur le thème clair', () => {
+    document.documentElement.setAttribute = jest.fn();
+
+    basculeSurThemeClair();
+    expect(document.documentElement.setAttribute).toHaveBeenCalledWith('data-theme', 'light');
   });
 });
