@@ -40,4 +40,19 @@
                 Repas en avance
             </a>
         </h1>
+        <button id="changeur-de-theme"></button>
+        
+        <script>
+            const changeur_de_theme = document.getElementById('changeur-de-theme');
+
+            changeur_de_theme.addEventListener('click', () => {
+                const data_theme = document.documentElement.getAttribute('data-theme');
+                if(data_theme === 'dark') {
+                    basculeSurThemeClair();
+                } else {
+                    basculeSurThemeSombre();
+                }
+                
+            });
+        </script>
     </header>

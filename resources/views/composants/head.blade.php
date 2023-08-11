@@ -6,5 +6,13 @@
         <title>Repas en avance</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+        <script src="{{ asset('js/changeur-de-theme.js') }}"></script>
+
+        <script>
+            if (pasDeThemeDePreference()) {
+                basculeSurThemeSombre();
+            }
+        </script>
+
     </head>
     @include('composants.menu')
