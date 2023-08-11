@@ -5,5 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Repas en avance</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
     </head>
     @include('composants.menu')
