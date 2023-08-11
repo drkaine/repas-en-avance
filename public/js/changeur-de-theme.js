@@ -1,11 +1,10 @@
-export function pasDeThemeDePreference (): boolean {
+"use strict";
+function pasDeThemeDePreference() {
     return window.matchMedia('(prefers-color-scheme: no-preference)').matches;
 }
-
-export function basculeSurThemeSombre (): void {
+function basculeSurThemeSombre() {
     document.documentElement.setAttribute('data-theme', 'dark');
 }
-
-export function basculeSurThemeClair (): void {
+function basculeSurThemeClair() {
     document.documentElement.setAttribute('data-theme', 'light');
 }
