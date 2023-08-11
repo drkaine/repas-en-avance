@@ -17,7 +17,7 @@
                     
                 </div>
             </div>
-            <div class="liste-des-ingreients">
+            <div class="liste-des-ingredients">
                 @foreach($recette->recuperationIngredient as $ingredient)
                     <div class="carte-ingredient">
                         {{  $ingredient->nom  }}

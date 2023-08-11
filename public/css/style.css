@@ -1,152 +1,79 @@
 :root {
-  --noir: black;
-  --jaune-clair: #F5F5DC;
-  --voilet-fonce: #300345;
-  --voilet-clair: #452B78;
-  --gris-clair: lightgrey;
+  --couleur-arriere-plan: black;
+  --couleur-arriere-plan-ligne: #F5F5DC;
+  --couleur-arriere-plan-modal: #F5F5DC;
+  --couleur-arriere-plan-bouton: #300345;
+  --couleur-arriere-plan-element: #300345;
+  --couleur-arriere-plan-element-modal: #452B78;
+  --couleur-arriere-plan-element-formulaire: #F5F5DC;
+  --couleur-texte: #F5F5DC;
+  --couleur-texte-bouton: #F5F5DC;
+  --couleur-texte-element-formulaire: #F5F5DC;
+  --couleur-texte-modal: #452B78;
+  --couleur-ombre: rgba(245, 245, 220, 0.5);
+}
+
+[data-theme="dark"] {
+ --couleur-arriere-plan: black;
+ --couleur-arriere-plan-ligne: #F5F5DC;
+ --couleur-arriere-plan-modal: #F5F5DC;
+ --couleur-arriere-plan-bouton: #300345;
+ --couleur-arriere-plan-element: #300345;
+ --couleur-arriere-plan-element-modal: #452B78;
+ --couleur-arriere-plan-element-formulaire: #F5F5DC;
+ --couleur-texte: #F5F5DC;
+ --couleur-texte-bouton: #F5F5DC;
+ --couleur-texte-element-formulaire: #F5F5DC;
+ --couleur-texte-modal: #452B78;
+ --couleur-ombre: rgba(245, 245, 220, 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
-  html, body {
-    background-color: var(--noir);
-    color: var(--jaune-clair);
-  }
-
-  a {
-    color: var(--jaune-clair);
-  }
-
-  .ligne {
-    background-color: var(--jaune-clair);
-  }
-
-  .liste-menu-deroulant {
-    background-color: var(--noir);
-  }
-
-  .bouton-formulaire {
-    color:var(--jaune-clair);
-  }
-
-  .fermeture-modal {
-    color: var(--jaune-clair);
-  }
-
-  .carte-recette {
-    background-color: var(--voilet-fonce);
-    box-shadow: 0 1px 0 rgba(245, 245, 220, 0.5);
-  }
-
-  .en-tete {
-    box-shadow: 0 1px 0 rgba(245, 245, 220, 0.5);
-  }
-
-  .carte-ingredient {
-    background-color: var(--voilet-clair);
-    box-shadow: 0 1px 0 rgba(245, 245, 220, 0.5);
-  }
-
-  .bouton-formulaire {
-    background-color: var(--voilet-clair);
-  }
-
-  .element-formulaire input {
-    color: var(--voilet-clair);
-    background-color: var(--jaune-clair);
-  }
-  
-  .element-formulaire select {
-    color: var(--voilet-clair);
-    background-color: var(--jaune-clair);
-  }
-  
-  .element-formulaire textarea {
-    color: var(--voilet-clair);
-    background-color: var(--jaune-clair);
-  }
-  
-  .lien-modal {
-      color: var(--voilet-clair);
-  }
-  
-  .modal {
-      background-color: rgba(245, 245, 220, 0.5);
-  }
-  
-  .contenu-modal {
-      background-color: var(--voilet-clair);
+  :root {
+    --couleur-arriere-plan: black;
+    --couleur-arriere-plan-ligne: #F5F5DC;
+    --couleur-arriere-plan-modal: #F5F5DC;
+    --couleur-arriere-plan-bouton: #300345;
+    --couleur-arriere-plan-element: #300345;
+    --couleur-arriere-plan-element-modal: #452B78;
+    --couleur-arriere-plan-element-formulaire: #F5F5DC;
+    --couleur-texte: #F5F5DC;
+    --couleur-texte-bouton: #F5F5DC;
+    --couleur-texte-element-formulaire: #F5F5DC;
+    --couleur-texte-modal: #452B78;
+    --couleur-ombre: rgba(245, 245, 220, 0.5);
   }
 }
 
+[data-theme="light"] {
+  --couleur-arriere-plan: #F5F5DC;
+  --couleur-arriere-plan-ligne: #300345;
+  --couleur-arriere-plan-modal: #F5F5DC;
+  --couleur-arriere-plan-bouton: #300345;
+  --couleur-arriere-plan-element: lightgrey;
+  --couleur-arriere-plan-element-modal: #452B78;
+  --couleur-arriere-plan-element-formulaire: lightgrey;
+  --couleur-texte: #300345;
+  --couleur-texte-bouton: #F5F5DC;
+  --couleur-texte-element-formulaire: #F5F5DC;
+  --couleur-texte-modal: #F5F5DC;
+  --couleur-ombre: rgba(48, 3, 69, 0.5);
+}
+
 @media (prefers-color-scheme: light) {
-  html, body {
-    background-color: var(--jaune-clair);
-    color: var(--voilet-fonce);
-  }
-
-  a {
-    color: var(--voilet-fonce);
-  }
-
-  .ligne {
-    background-color: var(--voilet-fonce);
-  }
-
-  .liste-menu-deroulant {
-    background-color: var(--jaune-clair);
-  }
-
-  .bouton-formulaire {
-    color:var(--voilet-fonce);
-  }
-
-  .fermeture-modal {
-    color: var(--voilet-fonce);
-  }
-
-  .carte-recette {
-    background-color: var(--gris-clair);
-    box-shadow: 0 1px 0 rgba(48, 3, 69, 0.5);
-  }
-
-  .en-tete {
-    box-shadow: 0 1px 0 rgba(48, 3, 69, 0.5);
-  }
-
-  .carte-ingredient {
-    background-color: var(--gris-clair);
-    box-shadow: 0 1px 0 rgba(48, 3, 69, 0.5);
-  }
-
-  .bouton-formulaire {
-    background-color: var(--gris-clair);
-  }
-
-  .element-formulaire input {
-    color: var(--jaune-clair);
-    background-color: var(--voilet-clair);
-  }
-  
-  .element-formulaire select {
-    color: var(--jaune-clair);
-    background-color: var(--voilet-clair);
-  }
-  
-  .element-formulaire textarea {
-    color: var(--jaune-clair);
-    background-color: var(--voilet-clair);
-  }
-  
-  .lien-modal {
-      color: var(--jaune-clair);
-  }
-  
-  .modal {
-      background-color: rgba(245, 245, 220, 0.5);
-  }
-  
-  .contenu-modal {
-      background-color: var(--voilet-clair);
+  :root {
+    --couleur-arriere-plan: #F5F5DC;
+    --couleur-arriere-plan-ligne: #300345;
+    --couleur-arriere-plan-modal: #F5F5DC;
+    --couleur-arriere-plan-bouton: #F5F5DC;
+    --couleur-arriere-plan-element: lightgrey;
+    --couleur-arriere-plan-element-modal: #452B78;
+    --couleur-arriere-plan-element-formulaire: lightgrey;
+    --couleur-texte: #300345;
+    --couleur-texte-bouton: #300345;
+    --couleur-texte-element-formulaire: #F5F5DC;
+    --couleur-texte-modal: #F5F5DC;
+    --couleur-ombre: rgba(48, 3, 69, 0.5);
   }
 }
 
@@ -154,6 +81,12 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: var(--couleur-arriere-plan);
+    color: var(--couleur-texte);
+}
+
+a {
+  color: var(--couleur-texte);
 }
 
 .en-tete {
@@ -162,6 +95,7 @@ html, body {
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
+  box-shadow: 0 1px 0 var(--couleur-ombre);
 }
 
 .titre-en-tete {
@@ -184,6 +118,7 @@ html, body {
   transition: max-height 0.5s ease;
   margin-left: -60px;
   margin-top: 30px;
+  background-color: var(--couleur-arriere-plan);
 }
 
 .liste-menu-deroulant li {
@@ -217,6 +152,7 @@ html, body {
   position: absolute;
   left: 0;
   transition: transform 0.3s ease;
+  background-color: var(--couleur-arriere-plan-ligne);
 }
 
 .ligne:nth-child(1) {
@@ -266,6 +202,8 @@ html, body {
   margin: 5px;
   padding: 1px;
   width: 300px;
+  background-color: var(--couleur-arriere-plan-element);
+  box-shadow: 0 1px 0 var(--couleur-ombre);
 }
 
 .image-de-la-carte {
@@ -285,7 +223,7 @@ html, body {
   margin-bottom: -5px;
 }
 
-.liste-des-ingreients {
+.liste-des-ingredients {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -298,6 +236,8 @@ html, body {
   padding: 5px;
   margin-top: 10px;
   margin-right: 3px;
+  background-color: var(--couleur-arriere-plan-element-modal);
+  box-shadow: 0 1px 0 var(--couleur-ombre);
 }
 
 .bouton-formulaire {
@@ -305,6 +245,8 @@ html, body {
   font-weight: bold;
   padding: 6px;
   border: hidden;
+  color:var(--couleur-texte-bouton);
+  background-color: var(--couleur-arriere-plan-bouton);
 }
 
 .formulaire {
@@ -327,16 +269,22 @@ html, body {
 .element-formulaire input {
   border-radius: 10px;
   font-weight: bold;
+  color:var(--couleur-texte);
+  background-color: var(--couleur-arriere-plan-element-formulaire);
 }
 
 .element-formulaire select {
   border-radius: 10px;
   padding: 5px;
+  color:var(--couleur-texte);
+  background-color: var(--couleur-arriere-plan-element-formulaire);
 }
 
 .element-formulaire textarea {
   border-radius: 10px;
   font-weight: bold;
+  color:var(--couleur-texte);
+  background-color: var(--couleur-arriere-plan-element-formulaire);
 }
 
 .lien-modal {
@@ -344,6 +292,7 @@ html, body {
   text-align: center;
   margin-top: 50px;
   text-decoration: none;
+  color: var(--couleur-texte-modal);
 }
 
 .modal {
@@ -353,6 +302,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: var(--couleur-arriere-plan-modal);
 }
 
 .contenu-modal {
@@ -363,6 +313,7 @@ html, body {
   width: 280px;
   display: flex;
   flex-direction: column;
+  background-color: var(--couleur-arriere-plan-element-modal);
 }
 
 .fermeture-modal {
@@ -370,6 +321,7 @@ html, body {
   text-align: center;
   margin-top: 20px;
   text-decoration: none;
+  color: var(--couleur-texte);
 }
 
 .modal:target {
