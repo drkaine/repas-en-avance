@@ -5,3 +5,7 @@ export function pasDePreference (): boolean {
 export function basculeSurThemeSombre (): void {
     document.documentElement.setAttribute('data-theme', 'dark');
 }
+
+export function basculeSurThemeClair (): void {
+    document.documentElement.setAttribute('data-theme', 'light');
+}
