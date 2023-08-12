@@ -70,7 +70,7 @@
     --couleur-arriere-plan-element-modal: #452B78;
     --couleur-arriere-plan-element-formulaire: lightgrey;
     --couleur-texte: #300345;
-    --couleur-texte-bouton: #300345;
+    --couleur-texte-bouton: #F5F5DC;
     --couleur-texte-element-formulaire: #F5F5DC;
     --couleur-texte-modal: #F5F5DC;
     --couleur-ombre: rgba(48, 3, 69, 0.5);
@@ -236,7 +236,7 @@ a {
   padding: 5px;
   margin-top: 10px;
   margin-right: 3px;
-  background-color: var(--couleur-arriere-plan-element-modal);
+  background-color: var(--couleur-arriere-plan-element);
   box-shadow: 0 1px 0 var(--couleur-ombre);
 }
 
