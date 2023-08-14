@@ -1,0 +1,16 @@
+@media (prefers-color-scheme: light) {
+    :root {
+        --couleur-arriere-plan: var(--jaune-clair);
+        --couleur-arriere-plan-ligne: var(--voilet-fonce);
+        --couleur-arriere-plan-modal: var(--jaune-clair);
+        --couleur-arriere-plan-bouton: var(--voilet-fonce);
+        --couleur-arriere-plan-element: var(--gris-clair);
+        --couleur-arriere-plan-element-modal: var(--voilet-clair);
+        --couleur-arriere-plan-element-formulaire: var(--gris-clair);
+        --couleur-texte: var(--voilet-fonce);
+        --couleur-texte-bouton: var(--jaune-clair);
+        --couleur-texte-element-formulaire: var(--jaune-clair);
+        --couleur-texte-modal: var(--jaune-clair);
+        --couleur-ombre: var(--voilet-fonce-rgba);
+    }
+}

@@ -1,329 +1,38 @@
-:root {
-  --couleur-arriere-plan: black;
-  --couleur-arriere-plan-ligne: #F5F5DC;
-  --couleur-arriere-plan-modal: #F5F5DC;
-  --couleur-arriere-plan-bouton: #300345;
-  --couleur-arriere-plan-element: #300345;
-  --couleur-arriere-plan-element-modal: #452B78;
-  --couleur-arriere-plan-element-formulaire: #F5F5DC;
-  --couleur-texte: #F5F5DC;
-  --couleur-texte-bouton: #F5F5DC;
-  --couleur-texte-element-formulaire: #F5F5DC;
-  --couleur-texte-modal: #452B78;
-  --couleur-ombre: rgba(245, 245, 220, 0.5);
-}
+@import 'variables/couleur.css';
+@import 'media-theme-preference/sombre.css';
+@import 'media-theme-preference/clair.css';
+@import 'element-html.css';
+@import 'composants/en-tete.css';
+@import 'composants/carte-recette.css';
+@import 'composants/formulaire.css';
+@import 'composants/modal.css';
 
 [data-theme="dark"] {
- --couleur-arriere-plan: black;
- --couleur-arriere-plan-ligne: #F5F5DC;
- --couleur-arriere-plan-modal: #F5F5DC;
- --couleur-arriere-plan-bouton: #300345;
- --couleur-arriere-plan-element: #300345;
- --couleur-arriere-plan-element-modal: #452B78;
- --couleur-arriere-plan-element-formulaire: #F5F5DC;
- --couleur-texte: #F5F5DC;
- --couleur-texte-bouton: #F5F5DC;
- --couleur-texte-element-formulaire: #F5F5DC;
- --couleur-texte-modal: #452B78;
- --couleur-ombre: rgba(245, 245, 220, 0.5);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --couleur-arriere-plan: black;
-    --couleur-arriere-plan-ligne: #F5F5DC;
-    --couleur-arriere-plan-modal: #F5F5DC;
-    --couleur-arriere-plan-bouton: #300345;
-    --couleur-arriere-plan-element: #300345;
-    --couleur-arriere-plan-element-modal: #452B78;
-    --couleur-arriere-plan-element-formulaire: #F5F5DC;
-    --couleur-texte: #F5F5DC;
-    --couleur-texte-bouton: #F5F5DC;
-    --couleur-texte-element-formulaire: #F5F5DC;
-    --couleur-texte-modal: #452B78;
-    --couleur-ombre: rgba(245, 245, 220, 0.5);
-  }
+  --couleur-arriere-plan: var(--noir);
+  --couleur-arriere-plan-ligne: var(--jaune-clair);
+  --couleur-arriere-plan-modal: var(--jaune-clair);
+  --couleur-arriere-plan-bouton: var(--voilet-fonce);
+  --couleur-arriere-plan-element: var(--voilet-fonce);
+  --couleur-arriere-plan-element-modal: var(--voilet-clair);
+  --couleur-arriere-plan-element-formulaire: var(--jaune-clair);
+  --couleur-texte: var(--jaune-clair);
+  --couleur-texte-bouton: var(--jaune-clair);
+  --couleur-texte-element-formulaire: var(--jaune-clair);
+  --couleur-texte-modal: var(--voilet-clair);
+  --couleur-ombre: var(--gris-clair-rgba);
 }
 
 [data-theme="light"] {
-  --couleur-arriere-plan: #F5F5DC;
-  --couleur-arriere-plan-ligne: #300345;
-  --couleur-arriere-plan-modal: #F5F5DC;
-  --couleur-arriere-plan-bouton: #300345;
-  --couleur-arriere-plan-element: lightgrey;
-  --couleur-arriere-plan-element-modal: #452B78;
-  --couleur-arriere-plan-element-formulaire: lightgrey;
-  --couleur-texte: #300345;
-  --couleur-texte-bouton: #F5F5DC;
-  --couleur-texte-element-formulaire: #F5F5DC;
-  --couleur-texte-modal: #F5F5DC;
-  --couleur-ombre: rgba(48, 3, 69, 0.5);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --couleur-arriere-plan: #F5F5DC;
-    --couleur-arriere-plan-ligne: #300345;
-    --couleur-arriere-plan-modal: #F5F5DC;
-    --couleur-arriere-plan-bouton: #F5F5DC;
-    --couleur-arriere-plan-element: lightgrey;
-    --couleur-arriere-plan-element-modal: #452B78;
-    --couleur-arriere-plan-element-formulaire: lightgrey;
-    --couleur-texte: #300345;
-    --couleur-texte-bouton: #F5F5DC;
-    --couleur-texte-element-formulaire: #F5F5DC;
-    --couleur-texte-modal: #F5F5DC;
-    --couleur-ombre: rgba(48, 3, 69, 0.5);
-  }
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: var(--couleur-arriere-plan);
-    color: var(--couleur-texte);
-}
-
-a {
-  color: var(--couleur-texte);
-}
-
-.en-tete {
-  height: 55px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 15px;
-  box-shadow: 0 1px 0 var(--couleur-ombre);
-}
-
-.titre-en-tete {
-  margin-left: 20px;
-}
-
-.titre-en-tete a {
-  outline: none;
-  text-decoration: none;
-}
-
-.liste-menu-deroulant {
-  list-style: none;
-  position: absolute;
-  left: 50px; 
-  width: 50%;
-  height: 100%;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
-  margin-left: -60px;
-  margin-top: 30px;
-  background-color: var(--couleur-arriere-plan);
-}
-
-.liste-menu-deroulant li {
-  top: 20px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-top: 15px;
-}
-
-#checkbox-menu-deroulant:checked + .menu-deroulant {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 50%;
-  width: 100%;
-}
-
-.icone-menu-deroulant {
-  user-select: none;
-  width: 30px;
-  position: absolute;
-  cursor: pointer;
-  top: 15px;
-  left: 10px;
-}
-
-.ligne {
-  display: block;
-  width: 100%;
-  height: 2px;
-  position: absolute;
-  left: 0;
-  transition: transform 0.3s ease;
-  background-color: var(--couleur-arriere-plan-ligne);
-}
-
-.ligne:nth-child(1) {
-  top: 5px;
-}
-
-.ligne:nth-child(2) {
-  top: 10px;
-}
-
-.ligne:nth-child(3) {
-  top: 15px;
-}
-
-#checkbox-menu-deroulant:checked ~ .icone-menu-deroulant .ligne:nth-child(1) {
-  transform: rotate(45deg);
-  top: 9px;
-}
-
-#checkbox-menu-deroulant:checked ~ .icone-menu-deroulant .ligne:nth-child(2) {
-  opacity: 0;
-}
-
-#checkbox-menu-deroulant:checked ~ .icone-menu-deroulant .ligne:nth-child(3) {
-  transform: rotate(-45deg);
-  top: 9px;
-}
-
-#checkbox-menu-deroulant {
-  display: none;
-}
-
-#checkbox-menu-deroulant:checked ~ .liste-menu-deroulant {
-  max-height: 100%;
-}
-  
-.liste-des-cartes {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 20px;
-}
-
-.carte-recette {
-  border-radius: 10px;
-  margin: 5px;
-  padding: 1px;
-  width: 300px;
-  background-color: var(--couleur-arriere-plan-element);
-  box-shadow: 0 1px 0 var(--couleur-ombre);
-}
-
-.image-de-la-carte {
-  display: block;
-  width: 100%;
-  border-radius: 10px;
-  height: auto;
-}
-
-.texte-de-la-carte {
-  text-align: center;
-  margin: -10px;
-}
-
-.titre-de-la-carte {
-  margin-top: 20px;
-  margin-bottom: -5px;
-}
-
-.liste-des-ingredients {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.carte-ingredient {
-  text-align: center;
-  border-radius: 10px;
-  height: fit-content;
-  padding: 5px;
-  margin-top: 10px;
-  margin-right: 3px;
-  background-color: var(--couleur-arriere-plan-element);
-  box-shadow: 0 1px 0 var(--couleur-ombre);
-}
-
-.bouton-formulaire {
-  border-radius: 10px;
-  font-weight: bold;
-  padding: 6px;
-  border: hidden;
-  color:var(--couleur-texte-bouton);
-  background-color: var(--couleur-arriere-plan-bouton);
-}
-
-.formulaire {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px;
-}
-
-.element-formulaire {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  font-weight: bold;
-  height: 60px;
-  justify-content: space-around;
-}
-  
-.element-formulaire input {
-  border-radius: 10px;
-  font-weight: bold;
-  color:var(--couleur-texte);
-  background-color: var(--couleur-arriere-plan-element-formulaire);
-}
-
-.element-formulaire select {
-  border-radius: 10px;
-  padding: 5px;
-  color:var(--couleur-texte);
-  background-color: var(--couleur-arriere-plan-element-formulaire);
-}
-
-.element-formulaire textarea {
-  border-radius: 10px;
-  font-weight: bold;
-  color:var(--couleur-texte);
-  background-color: var(--couleur-arriere-plan-element-formulaire);
-}
-
-.lien-modal {
-  display: block;
-  text-align: center;
-  margin-top: 50px;
-  text-decoration: none;
-  color: var(--couleur-texte-modal);
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--couleur-arriere-plan-modal);
-}
-
-.contenu-modal {
-  margin: 100px auto;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 160px;
-  width: 280px;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--couleur-arriere-plan-element-modal);
-}
-
-.fermeture-modal {
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-  text-decoration: none;
-  color: var(--couleur-texte);
-}
-
-.modal:target {
-    display: block;
+  --couleur-arriere-plan: var(--jaune-clair);
+  --couleur-arriere-plan-ligne: var(--voilet-fonce);
+  --couleur-arriere-plan-modal: var(--jaune-clair);
+  --couleur-arriere-plan-bouton: var(--voilet-fonce);
+  --couleur-arriere-plan-element: var(--gris-clair);
+  --couleur-arriere-plan-element-modal: var(--voilet-clair);
+  --couleur-arriere-plan-element-formulaire: var(--gris-clair);
+  --couleur-texte: var(--voilet-fonce);
+  --couleur-texte-bouton: var(--jaune-clair);
+  --couleur-texte-element-formulaire: var(--jaune-clair);
+  --couleur-texte-modal: var(--jaune-clair);
+  --couleur-ombre: var(--voilet-fonce-rgba);
 }

@@ -1,0 +1,10 @@
+:root {
+    --noir: black;
+    --jaune-clair: #F5F5DC;
+    --voilet-fonce: #300345;
+    --voilet-clair: #452B78;
+    --gris-clair: lightgrey;
+
+    --gris-clair-rgba: rgba(245, 245, 220, 0.5);
+    --voilet-fonce-rgba: rgba(48, 3, 69, 0.5);
+}

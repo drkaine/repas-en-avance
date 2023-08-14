@@ -1,0 +1,51 @@
+.liste-des-cartes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+  }
+  
+  .carte-recette {
+    border-radius: 10px;
+    margin: 5px;
+    padding: 1px;
+    width: 300px;
+    background-color: var(--couleur-arriere-plan-element);
+    box-shadow: 0 1px 0 var(--couleur-ombre);
+  }
+  
+  .image-de-la-carte {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    height: auto;
+  }
+  
+  .texte-de-la-carte {
+    text-align: center;
+    margin: -10px;
+  }
+  
+  .titre-de-la-carte {
+    margin-top: 20px;
+    margin-bottom: -5px;
+  }
+  
+  .liste-des-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .carte-ingredient {
+    text-align: center;
+    border-radius: 10px;
+    height: fit-content;
+    padding: 5px;
+    margin-top: 10px;
+    margin-right: 3px;
+    background-color: var(--couleur-arriere-plan-element);
+    box-shadow: 0 1px 0 var(--couleur-ombre);
+  }
+  

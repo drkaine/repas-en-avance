@@ -1,0 +1,48 @@
+
+.bouton-formulaire {
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 6px;
+    border: hidden;
+    color:var(--couleur-texte-bouton);
+    background-color: var(--couleur-arriere-plan-bouton);
+  }
+  
+  .formulaire {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+  
+  .element-formulaire {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    font-weight: bold;
+    height: 60px;
+    justify-content: space-around;
+  }
+    
+  .element-formulaire input {
+    border-radius: 10px;
+    font-weight: bold;
+    color:var(--couleur-texte);
+    background-color: var(--couleur-arriere-plan-element-formulaire);
+  }
+  
+  .element-formulaire select {
+    border-radius: 10px;
+    padding: 5px;
+    color:var(--couleur-texte);
+    background-color: var(--couleur-arriere-plan-element-formulaire);
+  }
+  
+  .element-formulaire textarea {
+    border-radius: 10px;
+    font-weight: bold;
+    color:var(--couleur-texte);
+    background-color: var(--couleur-arriere-plan-element-formulaire);
+  }
+  
