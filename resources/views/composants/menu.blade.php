@@ -40,7 +40,10 @@
                 Repas en avance
             </a>
         </h1>
-        <button id="changeur-de-theme"></button>
+        <button id="changeur-de-theme" class="changeur-de-theme">
+            <i class="far fa-sun" id="sunIcon"></i>
+            <i class="fa-solid fa-moon" id="moonIcon"></i>
+        </button>
         
         <script>
             const changeur_de_theme = document.getElementById('changeur-de-theme');
