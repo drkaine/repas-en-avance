@@ -2,15 +2,17 @@
   :root {
     --couleur-arriere-plan: var(--noir);
     --couleur-arriere-plan-ligne: var(--jaune-clair);
-    --couleur-arriere-plan-modal: var(--jaune-clair);
+    --couleur-arriere-plan-modal: var(--voilet-fonce-rgba);
     --couleur-arriere-plan-bouton: var(--voilet-fonce);
     --couleur-arriere-plan-element: var(--voilet-fonce);
     --couleur-arriere-plan-element-modal: var(--voilet-clair);
     --couleur-arriere-plan-element-formulaire: var(--jaune-clair);
+    
     --couleur-texte: var(--jaune-clair);
     --couleur-texte-bouton: var(--jaune-clair);
-    --couleur-texte-element-formulaire: var(--jaune-clair);
+    --couleur-texte-element-formulaire: var(--voilet-fonce);
     --couleur-texte-modal: var(--voilet-clair);
+    --couleur-texte-lien-modal: var(--jaune-clair);
     --couleur-ombre: var(--gris-clair-rgba);
   }
 }
