@@ -51,9 +51,9 @@
             changeur_de_theme.addEventListener('click', () => {
                 const data_theme = document.documentElement.getAttribute('data-theme');
                 if(data_theme === 'dark') {
-                    basculeSurThemeClair();
+                    basculeSurTheme('light');
                 } else {
-                    basculeSurThemeSombre();
+                    basculeSurTheme('dark');
                 }
                 
             });
