@@ -1,10 +1,11 @@
 "use strict";
-function pasDeThemeDePreference() {
-    return window.matchMedia('(prefers-color-scheme: no-preference)').matches;
+
+function themeDePreference(theme) {
+    var mediaQuery = "(prefers-color-scheme: ".concat(theme, ")");
+    return window.matchMedia(mediaQuery).matches;
 }
-function basculeSurThemeSombre() {
-    document.documentElement.setAttribute('data-theme', 'dark');
+
+function basculeSurTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
 }
-function basculeSurThemeClair() {
-    document.documentElement.setAttribute('data-theme', 'light');
-}
+

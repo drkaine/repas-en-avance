@@ -10,8 +10,10 @@
         <script src="{{ asset('js/changeur-de-theme.js') }}"></script>
 
         <script>
-            if (pasDeThemeDePreference()) {
-                basculeSurThemeSombre();
+            if (themeDePreference('light')) {
+                basculeSurTheme('light');
+            } else {
+                basculeSurTheme('dark');
             }
         </script>
 
