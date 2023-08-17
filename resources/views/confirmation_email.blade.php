@@ -4,3 +4,4 @@
     Votre mail est bien confirmé,
     Vous allez être redirigé vers la page de connexion
 </p>
+@include('composants.footer')
