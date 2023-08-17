@@ -24,5 +24,8 @@
         "ts-jest": "^29.1.1",
         "typescript": "^5.1.6",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "jsdom-global": "^3.0.2"
     }
 }
