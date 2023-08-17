@@ -29,7 +29,7 @@ class InscriptionController extends Controller
 
 		$this->regimesAlimentaires($regimes_alimentaires, $user->id);
 
-		$user->notify(new ConfirmationEmail);
+		// $user->notify(new ConfirmationEmail);
 
 		return response()->json(['message' => 'Inscription réussie'], 201);
 	}
