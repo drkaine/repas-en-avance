@@ -6,16 +6,5 @@
         <title>Repas en avance</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-
-        <script src="{{ asset('js/changeur-de-theme.js') }}"></script>
-
-        <script>
-            if (themeDePreference('light')) {
-                basculeSurTheme('light');
-            } else {
-                basculeSurTheme('dark');
-            }
-        </script>
-
     </head>
     @include('composants.menu')

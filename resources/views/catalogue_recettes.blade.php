@@ -27,5 +27,4 @@
         </div>
     @endforeach
 </div>
-
-
+@include('composants.footer')

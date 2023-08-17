@@ -63,3 +63,4 @@
         Les champs avec une * sont obligatoire
     </span>
 </form>
+@include('composants.footer')

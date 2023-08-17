@@ -41,21 +41,7 @@
             </a>
         </h1>
         <button id="changeur-de-theme" class="changeur-de-theme">
-            <i class="far fa-sun" id="sunIcon"></i>
-            <i class="fa-solid fa-moon" id="moonIcon"></i>
+            <i class="far fa-sun" id="iconeSoleil"></i>
+            <i class="fa-solid fa-moon" id="iconeLune"></i>
         </button>
-        
-        <script>
-            const changeur_de_theme = document.getElementById('changeur-de-theme');
-
-            changeur_de_theme.addEventListener('click', () => {
-                const data_theme = document.documentElement.getAttribute('data-theme');
-                if(data_theme === 'dark') {
-                    basculeSurTheme('light');
-                } else {
-                    basculeSurTheme('dark');
-                }
-                
-            });
-        </script>
     </header>
