@@ -1,6 +1,6 @@
 
 .bouton-formulaire {
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   font-weight: bold;
   padding: 6px;
   border: hidden;

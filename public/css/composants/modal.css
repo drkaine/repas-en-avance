@@ -23,7 +23,7 @@
 .contenu-modal {
   margin: 100px auto;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   margin-top: 160px;
   width: 280px;
   display: flex;

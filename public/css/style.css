@@ -1,4 +1,5 @@
 @import 'variables/couleur.css';
+@import 'variables/border-radius.css';
 @import 'media-theme-preference/sombre.css';
 @import 'media-theme-preference/clair.css';
 @import 'element-html.css';
@@ -7,6 +8,7 @@
 @import 'composants/formulaire.css';
 @import 'composants/modal.css';
 @import 'composants/elements-de-formulaire.css';
+
 
 [data-theme="dark"] {
   --couleur-arriere-plan: var(--noir);

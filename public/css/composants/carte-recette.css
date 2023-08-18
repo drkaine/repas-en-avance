@@ -7,7 +7,7 @@
 }
 
 .carte-recette {
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   margin: 5px;
   padding: 1px;
   width: 300px;
@@ -18,7 +18,7 @@
 .image-de-la-carte {
   display: block;
   width: 100%;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   height: auto;
 }
 
@@ -40,7 +40,7 @@
 
 .carte-ingredient {
   text-align: center;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   height: fit-content;
   padding: 5px;
   margin-top: 10px;

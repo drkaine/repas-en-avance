@@ -1,19 +1,19 @@
 input {
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     font-weight: bold;
     color:var(--couleur-texte-element-formulaire);
     background-color: var(--couleur-arriere-plan-element-formulaire);
   }
   
   select {
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     padding: 5px;
     color:var(--couleur-texte-element-formulaire);
     background-color: var(--couleur-arriere-plan-element-formulaire);
   }
   
   textarea {
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     font-weight: bold;
     color:var(--couleur-texte-element-formulaire);
     background-color: var(--couleur-arriere-plan-element-formulaire);
