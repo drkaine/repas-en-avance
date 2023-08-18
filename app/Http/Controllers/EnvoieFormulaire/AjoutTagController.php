@@ -37,8 +37,9 @@ class AjoutTagController extends Controller
 
 		$tags = $tag->select('id', 'nom')->get();
 
-		$json = response()->json(['message' => 'Tag ajouté'], 201);
+		$reponse_json = response()->json(['message' => 'Inscription réussie'], 201);
+		$reponse_json = json_decode($reponse_json->getContent());
 
-		return view('ajout_tag', compact('tags', 'json'));
+		return view('ajout_tag', compact('tags', 'reponse_json'));
 	}
 }

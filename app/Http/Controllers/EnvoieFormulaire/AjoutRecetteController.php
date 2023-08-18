@@ -54,8 +54,9 @@ class AjoutRecetteController extends Controller
 
 		$ingredients = $id_tag_ingredients->recuperationTagEnfants;
 
-		$json = response()->json(['message' => 'Recette ajoutée'], 201);
+		$reponse_json = response()->json(['message' => 'Inscription réussie'], 201);
+		$reponse_json = json_decode($reponse_json->getContent());
 
-		return view('ajout_recette', compact('mode_de_cuissons', 'ustensiles', 'ingredients', 'json'));
+		return view('ajout_recette', compact('mode_de_cuissons', 'ustensiles', 'ingredients', 'reponse_json'));
 	}
 }

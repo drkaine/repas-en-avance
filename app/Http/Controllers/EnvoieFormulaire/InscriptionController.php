@@ -31,8 +31,9 @@ class InscriptionController extends Controller
 
 		// $user->notify(new ConfirmationEmail);
 
-		$json = response()->json(['message' => 'Inscription réussie'], 201);
+		$reponse_json = response()->json(['message' => 'Inscription réussie'], 201);
+		$reponse_json = json_decode($reponse_json->getContent());
 
-		return view('accueil', compact('json'));
+		return view('accueil', compact('reponse_json'));
 	}
 }
