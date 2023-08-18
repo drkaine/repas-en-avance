@@ -40,6 +40,8 @@ class FormulaireTest extends TestCase
 
 	public function testInscription(): void
 	{
+		$this->creationRegimesAlimentaire();
+
 		$this->donnees_user['password_confirmation'] = 'password';
 
 		$this->donnees_user['regimes_alimentaires'] = [];

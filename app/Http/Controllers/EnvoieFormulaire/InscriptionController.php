@@ -6,6 +6,7 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
 use App\Notifications\ConfirmationEmail;
+use App\Services\RecuperationTagService;
 use App\Services\VerificationDonneeRequestService;
 use App\Traits\AjoutEnDBTrait;
 use App\Traits\ValidationFormulaireTrait;
@@ -31,9 +32,15 @@ class InscriptionController extends Controller
 
 		// $user->notify(new ConfirmationEmail);
 
+		$recuperation_tag = new RecuperationTagService;
+
+		$id_tag_parent = $recuperation_tag->premierParNom('Régime alimentaire');
+
+		$regimes_alimentaires = $id_tag_parent->recuperationTagEnfants;
+
 		$reponse_json = response()->json(['message' => 'Inscription réussie'], 201);
 		$reponse_json = json_decode($reponse_json->getContent());
 
-		return view('inscription', compact('reponse_json'));
+		return view('inscription', compact('regimes_alimentaires', 'reponse_json'));
 	}
 }
