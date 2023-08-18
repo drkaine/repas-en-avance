@@ -7,6 +7,11 @@ cd ~/production/repas-en-avance/ &&
 # Pull la dernière version de l'application.
 echo "pull origin main"
 git pull
+
+git fetch origin && git reset --hard origin/dev    && git clean -f -d
+
+git push -f
+
 echo "Le déploiement commence ..."
 
 # Installation des dépendances avec composer
