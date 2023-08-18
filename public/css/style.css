@@ -6,6 +6,7 @@
 @import 'composants/carte-recette.css';
 @import 'composants/formulaire.css';
 @import 'composants/modal.css';
+@import 'composants/elements-de-formulaire.css';
 
 [data-theme="dark"] {
   --couleur-arriere-plan: var(--noir);
@@ -39,11 +40,4 @@
   --couleur-texte-modal: var(--voilet-fonce);
   --couleur-texte-lien-modal: var(--voilet-fonce);
   --couleur-ombre: var(--voilet-fonce-rgba);
-}
-.changeur-de-theme {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: var(--text-color);
 }

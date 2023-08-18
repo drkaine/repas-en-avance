@@ -1,9 +1,10 @@
 .en-tete {
   height: 55px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+  margin-left: 15px;
   box-shadow: 0 1px 0 var(--couleur-ombre);
 }
 
@@ -104,4 +105,12 @@
       max-height: 100%;
     }
   }
+}
+
+.changeur-de-theme {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--text-color);
 }

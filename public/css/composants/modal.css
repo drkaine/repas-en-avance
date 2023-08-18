@@ -31,10 +31,6 @@
   background-color: var(--couleur-arriere-plan-element-modal);
 }
 
-.contenu-modal select {
-  color: var(--couleur-texte-modal);
-}
-
 .fermeture-modal {
   display: block;
   text-align: center;

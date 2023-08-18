@@ -1,0 +1,21 @@
+input {
+    border-radius: 10px;
+    font-weight: bold;
+    color:var(--couleur-texte-element-formulaire);
+    background-color: var(--couleur-arriere-plan-element-formulaire);
+  }
+  
+  select {
+    border-radius: 10px;
+    padding: 5px;
+    color:var(--couleur-texte-element-formulaire);
+    background-color: var(--couleur-arriere-plan-element-formulaire);
+  }
+  
+  textarea {
+    border-radius: 10px;
+    font-weight: bold;
+    color:var(--couleur-texte-element-formulaire);
+    background-color: var(--couleur-arriere-plan-element-formulaire);
+  }
+  
