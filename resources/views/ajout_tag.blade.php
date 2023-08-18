@@ -1,5 +1,7 @@
 @include('composants.head')
 
+@include('composants.notification')
+
 <form method="POST" action="{{ route('ajout-tag') }}" class="formulaire">
     @csrf
 
