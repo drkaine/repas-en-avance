@@ -7,15 +7,16 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 use App\Http\Controllers\Controller;
 use App\Services\ModificationUserService;
 use App\Traits\ValidationFormulaireTrait;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
 class ConnexionController extends Controller
 {
 	use ValidationFormulaireTrait;
 
-	public function connexion(Request $request): JsonResponse
+	public function connexion(Request $request): RedirectResponse | Redirector
 	{
 		$user = $request->validate($this->recuperationDonneesAValider('connexion'));
 
@@ -29,6 +30,6 @@ class ConnexionController extends Controller
 
 		$modification_user->sauvegarde();
 
-		return response()->json(['message' => 'connexion réussie'], 201);
+		return redirect('/');
 	}
 }

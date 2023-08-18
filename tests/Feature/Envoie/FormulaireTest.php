@@ -24,6 +24,8 @@ class FormulaireTest extends TestCase
 	{
 		parent::setUp();
 
+		$this->creationTagsAjoutRecette();
+
 		$this->donnees_user = $this->donnees('user');
 		$this->donnees_recette = $this->donnees('recette');
 
@@ -44,7 +46,7 @@ class FormulaireTest extends TestCase
 
 		$response = $this->post('/inscription', $this->donnees_user);
 
-		$response->assertStatus(201);
+		$response->assertStatus(200);
 	}
 
 	public function testConnexion(): void
@@ -55,7 +57,7 @@ class FormulaireTest extends TestCase
 
 		$response = $this->post('/connexion', $this->donnees_user);
 
-		$response->assertStatus(201);
+		$response->assertRedirect('/');
 	}
 
 	public function testAjoutTag(): void
@@ -66,13 +68,13 @@ class FormulaireTest extends TestCase
 			'tags_enfant' => [],
 		]);
 
-		$response->assertStatus(201);
+		$response->assertStatus(200);
 	}
 
 	public function testAjoutRecette(): void
 	{
 		$response = $this->post('/ajout-recette', $this->donnees_recette);
 
-		$response->assertStatus(201);
+		$response->assertStatus(200);
 	}
 }

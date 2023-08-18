@@ -5,18 +5,20 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
+use App\Models\Recette;
+use App\Services\RecuperationTagService;
 use App\Services\VerificationDonneeRequestService;
 use App\Traits\AjoutEnDBTrait;
 use App\Traits\ValidationFormulaireTrait;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AjoutRecetteController extends Controller
 {
 	use AjoutEnDBTrait;
 	use ValidationFormulaireTrait;
 
-	public function ajoutRecette(Request $request): JsonResponse
+	public function ajoutRecette(Request $request): View
 	{
 		$verification_donnee_request = new VerificationDonneeRequestService($request);
 
@@ -34,6 +36,26 @@ class AjoutRecetteController extends Controller
 
 		$this->Ingredient($request->ingredients, $request->quantitees, $recette->id);
 
-		return response()->json(['message' => 'recette ajoutée'], 201);
+		$recuperation_tag = new RecuperationTagService;
+
+		$recette = new Recette;
+
+		$recuperation_tag = new RecuperationTagService;
+
+		$id_tag_ustensiles = $recuperation_tag->premierParNom('Ustensiles');
+
+		$ustensiles = $id_tag_ustensiles->recuperationTagEnfants;
+
+		$id_tag_mode_de_cuissons = $recuperation_tag->premierParNom('Mode de cuisson');
+
+		$mode_de_cuissons = $id_tag_mode_de_cuissons->recuperationTagEnfants;
+
+		$id_tag_ingredients = $recuperation_tag->premierParNom('Ingrédients');
+
+		$ingredients = $id_tag_ingredients->recuperationTagEnfants;
+
+		$json = response()->json(['message' => 'Recette ajoutée'], 201);
+
+		return view('ajout_recette', compact('mode_de_cuissons', 'ustensiles', 'ingredients', 'json'));
 	}
 }

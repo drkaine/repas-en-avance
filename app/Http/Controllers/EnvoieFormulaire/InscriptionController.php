@@ -9,15 +9,15 @@ use App\Notifications\ConfirmationEmail;
 use App\Services\VerificationDonneeRequestService;
 use App\Traits\AjoutEnDBTrait;
 use App\Traits\ValidationFormulaireTrait;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class InscriptionController extends Controller
 {
 	use AjoutEnDBTrait;
 	use ValidationFormulaireTrait;
 
-	public function inscription(Request $request): JsonResponse
+	public function inscription(Request $request): View
 	{
 		$request->validate($this->recuperationDonneesAValider('inscription'));
 
@@ -31,6 +31,8 @@ class InscriptionController extends Controller
 
 		// $user->notify(new ConfirmationEmail);
 
-		return response()->json(['message' => 'Inscription réussie'], 201);
+		$json = response()->json(['message' => 'Inscription réussie'], 201);
+
+		return view('accueil', compact('json'));
 	}
 }
