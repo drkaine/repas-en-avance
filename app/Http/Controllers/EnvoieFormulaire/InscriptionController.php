@@ -34,6 +34,6 @@ class InscriptionController extends Controller
 		$reponse_json = response()->json(['message' => 'Inscription réussie'], 201);
 		$reponse_json = json_decode($reponse_json->getContent());
 
-		return view('accueil', compact('reponse_json'));
+		return view('inscription', compact('reponse_json'));
 	}
 }

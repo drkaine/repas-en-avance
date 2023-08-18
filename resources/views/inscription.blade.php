@@ -1,5 +1,7 @@
 @include('composants.head')
 
+@include('composants.notification')
+
 <form method="POST" action="{{ route('inscription') }}" class="formulaire">
     @csrf
 
