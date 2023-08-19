@@ -1,3 +1,6 @@
+Accueil (Tests\Feature\Affichage\Accueil)
+ [x] Recettes
+
 Ajout Recette (Tests\Feature\Affichage\AjoutRecette)
  [x] Ustensile dans ajout recette
  [x] Mode de cuisson dans ajout recette

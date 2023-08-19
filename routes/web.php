@@ -28,9 +28,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get(
 	'/',
-	function () {
-		return view('accueil');
-	}
+	[
+		AffichageDonneesController::class,
+		'pageAccueil',
+	]
 )->name('accueil');
 
 Route::get(

@@ -108,4 +108,11 @@ class AffichageDonneesController extends Controller
 
 		return view('catalogue_recettes', compact('recettes'));
 	}
+
+	public function pageAccueil(): View
+	{
+		$recettes = $this->recette->with('recuperationIngredient')->get();
+
+		return view('accueil', compact('recettes'));
+	}
 }
