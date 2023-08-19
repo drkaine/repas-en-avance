@@ -41,4 +41,17 @@ class AccueilTest extends TestCase
 			$response->assertSee($recette->temps_cuisson);
 		}
 	}
+
+	public function testIngredientDesDernieresRecettes(): void
+	{
+		$response = $this->get('/');
+
+		$recettes = $response->viewData('recettes');
+
+		foreach ($recettes as $recette) {
+			foreach ($recette->recuperationIngredient as $ingredient) {
+				$response->assertSee($ingredient->nom);
+			}
+		}
+	}
 }

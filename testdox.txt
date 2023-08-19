@@ -1,5 +1,6 @@
 Accueil (Tests\Feature\Affichage\Accueil)
  [x] Recettes
+ [x] Ingredient des dernieres recettes
 
 Ajout Recette (Tests\Feature\Affichage\AjoutRecette)
  [x] Ustensile dans ajout recette
