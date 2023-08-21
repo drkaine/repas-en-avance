@@ -111,7 +111,11 @@ class AffichageDonneesController extends Controller
 
 	public function pageAccueil(): View
 	{
-		$recettes = $this->recette->with('recuperationIngredient')->get();
+		$recettes = $this->recette->
+			with('recuperationIngredient')->
+			orderByDesc('created_at')->
+			take(10)->
+			get();
 
 		return view('accueil', compact('recettes'));
 	}
