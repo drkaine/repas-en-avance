@@ -6,7 +6,7 @@
     @csrf
 
     <div class="element-formulaire">
-        <label for="nom">Nom de la recette *</label>
+        <label>Nom de la recette *</label>
         <input id="nom" type="text" name="nom" required autofocus>
         @error('nom')
             <span>{{ $message }}</span>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="lien">Lien de la recette</label>
+        <label>Lien de la recette</label>
         <input id="lien" type="text" name="lien">
         @error('lien')
             <span>{{ $message }}</span>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="reference_livre">Référence du livre</label>
+        <label>Référence du livre</label>
         <input id="reference_livre" type="text" name="reference_livre">
         @error('reference_livre')
             <span>{{ $message }}</span>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="instruction">Instruction</label>
+        <label>Instruction</label>
         <textarea id="instruction" name="instruction" rows="6" cols="30"></textarea>
         @error('instruction')
             <span>{{ $message }}</span>
@@ -38,7 +38,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="description">Description</label>
+        <label>Description</label>
         <textarea id="description" name="description" rows="6" cols="30"></textarea>
         @error('description')
             <span>{{ $message }}</span>
@@ -46,7 +46,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="temps_preparation">Temps de la preparation *</label>
+        <label>Temps de la preparation *</label>
         <input id="temps_preparation" type="number" name="temps_preparation" placeholder="min" required>
         @error('temps_preparation')
             <span>{{ $message }}</span>
@@ -54,7 +54,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="temps_cuisson">Temps de cuisson</label>
+        <label>Temps de cuisson</label>
         <input id="temps_cuisson" type="number" name="temps_cuisson" placeholder="min">
         @error('temps_cuisson')
             <span>{{ $message }}</span>
@@ -62,7 +62,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="temps_repos">temps de repos</label>
+        <label>temps de repos</label>
         <input id="temps_repos" type="number" name="temps_repos" placeholder="min">
         @error('temps_repos')
             <span>{{ $message }}</span>
@@ -70,7 +70,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="ustensiles">
+        <label>
             <a href="#modal-ustensiles" class="lien-modal">
                 Ustensiles
             </a>
@@ -91,7 +91,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="mode_de_cuissons">
+        <label>
             <a href="#modal-mode-de-cuissons" class="lien-modal">
                 Mode de cuissons
             </a>
@@ -112,7 +112,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="ingredients">
+        <label>
             <a href="#modal-ingredients" class="lien-modal">
                 Ingredients *
             </a>    
@@ -128,7 +128,7 @@
                     <span>{{ $message }}</span>
                 @enderror
 
-                <label for="quantitees">
+                <label>
                     quantitées
                 </label>
                 @foreach($ingredients as $ingredient)
@@ -146,7 +146,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="quantitees">
+        <label>
             <a href="#modal-quantitees" class="lien-modal">
                 quantitées
             </a>    

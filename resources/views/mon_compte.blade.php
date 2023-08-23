@@ -8,7 +8,7 @@
     @csrf
 
     <div class="element-formulaire">
-        <label for="email">Adresse e-mail *</label>
+        <label>Adresse e-mail *</label>
         <input id="email" type="email" name="email" value="{{  $user->email  }}" required autofocus>
         @error('email')
             <span>{{ $message }}</span>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="nom">Nom *</label>
+        <label>Nom *</label>
         <input id="nom" type="text" name="nom" value="{{  $user->nom  }}" required>
         @error('nom')
             <span>{{ $message }}</span>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="tags_regimes_alimentaires">
+        <label>
             <a href="#modal-tags-regimes-alimentaires" class="lien-modal">
                 Régimes alimentaires
             </a>

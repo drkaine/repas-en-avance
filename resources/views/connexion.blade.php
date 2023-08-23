@@ -3,7 +3,7 @@
     @csrf
 
     <div class="element-formulaire">
-        <label for="email">Adresse e-mail *</label>
+        <label>Adresse e-mail *</label>
         <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
         @error('email')
             <span>{{ $message }}</span>
@@ -11,7 +11,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="password">Mot de passe *</label>
+        <label>Mot de passe *</label>
         <input id="password" type="password" name="password" required>
         @error('password')
             <span>{{ $message }}</span>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="remember">Se souvenir de moi</label>
+        <label>Se souvenir de moi</label>
         <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
     </div>
 

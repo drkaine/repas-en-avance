@@ -6,7 +6,7 @@
     @csrf
 
     <div class="element-formulaire">
-        <label for="nom">Nom *</label>
+        <label>Nom *</label>
         <input id="nom" type="text" name="nom"required autofocus>
         @error('nom')
             <span>{{ $message }}</span>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="tags_enfant">
+        <label>
             <a href="#modal-tags-parent" class="lien-modal">
                 Tag parents
             </a>
@@ -35,7 +35,7 @@
     </div>
 
     <div class="element-formulaire">
-        <label for="tags_enfant">
+        <label>
             <a href="#modal-tags-enfant" class="lien-modal">
                 Tag enfants
             </a>
