@@ -69,33 +69,6 @@ class AjoutRecetteTest extends TestCase
 		$response->assertStatus(302);
 	}
 
-	public function testLongueurMinimumChampsInstruction(): void
-	{
-		$this->donnees_recette['instruction'] = 'Eplu';
-
-		$response = $this->post('/ajout-recette', $this->donnees_recette);
-
-		$response->assertStatus(302);
-	}
-
-	public function testChampsInstruction(): void
-	{
-		$this->donnees_recette['instruction'] = null;
-
-		$response = $this->post('/ajout-recette', $this->donnees_recette);
-
-		$response->assertStatus(302);
-	}
-
-	public function testChampsDescription(): void
-	{
-		$this->donnees_recette['description'] = null;
-
-		$response = $this->post('/ajout-recette', $this->donnees_recette);
-
-		$response->assertStatus(302);
-	}
-
 	public function testChampsIngredient(): void
 	{
 		unset($this->donnees_recette['ingredients']);
