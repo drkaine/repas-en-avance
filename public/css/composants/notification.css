@@ -1,11 +1,11 @@
 .formulaire-valide {
-    background-color: green;
-    color: white;
-    padding: 10px;
-    position: fixed;
-    top: 9%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    border-radius: var(--border-radius);
-  }
+  background-color: green;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  border-radius: var(--border-radius);
+}
