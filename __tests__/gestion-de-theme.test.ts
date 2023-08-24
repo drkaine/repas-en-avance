@@ -7,7 +7,7 @@ import {
   afficherIconeSelonTheme,
   mettreEnPlaceLeTheme,
   changeurDeThemeAuClick,
-} from '../resources/ts/changeur-de-theme.ts';
+} from '../resources/ts/gestion-de-theme.ts';
 
 describe('Changeur de thème', () => {
   let html: HTMLElement; 

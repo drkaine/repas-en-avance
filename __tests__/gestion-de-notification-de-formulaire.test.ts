@@ -1,6 +1,6 @@
 import {
     cacherNotificationApresDelai,
-} from '../resources/ts/gestion-des-notifications-de-formulaire.ts';
+} from '../resources/ts/gestion-de-notification-de-formulaire.ts';
 
 describe('cacherNotificationApresDelai', () => {
     it('Cache la notification après le délai spécifié', () => {
