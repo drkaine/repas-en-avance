@@ -3,7 +3,7 @@
         {{ $reponse_json->message }}
     </span>
 
-    <script src="{{ asset('js/gestion-des-notifications-de-formulaire.js') }}"></script>
+    <script src="{{ asset('js/gestion-de-notification-de-formulaire.js') }}"></script>
     <script>
         cacherNotificationApresDelai('message-de-reussite', 5000);
     </script>
