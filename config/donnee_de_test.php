@@ -150,4 +150,10 @@ return [
 			'nom' => 'Carotte',
 		],
 	],
+	'photo' => [
+		'nom' => 'Carottes rapées',
+		'description' => 'Assiette de carottes rapées',
+		'id_recette' => 1,
+		'dossier' => 'carotte simple,',
+	],
 ];

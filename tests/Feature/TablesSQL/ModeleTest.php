@@ -95,4 +95,11 @@ class ModeleTest extends TestCase
 
 		$this->assertDatabaseHas('mode_de_cuissons', $this->donnees('mode_de_cuisson'));
 	}
+
+	public function testPhoto(): void
+	{
+		$this->creationPhoto();
+
+		$this->assertDatabaseHas('photos', $this->donnees('photo'));
+	}
 }

@@ -111,6 +111,7 @@ Modele (Tests\Feature\TableSQL\Modele)
  [x] Ingredient
  [x] Ustensile
  [x] Mode de cuisson
+ [x] Photo
 
 Modification (Tests\Feature\DansLaBaseDeDonnee\User\Modification)
  [x] Du user

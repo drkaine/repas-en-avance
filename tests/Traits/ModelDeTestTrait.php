@@ -6,6 +6,7 @@ namespace Tests\Traits;
 
 use App\Models\Ingredient;
 use App\Models\ModeDeCuisson;
+use App\Models\Photo;
 use App\Models\Recette;
 use App\Models\RegimeAlimentaire;
 use App\Models\RelationTag;
@@ -150,5 +151,12 @@ trait ModelDeTestTrait
 		$ustensile = new ModeDeCuisson;
 
 		$ustensile->factory()->create($this->donnees('mode_de_cuisson'));
+	}
+
+	public function creationPhoto(): void
+	{
+		$photo = new Photo;
+
+		$photo->factory()->create($this->donnees('photo'));
 	}
 }
