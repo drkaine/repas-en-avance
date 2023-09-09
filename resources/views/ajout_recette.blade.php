@@ -146,28 +146,6 @@
     </div>
 
     <div class="element-formulaire">
-        <label>
-            <a href="#modal-quantitees" class="lien-modal">
-                quantitées
-            </a>    
-        </label>
-        <div id="modal-quantitees" class="modal">
-            <div class="contenu-modal">
-                @foreach($ingredients as $ingredient)
-                    <span>
-                        {{  $ingredient->nom  }}
-                    </span>
-                    <input id="quantitees" type="text" name="quantitees[{{  $ingredient->id  }}]"  placeholder="quantitée et mesure" >
-                @endforeach
-                @error('quantitees')
-                    <span>{{ $message }}</span>
-                @enderror
-                <a href="#fermeture" class="fermeture-modal">Fermer</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="element-formulaire">
         <button type="submit" class="bouton-formulaire">
             Ajouter la recette
         </button>

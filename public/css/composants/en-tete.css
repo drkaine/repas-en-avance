@@ -4,24 +4,24 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-  margin-left: 20px;
   box-shadow: 0 1px 0 var(--couleur-ombre);
 }
 
 .titre-en-tete {
   margin-left: 20px;
-}
 
-.titre-en-tete a {
-  outline: none;
-  text-decoration: none;
+  & a {
+    outline: none;
+    text-decoration: none;
+    margin-left: 15px;
+  }
 }
 
 .liste-menu-deroulant {
   list-style: none;
   position: absolute;
   left: 50px; 
-  width: 50%;
+  width: 35%;
   height: 100%;
   max-height: 0;
   overflow: hidden;
