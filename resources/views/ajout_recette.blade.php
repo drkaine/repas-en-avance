@@ -2,13 +2,21 @@
 
 @include('composants.notification')
 
-<form method="POST" action="{{ route('ajout-recette') }}" class="formulaire">
+<form method="POST" action="{{ route('ajout-recette') }}" class="formulaire" enctype="multipart/form-data">
     @csrf
 
     <div class="element-formulaire">
         <label>Nom de la recette *</label>
         <input id="nom" type="text" name="nom" required autofocus>
         @error('nom')
+            <span>{{ $message }}</span>
+        @enderror
+    </div>
+
+    <div class="element-formulaire">
+        <label>Photo de la recette</label>
+        <input id="file" type="file" name="photos">
+        @error('photos')
             <span>{{ $message }}</span>
         @enderror
     </div>
