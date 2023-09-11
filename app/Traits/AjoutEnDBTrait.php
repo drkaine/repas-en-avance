@@ -6,6 +6,7 @@ namespace App\Traits;
 
 use App\Models\Ingredient;
 use App\Models\ModeDeCuisson;
+use App\Models\Photo;
 use App\Models\Recette;
 use App\Models\RegimeAlimentaire;
 use App\Models\RelationTag;
@@ -106,6 +107,13 @@ trait AjoutEnDBTrait
 		}
 	}
 
+	public function photo(array $photos, int $id_recette): void
+	{
+		foreach ($photos as $donnee_photo) {
+			$this->nouvellePhoto($donnee_photo, $id_recette);
+		}
+	}
+
 	private function nouveauRegimeAlimentaire(int $id_tag, $id_user): void
 	{
 		$user_tag = new RegimeAlimentaire;
@@ -144,6 +152,18 @@ trait AjoutEnDBTrait
 			'id_recette' => $id_recette,
 			'id_tag' => $id_tag,
 			'quantite' => $quantite,
+		]);
+	}
+
+	private function nouvellePhoto(array $donnee_photo, int $id_recette): void
+	{
+		$photo = new Photo;
+
+		$photo->create([
+			'id_recette' => $id_recette,
+			'nom' => $donnee_photo['nom'],
+			'description' => $donnee_photo['description'],
+			'dossier' => $donnee_photo['dossier'],
 		]);
 	}
 }

@@ -34,7 +34,9 @@ class AjoutRecetteController extends Controller
 
 		$this->modeDeCuisson($mode_de_cuissons, $recette->id);
 
-		$this->Ingredient($request->ingredients, $request->quantitees, $recette->id);
+		$this->ingredient($request->ingredients, $request->quantitees, $recette->id);
+
+		$this->photo($request->photos ?: [], $recette->id);
 
 		$recuperation_tag = new RecuperationTagService;
 

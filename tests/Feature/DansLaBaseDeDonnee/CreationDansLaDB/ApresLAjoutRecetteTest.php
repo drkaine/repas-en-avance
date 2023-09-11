@@ -26,6 +26,8 @@ class ApresLAjoutRecetteTest extends TestCase
 
 	private array $donnees_ingredient;
 
+	private array $donnees_photo;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
@@ -33,6 +35,7 @@ class ApresLAjoutRecetteTest extends TestCase
 		$this->donnees_ustensile = $this->donnees('ustensile');
 		$this->donnees_mode_de_cuisson = $this->donnees('mode_de_cuisson');
 		$this->donnees_ingredient = $this->donnees('ingredient');
+		$this->donnees_photo = $this->donnees('photo');
 
 		$this->donnees_recette['ingredients'] = [
 			'Carotte' => '2',
@@ -79,5 +82,16 @@ class ApresLAjoutRecetteTest extends TestCase
 		$this->post('/ajout-recette', $this->donnees_recette);
 
 		$this->assertDatabaseHas('ingredients', $this->donnees_ingredient);
+	}
+
+	public function testPhotoDansAjoutRecette(): void
+	{
+		$this->donnees_recette['photos'] = [
+			$this->donnees_photo,
+		];
+
+		$this->post('/ajout-recette', $this->donnees_recette);
+
+		$this->assertDatabaseHas('photos', $this->donnees_photo);
 	}
 }

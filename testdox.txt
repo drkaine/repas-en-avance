@@ -32,6 +32,7 @@ Apres LAjout Recette (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLAjoutRecet
  [x] Ustensile dans ajout recette
  [x] Mode de cuisson dans ajout recette
  [x] Ingredient dans ajout recette
+ [x] Photo dans ajout recette
 
 Apres LInscription (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLInscription)
  [x] User apres l inscription
