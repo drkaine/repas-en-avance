@@ -8,6 +8,7 @@ return [
 		'temps_preparation' => 'required|integer',
 		'ingredients' => 'required|array',
 		'quantitees' => 'required|array',
+		'photos' => 'required|array',
 	],
 	'ajout_tag' => [
 		'nom' => 'required|string|max:100|min:3',

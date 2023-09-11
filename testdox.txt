@@ -14,6 +14,7 @@ Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
  [x] Champs temps de preparation
  [x] Champs ingredient
  [x] Champs quantite
+ [x] Champs photo
 
 Ajout Tag (Tests\Feature\Affichage\Donnees\AjoutTag)
  [x] Tag dans ajout tag

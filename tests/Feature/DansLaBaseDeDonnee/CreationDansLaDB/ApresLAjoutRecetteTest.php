@@ -44,13 +44,22 @@ class ApresLAjoutRecetteTest extends TestCase
 		$this->donnees_recette['quantitees'] = [
 			'2' => '1',
 		];
+
+		$this->donnees_recette['photos'] = [
+			$this->donnees_photo,
+		];
+
 	}
 
 	public function testRecette(): void
 	{
 		$this->post('/ajout-recette', $this->donnees_recette);
 
-		unset($this->donnees_recette['ingredients'], $this->donnees_recette['quantitees']);
+		unset(
+			$this->donnees_recette['ingredients'],
+			$this->donnees_recette['quantitees'],
+			$this->donnees_recette['photos']
+		);
 
 		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
@@ -86,10 +95,6 @@ class ApresLAjoutRecetteTest extends TestCase
 
 	public function testPhotoDansAjoutRecette(): void
 	{
-		$this->donnees_recette['photos'] = [
-			$this->donnees_photo,
-		];
-
 		$this->post('/ajout-recette', $this->donnees_recette);
 
 		$this->assertDatabaseHas('photos', $this->donnees_photo);

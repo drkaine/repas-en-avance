@@ -36,6 +36,10 @@ class FormulaireTest extends TestCase
 		$this->donnees_recette['quantitees'] = [
 			'2' => '1',
 		];
+
+		$this->donnees_recette['photos'] = [
+			$this->donnees('photo'),
+		];
 	}
 
 	public function testInscription(): void
