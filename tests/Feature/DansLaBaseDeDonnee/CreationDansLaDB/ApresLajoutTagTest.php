@@ -35,7 +35,7 @@ class ApresLajoutTagTest extends TestCase
 
 	public function testRelationTagParent(): void
 	{
-		$this->creationTag();
+		$this->creation('Tag', 'tag');
 
 		$this->donnees_tag = [
 			'nom' => 'Plat',
@@ -52,7 +52,7 @@ class ApresLajoutTagTest extends TestCase
 
 	public function testRelationTagEnfant(): void
 	{
-		$this->creationTag();
+		$this->creation('Tag', 'tag');
 
 		$this->donnees_tag = [
 			'nom' => 'Plat',

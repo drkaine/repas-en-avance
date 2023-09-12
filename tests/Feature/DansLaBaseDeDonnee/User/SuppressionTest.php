@@ -32,7 +32,7 @@ class SuppressionTest extends TestCase
 
 		$this->anonymisation_helper = new GestionUsersInactifService;
 
-		$this->creationUserAnonyme();
+		$this->creation('User', 'user_anonyme');
 	}
 
 	public function testUsersAnonymes(): void
@@ -48,7 +48,7 @@ class SuppressionTest extends TestCase
 
 		$donnees_user_anonyme['derniere_connexion'] = $date->now()->subMonths(7);
 
-		$this->creationRegimeAlimentaire();
+		$this->creation('RegimeAlimentaire', 'regime_alimentaire');
 
 		$this->anonymisation_helper->supprimer();
 

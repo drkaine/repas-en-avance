@@ -30,7 +30,7 @@ class RecuperationDonneesAnonymiserTest extends TestCase
 
 		$this->donnees_user_anonyme_recupere = $this->donnees('user_anonyme_recupere');
 
-		$this->creationUserAnonyme();
+		$this->creation('User', 'user_anonyme');
 	}
 
 	public function testRecuperationCompteUser(): void

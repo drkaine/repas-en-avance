@@ -20,11 +20,11 @@ class AccueilTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->creationRecette();
+		$this->creation('Recette', 'recette');
 
-		$this->creationTagIngredient();
+		$this->creationDonnees('Tag', 'tag_ingredient');
 
-		$this->creationIngredient();
+		$this->creation('Ingredient', 'ingredient');
 	}
 
 	public function testRecettes(): void

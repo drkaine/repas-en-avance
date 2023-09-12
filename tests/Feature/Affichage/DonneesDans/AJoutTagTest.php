@@ -20,7 +20,7 @@ class AjoutTagTest extends TestCase
 	{
 		$this->userConnecte();
 
-		$this->creationTag();
+		$this->creation('Tag', 'tag');
 
 		$response = $this->get('/ajout-tag');
 

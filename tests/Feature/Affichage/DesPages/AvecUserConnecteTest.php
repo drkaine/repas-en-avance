@@ -25,7 +25,7 @@ class AvecUserConnecteTest extends TestCase
 
 	public function testAjoutTag(): void
 	{
-		$this->creationTag();
+		$this->creation('Tag', 'tag');
 
 		$response = $this->get('ajout-tag');
 

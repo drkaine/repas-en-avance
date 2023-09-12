@@ -64,7 +64,7 @@ class RedirectionTest extends TestCase
 
 	public function testRecuperationCompte(): void
 	{
-		$this->creationUserAnonyme();
+		$this->creation('User', 'user_anonyme');
 
 		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 

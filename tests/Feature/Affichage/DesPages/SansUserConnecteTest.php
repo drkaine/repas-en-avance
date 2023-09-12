@@ -48,11 +48,11 @@ class SansUserConnecteTest extends TestCase
 
 	public function testCatalogueRecettes(): void
 	{
-		$this->creationRecette();
+		$this->creation('Recette', 'recette');
 
-		$this->creationTagIngredient();
+		$this->creationDonnees('Tag', 'tag_ingredient');
 
-		$this->creationIngredient();
+		$this->creation('Ingredient', 'ingredient');
 
 		$response = $this->get('catalogue-recettes');
 

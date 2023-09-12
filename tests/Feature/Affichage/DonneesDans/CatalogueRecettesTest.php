@@ -18,11 +18,11 @@ class CatalogueRecettesTest extends TestCase
 
 	public function testRecetteDansCatalogueRecettes(): void
 	{
-		$this->creationRecette();
+		$this->creation('Recette', 'recette');
 
-		$this->creationTagIngredient();
+		$this->creationDonnees('Tag', 'tag_ingredient');
 
-		$this->creationIngredient();
+		$this->creation('Ingredient', 'ingredient');
 
 		$response = $this->get('catalogue-recettes');
 
@@ -39,11 +39,11 @@ class CatalogueRecettesTest extends TestCase
 
 	public function testIngredientDansCatalogueRecettes(): void
 	{
-		$this->creationRecette();
+		$this->creation('Recette', 'recette');
 
-		$this->creationTagIngredient();
+		$this->creationDonnees('Tag', 'tag_ingredient');
 
-		$this->creationIngredient();
+		$this->creation('Ingredient', 'ingredient');
 
 		$response = $this->get('catalogue-recettes');
 

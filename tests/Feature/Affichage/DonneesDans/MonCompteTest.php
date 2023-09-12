@@ -50,7 +50,7 @@ class MonCompteTest extends TestCase
 
 	public function testRegimeAlimentaireDansMonCompte(): void
 	{
-		$this->creationRegimeAlimentaire();
+		$this->creation('RegimeAlimentaire', 'regime_alimentaire');
 
 		$response = $this->get('mon-compte');
 

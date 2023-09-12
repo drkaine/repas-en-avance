@@ -49,56 +49,56 @@ class ModeleTest extends TestCase
 
 	public function testTags(): void
 	{
-		$this->creationTag();
+		$this->creation('Tag', 'tag');
 
 		$this->assertDatabaseHas('tags', $this->donnees_tag);
 	}
 
 	public function testRelationTags(): void
 	{
-		$this->creationRelationTag();
+		$this->creation('RelationTag', 'relation_tag');
 
 		$this->assertDatabaseHas('relation_tags', $this->donnees('relation_tag'));
 	}
 
 	public function testRecettes(): void
 	{
-		$this->creationRecette();
+		$this->creation('Recette', 'recette');
 
 		$this->assertDatabaseHas('recettes', $this->donnees_recette);
 	}
 
 	public function testRegimeAlimentaire(): void
 	{
-		$this->creationRegimeAlimentaire();
+		$this->creation('RegimeAlimentaire', 'regime_alimentaire');
 
 		$this->assertDatabaseHas('regimes_alimentaires', $this->donnees('regime_alimentaire'));
 	}
 
 	public function testIngredient(): void
 	{
-		$this->creationIngredient();
+		$this->creation('Ingredient', 'ingredient');
 
 		$this->assertDatabaseHas('ingredients', $this->donnees('ingredient'));
 	}
 
 	public function testUstensile(): void
 	{
-		$this->creationUstensile();
+		$this->creation('Ustensile', 'ustensile');
 
 		$this->assertDatabaseHas('ustensiles', $this->donnees('ustensile'));
 	}
 
 	public function testModeDeCuisson(): void
 	{
-		$this->creationModeDeCuisson();
+		$this->creation('ModeDeCuisson', 'mode_de_cuisson');
 
 		$this->assertDatabaseHas('mode_de_cuissons', $this->donnees('mode_de_cuisson'));
 	}
 
 	public function testPhoto(): void
 	{
-		$this->creationPhoto();
+		$this->creation('Photo', 'photo');
 
 		$this->assertDatabaseHas('photos', $this->donnees('photo'));
 	}

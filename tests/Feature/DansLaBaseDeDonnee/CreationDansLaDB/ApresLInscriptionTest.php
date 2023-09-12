@@ -48,7 +48,7 @@ class ApresLInscriptionTest extends TestCase
 
 		$this->post('/inscription', $this->donnees_user);
 
-		$this->creationTag();
+		$this->creation('Tag', 'tag');
 
 		$this->assertDatabaseHas('regimes_alimentaires', $this->donnees('regime_alimentaire'));
 	}

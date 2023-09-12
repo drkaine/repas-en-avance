@@ -55,7 +55,7 @@ class ModificationTest extends TestCase
 
 		$this->creationRegimesAlimentaire();
 
-		$this->creationRegimeAlimentaire();
+		$this->creation('RegimeAlimentaire', 'regime_alimentaire');
 
 		unset($this->donnees_user['password']);
 
