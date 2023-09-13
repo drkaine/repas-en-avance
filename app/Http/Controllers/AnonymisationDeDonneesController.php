@@ -16,11 +16,11 @@ class AnonymisationDeDonneesController extends Controller
 
 		$modification_user = new ModificationUserService($user);
 
-		$modification_user->nom('Anonyme');
+		$modification_user->modificationChamp('nom', 'Anonyme');
 
-		$modification_user->email('anonyme' . $user->id . '@anonyme.fr');
+		$modification_user->modificationChamp('email', 'anonyme' . $user->id . '@anonyme.fr');
 
-		$modification_user->emailVerifiedAt(null);
+		$modification_user->modificationChamp('email_verified_at', null);
 
 		$modification_user->sauvegarde();
 

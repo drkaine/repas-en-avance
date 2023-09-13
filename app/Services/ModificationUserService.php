@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace App\Services;
 
 use App\Models\User;
-use Carbon\Carbon;
 
 class ModificationUserService
 {
@@ -13,26 +12,9 @@ class ModificationUserService
 	{
 	}
 
-	public function derniereConnexion(): void
+	public function modificationChamp(string $nom_du_champ, mixed $valeur_du_champ): void
 	{
-		$date = new Carbon;
-		$this->user->derniere_connexion = $date->now();
-	}
-
-	public function nom(string $nom): void
-	{
-		$this->user->nom = $nom;
-
-	}
-
-	public function email(string $email): void
-	{
-		$this->user->email = $email;
-	}
-
-	public function emailVerifiedAt(?Carbon $date): void
-	{
-		$this->user->email_verified_at = $date;
+		$this->user->{$nom_du_champ} = $valeur_du_champ;
 	}
 
 	public function sauvegarde(): void

@@ -22,7 +22,7 @@ class ConfirmationController extends Controller
 
 		$modification_user = new ModificationUserService($user);
 
-		$modification_user->emailVerifiedAt($date->now());
+		$modification_user->modificationChamp('email_verified_at', $date->now());
 
 		$modification_user->sauvegarde();
 

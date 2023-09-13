@@ -7,6 +7,7 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 use App\Http\Controllers\Controller;
 use App\Services\ModificationUserService;
 use App\Traits\ValidationFormulaireTrait;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -26,7 +27,9 @@ class ConnexionController extends Controller
 
 		$modification_user = new ModificationUserService($user_authentifie);
 
-		$modification_user->derniereConnexion();
+		$date = new Carbon;
+
+		$modification_user->modificationChamp('derniere_connexion', $date->now());
 
 		$modification_user->sauvegarde();
 

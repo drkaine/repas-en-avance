@@ -20,9 +20,9 @@ class ModificationDeDonneesController extends Controller
 
 		$modification_user = new ModificationUserService($user);
 
-		$modification_user->nom($request->nom);
+		$modification_user->modificationChamp('nom', $request->nom);
 
-		$modification_user->email($request->email);
+		$modification_user->modificationChamp('email', $request->email);
 
 		$modification_user->sauvegarde();
 

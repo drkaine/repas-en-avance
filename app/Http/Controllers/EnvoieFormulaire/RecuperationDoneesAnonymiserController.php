@@ -23,9 +23,9 @@ class RecuperationDoneesAnonymiserController extends Controller
 		if (password_verify($request->password, $user_recupere->password)) {
 			$modification_user = new ModificationUserService($user_recupere);
 
-			$modification_user->nom($request->nom);
+			$modification_user->modificationChamp('nom', $request->nom);
 
-			$modification_user->email($request->email);
+			$modification_user->modificationChamp('email', $request->email);
 
 			$modification_user->sauvegarde();
 		}
