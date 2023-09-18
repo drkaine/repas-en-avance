@@ -10,4 +10,22 @@ trait RecuperationDonneesDeTestTrait
 	{
 		return config('donnee_de_test.' . $donnee_voulue);
 	}
+
+	public function donneesFormulaireAjoutRecette(): array
+	{
+		$donnees_recette = $this->donnees('recette');
+		$donnees_recette['ingredients'] = [
+			'Carotte' => '2',
+		];
+
+		$donnees_recette['quantitees'] = [
+			'2' => '1',
+		];
+
+		$donnees_recette['photos'] = [
+			$this->donnees('photo'),
+		];
+
+		return $donnees_recette;
+	}
 }

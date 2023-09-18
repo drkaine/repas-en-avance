@@ -18,7 +18,7 @@ class FormulaireTest extends TestCase
 
 	private array $donnees_user;
 
-	private array $donnees_recette;
+	private array $donnees_formulaire_ajout_recette;
 
 	protected function setUp(): void
 	{
@@ -27,19 +27,8 @@ class FormulaireTest extends TestCase
 		$this->creationTagsAjoutRecette();
 
 		$this->donnees_user = $this->donnees('user');
-		$this->donnees_recette = $this->donnees('recette');
 
-		$this->donnees_recette['ingredients'] = [
-			'Carotte' => '2',
-		];
-
-		$this->donnees_recette['quantitees'] = [
-			'2' => '1',
-		];
-
-		$this->donnees_recette['photos'] = [
-			$this->donnees('photo'),
-		];
+		$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
 	}
 
 	public function testInscription(): void
@@ -79,7 +68,7 @@ class FormulaireTest extends TestCase
 
 	public function testAjoutRecette(): void
 	{
-		$response = $this->post('/ajout-recette', $this->donnees_recette);
+		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
 		$response->assertStatus(200);
 	}

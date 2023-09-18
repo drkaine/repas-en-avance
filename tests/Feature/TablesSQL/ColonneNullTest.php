@@ -30,14 +30,6 @@ class ColonneNullTest extends TestCase
 
 		$this->donnees_user = $this->donnees('user');
 		$this->donnees_recette = $this->donnees('recette');
-
-		$this->donnees_recette['ingredients'] = [
-			'Carotte' => 2,
-		];
-
-		$this->donnees_recette['quantites'] = [
-			'Carotte' => 1,
-		];
 	}
 
 	public function testDeLaTableUsersChampsEmailVerifiedAt(): void
