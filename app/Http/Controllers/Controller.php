@@ -26,4 +26,15 @@ class Controller extends BaseController
 
 		return view('connexion');
 	}
+
+	public function affichageMotDePasseOublie(): View | RedirectResponse | Redirector
+	{
+		$user = auth()->user();
+
+		if ($user) {
+			return redirect('mon-compte');
+		}
+
+		return view('mot_de_passe_oublie');
+	}
 }

@@ -67,4 +67,11 @@ class SansUserConnecteTest extends TestCase
 
 		$response->assertStatus(200);
 	}
+
+	public function testMotDePasseOublie(): void
+	{
+		$response = $this->get('mot-de-passe-oublie');
+
+		$response->assertStatus(200);
+	}
 }
