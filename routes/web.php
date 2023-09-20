@@ -59,7 +59,7 @@ Route::get(
 )->name('confirmation-email');
 
 Route::get(
-	'mot-de-passe-oublie',
+	'mot-de-passe-oublie/{identifiant_user}',
 	[
 		Controller::class,
 		'affichageMotDePasseOublie',

@@ -70,7 +70,7 @@ class SansUserConnecteTest extends TestCase
 
 	public function testMotDePasseOublie(): void
 	{
-		$response = $this->get('mot-de-passe-oublie');
+		$response = $this->get('mot-de-passe-oublie/oigoiuyv');
 
 		$response->assertStatus(200);
 	}
