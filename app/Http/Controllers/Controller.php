@@ -34,7 +34,8 @@ class Controller extends BaseController
 		if ($user) {
 			return redirect('mon-compte');
 		}
+		$identifiant = 'demande' === $identifiant_user;
 
-		return view('mot_de_passe_oublie');
+		return view('mot_de_passe_oublie', compact('identifiant'));
 	}
 }
