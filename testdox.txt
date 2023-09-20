@@ -46,6 +46,7 @@ Apres Lajout Tag (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLajoutTag)
 
 Authentification (Tests\Feature\Authentification)
  [x] Connexion
+ [x] Connexion user non confirme
  [x] Deconnexion
 
 Avec User Connecte (Tests\Feature\Affichage\DesPages\AvecUserConnecte)

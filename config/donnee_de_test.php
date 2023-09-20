@@ -10,6 +10,7 @@ return [
 		'nom' => 'Test user',
 		'email' => 'email@test.fr',
 		'password' => 'password',
+		'email_verified_at' => $date->now(),
 	],
 	'user_modifie' => [
 		'nom' => 'Test user modifié',

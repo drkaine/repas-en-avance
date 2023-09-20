@@ -35,6 +35,18 @@ trait ModelDeTestTrait
 		return $user;
 	}
 
+	public function creationUserNonConfirme(): User
+	{
+		$user = new User;
+
+		$donnees_user = $this->donnees('user');
+		unset($donnees_user['email_verified_at']);
+
+		$user = $user->factory()->create();
+
+		return $user;
+	}
+
 	public function creationDonnees(string $nom_model, string $nom_donnees_voulue): void
 	{
 		$chemin_model = 'App\\Models\\' . $nom_model;

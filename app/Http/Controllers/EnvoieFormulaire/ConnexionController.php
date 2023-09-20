@@ -25,6 +25,12 @@ class ConnexionController extends Controller
 
 		$user_authentifie = auth()->user();
 
+		if (!isset($user_authentifie->email_verified_at)) {
+			Auth::logout();
+
+			return redirect('inscription');
+		}
+
 		$modification_user = new ModificationUserService($user_authentifie);
 
 		$date = new Carbon;

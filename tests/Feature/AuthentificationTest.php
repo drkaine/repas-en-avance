@@ -30,11 +30,22 @@ class AuthentificationTest extends TestCase
 	{
 		$user = $this->creationUser();
 
-		unset($this->donnees_user['nom']);
+		unset($this->donnees_user['nom'], $this->donnees_user['email_verified_at']);
 
 		$this->post('/connexion', $this->donnees_user);
 
 		$this->assertSame($user->id, Auth::user()->id);
+	}
+
+	public function testConnexionUserNonConfirme(): void
+	{
+		$user = $this->creationUserNonConfirme();
+
+		unset($this->donnees_user['nom'], $this->donnees_user['email_verified_at']);
+
+		$response = $this->post('/connexion', $this->donnees_user);
+
+		$response->assertRedirect('inscription');
 	}
 
 	public function testDeconnexion(): void

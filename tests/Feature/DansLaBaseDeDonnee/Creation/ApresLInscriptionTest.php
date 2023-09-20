@@ -35,7 +35,7 @@ class ApresLInscriptionTest extends TestCase
 
 		$this->post('/inscription', $this->donnees_user);
 
-		unset($this->donnees_user['password'], $this->donnees_user['password_confirmation'], $this->donnees_user['regimes_alimentaires']);
+		unset($this->donnees_user['password'], $this->donnees_user['password_confirmation'], $this->donnees_user['regimes_alimentaires'], $this->donnees_user['email_verified_at']);
 
 		$this->assertDatabaseHas('users', $this->donnees_user);
 	}
