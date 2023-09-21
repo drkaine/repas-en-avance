@@ -10,6 +10,7 @@ use App\Http\Controllers\DeconnexionController;
 use App\Http\Controllers\EnvoieFormulaire\AjoutRecetteController;
 use App\Http\Controllers\EnvoieFormulaire\AjoutTagController;
 use App\Http\Controllers\EnvoieFormulaire\ConnexionController;
+use App\Http\Controllers\EnvoieFormulaire\DemandeMotDePasseController;
 use App\Http\Controllers\EnvoieFormulaire\InscriptionController;
 use App\Http\Controllers\EnvoieFormulaire\RecuperationDoneesAnonymiserController;
 use App\Http\Controllers\ModificationDeDonneesController;
@@ -67,6 +68,14 @@ Route::get(
 )->name('mot-de-passe-oublie');
 
 Route::get(
+	'demande-mot-de-passe-oublie',
+	[
+		DemandeMotDePasseController::class,
+		'validationFormulaire',
+	]
+)->name('demande-mot-de-passe-oublie');
+
+Route::post(
 	'demande-mot-de-passe-oublie',
 	[
 		Controller::class,

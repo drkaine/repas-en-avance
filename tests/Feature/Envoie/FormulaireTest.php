@@ -72,4 +72,11 @@ class FormulaireTest extends TestCase
 
 		$response->assertStatus(200);
 	}
+
+	public function testDemandeMotDePasseOublie(): void
+	{
+		$response = $this->post('/demande-mot-de-passe-oublie', ['anonyme@anonyme.fr']);
+
+		$response->assertStatus(200);
+	}
 }

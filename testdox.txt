@@ -91,6 +91,7 @@ Formulaire (Tests\Feature\Envoie\Formulaire)
  [x] Connexion
  [x] Ajout tag
  [x] Ajout recette
+ [x] Demande mot de passe oublie
 
 Inscription (Tests\Feature\ValidationFormulaire\Inscription)
  [x] Champs nom
