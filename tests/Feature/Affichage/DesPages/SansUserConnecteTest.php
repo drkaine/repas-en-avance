@@ -75,9 +75,9 @@ class SansUserConnecteTest extends TestCase
 		$response->assertStatus(200);
 	}
 
-	public function testMotDePasseOubliePourDemanderLeLienDeChangementDeMotDePasse(): void
+	public function testDemandeMotDePasseOublie(): void
 	{
-		$response = $this->get('mot-de-passe-oublie/demande');
+		$response = $this->get('demande-mot-de-passe-oublie');
 
 		$response->assertStatus(200);
 	}

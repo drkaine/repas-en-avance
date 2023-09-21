@@ -1,7 +1,6 @@
 @include('composants.head')
 
 @include('composants.notification')
-
 <form method="POST" action="{{ route('accueil') }}" class="formulaire">
     @csrf
 
@@ -14,24 +13,8 @@
     </div>
 
     <div class="element-formulaire">
-        <label>Nouveau mot de passe *</label>
-        <input id="password" type="password" name="password" required>
-        @error('password')
-            <span>{{ $message }}</span>
-        @enderror
-    </div>
-
-    <div class="element-formulaire">
-        <label>Nouveau mot de passe confirmation *</label>
-        <input id="password_confirmation" type="password" name="password_confirmation" required>
-        @error('password_confirmation')
-            <span>{{ $message }}</span>
-        @enderror
-    </div>
-
-    <div class="element-formulaire">
         <button type="submit" class="bouton-formulaire">
-            Changer le mot de passe
+            Demander un lien pour changer son mot de passe
         </button>
     </div>
 
@@ -39,5 +22,4 @@
         Les champs avec une * sont obligatoire
     </span>
 </form>
-
 @include('composants.footer')

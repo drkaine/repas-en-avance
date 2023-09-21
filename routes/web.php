@@ -67,6 +67,14 @@ Route::get(
 )->name('mot-de-passe-oublie');
 
 Route::get(
+	'demande-mot-de-passe-oublie',
+	[
+		Controller::class,
+		'affichageDemandeMotDePasseOublie',
+	]
+)->name('demande-mot-de-passe-oublie');
+
+Route::get(
 	'connexion',
 	[
 		Controller::class,

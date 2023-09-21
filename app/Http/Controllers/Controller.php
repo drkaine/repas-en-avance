@@ -34,8 +34,19 @@ class Controller extends BaseController
 		if ($user) {
 			return redirect('mon-compte');
 		}
-		$identifiant = 'demande' === $identifiant_user;
+		$identifiant = $identifiant_user;
 
 		return view('mot_de_passe_oublie', compact('identifiant'));
+	}
+
+	public function affichageDemandeMotDePasseOublie(): View | RedirectResponse | Redirector
+	{
+		$user = auth()->user();
+
+		if ($user) {
+			return redirect('mon-compte');
+		}
+
+		return view('demande_mot_de_passe_oublie');
 	}
 }

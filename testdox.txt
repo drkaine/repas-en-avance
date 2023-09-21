@@ -146,7 +146,7 @@ Sans User Connecte (Tests\Feature\Affichage\DesPages\SansUserConnecte)
  [x] Catalogue recettes
  [x] Confirmation email
  [x] Mot de passe oublie pour changer le mot de passe
- [x] Mot de passe oublie pour demander le lien de changement de mot de passe
+ [x] Demande mot de passe oublie
 
 Suppression (Tests\Feature\DansLaBaseDeDonnee\User\Suppression)
  [x] Users anonymes
