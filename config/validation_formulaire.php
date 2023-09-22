@@ -22,4 +22,7 @@ return [
 		'email' => 'required|string|email|unique:users|max:255|min:6',
 		'password' => 'required|string|min:8|confirmed|max:255',
 	],
+	'demande_mot_de_passe_oublie' => [
+		'email' => 'required|string|email|max:255|min:6',
+	],
 ];

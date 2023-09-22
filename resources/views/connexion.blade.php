@@ -1,4 +1,7 @@
 @include('composants.head')
+
+<a href="{{ route('demande-mot-de-passe-oublie') }}">Mot de passe oublié</a>
+
 <form method="POST" action="{{ route('connexion') }}" class="formulaire">
     @csrf
 
@@ -33,6 +36,4 @@
         Les champs avec une * sont obligatoire
     </span>
 </form>
-
-<a href="{{ route('demande-mot-de-passe-oublie') }}">Mot de passe oublié</a>
 @include('composants.footer')

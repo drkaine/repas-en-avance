@@ -67,7 +67,7 @@ Route::get(
 	]
 )->name('mot-de-passe-oublie');
 
-Route::get(
+Route::post(
 	'demande-mot-de-passe-oublie',
 	[
 		DemandeMotDePasseController::class,
@@ -75,7 +75,7 @@ Route::get(
 	]
 )->name('demande-mot-de-passe-oublie');
 
-Route::post(
+Route::get(
 	'demande-mot-de-passe-oublie',
 	[
 		Controller::class,

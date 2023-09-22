@@ -83,6 +83,9 @@ Connexion (Tests\Feature\ValidationFormulaire\Connexion)
 Dans LInscription (Tests\Feature\Affichage\DansLInscription)
  [x] Tag dans l inscription
 
+Demande Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\DemandeMotDePasseOublie)
+ [x] Champs email
+
 Example (Tests\Unit\Example)
  [x] Example
 

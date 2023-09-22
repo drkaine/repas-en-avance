@@ -75,7 +75,9 @@ class FormulaireTest extends TestCase
 
 	public function testDemandeMotDePasseOublie(): void
 	{
-		$response = $this->post('/demande-mot-de-passe-oublie', ['anonyme@anonyme.fr']);
+		$response = $this->post('/demande-mot-de-passe-oublie', [
+			'email' => 'anonyme@anonyme.fr',
+		]);
 
 		$response->assertStatus(200);
 	}
