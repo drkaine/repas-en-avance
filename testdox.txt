@@ -85,6 +85,9 @@ Dans LInscription (Tests\Feature\Affichage\DansLInscription)
 
 Demande Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\DemandeMotDePasseOublie)
  [x] Champs email
+ [x] Longueur maximum champs email
+ [x] Longueur minimum champs email
+ [x] Format champs email
 
 Example (Tests\Unit\Example)
  [x] Example
@@ -133,8 +136,13 @@ Mon Compte (Tests\Feature\Affichage\MonCompte)
 
 Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\MotDePasseOublie)
  [x] Champs email
+ [x] Longueur maximum champs email
+ [x] Longueur minimum champs email
+ [x] Format champs email
  [x] Champs mot de passe
- [x] Champs mot de passe comfirme
+ [x] Longueur minimum champs password
+ [x] Longueur maximum champs password
+ [x] Champs mot de passe confirme
 
 Notification (Tests\Feature\Envoie\Notification)
  [x] Verification email is sent

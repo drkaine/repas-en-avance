@@ -22,4 +22,31 @@ class DemandeMotDePasseOublieTest extends TestCase
 
 		$response->assertStatus(302);
 	}
+
+	public function testLongueurMaximumChampsEmail(): void
+	{
+		$response = $this->post('/demande-mot-de-passe-oublie', [
+			'email' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio@azertyuiopmlkjhgfdsqwxczertyuiopmlkjhgfdsqwxcv.fr',
+		]);
+
+		$response->assertStatus(302);
+	}
+
+	public function testLongueurMinimumChampsEmail(): void
+	{
+		$response = $this->post('/demande-mot-de-passe-oublie', [
+			'email' => 'a@afr',
+		]);
+
+		$response->assertStatus(302);
+	}
+
+	public function testFormatChampsEmail(): void
+	{
+		$response = $this->post('/demande-mot-de-passe-oublie', [
+			'email' => 'emailestfr',
+		]);
+
+		$response->assertStatus(302);
+	}
 }

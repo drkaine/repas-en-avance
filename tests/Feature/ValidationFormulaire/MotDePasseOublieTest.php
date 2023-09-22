@@ -25,9 +25,42 @@ class MotDePasseOublieTest extends TestCase
 		$response->assertStatus(302);
 	}
 
+	public function testLongueurMaximumChampsEmail(): void
+	{
+		$response = $this->post('/mot-de-passe-oublie', [
+			'email' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio@azertyuiopmlkjhgfdsqwxczertyuiopmlkjhgfdsqwxcv.fr',
+			'password' => 'password',
+			'password_confirmation' => 'password',
+		]);
+
+		$response->assertStatus(302);
+	}
+
+	public function testLongueurMinimumChampsEmail(): void
+	{
+		$response = $this->post('/mot-de-passe-oublie', [
+			'email' => 'a@afr',
+			'password' => 'password',
+			'password_confirmation' => 'password',
+		]);
+
+		$response->assertStatus(302);
+	}
+
+	public function testFormatChampsEmail(): void
+	{
+		$response = $this->post('/mot-de-passe-oublie', [
+			'email' => 'emailestfr',
+			'password' => 'password',
+			'password_confirmation' => 'password',
+		]);
+
+		$response->assertStatus(302);
+	}
+
 	public function testChampsMotDePasse(): void
 	{
-		$response = $this->post('/demande-mot-de-passe-oublie', [
+		$response = $this->post('/mot-de-passe-oublie', [
 			[
 				'email' => 'anonyme@anonnyme.fr',
 				'password' => null,
@@ -38,9 +71,31 @@ class MotDePasseOublieTest extends TestCase
 		$response->assertStatus(302);
 	}
 
+	public function testLongueurMinimumChampsPassword(): void
+	{
+		$response = $this->post('/mot-de-passe-oublie', [
+			'email' => 'email.test.fr',
+			'password' => 'fg',
+			'password_confirmation' => 'password',
+		]);
+
+		$response->assertStatus(302);
+	}
+
+	public function testLongueurMaximumChampsPassword(): void
+	{
+		$response = $this->post('/mot-de-passe-oublie', [
+			'email' => 'email.test.fr',
+			'password' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio',
+			'password_confirmation' => 'password',
+		]);
+
+		$response->assertStatus(302);
+	}
+
 	public function testChampsMotDePasseConfirme(): void
 	{
-		$response = $this->post('/demande-mot-de-passe-oublie', [
+		$response = $this->post('/mot-de-passe-oublie', [
 			[
 				'email' => 'anonyme@anonnyme.fr',
 				'password' => 'password',
