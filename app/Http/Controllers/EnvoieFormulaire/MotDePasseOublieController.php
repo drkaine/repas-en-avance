@@ -9,14 +9,12 @@ use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class DemandeMotDePasseController extends Controller
+class MotDePasseOublieController extends Controller
 {
 	use ValidationFormulaireTrait;
 
 	public function validationFormulaire(Request $request): View
 	{
-		$request->validate($this->recuperationDonneesAValider('demande_mot_de_passe_oublie'));
-
 		return view('connexion');
 	}
 }

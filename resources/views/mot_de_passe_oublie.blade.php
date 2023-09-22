@@ -2,7 +2,7 @@
 
 @include('composants.notification')
 
-<form method="POST" action="{{ route('accueil') }}" class="formulaire">
+<form method="POST" action="{{ route('mot-de-passe-oublie-post') }}" class="formulaire">
     @csrf
 
     <div class="element-formulaire">
