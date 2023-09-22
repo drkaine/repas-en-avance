@@ -10,7 +10,7 @@ parameters:
         - app/Http/Controllers
         - app/Services
         - app/Models/User
-        - app/Notifications/ConfirmationEmail
+        - app/Notifications
 
     ignoreErrors:
 
