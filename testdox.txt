@@ -95,6 +95,7 @@ Formulaire (Tests\Feature\Envoie\Formulaire)
  [x] Ajout tag
  [x] Ajout recette
  [x] Demande mot de passe oublie
+ [x] Mot de passe oublie
 
 Inscription (Tests\Feature\ValidationFormulaire\Inscription)
  [x] Champs nom
@@ -130,6 +131,9 @@ Mon Compte (Tests\Feature\Affichage\MonCompte)
  [x] Tag dans mon compte
  [x] Regime alimentaire dans mon compte
 
+Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\MotDePasseOublie)
+ [x] Champs email
+
 Notification (Tests\Feature\Envoie\Notification)
  [x] Verification email is sent
 
@@ -149,7 +153,7 @@ Sans User Connecte (Tests\Feature\Affichage\DesPages\SansUserConnecte)
  [x] Recuperation compte
  [x] Catalogue recettes
  [x] Confirmation email
- [x] Mot de passe oublie pour changer le mot de passe
+ [x] Mot de passe oublie
  [x] Demande mot de passe oublie
 
 Suppression (Tests\Feature\DansLaBaseDeDonnee\User\Suppression)

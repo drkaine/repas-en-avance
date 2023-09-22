@@ -25,4 +25,7 @@ return [
 	'demande_mot_de_passe_oublie' => [
 		'email' => 'required|string|email|max:255|min:6',
 	],
+	'mot_de_passe_oublie' => [
+		'email' => 'required|string|email|max:255|min:6',
+	],
 ];

@@ -15,6 +15,8 @@ class MotDePasseOublieController extends Controller
 
 	public function validationFormulaire(Request $request): View
 	{
+		$request->validate($this->recuperationDonneesAValider('mot_de_passe_oublie'));
+
 		return view('connexion');
 	}
 }
