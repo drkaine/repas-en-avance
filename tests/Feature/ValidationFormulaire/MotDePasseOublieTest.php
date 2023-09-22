@@ -18,6 +18,8 @@ class MotDePasseOublieTest extends TestCase
 	{
 		$response = $this->post('/mot-de-passe-oublie', [
 			'email' => null,
+			'password' => 'password',
+			'password_confirmation' => 'password',
 		]);
 
 		$response->assertStatus(302);
@@ -29,6 +31,20 @@ class MotDePasseOublieTest extends TestCase
 			[
 				'email' => 'anonyme@anonnyme.fr',
 				'password' => null,
+				'password_confirmation' => 'password',
+			],
+		]);
+
+		$response->assertStatus(302);
+	}
+
+	public function testChampsMotDePasseConfirme(): void
+	{
+		$response = $this->post('/demande-mot-de-passe-oublie', [
+			[
+				'email' => 'anonyme@anonnyme.fr',
+				'password' => 'password',
+				'password_confirmation' => null,
 			],
 		]);
 

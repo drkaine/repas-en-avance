@@ -134,6 +134,7 @@ Mon Compte (Tests\Feature\Affichage\MonCompte)
 Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\MotDePasseOublie)
  [x] Champs email
  [x] Champs mot de passe
+ [x] Champs mot de passe comfirme
 
 Notification (Tests\Feature\Envoie\Notification)
  [x] Verification email is sent
