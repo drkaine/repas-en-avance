@@ -20,6 +20,8 @@ class FormulaireTest extends TestCase
 
 	private array $donnees_formulaire_ajout_recette;
 
+	private array $donnees_mot_de_passe_oublie;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
@@ -29,6 +31,8 @@ class FormulaireTest extends TestCase
 		$this->donnees_user = $this->donnees('user');
 
 		$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
+
+		$this->donnees_mot_de_passe_oublie = $this->donnees('mot_de_passe_oublie');
 	}
 
 	public function testInscription(): void
@@ -84,9 +88,7 @@ class FormulaireTest extends TestCase
 
 	public function testMotDePasseOublie(): void
 	{
-		$response = $this->post('/mot-de-passe-oublie', [
-			'email' => 'anonyme@anonyme.fr',
-		]);
+		$response = $this->post('/mot-de-passe-oublie', $this->donnees_mot_de_passe_oublie);
 
 		$response->assertStatus(200);
 	}

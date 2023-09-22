@@ -27,5 +27,6 @@ return [
 	],
 	'mot_de_passe_oublie' => [
 		'email' => 'required|string|email|max:255|min:6',
+		'password' => 'required|string|min:8|max:255',
 	],
 ];

@@ -29,6 +29,11 @@ return [
 		'nom' => 'test',
 		'password' => 'anonyme',
 	],
+	'mot_de_passe_oublie' => [
+		'email' => 'email@test.fr',
+		'password' => 'password',
+		'password_confirmation' => 'password',
+	],
 	'tag' => [
 		'nom' => 'Catégorie',
 	],

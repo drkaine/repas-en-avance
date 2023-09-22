@@ -22,4 +22,16 @@ class MotDePasseOublieTest extends TestCase
 
 		$response->assertStatus(302);
 	}
+
+	public function testChampsMotDePasse(): void
+	{
+		$response = $this->post('/demande-mot-de-passe-oublie', [
+			[
+				'email' => 'anonyme@anonnyme.fr',
+				'password' => null,
+			],
+		]);
+
+		$response->assertStatus(302);
+	}
 }
