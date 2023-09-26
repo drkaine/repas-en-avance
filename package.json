@@ -22,7 +22,8 @@
         "jest-environment-jsdom": "^29.6.2",
         "laravel-vite-plugin": "^0.7.5",
         "ts-jest": "^29.1.1",
-        "typescript": "^5.1.6",
+        "ts-loader": "^9.4.4",
+        "typescript": "^5.2.2",
         "vite": "^4.0.0"
     },
     "dependencies": {
