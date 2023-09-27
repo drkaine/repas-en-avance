@@ -19,7 +19,7 @@ return [
 	'user_anonyme' => [
 		'email' => 'anonyme1@anonyme.fr',
 		'nom' => 'Anonyme',
-		'password' => 'anonyme',
+		'password' => 'password',
 		'email_verified_at' => null,
 		'derniere_connexion' => $date->now()->subMonths(7),
 	],
@@ -27,7 +27,7 @@ return [
 		'email_anonyme' => 'anonyme1@anonyme.fr',
 		'email' => 'test@test.fr',
 		'nom' => 'test',
-		'password' => 'anonyme',
+		'password' => 'password',
 	],
 	'mot_de_passe_oublie' => [
 		'email' => 'email@test.fr',

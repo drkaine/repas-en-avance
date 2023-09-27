@@ -7,14 +7,19 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\ModificationUserService;
+use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 
 class RecuperationDoneesAnonymiserController extends Controller
 {
+	use ValidationFormulaireTrait;
+
 	public function monCompte(Request $request): RedirectResponse | Redirector
 	{
+		$request->validate($this->recuperationDonneesAValider('recuperation_compte'));
+
 		$user = new User;
 
 		$user_recupere = $user->where('email', $request->email_anonyme)->
