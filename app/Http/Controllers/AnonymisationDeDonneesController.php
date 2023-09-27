@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Notifications\RecuperationCompteEmail;
 use App\Services\ModificationUserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
@@ -23,6 +24,8 @@ class AnonymisationDeDonneesController extends Controller
 		$modification_user->modificationChamp('email_verified_at', null);
 
 		$modification_user->sauvegarde();
+
+		$user->notify(new RecuperationCompteEmail);
 
 		return redirect('deconnexion');
 	}
