@@ -25,15 +25,17 @@ class RecuperationDoneesAnonymiserController extends Controller
 		$user_recupere = $user->where('email', $request->email_anonyme)->
 			first();
 
-		if (password_verify($request->password, $user_recupere->password)) {
-			$modification_user = new ModificationUserService($user_recupere);
-
-			$modification_user->modificationChamp('nom', $request->nom);
-
-			$modification_user->modificationChamp('email', $request->email);
-
-			$modification_user->sauvegarde();
+		if (!password_verify($request->password, $user_recupere->password)) {
+			return view('recuperation_compte');
 		}
+
+		$modification_user = new ModificationUserService($user_recupere);
+
+		$modification_user->modificationChamp('nom', $request->nom);
+
+		$modification_user->modificationChamp('email', $request->email);
+
+		$modification_user->sauvegarde();
 
 		return redirect('/');
 	}
