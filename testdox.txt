@@ -99,6 +99,7 @@ Formulaire (Tests\Feature\Envoie\Formulaire)
  [x] Ajout recette
  [x] Demande mot de passe oublie
  [x] Mot de passe oublie
+ [x] Recuperation compte
 
 Inscription (Tests\Feature\ValidationFormulaire\Inscription)
  [x] Champs nom

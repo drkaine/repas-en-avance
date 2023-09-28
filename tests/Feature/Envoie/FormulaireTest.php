@@ -22,6 +22,10 @@ class FormulaireTest extends TestCase
 
 	private array $donnees_mot_de_passe_oublie;
 
+	private array $donnees_user_anonyme;
+
+	private array $donnees_user_anonyme_recupere;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
@@ -33,6 +37,12 @@ class FormulaireTest extends TestCase
 		$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
 
 		$this->donnees_mot_de_passe_oublie = $this->donnees('mot_de_passe_oublie');
+
+		$this->donnees_user_anonyme = $this->donnees('user');
+
+		$this->donnees_user_anonyme_recupere = $this->donnees('user_anonyme_recupere');
+
+		$this->creation('User', 'user_anonyme');
 	}
 
 	public function testInscription(): void
@@ -93,5 +103,12 @@ class FormulaireTest extends TestCase
 		$response = $this->post('/mot-de-passe-oublie', $this->donnees_mot_de_passe_oublie);
 
 		$response->assertStatus(200);
+	}
+
+	public function testRecuperationCompte(): void
+	{
+		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
+
+		$response->assertRedirect('/');
 	}
 }
