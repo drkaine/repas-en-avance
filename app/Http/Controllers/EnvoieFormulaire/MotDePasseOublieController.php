@@ -5,6 +5,8 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Services\ModificationUserService;
 use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -16,6 +18,17 @@ class MotDePasseOublieController extends Controller
 	public function validationFormulaire(Request $request): View
 	{
 		$request->validate($this->recuperationDonneesAValider('mot_de_passe_oublie'));
+
+		$user = new User;
+
+		$user = $user->where('email', $request->email)->
+			first();
+
+		$modification_user = new ModificationUserService($user);
+
+		$modification_user->modificationChamp('password', bcrypt($request->password));
+
+		$modification_user->sauvegarde();
 
 		return view('connexion');
 	}

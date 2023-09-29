@@ -31,8 +31,8 @@ return [
 	],
 	'mot_de_passe_oublie' => [
 		'email' => 'email@test.fr',
-		'password' => 'password',
-		'password_confirmation' => 'password',
+		'password' => 'password6',
+		'password_confirmation' => 'password6',
 	],
 	'tag' => [
 		'nom' => 'Catégorie',

@@ -100,6 +100,8 @@ class FormulaireTest extends TestCase
 
 	public function testMotDePasseOublie(): void
 	{
+		$this->creationUser();
+
 		$response = $this->post('/mot-de-passe-oublie', $this->donnees_mot_de_passe_oublie);
 
 		$response->assertStatus(200);

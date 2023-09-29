@@ -135,6 +135,9 @@ Mon Compte (Tests\Feature\Affichage\MonCompte)
  [x] Tag dans mon compte
  [x] Regime alimentaire dans mon compte
 
+Mot De Passe Oublie (Tests\Feature\DansLaBaseDeDonnee\User\MotDePasseOublie)
+ [x] Changement mot de passe
+
 Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\MotDePasseOublie)
  [x] Champs email
  [x] Longueur maximum champs email
