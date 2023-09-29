@@ -36,7 +36,7 @@ class MotDePasseOublieEmail extends Notification
 	public function toMail(object $notifiable): MailMessage
 	{
 		$identifiant = Str::random(12);
-		$lien_vers_le_formulaire = url('/mot-de-passe-oublie/' . $notifiable->email);
+		$lien_vers_le_formulaire = url('/mot-de-passe-oublie/' . $identifiant);
 
 		return (new MailMessage)->
 			from('ne_pas_repondre@darkaine.fr', 'Repas en avance')->
