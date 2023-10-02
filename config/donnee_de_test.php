@@ -53,6 +53,7 @@ return [
 		'temps_cuisson' => 2,
 		'temps_repos' => 3,
 		'lien' => 'https://ici.fr',
+		'url' => 'carotte-simple',
 		'instruction' => 'Eplucher les carottes',
 		'description' => 'Recette simple et rapide',
 		'reference_livre' => 'Tous en cuisine page 12',

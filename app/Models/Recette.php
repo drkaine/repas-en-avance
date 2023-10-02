@@ -18,6 +18,7 @@ class Recette extends Model
 		'temps_cuisson',
 		'temps_repos',
 		'lien',
+		'url',
 		'instruction',
 		'description',
 		'reference_livre',

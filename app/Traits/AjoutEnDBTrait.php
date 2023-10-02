@@ -14,6 +14,7 @@ use App\Models\Tag;
 use App\Models\User;
 use App\Models\Ustensile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 trait AjoutEnDBTrait
 {
@@ -71,6 +72,7 @@ trait AjoutEnDBTrait
 			'temps_cuisson' => $request->temps_cuisson,
 			'temps_repos' => $request->temps_repos,
 			'lien' => $request->lien,
+			'url' => Str::slug($request->nom),
 			'instruction' => $request->instruction,
 			'description' => $request->description,
 			'reference_livre' => $request->reference_livre,

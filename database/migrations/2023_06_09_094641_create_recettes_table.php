@@ -20,6 +20,7 @@ return new class extends Migration {
 			$table->integer('temps_cuisson')->nullable();
 			$table->integer('temps_repos')->nullable();
 			$table->string('lien')->nullable();
+			$table->string('url');
 			$table->string('instruction')->nullable();
 			$table->string('description')->nullable();
 			$table->string('reference_livre')->nullable();

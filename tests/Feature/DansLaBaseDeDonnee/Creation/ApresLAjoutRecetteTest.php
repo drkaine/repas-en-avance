@@ -33,6 +33,7 @@ class ApresLAjoutRecetteTest extends TestCase
 	protected function setUp(): void
 	{
 		parent::setUp();
+
 		$this->donnees_recette = $this->donnees('recette');
 		$this->donnees_ustensile = $this->donnees('ustensile');
 		$this->donnees_mode_de_cuisson = $this->donnees('mode_de_cuisson');

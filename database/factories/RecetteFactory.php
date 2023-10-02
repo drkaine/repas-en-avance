@@ -28,6 +28,7 @@ class RecetteFactory extends Factory
 			'temps_cuisson' => $faker->randomNumber(2),
 			'temps_repos' => $faker->randomNumber(2),
 			'lien' => Str::random(10),
+			'url' => Str::random(10),
 			'instruction' => Str::random(10),
 			'description' => Str::random(10),
 			'reference_livre' => Str::random(10),
