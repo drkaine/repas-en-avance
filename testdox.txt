@@ -151,6 +151,9 @@ Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\MotDePasseOublie)
 Notification (Tests\Feature\Envoie\Notification)
  [x] Verification email is sent
 
+Recette (Tests\Feature\Affichage\Recette)
+ [x] Recette carotte simple
+
 Recuperation Compte (Tests\Feature\ValidationFormulaire\RecuperationCompte)
  [x] Champs nom
  [x] Longueur maximum champs nom

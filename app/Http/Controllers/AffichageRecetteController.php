@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\Recette;
 use App\Models\Tag;
 use App\Services\RecuperationTagService;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
 class AffichageRecetteController extends Controller
@@ -28,7 +29,13 @@ class AffichageRecetteController extends Controller
 
 	public function Recette(): View
 	{
+		$nom_recette = Route::current()->parameter('nom_recette');
 
-		return view('recette');
+		$recette = $this->recette->
+			with('recuperationIngredient')->
+			where('url', $nom_recette)->
+			first();
+
+		return view('recette', compact('recette'));
 	}
 }
