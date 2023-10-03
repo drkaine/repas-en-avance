@@ -3,6 +3,7 @@
 declare(strict_types = 1);
 
 use App\Http\Controllers\AffichageDonneesController;
+use App\Http\Controllers\AffichageRecetteController;
 use App\Http\Controllers\AnonymisationDeDonneesController;
 use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\Controller;
@@ -194,3 +195,11 @@ Route::get(
 		'pageCatalogueRecettes',
 	]
 )->name('catalogue-recettes');
+
+Route::get(
+	'recette/{nom_recette}',
+	[
+		AffichageRecetteController::class,
+		'Recette',
+	]
+)->name('recette');

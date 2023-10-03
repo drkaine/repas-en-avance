@@ -172,6 +172,9 @@ Redirection (Tests\Feature\Redirection)
  [x] Modification des donnees du user
  [x] Recuperation compte
 
+Sans Condition De Connexion (Tests\Feature\Affichage\DesPages\SansConditionDeConnexion)
+ [x] Recette
+
 Sans User Connecte (Tests\Feature\Affichage\DesPages\SansUserConnecte)
  [x] Accueil
  [x] Inscription
