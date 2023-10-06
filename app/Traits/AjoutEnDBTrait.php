@@ -109,13 +109,6 @@ trait AjoutEnDBTrait
 		}
 	}
 
-	public function photo(array $photos, int $id_recette): void
-	{
-		foreach ($photos as $donnee_photo) {
-			$this->nouvellePhoto($donnee_photo, $id_recette);
-		}
-	}
-
 	private function nouveauRegimeAlimentaire(int $id_tag, $id_user): void
 	{
 		$user_tag = new RegimeAlimentaire;
@@ -157,15 +150,15 @@ trait AjoutEnDBTrait
 		]);
 	}
 
-	private function nouvellePhoto(array $donnee_photo, int $id_recette): void
+	private function nouvellePhoto(Recette $recette): void
 	{
 		$photo = new Photo;
 
 		$photo->create([
-			'id_recette' => $id_recette,
-			'nom' => $donnee_photo['nom'],
-			'description' => $donnee_photo['description'],
-			'dossier' => $donnee_photo['dossier'],
+			'id_recette' => $recette->id,
+			'nom' => $recette->url,
+			'description' => $recette->description,
+			'dossier' => 'images/recettes',
 		]);
 	}
 }

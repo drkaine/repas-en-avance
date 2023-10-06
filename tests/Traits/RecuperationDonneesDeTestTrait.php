@@ -4,9 +4,11 @@ declare(strict_types = 1);
 
 namespace Tests\Traits;
 
+use Illuminate\Http\Testing\File;
+
 trait RecuperationDonneesDeTestTrait
 {
-	public function donnees(string $donnee_voulue): array
+	public function donnees(string $donnee_voulue): File | array
 	{
 		return config('donnee_de_test.' . $donnee_voulue);
 	}
@@ -22,9 +24,7 @@ trait RecuperationDonneesDeTestTrait
 			'2' => '1',
 		];
 
-		$donnees_recette['photos'] = [
-			$this->donnees('photo'),
-		];
+		$donnees_recette['photos'] = $this->donnees('fichier_photo');
 
 		return $donnees_recette;
 	}

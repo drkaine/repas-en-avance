@@ -5,8 +5,8 @@ declare(strict_types = 1);
 namespace Tests\Feature\DansLaBaseDeDonnee\Creation;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
 use Tests\Traits\RecuperationDonneesDeTestTrait;
 
 /**
@@ -15,7 +15,6 @@ use Tests\Traits\RecuperationDonneesDeTestTrait;
 class ApresLAjoutRecetteTest extends TestCase
 {
 	use RefreshDatabase;
-	use ModelDeTestTrait;
 	use RecuperationDonneesDeTestTrait;
 
 	private array $donnees_recette;
@@ -41,6 +40,8 @@ class ApresLAjoutRecetteTest extends TestCase
 		$this->donnees_photo = $this->donnees('photo');
 
 		$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
+
+		Storage::fake('images/recettes');
 	}
 
 	public function testRecette(): void

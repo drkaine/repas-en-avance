@@ -192,6 +192,9 @@ Suppression (Tests\Feature\DansLaBaseDeDonnee\User\Suppression)
  [x] Users anonymes
  [x] Regime alimentaire des users anonymes
 
+Telechargement Fichier (Tests\Feature\TelechargementFichier)
+ [x] Photo recette
+
 User Connecte (Tests\Feature\UserConnecte)
  [x] Inscription
  [x] Connexion

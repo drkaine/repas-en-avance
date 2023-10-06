@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
-use App\Models\Recette;
 use App\Services\RecuperationTagService;
 use App\Services\VerificationDonneeRequestService;
 use App\Traits\AjoutEnDBTrait;
@@ -36,11 +35,12 @@ class AjoutRecetteController extends Controller
 
 		$this->ingredient($request->ingredients, $request->quantitees, $recette->id);
 
-		$this->photo($request->photos, $recette->id);
+		$request->file('photos')->storeAs(
+			'images/recettes',
+			$recette->url . '.jpeg'
+		);
 
-		$recuperation_tag = new RecuperationTagService;
-
-		$recette = new Recette;
+		$this->nouvellePhoto($recette);
 
 		$recuperation_tag = new RecuperationTagService;
 

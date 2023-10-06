@@ -73,6 +73,7 @@ return [
 
 	'links' => [
 		public_path('storage') => storage_path('app/public'),
+		public_path('images/recettes') => storage_path('app/images/recettes'),
 	],
 
 ];

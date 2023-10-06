@@ -1,7 +1,9 @@
 <?php
 
 declare(strict_types = 1);
+
 use Carbon\Carbon;
+use Illuminate\Http\UploadedFile;
 
 $date = new Carbon;
 
@@ -157,10 +159,15 @@ return [
 			'nom' => 'Carotte',
 		],
 	],
+	'fichier_photo' => UploadedFile::fake()->create(
+		'carotte-simple.jpeg',
+		1024,
+		'images/recettes'
+	),
 	'photo' => [
-		'nom' => 'Carottes rapées',
-		'description' => 'Assiette de carottes rapées',
+		'nom' => 'carotte-simple',
+		'description' => 'Recette simple et rapide',
 		'id_recette' => 1,
-		'dossier' => 'carotte simple,',
+		'dossier' => 'images/recettes',
 	],
 ];
