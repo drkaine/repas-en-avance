@@ -22,9 +22,11 @@ class RecetteTest extends TestCase
 
 		$this->creationTagsAjoutRecette();
 		$this->creation('Recette', 'recette');
+		$this->creation('Photo', 'photo');
+		$this->creationFichierPhoto();
 	}
 
-	public function testRecetteCarotteSimple(): void
+	public function testElementRecetteCarotteSimple(): void
 	{
 		$response = $this->get('recette/carotte-simple');
 
@@ -38,5 +40,18 @@ class RecetteTest extends TestCase
 		$response->assertSee($recette->description);
 		$response->assertSee($recette->reference_livre);
 		$response->assertSee($recette->nom);
+	}
+
+	public function testPhotoRecetteCarotteSimple(): void
+	{
+		$response = $this->get('recette/carotte-simple');
+
+		$recette = $response->viewData('recette');
+
+		foreach ($recette->recuperationPhoto as $photo) {
+			$response->assertSee($photo->nom);
+			$response->assertSee($photo->description);
+			$response->assertSee($photo->dossier);
+		}
 	}
 }

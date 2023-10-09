@@ -19,6 +19,11 @@ trait ModelDeTestTrait
 		$model->factory()->create($this->donnees($nom_donnees_voulue));
 	}
 
+	public function creationFichierPhoto(): void
+	{
+		$this->donnees('fichier_photo');
+	}
+
 	public function userConnecte(): void
 	{
 		$user = $this->creationUser();

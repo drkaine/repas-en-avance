@@ -152,7 +152,8 @@ Notification (Tests\Feature\Envoie\Notification)
  [x] Verification email is sent
 
 Recette (Tests\Feature\Affichage\Recette)
- [x] Recette carotte simple
+ [x] Element recette carotte simple
+ [x] Photo recette carotte simple
 
 Recuperation Compte (Tests\Feature\ValidationFormulaire\RecuperationCompte)
  [x] Champs nom

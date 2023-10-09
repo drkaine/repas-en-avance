@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-use App\Models\Photo;
+use App\Models\Recette;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +15,7 @@ return new class extends Migration {
 	{
 		Schema::create('photos', function (Blueprint $table): void {
 			$table->id();
-			$table->foreignIdFor(Photo::class, 'id_recette');
+			$table->foreignIdFor(Recette::class, 'id_recette');
 			$table->timestamps();
 			$table->string('nom');
 			$table->string('dossier');

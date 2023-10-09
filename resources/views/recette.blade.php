@@ -2,7 +2,10 @@
 
 <div>
     <div class="carte-recette">
-        <img src="{{ asset('images/recettes/carotte.jpg') }}" alt="Description de l'image"  class="image-de-la-carte">
+    @foreach($recette->recuperationPhoto as $photo)
+        <img src="{{ asset($photo->dossier . $photo->nom . '.jpeg') }}" alt="{{  $photo->description  }}"  class="image-de-la-carte">
+    @endforeach
+    
         <div class="texte-de-la-carte">
             <h2 class="titre-de-la-carte">
                 {{  $recette->nom  }}
