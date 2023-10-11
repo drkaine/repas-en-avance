@@ -1,6 +1,7 @@
 Accueil (Tests\Feature\Affichage\Accueil)
  [x] Recettes
  [x] Ingredient des dernieres recettes
+ [x] Photo recette
 
 Ajout Recette (Tests\Feature\Affichage\AjoutRecette)
  [x] Ustensile dans ajout recette
@@ -57,6 +58,7 @@ Avec User Connecte (Tests\Feature\Affichage\DesPages\AvecUserConnecte)
 Catalogue Recettes (Tests\Feature\Affichage\CatalogueRecettes)
  [x] Recette dans catalogue recettes
  [x] Ingredient dans catalogue recettes
+ [x] Photo recette
 
 Colonne Null (Tests\Feature\TableSQL\ColonneNull)
  [x] De la table users champs email verified at

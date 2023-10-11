@@ -20,11 +20,10 @@ class AccueilTest extends TestCase
 	{
 		parent::setUp();
 
+		$this->creationTagsAjoutRecette();
 		$this->creation('Recette', 'recette');
-
-		$this->creationDonnees('Tag', 'tag_ingredient');
-
 		$this->creation('Ingredient', 'ingredient');
+		$this->creation('Photo', 'photo');
 	}
 
 	public function testRecettes(): void
@@ -51,6 +50,21 @@ class AccueilTest extends TestCase
 		foreach ($recettes as $recette) {
 			foreach ($recette->recuperationIngredient as $ingredient) {
 				$response->assertSee($ingredient->nom);
+			}
+		}
+	}
+
+	public function testPhotoRecette(): void
+	{
+		$response = $this->get('catalogue-recettes');
+
+		$recettes = $response->viewData('recettes');
+
+		foreach ($recettes as $recette) {
+			foreach ($recette->recuperationPhoto as $photo) {
+				$response->assertSee($photo->nom);
+				$response->assertSee($photo->description);
+				$response->assertSee($photo->dossier);
 			}
 		}
 	}

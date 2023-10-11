@@ -16,14 +16,18 @@ class CatalogueRecettesTest extends TestCase
 	use RefreshDatabase;
 	use ModelDeTestTrait;
 
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->creationTagsAjoutRecette();
+		$this->creation('Recette', 'recette');
+		$this->creation('Ingredient', 'ingredient');
+		$this->creation('Photo', 'photo');
+	}
+
 	public function testRecetteDansCatalogueRecettes(): void
 	{
-		$this->creation('Recette', 'recette');
-
-		$this->creationDonnees('Tag', 'tag_ingredient');
-
-		$this->creation('Ingredient', 'ingredient');
-
 		$response = $this->get('catalogue-recettes');
 
 		$recettes = $response->viewData('recettes');
@@ -39,11 +43,6 @@ class CatalogueRecettesTest extends TestCase
 
 	public function testIngredientDansCatalogueRecettes(): void
 	{
-		$this->creation('Recette', 'recette');
-
-		$this->creationDonnees('Tag', 'tag_ingredient');
-
-		$this->creation('Ingredient', 'ingredient');
 
 		$response = $this->get('catalogue-recettes');
 
@@ -54,6 +53,21 @@ class CatalogueRecettesTest extends TestCase
 				$response->assertSee($ingredient->id);
 
 				$response->assertSee($ingredient->nom);
+			}
+		}
+	}
+
+	public function testPhotoRecette(): void
+	{
+		$response = $this->get('catalogue-recettes');
+
+		$recettes = $response->viewData('recettes');
+
+		foreach ($recettes as $recette) {
+			foreach ($recette->recuperationPhoto as $photo) {
+				$response->assertSee($photo->nom);
+				$response->assertSee($photo->description);
+				$response->assertSee($photo->dossier);
 			}
 		}
 	}

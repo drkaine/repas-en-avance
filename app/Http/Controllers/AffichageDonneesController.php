@@ -104,7 +104,10 @@ class AffichageDonneesController extends Controller
 
 	public function pageCatalogueRecettes(): View
 	{
-		$recettes = $this->recette->with('recuperationIngredient')->get();
+		$recettes = $this->recette->
+			with('recuperationIngredient')->
+			with('recuperationPhoto')->
+			get();
 
 		return view('catalogue_recettes', compact('recettes'));
 	}
@@ -113,6 +116,7 @@ class AffichageDonneesController extends Controller
 	{
 		$recettes = $this->recette->
 			with('recuperationIngredient')->
+			with('recuperationPhoto')->
 			orderByDesc('created_at')->
 			take(10)->
 			get();
