@@ -2,7 +2,9 @@
     <div>
         <div class="carte-recette">
         @foreach($recette->recuperationPhoto as $photo)
-            <img src="{{ asset($photo->dossier . $photo->nom . '.jpeg') }}" alt="{{  $photo->description  }}"  class="image-de-la-carte">
+            <a href="{{  route('recette', ['nom_recette' => $recette->url])  }}">
+                <img src="{{ asset($photo->dossier . $photo->nom . '.jpeg') }}" alt="{{  $photo->description  }}"  class="image-de-la-carte">
+            </a>
         @endforeach
             <div class="texte-de-la-carte">
                 <h2 class="titre-de-la-carte">

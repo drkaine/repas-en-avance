@@ -37,6 +37,8 @@ class AccueilTest extends TestCase
 
 			$response->assertSee($recette->nom);
 
+			$response->assertSee($recette->url);
+
 			$response->assertSee($recette->temps_cuisson);
 		}
 	}
