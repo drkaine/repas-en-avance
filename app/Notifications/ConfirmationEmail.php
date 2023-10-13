@@ -12,11 +12,14 @@ class ConfirmationEmail extends Notification
 {
 	use Queueable;
 
+	private array $texte_mail;
+
 	/**
 	 * Create a new notification instance.
 	 */
 	public function __construct()
 	{
+		$this->texte_mail = config('texte_mail.confirmation_email');
 	}
 
 	/**
@@ -38,12 +41,10 @@ class ConfirmationEmail extends Notification
 
 		return (new MailMessage)->
 			from('ne_pas_repondre@darkaine.fr', 'Repas en avance')->
-			subject('Confirmation de votre adresse e-mail')->
-			line('Bonjour,
-				Pour profiter de votre compte,
-				Veuillez cliquer sur le bouton ci-dessous pour confirmer votre adresse e-mail.')->
+			subject($this->texte_mail['sujet'])->
+			line($this->texte_mail['line1'])->
 			action('Confirmer l\'adresse e-mail', $lien_de_confirmation)->
-			line('Si vous n\'avez pas créé de compte, aucune action n\'est requise.\\n Belle journée à bientôt !');
+			line($this->texte_mail['line2']);
 	}
 
 	/**

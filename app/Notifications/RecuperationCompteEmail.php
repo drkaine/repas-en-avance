@@ -12,11 +12,14 @@ class RecuperationCompteEmail extends Notification
 {
 	use Queueable;
 
+	private array $texte_mail;
+
 	/**
 	 * Create a new notification instance.
 	 */
 	public function __construct()
 	{
+		$this->texte_mail = config('texte_mail.recuperation_compte');
 	}
 
 	/**
@@ -38,13 +41,10 @@ class RecuperationCompteEmail extends Notification
 
 		return (new MailMessage)->
 			from('ne_pas_repondre@darkaine.fr', 'Repas en avance')->
-			subject('suppression de votre compte')->
-			line('Bonjour,
-				Vous venez de demander la suppression de votre compte ou avez été inactif depuis 3 mois.
-				Votre compte restera en anonyme pendant 6 mois, puis sera supprimé.
-				Cliquer ci-dessous si vous changez d\'avis et vouler récupérer votre compte et indiquez ' . $notifiable->id . ' dans le champs code.')->
+			subject($this->texte_mail['sujet'])->
+			line($this->texte_mail['line1'] . $notifiable->id . ' dans le champs code.')->
 			action('Confirmer l\'adresse e-mail', $lien_de_recuperation)->
-			line('Si vous n\'avez pas créé de compte, aucune action n\'est requise.\\n Belle journée à bientôt !');
+			line($this->texte_mail['line2']);
 	}
 
 	/**

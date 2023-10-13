@@ -13,11 +13,14 @@ class MotDePasseOublieEmail extends Notification
 {
 	use Queueable;
 
+	private array $texte_mail;
+
 	/**
 	 * Create a new notification instance.
 	 */
 	public function __construct()
 	{
+		$this->texte_mail = config('texte_mail.mot_de_passe_oublie');
 	}
 
 	/**
@@ -40,12 +43,10 @@ class MotDePasseOublieEmail extends Notification
 
 		return (new MailMessage)->
 			from('ne_pas_repondre@darkaine.fr', 'Repas en avance')->
-			subject('Mot de passe oublié')->
-			line('Bonjour,
-				Pour changer votre mot de passe,
-				Veuillez cliquer sur le bouton ci-dessous pour confirmer votre adresse e-mail.')->
+			subject($this->texte_mail['sujet'])->
+			line($this->texte_mail['line1'])->
 			action('Changement de mot de passe', $lien_vers_le_formulaire)->
-			line('Si vous n\'avez pas fait cette demande, veuillez ne pas prendre en compte ce mail.\\n Belle journée à bientôt !');
+			line($this->texte_mail['line2']);
 	}
 
 	/**
