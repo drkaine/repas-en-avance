@@ -126,6 +126,7 @@ Modele (Tests\Feature\TableSQL\Modele)
  [x] Ustensile
  [x] Mode de cuisson
  [x] Photo
+ [x] Carnet recettes
 
 Modification (Tests\Feature\DansLaBaseDeDonnee\User\Modification)
  [x] Du user

@@ -170,4 +170,8 @@ return [
 		'id_recette' => 1,
 		'dossier' => 'images/recettes/',
 	],
+	'carnet_recette' => [
+		'id_user' => 1,
+		'id_recette' => 1,
+	],
 ];
