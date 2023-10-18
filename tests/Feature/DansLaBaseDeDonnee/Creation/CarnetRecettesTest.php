@@ -6,6 +6,7 @@ namespace Tests\Feature\DansLaBaseDeDonnee\Creation;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Traits\ModelDeTestTrait;
 use Tests\Traits\RecuperationDonneesDeTestTrait;
 
 /**
@@ -15,6 +16,7 @@ class CarnetRecettesTest extends TestCase
 {
 	use RefreshDatabase;
 	use RecuperationDonneesDeTestTrait;
+	use ModelDeTestTrait;
 
 	private array $donnes_carnet_recettes;
 
@@ -30,5 +32,14 @@ class CarnetRecettesTest extends TestCase
 		$this->post('/ajout-carnet-recettes', $this->donnes_carnet_recettes);
 
 		$this->assertDatabaseHas('carnet_recettes', $this->donnes_carnet_recettes);
+	}
+
+	public function testSuppression(): void
+	{
+		$this->creation('CarnetRecette', 'carnet_recette');
+
+		$this->post('/suppression-carnet-recettes', $this->donnes_carnet_recettes);
+
+		$this->assertDatabaseMissing('carnet_recettes', $this->donnes_carnet_recettes);
 	}
 }

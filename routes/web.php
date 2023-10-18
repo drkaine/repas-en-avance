@@ -212,3 +212,11 @@ Route::post(
 		'ajout',
 	]
 )->name('ajout-carnet-recettes');
+
+Route::post(
+	'suppression-carnet-recettes',
+	[
+		CarnetRecettesController::class,
+		'suppression',
+	]
+)->name('suppression-carnet-recettes');

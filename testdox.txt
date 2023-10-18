@@ -57,6 +57,7 @@ Avec User Connecte (Tests\Feature\Affichage\DesPages\AvecUserConnecte)
 
 Carnet Recettes (Tests\Feature\DansLaBaseDeDonnee\Creation\CarnetRecettes)
  [x] Ajout
+ [x] Suppression
 
 Catalogue Recettes (Tests\Feature\Affichage\CatalogueRecettes)
  [x] Recette dans catalogue recettes
