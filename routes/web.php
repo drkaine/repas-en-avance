@@ -52,7 +52,7 @@ Route::post(
 		InscriptionController::class,
 		'inscription',
 	]
-)->name('inscription');
+)->name('inscription-post');
 
 Route::get(
 	'confirmation-email/{email_user}',
@@ -84,7 +84,7 @@ Route::post(
 		DemandeMotDePasseOublieController::class,
 		'validationFormulaire',
 	]
-)->name('demande-mot-de-passe-oublie');
+)->name('demande-mot-de-passe-oublie-post');
 
 Route::get(
 	'demande-mot-de-passe-oublie',
@@ -108,7 +108,7 @@ Route::post(
 		ConnexionController::class,
 		'connexion',
 	]
-)->name('connexion');
+)->name('connexion-post');
 
 Route::get(
 	'deconnexion',
@@ -132,7 +132,7 @@ Route::post(
 		AjoutTagController::class,
 		'ajoutTag',
 	]
-)->name('ajout-tag');
+)->name('ajout-tag-post');
 
 Route::get(
 	'ajout-recette',
@@ -148,7 +148,7 @@ Route::post(
 		AjoutRecetteController::class,
 		'ajoutRecette',
 	]
-)->name('ajout-recette');
+)->name('ajout-recette-post');
 
 Route::get(
 	'mon-compte',
@@ -187,7 +187,7 @@ Route::post(
 		RecuperationDoneesAnonymiserController::class,
 		'monCompte',
 	]
-)->name('recuperation-compte');
+)->name('recuperation-compte-post');
 
 Route::get(
 	'catalogue-recettes',
