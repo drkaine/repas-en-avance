@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Traits;
 
+use App\Models\CarnetRecette;
 use App\Models\Ingredient;
 use App\Models\ModeDeCuisson;
 use App\Models\Photo;
@@ -159,6 +160,16 @@ trait AjoutEnDBTrait
 			'nom' => $recette->url,
 			'description' => $recette->description,
 			'dossier' => 'images/recettes/',
+		]);
+	}
+
+	private function nouveauCarnetRecettes(int $id_user, int $id_recette): void
+	{
+		$caret_recettes = new CarnetRecette;
+
+		$caret_recettes->create([
+			'id_user' => $id_user,
+			'id_recette' => $id_recette,
 		]);
 	}
 }

@@ -10,4 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 class CarnetRecette extends Model
 {
 	use HasFactory;
+
+	protected $fillable = [
+		'id_recette',
+		'id_user',
+	];
 }

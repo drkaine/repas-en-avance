@@ -55,6 +55,9 @@ Avec User Connecte (Tests\Feature\Affichage\DesPages\AvecUserConnecte)
  [x] Ajout recette
  [x] Mon compte
 
+Carnet Recettes (Tests\Feature\DansLaBaseDeDonnee\Creation\CarnetRecettes)
+ [x] Ajout
+
 Catalogue Recettes (Tests\Feature\Affichage\CatalogueRecettes)
  [x] Recette dans catalogue recettes
  [x] Ingredient dans catalogue recettes

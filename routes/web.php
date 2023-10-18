@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\DeconnexionController;
 use App\Http\Controllers\EnvoieFormulaire\AjoutRecetteController;
 use App\Http\Controllers\EnvoieFormulaire\AjoutTagController;
+use App\Http\Controllers\EnvoieFormulaire\CarnetRecettesController;
 use App\Http\Controllers\EnvoieFormulaire\ConnexionController;
 use App\Http\Controllers\EnvoieFormulaire\DemandeMotDePasseOublieController;
 use App\Http\Controllers\EnvoieFormulaire\InscriptionController;
@@ -203,3 +204,11 @@ Route::get(
 		'Recette',
 	]
 )->name('recette');
+
+Route::post(
+	'ajout-carnet-recettes',
+	[
+		CarnetRecettesController::class,
+		'ajout',
+	]
+)->name('ajout-carnet-recettes');
