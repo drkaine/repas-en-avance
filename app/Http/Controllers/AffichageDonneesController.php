@@ -124,8 +124,14 @@ class AffichageDonneesController extends Controller
 		return view('accueil', compact('recettes'));
 	}
 
-	public function carnetRecettes(): View
+	public function carnetRecettes(): View | RedirectResponse | Redirector
 	{
+		$user = auth()->user();
+
+		if (! $user) {
+			return redirect('connexion');
+		}
+
 		return view('carnet_recettes');
 	}
 }

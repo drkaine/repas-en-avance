@@ -216,4 +216,5 @@ User Non Authentifie (Tests\Feature\UserNonAuthentifie)
  [x] Mon compte
  [x] Ajout tag
  [x] Ajout recette
+ [x] Carnet recettes
 

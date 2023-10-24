@@ -31,4 +31,11 @@ class UserNonAuthentifieTest extends TestCase
 
 		$response->assertRedirect('inscription');
 	}
+
+	public function testCarnetRecettes(): void
+	{
+		$response = $this->get('carnet-recettes');
+
+		$response->assertRedirect('connexion');
+	}
 }
