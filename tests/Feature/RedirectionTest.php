@@ -80,4 +80,13 @@ class RedirectionTest extends TestCase
 
 		$response->assertRedirect('/');
 	}
+
+	public function testSuppressionCarnetRecettes(): void
+	{
+		$this->creation('CarnetRecette', 'carnet_recette');
+
+		$response = $this->post('/suppression-carnet-recettes', $this->donnes_carnet_recettes);
+
+		$response->assertRedirect('/');
+	}
 }

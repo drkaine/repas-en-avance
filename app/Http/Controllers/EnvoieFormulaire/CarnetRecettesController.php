@@ -22,7 +22,7 @@ class CarnetRecettesController extends Controller
 		return redirect('/');
 	}
 
-	public function suppression(Request $request): void
+	public function suppression(Request $request): RedirectResponse | Redirector
 	{
 		$carnet_recettes = new CarnetRecette;
 
@@ -30,5 +30,7 @@ class CarnetRecettesController extends Controller
 			where('id_recette', $request->id_recette)->
 			where('id_user', $request->id_user)->
 			delete();
+
+		return redirect('/');
 	}
 }
