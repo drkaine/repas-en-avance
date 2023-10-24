@@ -182,6 +182,7 @@ Redirection (Tests\Feature\Redirection)
  [x] Anonymisation user
  [x] Modification des donnees du user
  [x] Recuperation compte
+ [x] Ajout carnet recettes
 
 Sans Condition De Connexion (Tests\Feature\Affichage\DesPages\SansConditionDeConnexion)
  [x] Recette

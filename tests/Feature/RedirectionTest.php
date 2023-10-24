@@ -24,6 +24,8 @@ class RedirectionTest extends TestCase
 
 	private array $donnees_user_anonyme_recupere;
 
+	private array $donnes_carnet_recettes;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
@@ -31,6 +33,7 @@ class RedirectionTest extends TestCase
 		$this->donnees_user = $this->donnees('user');
 		$this->donnees_user_anonyme = $this->donnees('user_anonyme');
 		$this->donnees_user_anonyme_recupere = $this->donnees('user_anonyme_recupere');
+		$this->donnes_carnet_recettes = $this->donnees('carnet_recette');
 	}
 
 	public function testDeconnexion(): void
@@ -67,6 +70,13 @@ class RedirectionTest extends TestCase
 		$this->creation('User', 'user_anonyme');
 
 		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
+
+		$response->assertRedirect('/');
+	}
+
+	public function testAjoutCarnetRecettes(): void
+	{
+		$response = $this->post('/ajout-carnet-recettes', $this->donnes_carnet_recettes);
 
 		$response->assertRedirect('/');
 	}

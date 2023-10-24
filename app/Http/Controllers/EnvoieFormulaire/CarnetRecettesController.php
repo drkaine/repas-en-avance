@@ -7,15 +7,19 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 use App\Http\Controllers\Controller;
 use App\Models\CarnetRecette;
 use App\Traits\AjoutEnDBTrait;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class CarnetRecettesController extends Controller
 {
 	use AjoutEnDBTrait;
 
-	public function ajout(Request $request): void
+	public function ajout(Request $request): RedirectResponse | Redirector
 	{
-		$this->nouveauCarnetRecettes($request->id_user, $request->id_recette);
+		$this->nouveauCarnetRecettes((int) $request->id_user, (int) $request->id_recette);
+
+		return redirect('/');
 	}
 
 	public function suppression(Request $request): void
