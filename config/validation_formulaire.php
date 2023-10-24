@@ -6,6 +6,7 @@ return [
 	'ajout_recette' => [
 		'nom' => 'required|string|max:255|min:3',
 		'temps_preparation' => 'required|integer',
+		'description' => 'required|string|min:5',
 		'ingredients' => 'required|array',
 		'quantitees' => 'required|array',
 		'photos' => 'required|file',

@@ -52,6 +52,24 @@ class AjoutRecetteTest extends TestCase
 		$response->assertStatus(302);
 	}
 
+	public function testChampsDescription(): void
+	{
+		$this->donnees_formulaire_ajout_recette['description'] = null;
+
+		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
+
+		$response->assertStatus(302);
+	}
+
+	public function testLongueurMinimumChampsDescription(): void
+	{
+		$this->donnees_formulaire_ajout_recette['description'] = 'az';
+
+		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
+
+		$response->assertStatus(302);
+	}
+
 	public function testChampsTempsDePreparation(): void
 	{
 		$this->donnees_formulaire_ajout_recette['temps_preparation'] = null;

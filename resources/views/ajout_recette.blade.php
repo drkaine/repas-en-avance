@@ -46,8 +46,8 @@
     </div>
 
     <div class="element-formulaire">
-        <label>Description</label>
-        <textarea id="description" name="description" rows="6" cols="30"></textarea>
+        <label>Description *</label>
+        <textarea id="description" name="description" rows="6" cols="30" required></textarea>
         @error('description')
             <span>{{ $message }}</span>
         @enderror
