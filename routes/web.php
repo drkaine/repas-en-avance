@@ -220,3 +220,11 @@ Route::post(
 		'suppression',
 	]
 )->name('suppression-carnet-recettes');
+
+Route::get(
+	'carnet-recettes',
+	[
+		AffichageDonneesController::class,
+		'carnetRecettes',
+	]
+)->name('carnet-recettes');

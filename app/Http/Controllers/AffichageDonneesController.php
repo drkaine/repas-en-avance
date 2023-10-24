@@ -123,4 +123,9 @@ class AffichageDonneesController extends Controller
 
 		return view('accueil', compact('recettes'));
 	}
+
+	public function carnetRecettes(): View
+	{
+		return view('carnet_recettes');
+	}
 }

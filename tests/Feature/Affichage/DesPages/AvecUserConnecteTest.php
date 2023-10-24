@@ -49,4 +49,19 @@ class AvecUserConnecteTest extends TestCase
 
 		$response->assertStatus(200);
 	}
+
+	public function testCarnetDeRecettes(): void
+	{
+		$this->creation('Recette', 'recette');
+
+		$this->creationDonnees('Tag', 'tag_ingredient');
+
+		$this->creation('Ingredient', 'ingredient');
+
+		$this->creation('CarnetRecette', 'carnet_recette');
+
+		$response = $this->get('carnet-recettes');
+
+		$response->assertStatus(200);
+	}
 }
