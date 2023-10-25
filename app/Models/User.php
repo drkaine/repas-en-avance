@@ -54,6 +54,11 @@ class User extends Authenticatable
 		return $this->belongsToMany(Tag::class, 'regimes_alimentaires', 'id_user', 'id_tag');
 	}
 
+	public function recuperationCarnetRecettes(): BelongsToMany
+	{
+		return $this->belongsToMany(Recette::class, 'carnet_recettes', 'id_user', 'id_recette');
+	}
+
 	public function routeNotificationForMail(): string
 	{
 		return $this->email;

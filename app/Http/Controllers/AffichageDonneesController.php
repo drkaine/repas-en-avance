@@ -132,6 +132,21 @@ class AffichageDonneesController extends Controller
 			return redirect('connexion');
 		}
 
-		return view('carnet_recettes');
+		$carnet_recettes = $user->with('recuperationCarnetRecettes')->
+			first()->recuperationCarnetRecettes;
+
+		$id_recettes = [];
+
+		foreach ($carnet_recettes as $recette) {
+			$id_recettes[] = $recette->id;
+		}
+
+		$recettes = $this->recette->
+			with('recuperationIngredient')->
+			with('recuperationPhoto')->
+			where('id', $id_recettes)->
+			get();
+
+		return view('carnet_recettes', compact('recettes'));
 	}
 }

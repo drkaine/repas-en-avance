@@ -58,6 +58,11 @@ Avec User Connecte (Tests\Feature\Affichage\DesPages\AvecUserConnecte)
  [x] Mon compte
  [x] Carnet de recettes
 
+Carnet Recettes (Tests\Feature\Affichage\DonneesDans\CarnetRecettes)
+ [x] Recette dans catalogue recettes
+ [ ] Ingredient dans catalogue recettes
+ [x] Photo recette
+
 Carnet Recettes (Tests\Feature\DansLaBaseDeDonnee\Creation\CarnetRecettes)
  [x] Ajout
  [x] Suppression

@@ -4,6 +4,10 @@
     <a href="{{ route('anonymisation-du-compte') }}">Supprimer mon compte</a>
 </div>
 
+<div>
+    <a href="{{ route('carnet-recettes') }}">Mon carnet de recettes</a>
+</div>
+
 <form method="POST" action="{{ route('modification-user') }}" class="formulaire">
     @csrf
 
