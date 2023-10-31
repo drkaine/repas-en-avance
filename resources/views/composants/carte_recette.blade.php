@@ -15,7 +15,33 @@
                         Temps de préparation : {{  $recette->temps_preparation + $recette->temps_cuisson + $recette->temps_repos }} min
                     </p>
                 </span>
-                
+                @auth
+                    <icon>
+                        <form method="POST" action="{{ route('ajout-carnet-recettes') }}">
+                            @csrf
+                            <input type="hidden" name="id_user" value="{{  $recette->id  }}">
+    
+                            <input type="hidden" name="id_recette" value="{{ Auth::user()->id }}">
+
+                            <button>
+                                Ajout au carnet de recettes
+                            </button>
+                        </form>
+                    </icon>
+
+                    <icon>
+                        <form method="POST" action="{{ route('suppression-carnet-recettes') }}">
+                            @csrf
+                            <input type="hidden" name="id_user" value="{{  $recette->id  }}">
+    
+                            <input type="hidden" name="id_recette" value="{{ Auth::user()->id }}">
+
+                            <button>
+                                Suppression du carnet de recettes
+                            </button>
+                        </form>
+                    </icon>
+                @endauth
             </div>
         </div>
         <div class="liste-des-ingredients">
