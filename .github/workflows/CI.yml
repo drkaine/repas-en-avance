@@ -59,9 +59,6 @@ jobs:
           php artisan cache:clear
           php artisan key:generate
 
-      - name: Directory Permissions
-        run: chmod 755 -R storage bootstrap/cache
-
       - name: Run Unit tests
         env:
           APP_ENV: testing
