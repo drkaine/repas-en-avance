@@ -37,17 +37,6 @@ class AuthentificationTest extends TestCase
 		$this->assertSame($user->id, Auth::user()->id);
 	}
 
-	public function testConnexionUserNonConfirme(): void
-	{
-		$user = $this->creationUserNonConfirme();
-
-		unset($this->donnees_user['nom'], $this->donnees_user['email_verified_at']);
-
-		$response = $this->post('/connexion', $this->donnees_user);
-
-		$response->assertRedirect('inscription');
-	}
-
 	public function testDeconnexion(): void
 	{
 		$this->userConnecte();

@@ -23,6 +23,7 @@ class CarnetRecettesTest extends TestCase
 		$this->creationTagsAjoutRecette();
 		$this->creation('Recette', 'recette');
 		$this->creation('CarnetRecette', 'carnet_recette');
+		$this->creation('Ingredient', 'ingredient');
 		$this->creation('Photo', 'photo');
 		$this->creationFichierPhoto();
 
