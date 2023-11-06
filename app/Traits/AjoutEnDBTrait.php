@@ -159,7 +159,7 @@ trait AjoutEnDBTrait
 			'id_recette' => $recette->id,
 			'nom' => $recette->url,
 			'description' => $recette->description,
-			'dossier' => 'images/recettes/',
+			'dossier' => 'storage/images/',
 		]);
 	}
 

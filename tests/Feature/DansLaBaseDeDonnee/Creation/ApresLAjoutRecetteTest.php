@@ -41,7 +41,7 @@ class ApresLAjoutRecetteTest extends TestCase
 
 		$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
 
-		Storage::fake('images/recettes');
+		Storage::fake('storage/images');
 	}
 
 	public function testRecette(): void

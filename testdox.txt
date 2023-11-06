@@ -8,49 +8,12 @@ Ajout Recette (Tests\Feature\Affichage\AjoutRecette)
  [x] Mode de cuisson dans ajout recette
  [x] Ingredient dans ajout recette
 
-Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Longueur minimum champs nom
- [x] Champs description
- [x] Longueur minimum champs description
- [x] Champs temps de preparation
- [x] Champs ingredient
- [x] Champs quantite
- [x] Champs photo
-
 Ajout Tag (Tests\Feature\Affichage\Donnees\AjoutTag)
  [x] Tag dans ajout tag
 
-Ajout Tag (Tests\Feature\ValidationFormulaire\AjoutTag)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Longueur minimum champs nom
-
-Anonymisation (Tests\Feature\DansLaBaseDeDonnee\User\Anonymisation)
- [x] Anonymisation user
- [x] Anonymisation users inactif
-
-Apres LAjout Recette (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLAjoutRecette)
- [x] Recette
- [x] Ustensile dans ajout recette
- [x] Mode de cuisson dans ajout recette
- [x] Ingredient dans ajout recette
- [x] Photo dans ajout recette
-
-Apres LInscription (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLInscription)
- [x] User apres l inscription
- [x] User tag apres l inscription
-
-Apres Lajout Tag (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLajoutTag)
- [x] Tag
- [x] Relation tag parent
- [x] Relation tag enfant
-
 Authentification (Tests\Feature\Authentification)
  [x] Connexion
- [x] Connexion user non confirme
- [x] Deconnexion
+ [ ] Connexion user non confirme
 
 Avec User Connecte (Tests\Feature\Affichage\DesPages\AvecUserConnecte)
  [x] Ajout tag
@@ -63,135 +26,25 @@ Carnet Recettes (Tests\Feature\Affichage\DonneesDans\CarnetRecettes)
  [ ] Ingredient dans catalogue recettes
  [x] Photo recette
 
-Carnet Recettes (Tests\Feature\DansLaBaseDeDonnee\Creation\CarnetRecettes)
- [x] Ajout
- [x] Suppression
-
 Catalogue Recettes (Tests\Feature\Affichage\CatalogueRecettes)
  [x] Recette dans catalogue recettes
  [x] Ingredient dans catalogue recettes
  [x] Photo recette
 
-Colonne Null (Tests\Feature\TableSQL\ColonneNull)
- [x] De la table users champs email verified at
- [x] De la table users champs derniere connexion
- [x] De la table recette champs temps cuisson
- [x] De la table recette champs temps repos
- [x] De la table recette champs lien
- [x] De la table recette champs instruction
- [x] De la table recette champs description
- [x] De la table recette champs reference livre
-
-Confirmation (Tests\Feature\Confirmation)
- [x] Inscription user
-
-Connexion (Tests\Feature\ValidationFormulaire\Connexion)
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Longueur minimum champs email
- [x] Format champs email
- [x] Champs password
- [x] Longueur minimum champs password
- [x] Longueur maximum champs password
-
 Dans LInscription (Tests\Feature\Affichage\DansLInscription)
  [x] Tag dans l inscription
 
-Demande Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\DemandeMotDePasseOublie)
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Longueur minimum champs email
- [x] Format champs email
-
 Example (Tests\Unit\Example)
  [x] Example
-
-Formulaire (Tests\Feature\Envoie\Formulaire)
- [x] Inscription
- [x] Connexion
- [x] Ajout tag
- [x] Ajout recette
- [x] Demande mot de passe oublie
- [x] Mot de passe oublie
- [x] Recuperation compte
-
-Inscription (Tests\Feature\ValidationFormulaire\Inscription)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Longueur minimum champs nom
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Longueur minimum champs email
- [x] Format champs email
- [x] Champs password
- [x] Longueur minimum password
- [x] Longueur maximum password
- [x] Champs password confirmation
-
-Modele (Tests\Feature\TableSQL\Modele)
- [x] Users
- [x] Tags
- [x] Relation tags
- [x] Recettes
- [x] Regime alimentaire
- [x] Ingredient
- [x] Ustensile
- [x] Mode de cuisson
- [x] Photo
- [x] Carnet recettes
-
-Modification (Tests\Feature\DansLaBaseDeDonnee\User\Modification)
- [x] Du user
- [x] Du regime alimentaire
- [x] De la derniere connexion du user
 
 Mon Compte (Tests\Feature\Affichage\MonCompte)
  [x] User dans mon compte
  [x] Tag dans mon compte
  [x] Regime alimentaire dans mon compte
 
-Mot De Passe Oublie (Tests\Feature\DansLaBaseDeDonnee\User\MotDePasseOublie)
- [x] Changement mot de passe
-
-Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\MotDePasseOublie)
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Longueur minimum champs email
- [x] Format champs email
- [x] Champs mot de passe
- [x] Longueur minimum champs password
- [x] Longueur maximum champs password
- [x] Champs mot de passe confirme
-
-Notification (Tests\Feature\Envoie\Notification)
- [x] Verification email is sent
-
 Recette (Tests\Feature\Affichage\Recette)
  [x] Element recette carotte simple
  [x] Photo recette carotte simple
-
-Recuperation Compte (Tests\Feature\ValidationFormulaire\RecuperationCompte)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Longueur minimum champs nom
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Longueur minimum champs email
- [x] Format champs email
- [x] Champs password
- [x] Longueur minimum password
- [x] Longueur maximum password
-
-Recuperation Donnees Anonymiser (Tests\Feature\DansLaBaseDeDonnee\User\RecuperationDonneesAnonymiser)
- [x] Recuperation compte user
-
-Redirection (Tests\Feature\Redirection)
- [x] Deconnexion
- [x] Anonymisation user
- [x] Modification des donnees du user
- [x] Recuperation compte
- [x] Ajout carnet recettes
- [x] Suppression carnet recettes
 
 Sans Condition De Connexion (Tests\Feature\Affichage\DesPages\SansConditionDeConnexion)
  [x] Recette
@@ -205,21 +58,4 @@ Sans User Connecte (Tests\Feature\Affichage\DesPages\SansUserConnecte)
  [x] Confirmation email
  [x] Mot de passe oublie
  [x] Demande mot de passe oublie
-
-Suppression (Tests\Feature\DansLaBaseDeDonnee\User\Suppression)
- [x] Users anonymes
- [x] Regime alimentaire des users anonymes
-
-Telechargement Fichier (Tests\Feature\TelechargementFichier)
- [x] Photo recette
-
-User Connecte (Tests\Feature\UserConnecte)
- [x] Inscription
- [x] Connexion
-
-User Non Authentifie (Tests\Feature\UserNonAuthentifie)
- [x] Mon compte
- [x] Ajout tag
- [x] Ajout recette
- [x] Carnet recettes
 

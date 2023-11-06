@@ -162,13 +162,13 @@ return [
 	'fichier_photo' => UploadedFile::fake()->create(
 		'carotte-simple.jpeg',
 		1024,
-		'images/recettes/'
+		'storage/images/'
 	),
 	'photo' => [
 		'nom' => 'carotte-simple',
 		'description' => 'Recette simple et rapide',
 		'id_recette' => 1,
-		'dossier' => 'images/recettes/',
+		'dossier' => 'storage/images/',
 	],
 	'carnet_recette' => [
 		'id_user' => 1,

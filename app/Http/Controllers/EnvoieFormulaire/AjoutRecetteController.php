@@ -35,10 +35,7 @@ class AjoutRecetteController extends Controller
 
 		$this->ingredient($request->ingredients, $request->quantitees, $recette->id);
 
-		$request->file('photos')->storeAs(
-			'images/recettes',
-			$recette->url . '.jpeg'
-		);
+		$request->file('photos')->move(public_path('storage/images'), $recette->url . '.jpeg');
 
 		$this->nouvellePhoto($recette);
 

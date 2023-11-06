@@ -37,8 +37,8 @@ class TelechargementFichierTest extends TestCase
 	{
 		$this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-		self::assertFileExists(storage_path('app/images/recettes/' . $this->donnees_fichier_photo->name));
+		self::assertFileExists(storage_path('app/public/' . $this->donnees_fichier_photo->name));
 
-		Storage::delete(storage_path('app/images/recettes/' . $this->donnees_fichier_photo->name));
+		Storage::delete(storage_path('app/public/' . $this->donnees_fichier_photo->name));
 	}
 }
