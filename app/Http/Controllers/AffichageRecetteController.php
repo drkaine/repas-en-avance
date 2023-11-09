@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use App\Models\Recette;
+use App\Services\GestionAffichageService;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
@@ -27,6 +28,10 @@ class AffichageRecetteController extends Controller
 			where('url', $nom_recette)->
 			first();
 
-		return view('recette', compact('recette'));
+		$gestion_affichage = new GestionAffichageService;
+
+		$recette_ajoutee = $gestion_affichage->recetteAjoutee($recette->id);
+
+		return view('recette', compact('recette', 'recette_ajoutee'));
 	}
 }

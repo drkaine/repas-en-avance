@@ -1,5 +1,7 @@
 @include('composants.head')
 
+@include('composants.formulaire_carnet_recette')
+
 <div>
     <div class="carte-recette">
     @foreach($recette->recuperationPhoto as $photo)
