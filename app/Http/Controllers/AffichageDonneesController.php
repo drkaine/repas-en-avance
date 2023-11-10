@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recette;
 use App\Models\Tag;
+use App\Services\GestionAffichageService;
 use App\Services\RecuperationTagService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
@@ -19,6 +20,8 @@ class AffichageDonneesController extends Controller
 
 	private RecuperationTagService $recuperation_tag;
 
+	private GestionAffichageService $gestion_affichage;
+
 	public function __construct()
 	{
 		$this->tag = new Tag;
@@ -26,6 +29,8 @@ class AffichageDonneesController extends Controller
 		$this->recuperation_tag = new RecuperationTagService;
 
 		$this->recette = new Recette;
+
+		$this->gestion_affichage = new GestionAffichageService;
 	}
 
 	public function pageAjoutTag(): View | RedirectResponse | Redirector
@@ -109,7 +114,15 @@ class AffichageDonneesController extends Controller
 			with('recuperationPhoto')->
 			get();
 
-		return view('catalogue_recettes', compact('recettes'));
+		$id_recettes = [];
+
+		foreach ($recettes as $recette) {
+			$id_recettes[] = $recette->id;
+		}
+
+		$recette_ajoutee = $this->gestion_affichage->recetteAjoutee($id_recettes);
+
+		return view('catalogue_recettes', compact('recettes', 'recette_ajoutee'));
 	}
 
 	public function pageAccueil(): View
@@ -121,7 +134,15 @@ class AffichageDonneesController extends Controller
 			take(10)->
 			get();
 
-		return view('accueil', compact('recettes'));
+		$id_recettes = [];
+
+		foreach ($recettes as $recette) {
+			$id_recettes[] = $recette->id;
+		}
+
+		$recette_ajoutee = $this->gestion_affichage->recetteAjoutee($id_recettes);
+
+		return view('accueil', compact('recettes', 'recette_ajoutee'));
 	}
 
 	public function carnetRecettes(): View | RedirectResponse | Redirector
@@ -147,6 +168,14 @@ class AffichageDonneesController extends Controller
 			where('id', $id_recettes)->
 			get();
 
-		return view('carnet_recettes', compact('recettes'));
+		$id_recettes = [];
+
+		foreach ($recettes as $recette) {
+			$id_recettes[] = $recette->id;
+		}
+
+		$recette_ajoutee = $this->gestion_affichage->recetteAjoutee($id_recettes);
+
+		return view('carnet_recettes', compact('recettes', 'recette_ajoutee'));
 	}
 }

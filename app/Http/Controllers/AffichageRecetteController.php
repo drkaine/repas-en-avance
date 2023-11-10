@@ -30,7 +30,7 @@ class AffichageRecetteController extends Controller
 
 		$gestion_affichage = new GestionAffichageService;
 
-		$recette_ajoutee = $gestion_affichage->recetteAjoutee($recette->id);
+		$recette_ajoutee = $gestion_affichage->recetteAjoutee([$recette->id]);
 
 		return view('recette', compact('recette', 'recette_ajoutee'));
 	}

@@ -1,5 +1,5 @@
 @auth
-    @if(!$recette_ajoutee)
+    @if(!in_array($recette->id ,$recette_ajoutee))
         <icon>
             <form method="POST" action="{{ route('ajout-carnet-recettes') }}">
                 @csrf

@@ -8,22 +8,26 @@ use App\Models\CarnetRecette;
 
 class GestionAffichageService
 {
-	public function recetteAjoutee(int $id_recette): bool
+	public function recetteAjoutee(array $id_recette): array
 	{
 		$user = auth()->user();
 
-		$recette_ajoutee = false;
+		$id_recettes = [];
 
 		if ($user) {
 			$carnet_recette = new CarnetRecette;
 
-			$recette_ajoutee = $carnet_recette->
+			$recettes_ajoutees = $carnet_recette->
 				select('id_recette')->
 				where('id_user', $user->id)->
-				where('id_recette', $id_recette)->
-				first();
+				whereIn('id_recette', $id_recette)->
+				get();
+
+			foreach ($recettes_ajoutees as $recette_ajoutee) {
+				$id_recettes[] = $recette_ajoutee->id_recette;
+			}
 		}
 
-		return $recette_ajoutee ? true : false;
+		return $id_recettes;
 	}
 }
