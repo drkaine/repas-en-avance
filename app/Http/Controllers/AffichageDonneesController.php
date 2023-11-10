@@ -8,6 +8,7 @@ use App\Models\Recette;
 use App\Models\Tag;
 use App\Services\GestionAffichageService;
 use App\Services\RecuperationTagService;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
@@ -114,13 +115,7 @@ class AffichageDonneesController extends Controller
 			with('recuperationPhoto')->
 			get();
 
-		$id_recettes = [];
-
-		foreach ($recettes as $recette) {
-			$id_recettes[] = $recette->id;
-		}
-
-		$recette_ajoutee = $this->gestion_affichage->recetteAjoutee($id_recettes);
+		$recette_ajoutee = $this->recuperationRecettesAjoutees($recettes);
 
 		return view('catalogue_recettes', compact('recettes', 'recette_ajoutee'));
 	}
@@ -134,13 +129,7 @@ class AffichageDonneesController extends Controller
 			take(10)->
 			get();
 
-		$id_recettes = [];
-
-		foreach ($recettes as $recette) {
-			$id_recettes[] = $recette->id;
-		}
-
-		$recette_ajoutee = $this->gestion_affichage->recetteAjoutee($id_recettes);
+		$recette_ajoutee = $this->recuperationRecettesAjoutees($recettes);
 
 		return view('accueil', compact('recettes', 'recette_ajoutee'));
 	}
@@ -168,14 +157,21 @@ class AffichageDonneesController extends Controller
 			where('id', $id_recettes)->
 			get();
 
+		$recette_ajoutee = $this->recuperationRecettesAjoutees($recettes);
+
+		return view('carnet_recettes', compact('recettes', 'recette_ajoutee'));
+	}
+
+	private function recuperationRecettesAjoutees(Collection $recettes): array
+	{
 		$id_recettes = [];
 
 		foreach ($recettes as $recette) {
 			$id_recettes[] = $recette->id;
 		}
 
-		$recette_ajoutee = $this->gestion_affichage->recetteAjoutee($id_recettes);
+		$recettes_ajoutees = $this->gestion_affichage->recetteAjoutee($id_recettes);
 
-		return view('carnet_recettes', compact('recettes', 'recette_ajoutee'));
+		return $recettes_ajoutees;
 	}
 }
