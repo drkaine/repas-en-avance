@@ -26,6 +26,6 @@ return new class extends Migration {
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('carnet_recette');
+		Schema::dropIfExists('carnet_recettes');
 	}
 };
