@@ -32,8 +32,9 @@ echo "npm install"
 npm install
 
 # Lancez database migrations
-echo "php artisan migrate:refresh"
-php artisan migrate:refresh
+echo "php artisan migrate --force"
+php artisan migrate --force
+
 
 # Sortir du mode maintenancer
 echo "php artisan up"
