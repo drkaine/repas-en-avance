@@ -4,13 +4,15 @@ declare(strict_types = 1);
 
 namespace App\Services;
 
-use App\Models\RegimeAlimentaire;
 use App\Models\User;
+use App\Traits\SuppressionEnDBTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class GestionUsersInactifService
 {
+	use SuppressionEnDBTrait;
+
 	public function anonymiser(): void
 	{
 		$date = new Carbon;
@@ -31,15 +33,11 @@ class GestionUsersInactifService
 
 		$users = new User;
 
-		$regimes_alimentaires = new RegimeAlimentaire;
-
 		$id_users_anonymes = $users->whereDate('derniere_connexion', '<', $date->now()->subMonths(6))->
 			pluck('id');
 
-		$users->whereIn('id', $id_users_anonymes)->
-			delete();
+		$this->userParListIdUser($id_users_anonymes);
 
-		$regimes_alimentaires->whereIn('id_user', $id_users_anonymes)->
-			delete();
+		$this->regimeAlimentaireParListIdUser($id_users_anonymes);
 	}
 }

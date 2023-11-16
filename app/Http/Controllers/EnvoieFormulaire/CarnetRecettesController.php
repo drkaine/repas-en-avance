@@ -5,8 +5,8 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
-use App\Models\CarnetRecette;
 use App\Traits\AjoutEnDBTrait;
+use App\Traits\SuppressionEnDBTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -14,6 +14,7 @@ use Illuminate\Routing\Redirector;
 class CarnetRecettesController extends Controller
 {
 	use AjoutEnDBTrait;
+	use SuppressionEnDBTrait;
 
 	public function ajout(Request $request): RedirectResponse | Redirector
 	{
@@ -24,12 +25,7 @@ class CarnetRecettesController extends Controller
 
 	public function suppression(Request $request): RedirectResponse | Redirector
 	{
-		$carnet_recettes = new CarnetRecette;
-
-		$carnet_recettes = $carnet_recettes->
-			where('id_recette', $request->id_recette)->
-			where('id_user', $request->id_user)->
-			delete();
+		$this->carnetRecetteParIdUserEtIdRecette($request->id_recette, $request->id_user);
 
 		return redirect('/');
 	}
