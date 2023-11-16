@@ -5,22 +5,16 @@ declare(strict_types = 1);
 namespace App\Services;
 
 use App\Models\Tag;
+use App\Traits\GestionDB\SelectTrait;
 
 class RecuperationTagService
 {
-	private Tag $tag;
-
-	public function __construct()
-	{
-		$this->tag = new Tag;
-	}
+	use SelectTrait;
 
 	public function premierParNom(string $nom): Tag
 	{
-		$tag_recupere = $this->tag->select('id')->
-			where('nom', $nom)->
-			first();
+		$premier_tag = $this->premierTagParNom($nom);
 
-		return $tag_recupere;
+		return $premier_tag;
 	}
 }

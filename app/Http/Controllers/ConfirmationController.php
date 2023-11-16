@@ -6,19 +6,21 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Services\ModificationUserService;
+use App\Traits\GestionDB\SelectTrait;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 
 class ConfirmationController extends Controller
 {
+	use SelectTrait;
+
 	public function confirmationEmail(string $email_user): View
 	{
 		$date = new Carbon;
 
 		$user = new User;
 
-		$user = $user->where('email', $email_user)->
-			firstOrFail();
+		$user = $this->userParEmail($email_user);
 
 		$modification_user = new ModificationUserService($user);
 

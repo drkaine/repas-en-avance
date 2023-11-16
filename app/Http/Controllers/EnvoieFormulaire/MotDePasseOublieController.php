@@ -7,6 +7,7 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\ModificationUserService;
+use App\Traits\GestionDB\SelectTrait;
 use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -14,6 +15,7 @@ use Illuminate\View\View;
 class MotDePasseOublieController extends Controller
 {
 	use ValidationFormulaireTrait;
+	use SelectTrait;
 
 	public function validationFormulaire(Request $request): View
 	{
@@ -21,8 +23,7 @@ class MotDePasseOublieController extends Controller
 
 		$user = new User;
 
-		$user = $user->where('email', $request->email)->
-			first();
+		$user = $this->userParEmail($request->email);
 
 		$modification_user = new ModificationUserService($user);
 

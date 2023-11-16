@@ -7,6 +7,7 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\ModificationUserService;
+use App\Traits\GestionDB\SelectTrait;
 use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ use Illuminate\Routing\Redirector;
 class RecuperationDoneesAnonymiserController extends Controller
 {
 	use ValidationFormulaireTrait;
+	use SelectTrait;
 
 	public function monCompte(Request $request): RedirectResponse | Redirector
 	{
@@ -22,8 +24,7 @@ class RecuperationDoneesAnonymiserController extends Controller
 
 		$user = new User;
 
-		$user_recupere = $user->where('email', $request->email_anonyme)->
-			first();
+		$user_recupere = $this->userParEmail($request->email_anonyme);
 
 		if (!password_verify($request->password, $user_recupere->password)) {
 			return view('recuperation_compte');

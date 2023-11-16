@@ -5,9 +5,9 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tag;
 use App\Services\VerificationDonneeRequestService;
 use App\Traits\GestionDB\AjoutTrait;
+use App\Traits\GestionDB\SelectTrait;
 use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -15,6 +15,7 @@ use Illuminate\View\View;
 class AjoutTagController extends Controller
 {
 	use AjoutTrait;
+	use SelectTrait;
 	use ValidationFormulaireTrait;
 
 	public function ajoutTag(Request $request): View
@@ -33,9 +34,7 @@ class AjoutTagController extends Controller
 
 		$this->relationTagsEnfant($id_tag, $tags_enfant);
 
-		$tag = new Tag;
-
-		$tags = $tag->select('id', 'nom')->get();
+		$tags = $this->toutLesTags();
 
 		$reponse_json = response()->json(['message' => 'Création réussie'], 201);
 		$reponse_json = json_decode($reponse_json->getContent());

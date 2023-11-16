@@ -4,10 +4,10 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
-use App\Models\Recette;
 use App\Models\Tag;
 use App\Services\GestionAffichageService;
 use App\Services\RecuperationTagService;
+use App\Traits\GestionDB\SelectTrait;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
@@ -15,9 +15,9 @@ use Illuminate\View\View;
 
 class AffichageDonneesController extends Controller
 {
-	private Tag $tag;
+	use SelectTrait;
 
-	private Recette $recette;
+	private Tag $tag;
 
 	private RecuperationTagService $recuperation_tag;
 
@@ -25,11 +25,7 @@ class AffichageDonneesController extends Controller
 
 	public function __construct()
 	{
-		$this->tag = new Tag;
-
 		$this->recuperation_tag = new RecuperationTagService;
-
-		$this->recette = new Recette;
 
 		$this->gestion_affichage = new GestionAffichageService;
 	}
@@ -42,7 +38,7 @@ class AffichageDonneesController extends Controller
 			return redirect('inscription');
 		}
 
-		$tags = $this->tag->select('id', 'nom')->get();
+		$tags = $this->toutLesTags();
 
 		return view('ajout_tag', compact('tags'));
 	}
@@ -110,10 +106,7 @@ class AffichageDonneesController extends Controller
 
 	public function pageCatalogueRecettes(): View
 	{
-		$recettes = $this->recette->
-			with('recuperationIngredient')->
-			with('recuperationPhoto')->
-			get();
+		$recettes = $this->toutesLesRecettes();
 
 		$recette_ajoutee = $this->recuperationRecettesAjoutees($recettes);
 
@@ -122,12 +115,7 @@ class AffichageDonneesController extends Controller
 
 	public function pageAccueil(): View
 	{
-		$recettes = $this->recette->
-			with('recuperationIngredient')->
-			with('recuperationPhoto')->
-			orderByDesc('created_at')->
-			take(10)->
-			get();
+		$recettes = $this->toutesLesRecettes('created_at');
 
 		$recette_ajoutee = $this->recuperationRecettesAjoutees($recettes);
 
@@ -142,8 +130,7 @@ class AffichageDonneesController extends Controller
 			return redirect('connexion');
 		}
 
-		$carnet_recettes = $user->with('recuperationCarnetRecettes')->
-			first()->recuperationCarnetRecettes;
+		$carnet_recettes = $this->carnetRecettesParUser($user);
 
 		$id_recettes = [];
 
@@ -151,11 +138,7 @@ class AffichageDonneesController extends Controller
 			$id_recettes[] = $recette->id;
 		}
 
-		$recettes = $this->recette->
-			with('recuperationIngredient')->
-			with('recuperationPhoto')->
-			where('id', $id_recettes)->
-			get();
+		$recettes = $this->toutesLesRecettesParListIdRecette($id_recettes);
 
 		$recette_ajoutee = $this->recuperationRecettesAjoutees($recettes);
 

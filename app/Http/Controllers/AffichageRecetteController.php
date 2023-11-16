@@ -6,11 +6,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Recette;
 use App\Services\GestionAffichageService;
+use App\Traits\GestionDB\SelectTrait;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
 class AffichageRecetteController extends Controller
 {
+	use SelectTrait;
+
 	private Recette $recette;
 
 	public function __construct()
@@ -22,11 +25,7 @@ class AffichageRecetteController extends Controller
 	{
 		$nom_recette = Route::current()->parameter('nom_recette');
 
-		$recette = $this->recette->
-			with('recuperationIngredient')->
-			with('recuperationPhoto')->
-			where('url', $nom_recette)->
-			first();
+		$recette = $this->recetteParUrl($nom_recette);
 
 		$gestion_affichage = new GestionAffichageService;
 
