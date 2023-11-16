@@ -5,15 +5,15 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use App\Services\ModificationUserService;
-use App\Traits\AjoutEnDBTrait;
-use App\Traits\SuppressionEnDBTrait;
+use App\Traits\GestionDB\AjoutTrait;
+use App\Traits\GestionDB\SuppressionTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ModificationDeDonneesController extends Controller
 {
-	use AjoutEnDBTrait;
-	use SuppressionEnDBTrait;
+	use AjoutTrait;
+	use SuppressionTrait;
 
 	public function monCompte(Request $request): JsonResponse
 	{

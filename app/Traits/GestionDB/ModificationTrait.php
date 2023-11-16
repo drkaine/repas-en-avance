@@ -2,13 +2,13 @@
 
 declare(strict_types = 1);
 
-namespace App\Traits;
+namespace App\Traits\GestionDB;
 
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-trait UpdateEnDBTrait
+trait ModificationTrait
 {
 	public function userEnAnonyme(Carbon $date): void
 	{

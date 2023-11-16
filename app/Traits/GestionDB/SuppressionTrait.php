@@ -2,14 +2,14 @@
 
 declare(strict_types = 1);
 
-namespace App\Traits;
+namespace App\Traits\GestionDB;
 
 use App\Models\CarnetRecette;
 use App\Models\RegimeAlimentaire;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
-trait SuppressionEnDBTrait
+trait SuppressionTrait
 {
 	public function regimeAlimentaireParIdUser(int $id_user): void
 	{

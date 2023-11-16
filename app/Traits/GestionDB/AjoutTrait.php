@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace App\Traits;
+namespace App\Traits\GestionDB;
 
 use App\Models\CarnetRecette;
 use App\Models\Ingredient;
@@ -17,7 +17,7 @@ use App\Models\Ustensile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-trait AjoutEnDBTrait
+trait AjoutTrait
 {
 	public function nouveauUser(Request $request): User
 	{

@@ -5,16 +5,16 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
-use App\Traits\AjoutEnDBTrait;
-use App\Traits\SuppressionEnDBTrait;
+use App\Traits\GestionDB\AjoutTrait;
+use App\Traits\GestionDB\SuppressionTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 
 class CarnetRecettesController extends Controller
 {
-	use AjoutEnDBTrait;
-	use SuppressionEnDBTrait;
+	use AjoutTrait;
+	use SuppressionTrait;
 
 	public function ajout(Request $request): RedirectResponse | Redirector
 	{

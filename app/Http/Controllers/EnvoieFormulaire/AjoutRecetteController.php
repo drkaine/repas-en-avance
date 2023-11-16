@@ -7,14 +7,14 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 use App\Http\Controllers\Controller;
 use App\Services\RecuperationTagService;
 use App\Services\VerificationDonneeRequestService;
-use App\Traits\AjoutEnDBTrait;
+use App\Traits\GestionDB\AjoutTrait;
 use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class AjoutRecetteController extends Controller
 {
-	use AjoutEnDBTrait;
+	use AjoutTrait;
 	use ValidationFormulaireTrait;
 
 	public function ajoutRecette(Request $request): View

@@ -7,14 +7,14 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use App\Services\VerificationDonneeRequestService;
-use App\Traits\AjoutEnDBTrait;
+use App\Traits\GestionDB\AjoutTrait;
 use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class AjoutTagController extends Controller
 {
-	use AjoutEnDBTrait;
+	use AjoutTrait;
 	use ValidationFormulaireTrait;
 
 	public function ajoutTag(Request $request): View

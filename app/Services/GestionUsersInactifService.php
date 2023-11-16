@@ -5,14 +5,14 @@ declare(strict_types = 1);
 namespace App\Services;
 
 use App\Models\User;
-use App\Traits\SuppressionEnDBTrait;
-use App\Traits\UpdateEnDBTrait;
+use App\Traits\GestionDB\ModificationTrait;
+use App\Traits\GestionDB\SuppressionTrait;
 use Carbon\Carbon;
 
 class GestionUsersInactifService
 {
-	use SuppressionEnDBTrait;
-	use UpdateEnDBTrait;
+	use SuppressionTrait;
+	use ModificationTrait;
 
 	public function anonymiser(): void
 	{
