@@ -6,25 +6,19 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Traits\SuppressionEnDBTrait;
+use App\Traits\UpdateEnDBTrait;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class GestionUsersInactifService
 {
 	use SuppressionEnDBTrait;
+	use UpdateEnDBTrait;
 
 	public function anonymiser(): void
 	{
 		$date = new Carbon;
 
-		$users = new User;
-
-		$users->whereDate('derniere_connexion', '<', $date->now()->subMonths(3))->
-			update([
-				'nom' => 'Anonyme',
-				'email' => DB::raw('\'anonyme\' || id || \'@anonyme.fr\''),
-				'email_verified_at' => null,
-			]);
+		$this->userEnAnonyme($date->now()->subMonths(3));
 	}
 
 	public function supprimer(): void
