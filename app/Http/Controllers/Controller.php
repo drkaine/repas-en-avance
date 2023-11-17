@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
+use App\Services\GestionRedirectionService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\RedirectResponse;
@@ -16,36 +17,31 @@ class Controller extends BaseController
 	use AuthorizesRequests;
 	use ValidatesRequests;
 
+	private GestionRedirectionService $gestion_redirection;
+
+	public function __construct()
+	{
+		$this->gestion_redirection = new GestionRedirectionService;
+	}
+
 	public function affichageConnexion(): View | RedirectResponse | Redirector
 	{
-		$user = auth()->user();
+		$page = $this->gestion_redirection->userConnecte('mon-compte', 'connexion');
 
-		if ($user) {
-			return redirect('mon-compte');
-		}
-
-		return view('connexion');
+		return $page;
 	}
 
 	public function affichageMotDePasseOublie(): View | RedirectResponse | Redirector
 	{
-		$user = auth()->user();
+		$page = $this->gestion_redirection->userConnecte('mon-compte', 'mot_de_passe_oublie');
 
-		if ($user) {
-			return redirect('mon-compte');
-		}
-
-		return view('mot_de_passe_oublie');
+		return $page;
 	}
 
 	public function affichageDemandeMotDePasseOublie(): View | RedirectResponse | Redirector
 	{
-		$user = auth()->user();
+		$page = $this->gestion_redirection->userConnecte('mon-compte', 'demande_mot_de_passe_oublie');
 
-		if ($user) {
-			return redirect('mon-compte');
-		}
-
-		return view('demande_mot_de_passe_oublie');
+		return $page;
 	}
 }

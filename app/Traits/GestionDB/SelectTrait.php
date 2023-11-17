@@ -8,6 +8,7 @@ use App\Models\CarnetRecette;
 use App\Models\Recette;
 use App\Models\Tag;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
 trait SelectTrait
@@ -102,5 +103,16 @@ trait SelectTrait
 			get();
 
 		return $recettes;
+	}
+
+	public function toutesLesUsersParDerniereConnexion(Carbon $date): Collection
+	{
+		$user = new User;
+
+		$users = $user->
+			whereDate('derniere_connexion', '<', $date)->
+			get('id');
+
+		return $users;
 	}
 }
