@@ -62,19 +62,11 @@ class AjoutRecetteController extends Controller
 	{
 		$recuperation_tag = new GestionAffichageService;
 
-		$id_tag_ustensiles = $recuperation_tag->premierParNom('Ustensiles');
+		$donnees_a_afficher['ustensiles'] = $recuperation_tag->recuperationTagEnfants('Ustensiles');
 
-		$id_tag_mode_de_cuissons = $recuperation_tag->premierParNom('Mode de cuisson');
+		$donnees_a_afficher['mode_de_cuissons'] = $recuperation_tag->recuperationTagEnfants('Mode de cuisson');
 
-		$id_tag_ingredients = $recuperation_tag->premierParNom('Ingrédients');
-
-		$donnees_a_afficher = [];
-
-		$donnees_a_afficher['ustensiles'] = $id_tag_ustensiles->recuperationTagEnfants;
-
-		$donnees_a_afficher['mode_de_cuissons'] = $id_tag_mode_de_cuissons->recuperationTagEnfants;
-
-		$donnees_a_afficher['ingredients'] = $id_tag_ingredients->recuperationTagEnfants;
+		$donnees_a_afficher['ingredients'] = $recuperation_tag->recuperationTagEnfants('Ingrédients');
 
 		return $donnees_a_afficher;
 	}

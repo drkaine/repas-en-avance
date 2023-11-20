@@ -46,17 +46,11 @@ class AffichageDonneesController extends Controller
 			return redirect('inscription');
 		}
 
-		$id_tag_ustensiles = $this->gestion_affichage->premierParNom('Ustensiles');
+		$ustensiles = $this->gestion_affichage->recuperationTagEnfants('Ustensiles');
 
-		$ustensiles = $id_tag_ustensiles->recuperationTagEnfants;
+		$mode_de_cuissons = $this->gestion_affichage->recuperationTagEnfants('Mode de cuisson');
 
-		$id_tag_mode_de_cuissons = $this->gestion_affichage->premierParNom('Mode de cuisson');
-
-		$mode_de_cuissons = $id_tag_mode_de_cuissons->recuperationTagEnfants;
-
-		$id_tag_ingredients = $this->gestion_affichage->premierParNom('Ingrédients');
-
-		$ingredients = $id_tag_ingredients->recuperationTagEnfants;
+		$ingredients = $this->gestion_affichage->recuperationTagEnfants('Ingrédients');
 
 		return view('ajout_recette', compact('mode_de_cuissons', 'ustensiles', 'ingredients'));
 	}
@@ -69,9 +63,7 @@ class AffichageDonneesController extends Controller
 			return redirect('inscription');
 		}
 
-		$id_tag_parent = $this->gestion_affichage->premierParNom('Régime alimentaire');
-
-		$tags_regimes_alimentaires = $id_tag_parent->recuperationTagEnfants;
+		$tags_regimes_alimentaires = $this->gestion_affichage->recuperationTagEnfants('Régime alimentaire');
 
 		$recuperationTags = $user->recuperationTags;
 
@@ -92,9 +84,7 @@ class AffichageDonneesController extends Controller
 			return redirect('mon-compte');
 		}
 
-		$id_tag_parent = $this->gestion_affichage->premierParNom('Régime alimentaire');
-
-		$regimes_alimentaires = $id_tag_parent->recuperationTagEnfants;
+		$regimes_alimentaires = $this->gestion_affichage->recuperationTagEnfants('Régime alimentaire');
 
 		return view('inscription', compact('regimes_alimentaires'));
 	}

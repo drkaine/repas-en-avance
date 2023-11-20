@@ -29,9 +29,7 @@ class InscriptionController extends Controller
 
 		$recuperation_tag = new GestionAffichageService;
 
-		$id_tag_parent = $recuperation_tag->premierParNom('Régime alimentaire');
-
-		$regimes_alimentaires = $id_tag_parent->recuperationTagEnfants;
+		$regimes_alimentaires = $recuperation_tag->recuperationTagEnfants('Régime alimentaire');
 
 		$reponse_json = response()->json(['message' => 'Inscription réussie'], 201);
 		$reponse_json = json_decode($reponse_json->getContent());
