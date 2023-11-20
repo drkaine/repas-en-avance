@@ -22,14 +22,19 @@ class RecuperationDoneesAnonymiserController extends Controller
 	{
 		$request->validate($this->recuperationDonneesAValider('recuperation_compte'));
 
-		$user = new User;
-
 		$user_recupere = $this->userParEmail($request->email_anonyme);
 
 		if (!password_verify($request->password, $user_recupere->password)) {
 			return view('recuperation_compte');
 		}
 
+		$this->modificationUser($request, $user_recupere);
+
+		return redirect('/');
+	}
+
+	private function modificationUser(Request $request, User $user_recupere): void
+	{
 		$modification_user = new ModificationUserService($user_recupere);
 
 		$modification_user->modificationChamp('nom', $request->nom);
@@ -37,7 +42,5 @@ class RecuperationDoneesAnonymiserController extends Controller
 		$modification_user->modificationChamp('email', $request->email);
 
 		$modification_user->sauvegarde();
-
-		return redirect('/');
 	}
 }
