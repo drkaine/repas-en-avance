@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Services\ModificationUserService;
 use App\Traits\GestionDB\SelectTrait;
 use Carbon\Carbon;
@@ -16,9 +15,14 @@ class ConfirmationController extends Controller
 
 	public function confirmationEmail(string $email_user): View
 	{
-		$date = new Carbon;
+		$this->modificationUser($email_user);
 
-		$user = new User;
+		return view('confirmation_email');
+	}
+
+	private function modificationUser(string $email_user): void
+	{
+		$date = new Carbon;
 
 		$user = $this->userParEmail($email_user);
 
@@ -27,7 +31,5 @@ class ConfirmationController extends Controller
 		$modification_user->modificationChamp('email_verified_at', $date->now());
 
 		$modification_user->sauvegarde();
-
-		return view('confirmation_email');
 	}
 }
