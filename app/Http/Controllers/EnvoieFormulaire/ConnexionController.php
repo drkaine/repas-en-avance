@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Services\ModificationUserService;
 use App\Traits\ValidationFormulaireTrait;
 use Carbon\Carbon;
@@ -31,6 +32,13 @@ class ConnexionController extends Controller
 			return redirect('inscription');
 		}
 
+		$this->modificationDonneesUser($user_authentifie);
+
+		return redirect('/');
+	}
+
+	private function modificationDonneesUser(User $user_authentifie): void
+	{
 		$modification_user = new ModificationUserService($user_authentifie);
 
 		$date = new Carbon;
@@ -38,7 +46,5 @@ class ConnexionController extends Controller
 		$modification_user->modificationChamp('derniere_connexion', $date->now());
 
 		$modification_user->sauvegarde();
-
-		return redirect('/');
 	}
 }
