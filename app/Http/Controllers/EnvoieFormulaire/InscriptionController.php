@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Notifications\ConfirmationEmail;
 use App\Services\GestionAffichageService;
 use App\Services\VerificationDonneeRequestService;
@@ -22,13 +23,7 @@ class InscriptionController extends Controller
 	{
 		$request->validate($this->recuperationDonneesAValider('inscription'));
 
-		$verification_donnee_request = new VerificationDonneeRequestService($request);
-
-		$user = $this->nouveauUser($request);
-
-		$regimes_alimentaires = $verification_donnee_request->selectMutiple('regimes_alimentaires');
-
-		$this->regimesAlimentaires($regimes_alimentaires, $user->id);
+		$user = $this->creationDansLaDB($request);
 
 		$user->notify(new ConfirmationEmail);
 
@@ -42,5 +37,18 @@ class InscriptionController extends Controller
 		$reponse_json = json_decode($reponse_json->getContent());
 
 		return view('inscription', compact('regimes_alimentaires', 'reponse_json'));
+	}
+
+	private function creationDansLaDB(Request $request): User
+	{
+		$verification_donnee_request = new VerificationDonneeRequestService($request);
+
+		$user = $this->nouveauUser($request);
+
+		$regimes_alimentaires = $verification_donnee_request->selectMutiple('regimes_alimentaires');
+
+		$this->regimesAlimentaires($regimes_alimentaires, $user->id);
+
+		return $user;
 	}
 }
