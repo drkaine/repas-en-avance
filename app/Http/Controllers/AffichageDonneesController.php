@@ -65,13 +65,7 @@ class AffichageDonneesController extends Controller
 
 		$tags_regimes_alimentaires = $this->gestion_affichage->recuperationTagEnfants('Régime alimentaire');
 
-		$recuperationTags = $user->recuperationTags;
-
-		$regimes_alimentaires = [];
-
-		foreach ($recuperationTags as $tag) {
-			$regimes_alimentaires[] = $tag->id;
-		}
+		$regimes_alimentaires = $this->recuperationIdTags($user->recuperationTags);
 
 		return view('mon_compte', compact('user', 'tags_regimes_alimentaires', 'regimes_alimentaires'));
 	}
@@ -117,17 +111,35 @@ class AffichageDonneesController extends Controller
 
 		$carnet_recettes = $this->carnetRecettesParUser($user);
 
-		$id_recettes = [];
-
-		foreach ($carnet_recettes as $recette) {
-			$id_recettes[] = $recette->id;
-		}
+		$id_recettes = $this->recuperationIdRecettes($carnet_recettes);
 
 		$recettes = $this->toutesLesRecettesParListIdRecette($id_recettes);
 
 		$recette_ajoutee = $this->recuperationRecettesAjoutees($recettes);
 
 		return view('carnet_recettes', compact('recettes', 'recette_ajoutee'));
+	}
+
+	private function recuperationIdRecettes(Collection $carnet_recettes): array
+	{
+		$id_recettes = [];
+
+		foreach ($carnet_recettes as $recette) {
+			$id_recettes[] = $recette->id;
+		}
+
+		return $id_recettes;
+	}
+
+	private function recuperationIdTags(Collection $recuperationTags): array
+	{
+		$regimes_alimentaires = [];
+
+		foreach ($recuperationTags as $tag) {
+			$regimes_alimentaires[] = $tag->id;
+		}
+
+		return $regimes_alimentaires;
 	}
 
 	private function recuperationRecettesAjoutees(Collection $recettes): array
