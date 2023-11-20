@@ -29,6 +29,7 @@ trait SelectTrait
 		$user = new User;
 
 		$user = $user->
+			select('id', 'password', 'email')->
 			where('email', $email)->
 			first();
 
@@ -39,7 +40,20 @@ trait SelectTrait
 	{
 		$recette = new Recette;
 
-		$recette = $recette->with('recuperationIngredient')->
+		$recette = $recette->
+			select(
+				'id',
+				'temps_preparation',
+				'temps_cuisson',
+				'temps_repos',
+				'lien',
+				'url',
+				'instruction',
+				'description',
+				'reference_livre',
+				'nom'
+			)->
+			with('recuperationIngredient')->
 			with('recuperationPhoto')->
 			where('url', $nom_recette)->
 			first();
@@ -50,6 +64,7 @@ trait SelectTrait
 	public function carnetRecettesParUser(User $user): Collection
 	{
 		$carnet_recettes = $user->
+			select('id')->
 			with('recuperationCarnetRecettes')->
 			first()->recuperationCarnetRecettes;
 
@@ -84,6 +99,18 @@ trait SelectTrait
 		$recette = new Recette;
 
 		$recettes = $recette->
+			select(
+				'id',
+				'temps_preparation',
+				'temps_cuisson',
+				'temps_repos',
+				'lien',
+				'url',
+				'instruction',
+				'description',
+				'reference_livre',
+				'nom'
+			)->
 			with('recuperationIngredient')->
 			with('recuperationPhoto')->
 			orderByDesc($filtre)->
@@ -97,6 +124,18 @@ trait SelectTrait
 		$recette = new Recette;
 
 		$recettes = $recette->
+			select(
+				'id',
+				'temps_preparation',
+				'temps_cuisson',
+				'temps_repos',
+				'lien',
+				'url',
+				'instruction',
+				'description',
+				'reference_livre',
+				'nom'
+			)->
 			with('recuperationIngredient')->
 			with('recuperationPhoto')->
 			whereIn('id', $id_recette)->
@@ -110,6 +149,7 @@ trait SelectTrait
 		$user = new User;
 
 		$users = $user->
+			select('id')->
 			whereDate('derniere_connexion', '<', $date)->
 			get('id');
 
