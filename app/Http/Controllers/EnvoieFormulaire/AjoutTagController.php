@@ -22,6 +22,18 @@ class AjoutTagController extends Controller
 	{
 		$request->validate($this->recuperationDonneesAValider('ajout_tag'));
 
+		$this->creationDansLaDB($request);
+
+		$tags = $this->toutLesTags();
+
+		$reponse_json = response()->json(['message' => 'Création réussie'], 201);
+		$reponse_json = json_decode($reponse_json->getContent());
+
+		return view('ajout_tag', compact('tags', 'reponse_json'));
+	}
+
+	private function creationDansLaDB(Request $request): void
+	{
 		$id_tag = $this->nouveauTag($request);
 
 		$verification_donnee_request = new VerificationDonneeRequestService($request);
@@ -34,11 +46,5 @@ class AjoutTagController extends Controller
 
 		$this->relationTagsEnfant($id_tag, $tags_enfant);
 
-		$tags = $this->toutLesTags();
-
-		$reponse_json = response()->json(['message' => 'Création réussie'], 201);
-		$reponse_json = json_decode($reponse_json->getContent());
-
-		return view('ajout_tag', compact('tags', 'reponse_json'));
 	}
 }
