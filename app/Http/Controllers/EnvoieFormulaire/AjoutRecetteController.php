@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
-use App\Services\RecuperationTagService;
+use App\Services\GestionAffichageService;
 use App\Services\VerificationDonneeRequestService;
 use App\Traits\GestionDB\AjoutTrait;
 use App\Traits\ValidationFormulaireTrait;
@@ -39,7 +39,7 @@ class AjoutRecetteController extends Controller
 
 		$this->nouvellePhoto($recette);
 
-		$recuperation_tag = new RecuperationTagService;
+		$recuperation_tag = new GestionAffichageService;
 
 		$id_tag_ustensiles = $recuperation_tag->premierParNom('Ustensiles');
 

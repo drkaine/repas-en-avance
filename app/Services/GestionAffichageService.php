@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Services;
 
+use App\Models\Tag;
 use App\Traits\GestionDB\SelectTrait;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -24,6 +25,13 @@ class GestionAffichageService
 		}
 
 		return $id_recettes;
+	}
+
+	public function premierParNom(string $nom): Tag
+	{
+		$premier_tag = $this->premierTagParNom($nom);
+
+		return $premier_tag;
 	}
 
 	private function recupererIdRecettesAjoutees(Collection $recettes_ajoutees): array

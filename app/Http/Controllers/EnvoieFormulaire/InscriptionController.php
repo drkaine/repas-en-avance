@@ -6,7 +6,7 @@ namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
 use App\Notifications\ConfirmationEmail;
-use App\Services\RecuperationTagService;
+use App\Services\GestionAffichageService;
 use App\Services\VerificationDonneeRequestService;
 use App\Traits\GestionDB\AjoutTrait;
 use App\Traits\ValidationFormulaireTrait;
@@ -32,7 +32,7 @@ class InscriptionController extends Controller
 
 		$user->notify(new ConfirmationEmail);
 
-		$recuperation_tag = new RecuperationTagService;
+		$recuperation_tag = new GestionAffichageService;
 
 		$id_tag_parent = $recuperation_tag->premierParNom('Régime alimentaire');
 
