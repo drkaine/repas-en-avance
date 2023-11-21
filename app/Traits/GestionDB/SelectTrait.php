@@ -76,10 +76,10 @@ trait SelectTrait
 		$carnet_recette = new CarnetRecette;
 
 		$list_id_recette = $carnet_recette->
-				select('id_recette')->
-				where('id_user', $id_user)->
-				whereIn('id_recette', $list_id_recette)->
-				get();
+			select('id_recette')->
+			where('id_user', $id_user)->
+			whereIn('id_recette', $list_id_recette)->
+			get();
 
 		return $list_id_recette;
 	}
