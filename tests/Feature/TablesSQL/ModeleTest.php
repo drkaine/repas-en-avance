@@ -25,6 +25,8 @@ class ModeleTest extends TestCase
 
 	private array $donnees_carnet_recette;
 
+	private array $donnees_auteur;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
@@ -33,6 +35,7 @@ class ModeleTest extends TestCase
 		$this->donnees_tag = $this->donnees('tag');
 		$this->donnees_recette = $this->donnees('recette');
 		$this->donnees_carnet_recette = $this->donnees('carnet_recette');
+		$this->donnees_auteur = $this->donnees('auteur');
 	}
 
 	public function testUsers(): void
@@ -111,5 +114,12 @@ class ModeleTest extends TestCase
 		$this->creation('CarnetRecette', 'carnet_recette');
 
 		$this->assertDatabaseHas('carnet_recettes', $this->donnees_carnet_recette);
+	}
+
+	public function testAuteur(): void
+	{
+		$this->creation('Auteur', 'auteur');
+
+		$this->assertDatabaseHas('auteurs', $this->donnees_auteur);
 	}
 }

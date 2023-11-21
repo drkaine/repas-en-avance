@@ -138,6 +138,7 @@ Modele (Tests\Feature\TableSQL\Modele)
  [x] Mode de cuisson
  [x] Photo
  [x] Carnet recettes
+ [x] Auteur
 
 Modification (Tests\Feature\DansLaBaseDeDonnee\User\Modification)
  [x] Du user

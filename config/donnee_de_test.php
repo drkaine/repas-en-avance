@@ -31,6 +31,12 @@ return [
 		'nom' => 'test',
 		'password' => 'password',
 	],
+	'auteur' => [
+		'nom' => 'Test',
+		'prenom' => 'Auteur',
+		'id_user' => 1,
+
+	],
 	'mot_de_passe_oublie' => [
 		'email' => 'email@test.fr',
 		'password' => 'password6',
