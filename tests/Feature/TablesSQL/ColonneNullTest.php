@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Tests\Feature\TableSQL;
 
+use App\Models\Auteur;
 use App\Models\Recette;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,12 +25,15 @@ class ColonneNullTest extends TestCase
 
 	private array $donnees_recette;
 
+	private array $donnees_auteur;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
 
 		$this->donnees_user = $this->donnees('user');
 		$this->donnees_recette = $this->donnees('recette');
+		$this->donnees_auteur = $this->donnees('auteur');
 	}
 
 	public function testDeLaTableUsersChampsEmailVerifiedAt(): void
@@ -106,6 +110,17 @@ class ColonneNullTest extends TestCase
 		$this->creationRecette();
 
 		$this->assertDatabaseHas('recettes', $this->donnees_recette);
+	}
+
+	public function testDeLaTableAuteurChampsIdUser(): void
+	{
+		$this->donnees_auteur['id_user'] = null;
+
+		$auteur = new Auteur;
+
+		$auteur->factory()->create($this->donnees_auteur);
+
+		$this->assertDatabaseHas('auteurs', $this->donnees_auteur);
 	}
 
 	private function creationUser(): void

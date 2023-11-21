@@ -18,7 +18,7 @@ return new class extends Migration {
 			$table->timestamps();
 			$table->string('nom');
 			$table->string('prenom');
-			$table->foreignIdFor(User::class, 'id_user');
+			$table->foreignIdFor(User::class, 'id_user')->nullable();
 		});
 	}
 
