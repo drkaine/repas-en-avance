@@ -82,6 +82,8 @@ class FormulaireTest extends TestCase
 
 	public function testAjoutRecette(): void
 	{
+		$this->userConnecte();
+
 		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
 		$response->assertStatus(200);

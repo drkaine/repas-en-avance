@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Traits\GestionDB;
 
+use App\Models\Auteur;
 use App\Models\CarnetRecette;
 use App\Models\Ingredient;
 use App\Models\ModeDeCuisson;
@@ -80,6 +81,18 @@ trait AjoutTrait
 		]);
 
 		return $recette;
+	}
+
+	public function nouvelAuteur(string $nom, string $prenom, int $id): Auteur
+	{
+		$auteur = new Auteur;
+		$auteur = $auteur->create([
+			'nom' => $nom,
+			'prenom' => $prenom,
+			'id_user' => $id,
+		]);
+
+		return $auteur;
 	}
 
 	public function regimesAlimentaires(array $regimes_alimentaires, int $id_user): void

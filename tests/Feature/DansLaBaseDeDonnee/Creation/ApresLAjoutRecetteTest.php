@@ -7,6 +7,7 @@ namespace Tests\Feature\DansLaBaseDeDonnee\Creation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
+use Tests\Traits\ModelDeTestTrait;
 use Tests\Traits\RecuperationDonneesDeTestTrait;
 
 /**
@@ -16,6 +17,7 @@ class ApresLAjoutRecetteTest extends TestCase
 {
 	use RefreshDatabase;
 	use RecuperationDonneesDeTestTrait;
+	use ModelDeTestTrait;
 
 	private array $donnees_recette;
 
@@ -29,6 +31,8 @@ class ApresLAjoutRecetteTest extends TestCase
 
 	private array $donnees_photo;
 
+	private array $donnees_auteur;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
@@ -38,10 +42,13 @@ class ApresLAjoutRecetteTest extends TestCase
 		$this->donnees_mode_de_cuisson = $this->donnees('mode_de_cuisson');
 		$this->donnees_ingredient = $this->donnees('ingredient');
 		$this->donnees_photo = $this->donnees('photo');
+		$this->donnees_auteur = $this->donnees('auteur');
 
 		$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
 
 		Storage::fake('storage/images');
+
+		$this->userConnecte();
 	}
 
 	public function testRecette(): void
@@ -85,5 +92,12 @@ class ApresLAjoutRecetteTest extends TestCase
 		$this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
 		$this->assertDatabaseHas('photos', $this->donnees_photo);
+	}
+
+	public function testLeUserEstLAuteurEtNExistePas(): void
+	{
+		$this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
+
+		$this->assertDatabaseHas('auteurs', $this->donnees_auteur);
 	}
 }

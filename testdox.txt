@@ -37,6 +37,7 @@ Apres LAjout Recette (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLAjoutRecet
  [x] Mode de cuisson dans ajout recette
  [x] Ingredient dans ajout recette
  [x] Photo dans ajout recette
+ [x] Le user est l auteur et n existe pas
 
 Apres LInscription (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLInscription)
  [x] User apres l inscription

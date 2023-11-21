@@ -10,4 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class Auteur extends Model
 {
 	use HasFactory;
+
+	protected $fillable = [
+		'nom',
+		'prenom',
+		'id_user',
+	];
 }

@@ -56,6 +56,12 @@ class AjoutRecetteController extends Controller
 		$request->file('photos')->move(public_path('storage/images'), $recette->url . '.jpeg');
 
 		$this->nouvellePhoto($recette);
+
+		$user = auth()->user();
+
+		$nom_prenom = explode(' ', $user->nom);
+
+		$this->nouvelAuteur($nom_prenom[0], $nom_prenom[1] ?: '', $user->id);
 	}
 
 	private function recuperationDesDonnees(): array

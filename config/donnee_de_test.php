@@ -33,7 +33,7 @@ return [
 	],
 	'auteur' => [
 		'nom' => 'Test',
-		'prenom' => 'Auteur',
+		'prenom' => 'user',
 		'id_user' => 1,
 
 	],
