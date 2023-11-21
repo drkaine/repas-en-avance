@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Feature\Affichage;
+namespace Tests\Feature\Affichage\DonneesDans;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;

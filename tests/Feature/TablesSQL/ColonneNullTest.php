@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Feature\TableSQL;
+namespace Tests\Feature\TablesSQL;
 
 use App\Models\Auteur;
 use App\Models\Recette;
