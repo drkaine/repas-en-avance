@@ -37,6 +37,12 @@ return [
 		'id_user' => 1,
 
 	],
+	'auteur_non_user' => [
+		'nom' => 'Test',
+		'prenom' => 'Pas user',
+		'id_user' => null,
+
+	],
 	'mot_de_passe_oublie' => [
 		'email' => 'email@test.fr',
 		'password' => 'password6',

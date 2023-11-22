@@ -83,7 +83,7 @@ trait AjoutTrait
 		return $recette;
 	}
 
-	public function nouvelAuteur(string $nom, string $prenom, int $id): Auteur
+	public function nouvelAuteur(string $nom, string $prenom, ?int $id): Auteur
 	{
 		$auteur = new Auteur;
 		$auteur = $auteur->create([

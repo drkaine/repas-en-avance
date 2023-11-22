@@ -111,4 +111,15 @@ class ApresLAjoutRecetteTest extends TestCase
 
 		$this->assertDatabaseCount('auteurs', 1);
 	}
+
+	public function testLeUserNEstPasLAuteurEtNExistePas(): void
+	{
+		$auteur_non_user = $this->donnees('auteur_non_user');
+
+		$this->donnees_formulaire_ajout_recette['auteur'] = $auteur_non_user;
+
+		$this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
+
+		$this->assertDatabaseHas('auteurs', $auteur_non_user);
+	}
 }

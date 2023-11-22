@@ -39,6 +39,7 @@ Apres LAjout Recette (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLAjoutRecet
  [x] Photo dans ajout recette
  [x] Le user est l auteur et n existe pas
  [x] Le user est l auteur et existe deja
+ [x] Le user n est pas l auteur et n existe pas
 
 Apres LInscription (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLInscription)
  [x] User apres l inscription
