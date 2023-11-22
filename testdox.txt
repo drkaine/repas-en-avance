@@ -1,9 +1,9 @@
-Accueil (Tests\Feature\Affichage\Accueil)
+Accueil (Tests\Feature\Affichage\DonneesDans\Accueil)
  [x] Recettes
  [x] Ingredient des dernieres recettes
  [x] Photo recette
 
-Ajout Recette (Tests\Feature\Affichage\AjoutRecette)
+Ajout Recette (Tests\Feature\Affichage\DonneesDans\AjoutRecette)
  [x] Ustensile dans ajout recette
  [x] Mode de cuisson dans ajout recette
  [x] Ingredient dans ajout recette
@@ -19,7 +19,7 @@ Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
  [x] Champs quantite
  [x] Champs photo
 
-Ajout Tag (Tests\Feature\Affichage\Donnees\AjoutTag)
+Ajout Tag (Tests\Feature\Affichage\DonneesDans\AjoutTag)
  [x] Tag dans ajout tag
 
 Ajout Tag (Tests\Feature\ValidationFormulaire\AjoutTag)
@@ -38,6 +38,7 @@ Apres LAjout Recette (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLAjoutRecet
  [x] Ingredient dans ajout recette
  [x] Photo dans ajout recette
  [x] Le user est l auteur et n existe pas
+ [x] Le user est l auteur et existe deja
 
 Apres LInscription (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLInscription)
  [x] User apres l inscription
@@ -67,12 +68,12 @@ Carnet Recettes (Tests\Feature\DansLaBaseDeDonnee\Creation\CarnetRecettes)
  [x] Ajout
  [x] Suppression
 
-Catalogue Recettes (Tests\Feature\Affichage\CatalogueRecettes)
+Catalogue Recettes (Tests\Feature\Affichage\DonneesDans\CatalogueRecettes)
  [x] Recette dans catalogue recettes
  [x] Ingredient dans catalogue recettes
  [x] Photo recette
 
-Colonne Null (Tests\Feature\TableSQL\ColonneNull)
+Colonne Null (Tests\Feature\TablesSQL\ColonneNull)
  [x] De la table users champs email verified at
  [x] De la table users champs derniere connexion
  [x] De la table recette champs temps cuisson
@@ -95,7 +96,7 @@ Connexion (Tests\Feature\ValidationFormulaire\Connexion)
  [x] Longueur minimum champs password
  [x] Longueur maximum champs password
 
-Dans LInscription (Tests\Feature\Affichage\DansLInscription)
+Dans LInscription (Tests\Feature\Affichage\DonneesDans\DansLInscription)
  [x] Tag dans l inscription
 
 Demande Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\DemandeMotDePasseOublie)
@@ -129,7 +130,7 @@ Inscription (Tests\Feature\ValidationFormulaire\Inscription)
  [x] Longueur maximum password
  [x] Champs password confirmation
 
-Modele (Tests\Feature\TableSQL\Modele)
+Modele (Tests\Feature\TablesSQL\Modele)
  [x] Users
  [x] Tags
  [x] Relation tags
@@ -147,7 +148,7 @@ Modification (Tests\Feature\DansLaBaseDeDonnee\User\Modification)
  [x] Du regime alimentaire
  [x] De la derniere connexion du user
 
-Mon Compte (Tests\Feature\Affichage\MonCompte)
+Mon Compte (Tests\Feature\Affichage\DonneesDans\MonCompte)
  [x] User dans mon compte
  [x] Tag dans mon compte
  [x] Regime alimentaire dans mon compte
@@ -168,7 +169,7 @@ Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\MotDePasseOublie)
 Notification (Tests\Feature\Envoie\Notification)
  [x] Verification email is sent
 
-Recette (Tests\Feature\Affichage\Recette)
+Recette (Tests\Feature\Affichage\DonneesDans\Recette)
  [x] Element recette carotte simple
  [x] Photo recette carotte simple
 
@@ -212,11 +213,11 @@ Suppression (Tests\Feature\DansLaBaseDeDonnee\User\Suppression)
  [x] Users anonymes
  [x] Regime alimentaire des users anonymes
 
-User Connecte (Tests\Feature\UserConnecte)
+User Connecte (Tests\Feature\Redirection\UserConnecte)
  [x] Inscription
  [x] Connexion
 
-User Non Authentifie (Tests\Feature\UserNonAuthentifie)
+User Non Authentifie (Tests\Feature\Redirection\UserNonAuthentifie)
  [x] Mon compte
  [x] Ajout tag
  [x] Ajout recette

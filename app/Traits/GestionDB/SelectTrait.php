@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Traits\GestionDB;
 
+use App\Models\Auteur;
 use App\Models\CarnetRecette;
 use App\Models\Recette;
 use App\Models\Tag;
@@ -82,6 +83,17 @@ trait SelectTrait
 			get();
 
 		return $list_id_recette;
+	}
+
+	public function auteurParLeNom(string $nom): ?Auteur
+	{
+		$auteur_model = new Auteur;
+
+		$auteur = $auteur_model->select('id')->
+			where('nom', $nom)->
+			first();
+
+		return $auteur;
 	}
 
 	public function toutLesTags(): Collection

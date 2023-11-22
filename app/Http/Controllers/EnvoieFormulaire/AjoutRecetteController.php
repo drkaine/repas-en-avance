@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Services\GestionAffichageService;
 use App\Services\VerificationDonneeRequestService;
 use App\Traits\GestionDB\AjoutTrait;
+use App\Traits\GestionDB\SelectTrait;
 use App\Traits\ValidationFormulaireTrait;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -15,6 +16,7 @@ use Illuminate\View\View;
 class AjoutRecetteController extends Controller
 {
 	use AjoutTrait;
+	use SelectTrait;
 	use ValidationFormulaireTrait;
 
 	public function ajoutRecette(Request $request): View
@@ -61,7 +63,9 @@ class AjoutRecetteController extends Controller
 
 		$nom_prenom = explode(' ', $user->nom);
 
-		$this->nouvelAuteur($nom_prenom[0], $nom_prenom[1] ?: '', $user->id);
+		if (! $this->auteurParLeNom($nom_prenom[0])) {
+			$this->nouvelAuteur($nom_prenom[0], $nom_prenom[1] ?: '', $user->id);
+		}
 	}
 
 	private function recuperationDesDonnees(): array

@@ -100,4 +100,15 @@ class ApresLAjoutRecetteTest extends TestCase
 
 		$this->assertDatabaseHas('auteurs', $this->donnees_auteur);
 	}
+
+	public function testLeUserEstLAuteurEtExisteDeja(): void
+	{
+		$this->creation('Auteur', 'auteur');
+
+		$this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
+
+		$this->assertDatabaseHas('auteurs', $this->donnees_auteur);
+
+		$this->assertDatabaseCount('auteurs', 1);
+	}
 }
