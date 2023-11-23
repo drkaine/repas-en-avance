@@ -33,6 +33,8 @@ class ApresLAjoutRecetteTest extends TestCase
 
 	private array $donnees_auteur;
 
+	private array $auteur_non_user;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
@@ -43,6 +45,7 @@ class ApresLAjoutRecetteTest extends TestCase
 		$this->donnees_ingredient = $this->donnees('ingredient');
 		$this->donnees_photo = $this->donnees('photo');
 		$this->donnees_auteur = $this->donnees('auteur');
+		$this->auteur_non_user = $this->donnees('auteur_non_user');
 
 		$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
 
@@ -114,12 +117,23 @@ class ApresLAjoutRecetteTest extends TestCase
 
 	public function testLeUserNEstPasLAuteurEtNExistePas(): void
 	{
-		$auteur_non_user = $this->donnees('auteur_non_user');
-
-		$this->donnees_formulaire_ajout_recette['auteur'] = $auteur_non_user;
+		$this->donnees_formulaire_ajout_recette['auteur'] = $this->auteur_non_user;
 
 		$this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-		$this->assertDatabaseHas('auteurs', $auteur_non_user);
+		$this->assertDatabaseHas('auteurs', $this->auteur_non_user);
+	}
+
+	public function testLeUserNEstPasLAuteurEtExiste(): void
+	{
+		$this->creation('Auteur', 'auteur_non_user');
+
+		$this->donnees_formulaire_ajout_recette['auteur'] = $this->auteur_non_user;
+
+		$this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
+
+		$this->assertDatabaseHas('auteurs', $this->auteur_non_user);
+
+		$this->assertDatabaseCount('auteurs', 1);
 	}
 }

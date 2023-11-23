@@ -60,7 +60,9 @@ class AjoutRecetteController extends Controller
 		$this->nouvellePhoto($recette);
 
 		if ($request->auteur) {
-			$this->nouvelAuteur($request->auteur['nom'], $request->auteur['prenom'], $request->auteur['id_user']);
+			if (! $this->auteurParLeNom($request->auteur['nom'])) {
+				$this->nouvelAuteur($request->auteur['nom'], $request->auteur['prenom'], $request->auteur['id_user']);
+			}
 		} else {
 			$user = auth()->user();
 
