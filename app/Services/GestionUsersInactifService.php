@@ -25,15 +25,11 @@ class GestionUsersInactifService
 
 	public function anonymiser(): void
 	{
-		$this->date = new Carbon;
-
 		$this->userEnAnonyme($this->date->now()->subMonths(3));
 	}
 
 	public function supprimer(): void
 	{
-		$this->date = new Carbon;
-
 		$users = new User;
 
 		$id_users_anonymes = $this->toutesLesUsersParDerniereConnexion($this->date->now()->subMonths(6));
