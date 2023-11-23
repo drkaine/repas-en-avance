@@ -59,18 +59,35 @@ class AjoutRecetteController extends Controller
 
 		$this->nouvellePhoto($recette);
 
-		if ($request->auteur) {
-			if (! $this->auteurParLeNom($request->auteur['nom'])) {
-				$this->nouvelAuteur($request->auteur['nom'], $request->auteur['prenom'], $request->auteur['id_user']);
-			}
-		} else {
-			$user = auth()->user();
+		$auteur = $this->donneesAuteur($request);
 
-			if (! $this->auteurParLeNom($user->nom)) {
-				$this->nouvelAuteur($user->nom, $user->prenom, $user->id);
-			}
+		if (! $this->auteurParLeNom($auteur['nom'])) {
+			$this->nouvelAuteur($auteur['nom'], $auteur['prenom'], $auteur['id_user']);
 		}
 
+	}
+
+	private function donneesAuteur(Request $request): array
+	{
+		if ($request->auteur) {
+			$auteur = [
+				'nom' => $request->auteur['nom'],
+				'prenom' => $request->auteur['prenom'],
+				'id_user' => $request->auteur['id_user'],
+			];
+
+			return $auteur;
+		}
+
+		$user = auth()->user();
+
+		$auteur = [
+			'nom' => $user->nom,
+			'prenom' => $user->prenom,
+			'id_user' => $user->id,
+		];
+
+		return $auteur;
 	}
 
 	private function recuperationDesDonnees(): array
