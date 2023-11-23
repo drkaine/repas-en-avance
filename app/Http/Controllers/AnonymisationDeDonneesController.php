@@ -29,6 +29,8 @@ class AnonymisationDeDonneesController extends Controller
 
 		$modification_user->modificationChamp('nom', 'Anonyme');
 
+		$modification_user->modificationChamp('prenom', 'Anonyme');
+
 		$modification_user->modificationChamp('email', 'anonyme' . $user->id . '@anonyme.fr');
 
 		$modification_user->modificationChamp('email_verified_at', null);

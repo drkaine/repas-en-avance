@@ -9,18 +9,21 @@ $date = new Carbon;
 
 return [
 	'user' => [
-		'nom' => 'Test user',
+		'nom' => 'Test',
+		'prenom' => 'User',
 		'email' => 'email@test.fr',
 		'password' => 'password',
 		'email_verified_at' => $date->now(),
 	],
 	'user_modifie' => [
-		'nom' => 'Test user modifié',
+		'nom' => 'Test',
+		'prenom' => 'User modifié',
 		'email' => 'email_modifie@test.fr',
 	],
 	'user_anonyme' => [
 		'email' => 'anonyme1@anonyme.fr',
 		'nom' => 'Anonyme',
+		'prenom' => 'Anonyme',
 		'password' => 'password',
 		'email_verified_at' => null,
 		'derniere_connexion' => $date->now()->subMonths(7),
@@ -29,11 +32,12 @@ return [
 		'email_anonyme' => 'anonyme1@anonyme.fr',
 		'email' => 'test@test.fr',
 		'nom' => 'test',
+		'prenom' => 'User',
 		'password' => 'password',
 	],
 	'auteur' => [
 		'nom' => 'Test',
-		'prenom' => 'user',
+		'prenom' => 'User',
 		'id_user' => 1,
 
 	],

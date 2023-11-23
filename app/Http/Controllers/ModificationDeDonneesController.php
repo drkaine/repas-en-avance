@@ -33,6 +33,8 @@ class ModificationDeDonneesController extends Controller
 
 		$modification_user->modificationChamp('nom', $request->nom);
 
+		$modification_user->modificationChamp('prenom', $request->prenom);
+
 		$modification_user->modificationChamp('email', $request->email);
 
 		$modification_user->sauvegarde();

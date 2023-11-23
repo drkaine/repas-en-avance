@@ -17,6 +17,7 @@ trait ModificationTrait
 		$users->whereDate('derniere_connexion', '<', $date)->
 			update([
 				'nom' => 'Anonyme',
+				'prenom' => 'Anonyme',
 				'email' => DB::raw('\'anonyme\' || id || \'@anonyme.fr\''),
 				'email_verified_at' => null,
 			]);

@@ -66,10 +66,8 @@ class AjoutRecetteController extends Controller
 		} else {
 			$user = auth()->user();
 
-			$nom_prenom = explode(' ', $user->nom);
-
-			if (! $this->auteurParLeNom($nom_prenom[0])) {
-				$this->nouvelAuteur($nom_prenom[0], $nom_prenom[1] ?: '', $user->id);
+			if (! $this->auteurParLeNom($user->nom)) {
+				$this->nouvelAuteur($user->nom, $user->prenom, $user->id);
 			}
 		}
 

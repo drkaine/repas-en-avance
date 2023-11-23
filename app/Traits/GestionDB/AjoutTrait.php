@@ -25,6 +25,7 @@ trait AjoutTrait
 		$user = new User;
 		$user = $user->create([
 			'nom' => $request->nom,
+			'prenom' => $request->prenom,
 			'email' => $request->email,
 			'password' => bcrypt($request->password),
 		]);
