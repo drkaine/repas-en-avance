@@ -56,6 +56,33 @@ class InscriptionTest extends TestCase
 		$response->assertStatus(302);
 	}
 
+	public function testChampsPrenom(): void
+	{
+		$this->donnees_user['prenom'] = null;
+
+		$response = $this->post('/inscription', $this->donnees_user);
+
+		$response->assertStatus(302);
+	}
+
+	public function testLongueurMaximumChampsPrenom(): void
+	{
+		$this->donnees_user['prenom'] = 'aztrhgertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvaztrhgertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvaztrhgertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv';
+
+		$response = $this->post('/inscription', $this->donnees_user);
+
+		$response->assertStatus(302);
+	}
+
+	public function testLongueurMinimumChampsPrenom(): void
+	{
+		$this->donnees_user['prenom'] = 'az';
+
+		$response = $this->post('/inscription', $this->donnees_user);
+
+		$response->assertStatus(302);
+	}
+
 	public function testChampsEmail(): void
 	{
 		$this->donnees_user['email'] = null;

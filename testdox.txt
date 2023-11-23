@@ -123,6 +123,9 @@ Inscription (Tests\Feature\ValidationFormulaire\Inscription)
  [x] Champs nom
  [x] Longueur maximum champs nom
  [x] Longueur minimum champs nom
+ [x] Champs prenom
+ [x] Longueur maximum champs prenom
+ [x] Longueur minimum champs prenom
  [x] Champs email
  [x] Longueur maximum champs email
  [x] Longueur minimum champs email
