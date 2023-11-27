@@ -59,12 +59,15 @@ class AjoutRecetteController extends Controller
 
 		$this->nouvellePhoto($recette);
 
-		$auteur = $this->donneesAuteur($request);
+		$donnees_auteur = $this->donneesAuteur($request);
 
-		if (! $this->auteurParLeNom($auteur['nom'])) {
-			$this->nouvelAuteur($auteur['nom'], $auteur['prenom'], $auteur['id_user']);
+		$auteur = $this->auteurParLeNom($donnees_auteur['nom']);
+
+		if (! $auteur) {
+			$auteur = $this->nouvelAuteur($donnees_auteur['nom'], $donnees_auteur['prenom'], $donnees_auteur['id_user']);
 		}
 
+		$this->nouvelAuteurRecette($auteur->id, $recette->id);
 	}
 
 	private function donneesAuteur(Request $request): array

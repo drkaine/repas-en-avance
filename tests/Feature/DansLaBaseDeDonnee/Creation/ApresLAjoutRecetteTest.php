@@ -136,4 +136,15 @@ class ApresLAjoutRecetteTest extends TestCase
 
 		$this->assertDatabaseCount('auteurs', 1);
 	}
+
+	public function testLienAuteurEtRecette(): void
+	{
+		$auteur_recette = $this->donnees('auteur_recette');
+
+		$this->creation('AuteurRecette', 'auteur_recette');
+
+		$this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
+
+		$this->assertDatabaseHas('auteur_recettes', $auteur_recette);
+	}
 }

@@ -41,6 +41,7 @@ Apres LAjout Recette (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLAjoutRecet
  [x] Le user est l auteur et existe deja
  [x] Le user n est pas l auteur et n existe pas
  [x] Le user n est pas l auteur et existe
+ [x] Lien auteur et recette
 
 Apres LInscription (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLInscription)
  [x] User apres l inscription
