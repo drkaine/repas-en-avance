@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Http\Controllers\EnvoieFormulaire;
 
 use App\Http\Controllers\Controller;
+use App\Models\Auteur;
 use App\Services\GestionAffichageService;
 use App\Services\VerificationDonneeRequestService;
 use App\Traits\GestionDB\AjoutTrait;
@@ -61,11 +62,7 @@ class AjoutRecetteController extends Controller
 
 		$donnees_auteur = $this->donneesAuteur($request);
 
-		$auteur = $this->auteurParLeNom($donnees_auteur['nom']);
-
-		if (! $auteur) {
-			$auteur = $this->nouvelAuteur($donnees_auteur['nom'], $donnees_auteur['prenom'], $donnees_auteur['id_user']);
-		}
+		$auteur = $this->gestionCreationAuteur($request);
 
 		$this->nouvelAuteurRecette($auteur->id, $recette->id);
 	}
@@ -89,6 +86,19 @@ class AjoutRecetteController extends Controller
 			'prenom' => $user->prenom,
 			'id_user' => $user->id,
 		];
+
+		return $auteur;
+	}
+
+	private function gestionCreationAuteur(Request $request): Auteur
+	{
+		$donnees_auteur = $this->donneesAuteur($request);
+
+		$auteur = $this->auteurParLeNom($donnees_auteur['nom']);
+
+		if (! $auteur) {
+			$auteur = $this->nouvelAuteur($donnees_auteur['nom'], $donnees_auteur['prenom'], $donnees_auteur['id_user']);
+		}
 
 		return $auteur;
 	}
