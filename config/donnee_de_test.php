@@ -47,6 +47,10 @@ return [
 		'id_user' => null,
 
 	],
+	'auteur_recette' => [
+		'id_auteur' => 1,
+		'id_recette' => 1,
+	],
 	'mot_de_passe_oublie' => [
 		'email' => 'email@test.fr',
 		'password' => 'password6',

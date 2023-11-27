@@ -122,4 +122,13 @@ class ModeleTest extends TestCase
 
 		$this->assertDatabaseHas('auteurs', $this->donnees_auteur);
 	}
+
+	public function testAuteurRecettes(): void
+	{
+		$donnees_auteur_recettes = $this->donnees('auteur_recette');
+
+		$this->creation('AuteurRecette', 'auteur_recette');
+
+		$this->assertDatabaseHas('auteur_recettes', $donnees_auteur_recettes);
+	}
 }

@@ -147,6 +147,7 @@ Modele (Tests\Feature\TablesSQL\Modele)
  [x] Photo
  [x] Carnet recettes
  [x] Auteur
+ [x] Auteur recettes
 
 Modification (Tests\Feature\DansLaBaseDeDonnee\User\Modification)
  [x] Du user
