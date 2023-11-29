@@ -8,6 +8,24 @@
 <a href= "https://github.com/drkaine/repas-en-avance/actions/workflows/CD.yml"><img src="https://github.com/drkaine/repas-en-avance/actions/workflows/CD.yml/badge.svg"></a>
 </p>
 
+## Mettre en place le projet
+git clone
+
+cd repas-en-avance
+
+composer install
+
+npm install
+
+cp .env.example .env
+
+php artisan key:generate
+
+php artisan migrate
+
+php artisan db:seed
+
+
 ## Site réalisé avec laravel
 C'est un site de partage de recettes avec fonctionnalités de batch cooking et d'organisation : découvrez, planifiez et cuisinez facilement avec des recettes, une liste de courses et un calendrier intégrés.
 
