@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace Tests\Feature\DansLaBaseDeDonnee\Creation;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 use Tests\Traits\ModelDeTestTrait;
 use Tests\Traits\RecuperationDonneesDeTestTrait;
@@ -48,8 +47,6 @@ class ApresLAjoutRecetteTest extends TestCase
 		$this->auteur_non_user = $this->donnees('auteur_non_user');
 
 		$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
-
-		Storage::fake('storage/images');
 
 		$this->userConnecte();
 	}
