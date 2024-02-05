@@ -1,52 +1,33 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\ValidationFormulaire;
+test('champs email', function (): void {
+	$response = $this->post('/demande-mot-de-passe-oublie', [
+		'email' => null,
+	]);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+	$response->assertStatus(302);
+});
+test('longueur maximum champs email', function (): void {
+	$response = $this->post('/demande-mot-de-passe-oublie', [
+		'email' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio@azertyuiopmlkjhgfdsqwxczertyuiopmlkjhgfdsqwxcv.fr',
+	]);
 
-/**
- * @coversNothing
- */
-class DemandeMotDePasseOublieTest extends TestCase
-{
-	use RefreshDatabase;
+	$response->assertStatus(302);
+});
+test('longueur minimum champs email', function (): void {
+	$response = $this->post('/demande-mot-de-passe-oublie', [
+		'email' => 'a@afr',
+	]);
 
-	public function testChampsEmail(): void
-	{
-		$response = $this->post('/demande-mot-de-passe-oublie', [
-			'email' => null,
-		]);
+	$response->assertStatus(302);
+});
+test('format champs email', function (): void {
+	$response = $this->post('/demande-mot-de-passe-oublie', [
+		'email' => 'emailestfr',
+	]);
 
-		$response->assertStatus(302);
-	}
-
-	public function testLongueurMaximumChampsEmail(): void
-	{
-		$response = $this->post('/demande-mot-de-passe-oublie', [
-			'email' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio@azertyuiopmlkjhgfdsqwxczertyuiopmlkjhgfdsqwxcv.fr',
-		]);
-
-		$response->assertStatus(302);
-	}
-
-	public function testLongueurMinimumChampsEmail(): void
-	{
-		$response = $this->post('/demande-mot-de-passe-oublie', [
-			'email' => 'a@afr',
-		]);
-
-		$response->assertStatus(302);
-	}
-
-	public function testFormatChampsEmail(): void
-	{
-		$response = $this->post('/demande-mot-de-passe-oublie', [
-			'email' => 'emailestfr',
-		]);
-
-		$response->assertStatus(302);
-	}
-}
+	$response->assertStatus(302);
+});

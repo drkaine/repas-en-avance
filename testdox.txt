@@ -1,232 +1,232 @@
-Accueil (Tests\Feature\Affichage\DonneesDans\Accueil)
- [x] Recettes
- [x] Ingredient des dernieres recettes
- [x] Photo recette
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Affichage/DesPages/AvecUserConnecteTest.php
+ [x] ajout tag
+ [x] ajout recette
+ [x] mon compte
+ [x] carnet de recettes
 
-Ajout Recette (Tests\Feature\Affichage\DonneesDans\AjoutRecette)
- [x] Ustensile dans ajout recette
- [x] Mode de cuisson dans ajout recette
- [x] Ingredient dans ajout recette
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Affichage/DesPages/SansConditionDeConnexionTest.php
+ [x] recette
 
-Ajout Recette (Tests\Feature\ValidationFormulaire\AjoutRecette)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Longueur minimum champs nom
- [x] Champs description
- [x] Longueur minimum champs description
- [x] Champs temps de preparation
- [x] Champs ingredient
- [x] Champs quantite
- [x] Champs photo
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Affichage/DesPages/SansUserConnecteTest.php
+ [x] accueil
+ [x] inscription
+ [x] connexion
+ [x] recuperation compte
+ [x] catalogue recettes
+ [x] confirmation email
+ [x] mot de passe oublie
+ [x] demande mot de passe oublie
 
-Ajout Tag (Tests\Feature\Affichage\DonneesDans\AjoutTag)
- [x] Tag dans ajout tag
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Affichage/DonneesDans/AccueilTest.php
+ [x] recettes
+ [x] ingredient des dernieres recettes
+ [x] photo recette
 
-Ajout Tag (Tests\Feature\ValidationFormulaire\AjoutTag)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Longueur minimum champs nom
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Affichage/DonneesDans/AjoutRecetteTest.php
+ [x] ustensile dans ajout recette
+ [x] mode de cuisson dans ajout recette
+ [x] ingredient dans ajout recette
 
-Anonymisation (Tests\Feature\DansLaBaseDeDonnee\User\Anonymisation)
- [x] Anonymisation user
- [x] Anonymisation users inactif
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Affichage/DonneesDans/AjoutTagTest.php
+ [x] tag dans ajout tag
 
-Apres LAjout Recette (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLAjoutRecette)
- [x] Recette
- [x] Ustensile dans ajout recette
- [x] Mode de cuisson dans ajout recette
- [x] Ingredient dans ajout recette
- [x] Photo dans ajout recette
- [x] Le user est l auteur et n existe pas
- [x] Le user est l auteur et existe deja
- [x] Le user n est pas l auteur et n existe pas
- [x] Le user n est pas l auteur et existe
- [x] Lien auteur et recette
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Affichage/DonneesDans/CarnetRecettesTest.php
+ [x] recette dans catalogue recettes
+ [x] ingredient dans catalogue recettes
+ [x] photo recette
 
-Apres LInscription (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLInscription)
- [x] User apres l inscription
- [x] User tag apres l inscription
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Affichage/DonneesDans/CatalogueRecettesTest.php
+ [x] recette dans catalogue recettes
+ [x] ingredient dans catalogue recettes
+ [x] photo recette
 
-Apres Lajout Tag (Tests\Feature\DansLaBaseDeDonnee\Creation\ApresLajoutTag)
- [x] Tag
- [x] Relation tag parent
- [x] Relation tag enfant
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Affichage/DonneesDans/DansLInscriptionTest.php
+ [x] tag dans l inscription
 
-Authentification (Tests\Feature\Authentification)
- [x] Connexion
- [x] Deconnexion
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Affichage/DonneesDans/MonCompteTest.php
+ [x] user dans mon compte
+ [x] tag dans mon compte
+ [x] regime alimentaire dans mon compte
 
-Avec User Connecte (Tests\Feature\Affichage\DesPages\AvecUserConnecte)
- [x] Ajout tag
- [x] Ajout recette
- [x] Mon compte
- [x] Carnet de recettes
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Affichage/DonneesDans/RecetteTest.php
+ [x] element recette carotte simple
+ [x] photo recette carotte simple
 
-Carnet Recettes (Tests\Feature\Affichage\DonneesDans\CarnetRecettes)
- [x] Recette dans catalogue recettes
- [x] Ingredient dans catalogue recettes
- [x] Photo recette
+/home/ubuntu/dev/repas-en-avance/tests/Feature/AuthentificationTest.php
+ [x] connexion
+ [x] deconnexion
 
-Carnet Recettes (Tests\Feature\DansLaBaseDeDonnee\Creation\CarnetRecettes)
- [x] Ajout
- [x] Suppression
+/home/ubuntu/dev/repas-en-avance/tests/Feature/ConfirmationTest.php
+ [x] inscription user
 
-Catalogue Recettes (Tests\Feature\Affichage\DonneesDans\CatalogueRecettes)
- [x] Recette dans catalogue recettes
- [x] Ingredient dans catalogue recettes
- [x] Photo recette
+/home/ubuntu/dev/repas-en-avance/tests/Feature/DansLaBaseDeDonnee/Creation/ApresLAjoutRecetteTest.php
+ [x] recette
+ [x] ustensile dans ajout recette
+ [x] mode de cuisson dans ajout recette
+ [x] ingredient dans ajout recette
+ [x] photo dans ajout recette
+ [x] le user est l auteur et n existe pas
+ [x] le user est l auteur et existe deja
+ [x] le user n est pas l auteur et n existe pas
+ [x] le user n est pas l auteur et existe
+ [x] lien auteur et recette
 
-Colonne Null (Tests\Feature\TablesSQL\ColonneNull)
- [x] De la table users champs email verified at
- [x] De la table users champs derniere connexion
- [x] De la table recette champs temps cuisson
- [x] De la table recette champs temps repos
- [x] De la table recette champs lien
- [x] De la table recette champs instruction
- [x] De la table recette champs description
- [x] De la table recette champs reference livre
- [x] De la table auteur champs id user
+/home/ubuntu/dev/repas-en-avance/tests/Feature/DansLaBaseDeDonnee/Creation/ApresLInscriptionTest.php
+ [x] user apres l inscription
+ [x] user tag apres l inscription
 
-Confirmation (Tests\Feature\Confirmation)
- [x] Inscription user
+/home/ubuntu/dev/repas-en-avance/tests/Feature/DansLaBaseDeDonnee/Creation/ApresLajoutTagTest.php
+ [x] tag
+ [x] relation tag parent
+ [x] relation tag enfant
 
-Connexion (Tests\Feature\ValidationFormulaire\Connexion)
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Longueur minimum champs email
- [x] Format champs email
- [x] Champs password
- [x] Longueur minimum champs password
- [x] Longueur maximum champs password
+/home/ubuntu/dev/repas-en-avance/tests/Feature/DansLaBaseDeDonnee/Creation/CarnetRecettesTest.php
+ [x] ajout
+ [x] suppression
 
-Dans LInscription (Tests\Feature\Affichage\DonneesDans\DansLInscription)
- [x] Tag dans l inscription
+/home/ubuntu/dev/repas-en-avance/tests/Feature/DansLaBaseDeDonnee/User/AnonymisationTest.php
+ [x] anonymisation user
+ [x] anonymisation users inactif
 
-Demande Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\DemandeMotDePasseOublie)
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Longueur minimum champs email
- [x] Format champs email
+/home/ubuntu/dev/repas-en-avance/tests/Feature/DansLaBaseDeDonnee/User/ModificationTest.php
+ [x] du user
+ [x] du regime alimentaire
+ [x] de la derniere connexion du user
 
-Example (Tests\Unit\Example)
- [x] Example
+/home/ubuntu/dev/repas-en-avance/tests/Feature/DansLaBaseDeDonnee/User/MotDePasseOublieTest.php
+ [x] changement mot de passe
 
-Formulaire (Tests\Feature\Envoie\Formulaire)
- [x] Inscription
- [x] Connexion
- [x] Ajout tag
- [x] Ajout recette
- [x] Demande mot de passe oublie
- [x] Mot de passe oublie
- [x] Recuperation compte
+/home/ubuntu/dev/repas-en-avance/tests/Feature/DansLaBaseDeDonnee/User/RecuperationDonneesAnonymiserTest.php
+ [x] recuperation compte user
 
-Inscription (Tests\Feature\ValidationFormulaire\Inscription)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Longueur minimum champs nom
- [x] Champs prenom
- [x] Longueur maximum champs prenom
- [x] Longueur minimum champs prenom
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Longueur minimum champs email
- [x] Format champs email
- [x] Champs password
- [x] Longueur minimum password
- [x] Longueur maximum password
- [x] Champs password confirmation
+/home/ubuntu/dev/repas-en-avance/tests/Feature/DansLaBaseDeDonnee/User/SuppressionTest.php
+ [x] users anonymes
+ [x] regime alimentaire des users anonymes
 
-Modele (Tests\Feature\TablesSQL\Modele)
- [x] Users
- [x] Tags
- [x] Relation tags
- [x] Recettes
- [x] Regime alimentaire
- [x] Ingredient
- [x] Ustensile
- [x] Mode de cuisson
- [x] Photo
- [x] Carnet recettes
- [x] Auteur
- [x] Auteur recettes
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Envoie/FormulaireTest.php
+ [x] inscription
+ [x] connexion
+ [x] ajout tag
+ [x] ajout recette
+ [x] demande mot de passe oublie
+ [x] mot de passe oublie
+ [x] recuperation compte
 
-Modification (Tests\Feature\DansLaBaseDeDonnee\User\Modification)
- [x] Du user
- [x] Du regime alimentaire
- [x] De la derniere connexion du user
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Envoie/NotificationTest.php
+ [x] verification email is sent
 
-Mon Compte (Tests\Feature\Affichage\DonneesDans\MonCompte)
- [x] User dans mon compte
- [x] Tag dans mon compte
- [x] Regime alimentaire dans mon compte
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Redirection/UserConnecteTest.php
+ [x] inscription
+ [x] connexion
 
-Mot De Passe Oublie (Tests\Feature\DansLaBaseDeDonnee\User\MotDePasseOublie)
- [x] Changement mot de passe
+/home/ubuntu/dev/repas-en-avance/tests/Feature/Redirection/UserNonAuthentifieTest.php
+ [x] mon compte
+ [x] ajout tag
+ [x] ajout recette
+ [x] carnet recettes
 
-Mot De Passe Oublie (Tests\Feature\ValidationFormulaire\MotDePasseOublie)
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Longueur minimum champs email
- [x] Format champs email
- [x] Champs mot de passe
- [x] Longueur minimum champs password
- [x] Longueur maximum champs password
- [x] Champs mot de passe confirme
+/home/ubuntu/dev/repas-en-avance/tests/Feature/RedirectionTest.php
+ [x] deconnexion
+ [x] anonymisation user
+ [x] modification des donnees du user
+ [x] recuperation compte
+ [x] ajout carnet recettes
+ [x] suppression carnet recettes
 
-Notification (Tests\Feature\Envoie\Notification)
- [x] Verification email is sent
+/home/ubuntu/dev/repas-en-avance/tests/Feature/TablesSQL/ColonneNullTest.php
+ [x] de la table users champs email verified at
+ [x] de la table users champs derniere connexion
+ [x] de la table recette champs temps cuisson
+ [x] de la table recette champs temps repos
+ [x] de la table recette champs lien
+ [x] de la table recette champs instruction
+ [x] de la table recette champs description
+ [x] de la table recette champs reference livre
+ [x] de la table auteur champs id user
 
-Recette (Tests\Feature\Affichage\DonneesDans\Recette)
- [x] Element recette carotte simple
- [x] Photo recette carotte simple
+/home/ubuntu/dev/repas-en-avance/tests/Feature/TablesSQL/ModeleTest.php
+ [x] users
+ [x] tags
+ [x] relation tags
+ [x] recettes
+ [x] regime alimentaire
+ [x] ingredient
+ [x] ustensile
+ [x] mode de cuisson
+ [x] photo
+ [x] carnet recettes
+ [x] auteur
+ [x] auteur recettes
 
-Recuperation Compte (Tests\Feature\ValidationFormulaire\RecuperationCompte)
- [x] Champs nom
- [x] Longueur maximum champs nom
- [x] Longueur minimum champs nom
- [x] Champs email
- [x] Longueur maximum champs email
- [x] Longueur minimum champs email
- [x] Format champs email
- [x] Champs password
- [x] Longueur minimum password
- [x] Longueur maximum password
+/home/ubuntu/dev/repas-en-avance/tests/Feature/ValidationFormulaire/AjoutRecetteTest.php
+ [x] champs nom
+ [x] longueur maximum champs nom
+ [x] longueur minimum champs nom
+ [x] champs description
+ [x] longueur minimum champs description
+ [x] champs temps de preparation
+ [x] champs ingredient
+ [x] champs quantite
+ [x] champs photo
 
-Recuperation Donnees Anonymiser (Tests\Feature\DansLaBaseDeDonnee\User\RecuperationDonneesAnonymiser)
- [x] Recuperation compte user
+/home/ubuntu/dev/repas-en-avance/tests/Feature/ValidationFormulaire/AjoutTagTest.php
+ [x] champs nom
+ [x] longueur maximum champs nom
+ [x] longueur minimum champs nom
 
-Redirection (Tests\Feature\Redirection)
- [x] Deconnexion
- [x] Anonymisation user
- [x] Modification des donnees du user
- [x] Recuperation compte
- [x] Ajout carnet recettes
- [x] Suppression carnet recettes
+/home/ubuntu/dev/repas-en-avance/tests/Feature/ValidationFormulaire/ConnexionTest.php
+ [x] champs email
+ [x] longueur maximum champs email
+ [x] longueur minimum champs email
+ [x] format champs email
+ [x] champs password
+ [x] longueur minimum champs password
+ [x] longueur maximum champs password
 
-Sans Condition De Connexion (Tests\Feature\Affichage\DesPages\SansConditionDeConnexion)
- [x] Recette
+/home/ubuntu/dev/repas-en-avance/tests/Feature/ValidationFormulaire/DemandeMotDePasseOublieTest.php
+ [x] champs email
+ [x] longueur maximum champs email
+ [x] longueur minimum champs email
+ [x] format champs email
 
-Sans User Connecte (Tests\Feature\Affichage\DesPages\SansUserConnecte)
- [x] Accueil
- [x] Inscription
- [x] Connexion
- [x] Recuperation compte
- [x] Catalogue recettes
- [x] Confirmation email
- [x] Mot de passe oublie
- [x] Demande mot de passe oublie
+/home/ubuntu/dev/repas-en-avance/tests/Feature/ValidationFormulaire/InscriptionTest.php
+ [x] champs nom
+ [x] longueur maximum champs nom
+ [x] longueur minimum champs nom
+ [x] champs prenom
+ [x] longueur maximum champs prenom
+ [x] longueur minimum champs prenom
+ [x] champs email
+ [x] longueur maximum champs email
+ [x] longueur minimum champs email
+ [x] format champs email
+ [x] champs password
+ [x] longueur minimum password
+ [x] longueur maximum password
+ [x] champs password confirmation
 
-Suppression (Tests\Feature\DansLaBaseDeDonnee\User\Suppression)
- [x] Users anonymes
- [x] Regime alimentaire des users anonymes
+/home/ubuntu/dev/repas-en-avance/tests/Feature/ValidationFormulaire/MotDePasseOublieTest.php
+ [x] champs email
+ [x] longueur maximum champs email
+ [x] longueur minimum champs email
+ [x] format champs email
+ [x] champs mot de passe
+ [x] longueur minimum champs password
+ [x] longueur maximum champs password
+ [x] champs mot de passe confirme
 
-User Connecte (Tests\Feature\Redirection\UserConnecte)
- [x] Inscription
- [x] Connexion
+/home/ubuntu/dev/repas-en-avance/tests/Feature/ValidationFormulaire/RecuperationCompteTest.php
+ [x] champs nom
+ [x] longueur maximum champs nom
+ [x] longueur minimum champs nom
+ [x] champs email
+ [x] longueur maximum champs email
+ [x] longueur minimum champs email
+ [x] format champs email
+ [x] champs password
+ [x] longueur minimum password
+ [x] longueur maximum password
 
-User Non Authentifie (Tests\Feature\Redirection\UserNonAuthentifie)
- [x] Mon compte
- [x] Ajout tag
- [x] Ajout recette
- [x] Carnet recettes
+/home/ubuntu/dev/repas-en-avance/tests/Unit/ExampleTest.php
+ [x] example
 

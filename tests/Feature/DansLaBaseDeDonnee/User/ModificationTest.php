@@ -1,91 +1,65 @@
 <?php
 
 declare(strict_types = 1);
-
-namespace Tests\Feature\DansLaBaseDeDonnee\User;
-
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
 
-/**
- * @coversNothing
- */
-class ModificationTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-	private array $donnees_user;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-	private array $donnees_user_modifie;
+beforeEach(function (): void {
+	$this->donnees_user = $this->donnees('user');
 
-	private array $tags_regimes_alimentaire;
+	$this->donnees_user_modifie = $this->donnees('user_modifie');
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+	$this->tags_regimes_alimentaire = config('donnee_de_test.tags_regimes_alimentaire');
+});
+test('du user', function (): void {
+	$user = $this->creationUser();
 
-		$this->donnees_user = $this->donnees('user');
+	unset($this->donnees_user['password']);
 
-		$this->donnees_user_modifie = $this->donnees('user_modifie');
+	$this->actingAs($user);
 
-		$this->tags_regimes_alimentaire = config('donnee_de_test.tags_regimes_alimentaire');
-	}
+	$this->post('/modification-user', $this->donnees_user_modifie);
 
-	public function testDuUser(): void
-	{
-		$user = $this->creationUser();
+	$this->assertDatabaseMissing('users', $this->donnees_user);
 
-		unset($this->donnees_user['password']);
+	$this->assertDatabaseHas('users', $this->donnees_user_modifie);
+});
+test('du regime alimentaire', function (): void {
+	$user = $this->creationUser();
 
-		$this->actingAs($user);
+	$this->creationRegimesAlimentaire();
 
-		$this->post('/modification-user', $this->donnees_user_modifie);
+	$this->creation('RegimeAlimentaire', 'regime_alimentaire');
 
-		$this->assertDatabaseMissing('users', $this->donnees_user);
+	unset($this->donnees_user['password']);
 
-		$this->assertDatabaseHas('users', $this->donnees_user_modifie);
-	}
+	$this->actingAs($user);
 
-	public function testDuRegimeAlimentaire(): void
-	{
-		$user = $this->creationUser();
+	$this->donnees_user_modifie['tags_regimes_alimentaires'] = [
+		'3',
+	];
 
-		$this->creationRegimesAlimentaire();
+	$this->post('/modification-user', $this->donnees_user_modifie);
 
-		$this->creation('RegimeAlimentaire', 'regime_alimentaire');
+	$this->assertDatabaseMissing('regimes_alimentaires', $this->donnees('regime_alimentaire'));
 
-		unset($this->donnees_user['password']);
+	$this->assertDatabaseHas('regimes_alimentaires', $this->donnees('regime_alimentaire_modifie'));
+});
+test('de la derniere connexion du user', function (): void {
+	$date = new Carbon;
 
-		$this->actingAs($user);
+	$this->creationUser();
 
-		$this->donnees_user_modifie['tags_regimes_alimentaires'] = [
-			'3',
-		];
+	unset($this->donnees_user['nom']);
 
-		$this->post('/modification-user', $this->donnees_user_modifie);
+	$this->post('/connexion', $this->donnees_user);
 
-		$this->assertDatabaseMissing('regimes_alimentaires', $this->donnees('regime_alimentaire'));
+	unset($this->donnees_user['password']);
 
-		$this->assertDatabaseHas('regimes_alimentaires', $this->donnees('regime_alimentaire_modifie'));
-	}
+	$this->donnees_user['derniere_connexion'] = $date->now();
 
-	public function testDeLaDerniereConnexionDuUser(): void
-	{
-		$date = new Carbon;
-
-		$this->creationUser();
-
-		unset($this->donnees_user['nom']);
-
-		$this->post('/connexion', $this->donnees_user);
-
-		unset($this->donnees_user['password']);
-
-		$this->donnees_user['derniere_connexion'] = $date->now();
-
-		$this->assertDatabaseHas('users', $this->donnees_user);
-	}
-}
+	$this->assertDatabaseHas('users', $this->donnees_user);
+});

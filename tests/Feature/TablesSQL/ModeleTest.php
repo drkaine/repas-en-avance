@@ -1,134 +1,86 @@
 <?php
 
 declare(strict_types = 1);
-
-namespace Tests\Feature\TablesSQL;
-
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
 
-/**
- * @coversNothing
- */
-class ModeleTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-	private array $donnees_user;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-	private array $donnees_tag;
+beforeEach(function (): void {
+	$this->donnees_user = $this->donnees('user');
+	$this->donnees_tag = $this->donnees('tag');
+	$this->donnees_recette = $this->donnees('recette');
+	$this->donnees_carnet_recette = $this->donnees('carnet_recette');
+	$this->donnees_auteur = $this->donnees('auteur');
+});
+test('users', function (): void {
+	$this->donnees_user['email_verified_at'] = '2023-06-06 06:06:06';
 
-	private array $donnees_recette;
+	$this->donnees_user['derniere_connexion'] = '06-06-2023 06:06:06';
 
-	private array $donnees_carnet_recette;
+	$user = new User;
 
-	private array $donnees_auteur;
+	$user->factory()->create($this->donnees_user);
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+	unset($this->donnees_user['password']);
 
-		$this->donnees_user = $this->donnees('user');
-		$this->donnees_tag = $this->donnees('tag');
-		$this->donnees_recette = $this->donnees('recette');
-		$this->donnees_carnet_recette = $this->donnees('carnet_recette');
-		$this->donnees_auteur = $this->donnees('auteur');
-	}
+	$this->assertDatabaseHas('users', $this->donnees_user);
+});
+test('tags', function (): void {
+	$this->creation('Tag', 'tag');
 
-	public function testUsers(): void
-	{
-		$this->donnees_user['email_verified_at'] = '2023-06-06 06:06:06';
+	$this->assertDatabaseHas('tags', $this->donnees_tag);
+});
+test('relation tags', function (): void {
+	$this->creation('RelationTag', 'relation_tag');
 
-		$this->donnees_user['derniere_connexion'] = '06-06-2023 06:06:06';
+	$this->assertDatabaseHas('relation_tags', $this->donnees('relation_tag'));
+});
+test('recettes', function (): void {
+	$this->creation('Recette', 'recette');
 
-		$user = new User;
+	$this->assertDatabaseHas('recettes', $this->donnees_recette);
+});
+test('regime alimentaire', function (): void {
+	$this->creation('RegimeAlimentaire', 'regime_alimentaire');
 
-		$user->factory()->create($this->donnees_user);
+	$this->assertDatabaseHas('regimes_alimentaires', $this->donnees('regime_alimentaire'));
+});
+test('ingredient', function (): void {
+	$this->creation('Ingredient', 'ingredient');
 
-		unset($this->donnees_user['password']);
+	$this->assertDatabaseHas('ingredients', $this->donnees('ingredient'));
+});
+test('ustensile', function (): void {
+	$this->creation('Ustensile', 'ustensile');
 
-		$this->assertDatabaseHas('users', $this->donnees_user);
-	}
+	$this->assertDatabaseHas('ustensiles', $this->donnees('ustensile'));
+});
+test('mode de cuisson', function (): void {
+	$this->creation('ModeDeCuisson', 'mode_de_cuisson');
 
-	public function testTags(): void
-	{
-		$this->creation('Tag', 'tag');
+	$this->assertDatabaseHas('mode_de_cuissons', $this->donnees('mode_de_cuisson'));
+});
+test('photo', function (): void {
+	$this->creation('Photo', 'photo');
 
-		$this->assertDatabaseHas('tags', $this->donnees_tag);
-	}
+	$this->assertDatabaseHas('photos', $this->donnees('photo'));
+});
+test('carnet recettes', function (): void {
+	$this->creation('CarnetRecette', 'carnet_recette');
 
-	public function testRelationTags(): void
-	{
-		$this->creation('RelationTag', 'relation_tag');
+	$this->assertDatabaseHas('carnet_recettes', $this->donnees_carnet_recette);
+});
+test('auteur', function (): void {
+	$this->creation('Auteur', 'auteur');
 
-		$this->assertDatabaseHas('relation_tags', $this->donnees('relation_tag'));
-	}
+	$this->assertDatabaseHas('auteurs', $this->donnees_auteur);
+});
+test('auteur recettes', function (): void {
+	$donnees_auteur_recettes = $this->donnees('auteur_recette');
 
-	public function testRecettes(): void
-	{
-		$this->creation('Recette', 'recette');
+	$this->creation('AuteurRecette', 'auteur_recette');
 
-		$this->assertDatabaseHas('recettes', $this->donnees_recette);
-	}
-
-	public function testRegimeAlimentaire(): void
-	{
-		$this->creation('RegimeAlimentaire', 'regime_alimentaire');
-
-		$this->assertDatabaseHas('regimes_alimentaires', $this->donnees('regime_alimentaire'));
-	}
-
-	public function testIngredient(): void
-	{
-		$this->creation('Ingredient', 'ingredient');
-
-		$this->assertDatabaseHas('ingredients', $this->donnees('ingredient'));
-	}
-
-	public function testUstensile(): void
-	{
-		$this->creation('Ustensile', 'ustensile');
-
-		$this->assertDatabaseHas('ustensiles', $this->donnees('ustensile'));
-	}
-
-	public function testModeDeCuisson(): void
-	{
-		$this->creation('ModeDeCuisson', 'mode_de_cuisson');
-
-		$this->assertDatabaseHas('mode_de_cuissons', $this->donnees('mode_de_cuisson'));
-	}
-
-	public function testPhoto(): void
-	{
-		$this->creation('Photo', 'photo');
-
-		$this->assertDatabaseHas('photos', $this->donnees('photo'));
-	}
-
-	public function testCarnetRecettes(): void
-	{
-		$this->creation('CarnetRecette', 'carnet_recette');
-
-		$this->assertDatabaseHas('carnet_recettes', $this->donnees_carnet_recette);
-	}
-
-	public function testAuteur(): void
-	{
-		$this->creation('Auteur', 'auteur');
-
-		$this->assertDatabaseHas('auteurs', $this->donnees_auteur);
-	}
-
-	public function testAuteurRecettes(): void
-	{
-		$donnees_auteur_recettes = $this->donnees('auteur_recette');
-
-		$this->creation('AuteurRecette', 'auteur_recette');
-
-		$this->assertDatabaseHas('auteur_recettes', $donnees_auteur_recettes);
-	}
-}
+	$this->assertDatabaseHas('auteur_recettes', $donnees_auteur_recettes);
+});

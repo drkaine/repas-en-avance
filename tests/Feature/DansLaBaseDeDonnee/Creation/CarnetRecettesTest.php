@@ -1,45 +1,24 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\DansLaBaseDeDonnee\Creation;
+uses(Tests\Traits\RecuperationDonneesDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
-use Tests\Traits\RecuperationDonneesDeTestTrait;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-/**
- * @coversNothing
- */
-class CarnetRecettesTest extends TestCase
-{
-	use RefreshDatabase;
-	use RecuperationDonneesDeTestTrait;
-	use ModelDeTestTrait;
+beforeEach(function (): void {
+	$this->donnes_carnet_recettes = $this->donnees('carnet_recette');
+});
+test('ajout', function (): void {
+	$this->post('/ajout-carnet-recettes', $this->donnes_carnet_recettes);
 
-	private array $donnes_carnet_recettes;
+	$this->assertDatabaseHas('carnet_recettes', $this->donnes_carnet_recettes);
+});
+test('suppression', function (): void {
+	$this->creation('CarnetRecette', 'carnet_recette');
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+	$this->post('/suppression-carnet-recettes', $this->donnes_carnet_recettes);
 
-		$this->donnes_carnet_recettes = $this->donnees('carnet_recette');
-	}
-
-	public function testAjout(): void
-	{
-		$this->post('/ajout-carnet-recettes', $this->donnes_carnet_recettes);
-
-		$this->assertDatabaseHas('carnet_recettes', $this->donnes_carnet_recettes);
-	}
-
-	public function testSuppression(): void
-	{
-		$this->creation('CarnetRecette', 'carnet_recette');
-
-		$this->post('/suppression-carnet-recettes', $this->donnes_carnet_recettes);
-
-		$this->assertDatabaseMissing('carnet_recettes', $this->donnes_carnet_recettes);
-	}
-}
+	$this->assertDatabaseMissing('carnet_recettes', $this->donnes_carnet_recettes);
+});

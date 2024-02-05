@@ -1,69 +1,47 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\DansLaBaseDeDonnee\Creation;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
-use Tests\Traits\RecuperationDonneesDeTestTrait;
+uses(Tests\Traits\RecuperationDonneesDeTestTrait::class);
 
-/**
- * @coversNothing
- */
-class ApresLajoutTagTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
-	use RecuperationDonneesDeTestTrait;
+beforeEach(function (): void {
+	$this->donnees_tag = $this->donnees('tag');
+});
+test('tag', function (): void {
+	$this->post('/ajout-tag', $this->donnees_tag);
 
-	private array $donnees_tag;
+	$this->assertDatabaseHas('tags', $this->donnees_tag);
+});
+test('relation tag parent', function (): void {
+	$this->creation('Tag', 'tag');
 
-	protected function setUp(): void
-	{
-		parent::setUp();
-		$this->donnees_tag = $this->donnees('tag');
-	}
+	$this->donnees_tag = [
+		'nom' => 'Plat',
+		'tags_parent' => [
+			'1',
+		],
+		'tags_enfant' => null,
+	];
 
-	public function testTag(): void
-	{
-		$this->post('/ajout-tag', $this->donnees_tag);
+	$this->post('/ajout-tag', $this->donnees_tag);
 
-		$this->assertDatabaseHas('tags', $this->donnees_tag);
-	}
+	$this->assertDatabaseHas('relation_tags', $this->donnees('relation_tag'));
+});
+test('relation tag enfant', function (): void {
+	$this->creation('Tag', 'tag');
 
-	public function testRelationTagParent(): void
-	{
-		$this->creation('Tag', 'tag');
+	$this->donnees_tag = [
+		'nom' => 'Plat',
+		'tags_parent' => null,
+		'tags_enfant' => [
+			'1',
+		],
+	];
 
-		$this->donnees_tag = [
-			'nom' => 'Plat',
-			'tags_parent' => [
-				'1',
-			],
-			'tags_enfant' => null,
-		];
+	$this->post('/ajout-tag', $this->donnees_tag);
 
-		$this->post('/ajout-tag', $this->donnees_tag);
-
-		$this->assertDatabaseHas('relation_tags', $this->donnees('relation_tag'));
-	}
-
-	public function testRelationTagEnfant(): void
-	{
-		$this->creation('Tag', 'tag');
-
-		$this->donnees_tag = [
-			'nom' => 'Plat',
-			'tags_parent' => null,
-			'tags_enfant' => [
-				'1',
-			],
-		];
-
-		$this->post('/ajout-tag', $this->donnees_tag);
-
-		$this->assertDatabaseHas('relation_tags', $this->donnees('relation_tag_inverse'));
-	}
-}
+	$this->assertDatabaseHas('relation_tags', $this->donnees('relation_tag_inverse'));
+});

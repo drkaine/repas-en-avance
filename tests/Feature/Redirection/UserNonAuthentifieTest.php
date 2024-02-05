@@ -1,41 +1,23 @@
 <?php
 
 declare(strict_types = 1);
+test('mon compte', function (): void {
+	$response = $this->get('mon-compte');
 
-namespace Tests\Feature\Redirection;
+	$response->assertRedirect('inscription');
+});
+test('ajout tag', function (): void {
+	$response = $this->get('ajout-tag');
 
-use Tests\TestCase;
+	$response->assertRedirect('inscription');
+});
+test('ajout recette', function (): void {
+	$response = $this->get('ajout-recette');
 
-/**
- * @coversNothing
- */
-class UserNonAuthentifieTest extends TestCase
-{
-	public function testMonCompte(): void
-	{
-		$response = $this->get('mon-compte');
+	$response->assertRedirect('inscription');
+});
+test('carnet recettes', function (): void {
+	$response = $this->get('carnet-recettes');
 
-		$response->assertRedirect('inscription');
-	}
-
-	public function testAjoutTag(): void
-	{
-		$response = $this->get('ajout-tag');
-
-		$response->assertRedirect('inscription');
-	}
-
-	public function testAjoutRecette(): void
-	{
-		$response = $this->get('ajout-recette');
-
-		$response->assertRedirect('inscription');
-	}
-
-	public function testCarnetRecettes(): void
-	{
-		$response = $this->get('carnet-recettes');
-
-		$response->assertRedirect('connexion');
-	}
-}
+	$response->assertRedirect('connexion');
+});

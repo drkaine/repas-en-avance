@@ -1,63 +1,43 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\Affichage\DonneesDans;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+beforeEach(function (): void {
+	$this->creationRegimesAlimentaire();
 
-/**
- * @coversNothing
- */
-class MonCompteTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+	$this->userConnecte();
+});
+test('user dans mon compte', function (): void {
+	$response = $this->get('mon-compte');
 
-	protected function setUp(): void
-	{
-		parent::setUp();
-		$this->creationRegimesAlimentaire();
+	$donnee_user = $response->viewData('user');
 
-		$this->userConnecte();
+	$response->assertSee($donnee_user->nom);
+
+	$response->assertSee($donnee_user->email);
+});
+test('tag dans mon compte', function (): void {
+	$response = $this->get('mon-compte');
+
+	$tags_regimes_alimentaires = $response->viewData('tags_regimes_alimentaires');
+
+	foreach ($tags_regimes_alimentaires as $tag_regime_alimentaire) {
+		$response->assertSee($tag_regime_alimentaire->nom);
+
+		$response->assertSee($tag_regime_alimentaire->id);
 	}
+});
+test('regime alimentaire dans mon compte', function (): void {
+	$this->creation('RegimeAlimentaire', 'regime_alimentaire');
 
-	public function testUserDansMonCompte(): void
-	{
-		$response = $this->get('mon-compte');
+	$response = $this->get('mon-compte');
 
-		$donnee_user = $response->viewData('user');
+	$regimes_alimentaires = $response->viewData('regimes_alimentaires');
 
-		$response->assertSee($donnee_user->nom);
-
-		$response->assertSee($donnee_user->email);
+	foreach ($regimes_alimentaires as $regime_alimentaire) {
+		$response->assertSee($regime_alimentaire);
 	}
-
-	public function testTagDansMonCompte(): void
-	{
-		$response = $this->get('mon-compte');
-
-		$tags_regimes_alimentaires = $response->viewData('tags_regimes_alimentaires');
-
-		foreach ($tags_regimes_alimentaires as $tag_regime_alimentaire) {
-			$response->assertSee($tag_regime_alimentaire->nom);
-
-			$response->assertSee($tag_regime_alimentaire->id);
-		}
-	}
-
-	public function testRegimeAlimentaireDansMonCompte(): void
-	{
-		$this->creation('RegimeAlimentaire', 'regime_alimentaire');
-
-		$response = $this->get('mon-compte');
-
-		$regimes_alimentaires = $response->viewData('regimes_alimentaires');
-
-		foreach ($regimes_alimentaires as $regime_alimentaire) {
-			$response->assertSee($regime_alimentaire);
-		}
-	}
-}
+});

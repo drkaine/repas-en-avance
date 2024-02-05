@@ -1,43 +1,26 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\ValidationFormulaire;
+test('champs nom', function (): void {
+	$response = $this->post('/ajout-tag', [
+		'nom' => null,
+	]);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+	$response->assertStatus(302);
+});
+test('longueur maximum champs nom', function (): void {
+	$response = $this->post('/ajout-tag', [
+		'nom' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv',
+	]);
 
-/**
- * @coversNothing
- */
-class AjoutTagTest extends TestCase
-{
-	use RefreshDatabase;
+	$response->assertStatus(302);
+});
+test('longueur minimum champs nom', function (): void {
+	$response = $this->post('/ajout-tag', [
+		'nom' => 'az',
+	]);
 
-	public function testChampsNom(): void
-	{
-		$response = $this->post('/ajout-tag', [
-			'nom' => null,
-		]);
-
-		$response->assertStatus(302);
-	}
-
-	public function testLongueurMaximumChampsNom(): void
-	{
-		$response = $this->post('/ajout-tag', [
-			'nom' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv',
-		]);
-
-		$response->assertStatus(302);
-	}
-
-	public function testLongueurMinimumChampsNom(): void
-	{
-		$response = $this->post('/ajout-tag', [
-			'nom' => 'az',
-		]);
-
-		$response->assertStatus(302);
-	}
-}
+	$response->assertStatus(302);
+});

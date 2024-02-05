@@ -1,60 +1,38 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\Affichage\DonneesDans;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+beforeEach(function (): void {
+	$this->creationTagsAjoutRecette();
+	$this->userConnecte();
+});
+test('ustensile dans ajout recette', function (): void {
+	$response = $this->get('ajout-recette');
 
-/**
- * @coversNothing
- */
-class AjoutRecetteTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+	$ustensiles = $response->viewData('ustensiles');
 
-	protected function setUp(): void
-	{
-		parent::setUp();
-
-		$this->creationTagsAjoutRecette();
-		$this->userConnecte();
+	foreach ($ustensiles as $ustensile) {
+		$response->assertSee($ustensile->nom);
 	}
+});
+test('mode de cuisson dans ajout recette', function (): void {
+	$response = $this->get('ajout-recette');
 
-	public function testUstensileDansAjoutRecette(): void
-	{
-		$response = $this->get('ajout-recette');
+	$mode_de_cuissons = $response->viewData('mode_de_cuissons');
 
-		$ustensiles = $response->viewData('ustensiles');
-
-		foreach ($ustensiles as $ustensile) {
-			$response->assertSee($ustensile->nom);
-		}
+	foreach ($mode_de_cuissons as $mode_de_cuisson) {
+		$response->assertSee($mode_de_cuisson->nom);
 	}
+});
+test('ingredient dans ajout recette', function (): void {
+	$response = $this->get('ajout-recette');
 
-	public function testModeDeCuissonDansAjoutRecette(): void
-	{
-		$response = $this->get('ajout-recette');
+	$ingredients = $response->viewData('ingredients');
 
-		$mode_de_cuissons = $response->viewData('mode_de_cuissons');
-
-		foreach ($mode_de_cuissons as $mode_de_cuisson) {
-			$response->assertSee($mode_de_cuisson->nom);
-		}
+	foreach ($ingredients as $ingredient) {
+		$response->assertSee($ingredient->nom);
 	}
-
-	public function testIngredientDansAjoutRecette(): void
-	{
-
-		$response = $this->get('ajout-recette');
-
-		$ingredients = $response->viewData('ingredients');
-
-		foreach ($ingredients as $ingredient) {
-			$response->assertSee($ingredient->nom);
-		}
-	}
-}
+});

@@ -1,32 +1,16 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\Affichage\DesPages;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+beforeEach(function (): void {
+	$this->creationTagsAjoutRecette();
+	$this->creation('Recette', 'recette');
+});
+test('recette', function (): void {
+	$response = $this->get('recette/carotte-simple');
 
-/**
- * @coversNothing
- */
-class SansConditionDeConnexionTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
-
-	protected function setUp(): void
-	{
-		parent::setUp();
-		$this->creationTagsAjoutRecette();
-		$this->creation('Recette', 'recette');
-	}
-
-	public function testRecette(): void
-	{
-		$response = $this->get('recette/carotte-simple');
-
-		$response->assertStatus(200);
-	}
-}
+	$response->assertStatus(200);
+});

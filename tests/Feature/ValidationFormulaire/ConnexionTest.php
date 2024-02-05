@@ -1,86 +1,61 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\ValidationFormulaire;
+test('champs email', function (): void {
+	$response = $this->post('/connexion', [
+		'email' => null,
+		'password' => 'password',
+	]);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+	$response->assertStatus(302);
+});
+test('longueur maximum champs email', function (): void {
+	$response = $this->post('/connexion', [
+		'email' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio@azertyuiopmlkjhgfdsqwxczertyuiopmlkjhgfdsqwxcv.fr',
+		'password' => 'password',
+	]);
 
-/**
- * @coversNothing
- */
-class ConnexionTest extends TestCase
-{
-	use RefreshDatabase;
+	$response->assertStatus(302);
+});
+test('longueur minimum champs email', function (): void {
+	$response = $this->post('/connexion', [
+		'email' => 'a@afr',
+		'password' => 'password',
+	]);
 
-	public function testChampsEmail(): void
-	{
-		$response = $this->post('/connexion', [
-			'email' => null,
-			'password' => 'password',
-		]);
+	$response->assertStatus(302);
+});
+test('format champs email', function (): void {
+	$response = $this->post('/connexion', [
+		'email' => 'emailestfr',
+		'password' => 'password',
+	]);
 
-		$response->assertStatus(302);
-	}
+	$response->assertStatus(302);
+});
+test('champs password', function (): void {
+	$response = $this->post('/connexion', [
+		'email' => 'email.test.fr',
+		'password' => null,
+	]);
 
-	public function testLongueurMaximumChampsEmail(): void
-	{
-		$response = $this->post('/connexion', [
-			'email' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio@azertyuiopmlkjhgfdsqwxczertyuiopmlkjhgfdsqwxcv.fr',
-			'password' => 'password',
-		]);
+	$response->assertStatus(302);
+});
+test('longueur minimum champs password', function (): void {
+	$response = $this->post('/connexion', [
+		'email' => 'email.test.fr',
+		'password' => 'fg',
+	]);
 
-		$response->assertStatus(302);
-	}
+	$response->assertStatus(302);
+});
+test('longueur maximum champs password', function (): void {
+	$response = $this->post('/connexion', [
+		'email' => 'email.test.fr',
+		'password' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio',
+	]);
 
-	public function testLongueurMinimumChampsEmail(): void
-	{
-		$response = $this->post('/connexion', [
-			'email' => 'a@afr',
-			'password' => 'password',
-		]);
-
-		$response->assertStatus(302);
-	}
-
-	public function testFormatChampsEmail(): void
-	{
-		$response = $this->post('/connexion', [
-			'email' => 'emailestfr',
-			'password' => 'password',
-		]);
-
-		$response->assertStatus(302);
-	}
-
-	public function testChampsPassword(): void
-	{
-		$response = $this->post('/connexion', [
-			'email' => 'email.test.fr',
-			'password' => null,
-		]);
-
-		$response->assertStatus(302);
-	}
-
-	public function testLongueurMinimumChampsPassword(): void
-	{
-		$response = $this->post('/connexion', [
-			'email' => 'email.test.fr',
-			'password' => 'fg',
-		]);
-
-		$response->assertStatus(302);
-	}
-
-	public function testLongueurMaximumChampsPassword(): void
-	{
-		$response = $this->post('/connexion', [
-			'email' => 'email.test.fr',
-			'password' => 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio',
-		]);
-
-		$response->assertStatus(302);
-	}
-}
+	$response->assertStatus(302);
+});

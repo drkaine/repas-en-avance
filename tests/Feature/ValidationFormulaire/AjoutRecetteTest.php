@@ -1,108 +1,73 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\ValidationFormulaire;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+beforeEach(function (): void {
+	$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
+});
+test('champs nom', function (): void {
+	$this->donnees_formulaire_ajout_recette['nom'] = null;
 
-/**
- * @coversNothing
- */
-class AjoutRecetteTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+	$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-	private array $donnees_formulaire_ajout_recette;
+	$response->assertStatus(302);
+});
+test('longueur maximum champs nom', function (): void {
+	$this->donnees_formulaire_ajout_recette['nom'] = 'azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv';
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+	$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-		$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
-	}
+	$response->assertStatus(302);
+});
+test('longueur minimum champs nom', function (): void {
+	$this->donnees_formulaire_ajout_recette['nom'] = 'az';
 
-	public function testChampsNom(): void
-	{
-		$this->donnees_formulaire_ajout_recette['nom'] = null;
+	$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
+	$response->assertStatus(302);
+});
+test('champs description', function (): void {
+	$this->donnees_formulaire_ajout_recette['description'] = null;
 
-		$response->assertStatus(302);
-	}
+	$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-	public function testLongueurMaximumChampsNom(): void
-	{
-		$this->donnees_formulaire_ajout_recette['nom'] = 'azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv azertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv';
+	$response->assertStatus(302);
+});
+test('longueur minimum champs description', function (): void {
+	$this->donnees_formulaire_ajout_recette['description'] = 'az';
 
-		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
+	$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-		$response->assertStatus(302);
-	}
+	$response->assertStatus(302);
+});
+test('champs temps de preparation', function (): void {
+	$this->donnees_formulaire_ajout_recette['temps_preparation'] = null;
 
-	public function testLongueurMinimumChampsNom(): void
-	{
-		$this->donnees_formulaire_ajout_recette['nom'] = 'az';
+	$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
+	$response->assertStatus(302);
+});
+test('champs ingredient', function (): void {
+	unset($this->donnees_formulaire_ajout_recette['ingredients']);
 
-		$response->assertStatus(302);
-	}
+	$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-	public function testChampsDescription(): void
-	{
-		$this->donnees_formulaire_ajout_recette['description'] = null;
+	$response->assertStatus(302);
+});
+test('champs quantite', function (): void {
+	unset($this->donnees_formulaire_ajout_recette['quantitees']);
 
-		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
+	$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-		$response->assertStatus(302);
-	}
+	$response->assertStatus(302);
+});
+test('champs photo', function (): void {
+	unset($this->donnees_formulaire_ajout_recette['photos']);
 
-	public function testLongueurMinimumChampsDescription(): void
-	{
-		$this->donnees_formulaire_ajout_recette['description'] = 'az';
+	$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
-
-		$response->assertStatus(302);
-	}
-
-	public function testChampsTempsDePreparation(): void
-	{
-		$this->donnees_formulaire_ajout_recette['temps_preparation'] = null;
-
-		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
-
-		$response->assertStatus(302);
-	}
-
-	public function testChampsIngredient(): void
-	{
-		unset($this->donnees_formulaire_ajout_recette['ingredients']);
-
-		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
-
-		$response->assertStatus(302);
-	}
-
-	public function testChampsQuantite(): void
-	{
-		unset($this->donnees_formulaire_ajout_recette['quantitees']);
-
-		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
-
-		$response->assertStatus(302);
-	}
-
-	public function testChampsPhoto(): void
-	{
-		unset($this->donnees_formulaire_ajout_recette['photos']);
-
-		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
-
-		$response->assertStatus(302);
-	}
-}
+	$response->assertStatus(302);
+});

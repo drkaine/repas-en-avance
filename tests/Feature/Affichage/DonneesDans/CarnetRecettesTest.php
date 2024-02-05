@@ -1,79 +1,57 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\Affichage\DonneesDans;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+beforeEach(function (): void {
+	$this->creationTagsAjoutRecette();
+	$this->creation('Recette', 'recette');
+	$this->creation('CarnetRecette', 'carnet_recette');
+	$this->creation('Ingredient', 'ingredient');
+	$this->creation('Photo', 'photo');
+	$this->creationFichierPhoto();
 
-/**
- * @coversNothing
- */
-class CarnetRecettesTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+	$this->userConnecte();
+});
+test('recette dans catalogue recettes', function (): void {
+	$response = $this->get('carnet-recettes');
+	$recettes = $response->viewData('recettes');
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+	foreach ($recettes as $recette) {
+		$response->assertSee($recette->temps_preparation);
 
-		$this->creationTagsAjoutRecette();
-		$this->creation('Recette', 'recette');
-		$this->creation('CarnetRecette', 'carnet_recette');
-		$this->creation('Ingredient', 'ingredient');
-		$this->creation('Photo', 'photo');
-		$this->creationFichierPhoto();
+		$response->assertSee($recette->nom);
 
-		$this->userConnecte();
+		$response->assertSee($recette->url);
+
+		$response->assertSee($recette->temps_cuisson);
 	}
+});
+test('ingredient dans catalogue recettes', function (): void {
+	$response = $this->get('carnet-recettes');
 
-	public function testRecetteDansCatalogueRecettes(): void
-	{
-		$response = $this->get('carnet-recettes');
-		$recettes = $response->viewData('recettes');
+	$recettes = $response->viewData('recettes');
 
-		foreach ($recettes as $recette) {
-			$response->assertSee($recette->temps_preparation);
+	foreach ($recettes as $recette) {
+		foreach ($recette->recuperationIngredient as $ingredient) {
+			$response->assertSee($ingredient->id);
 
-			$response->assertSee($recette->nom);
-
-			$response->assertSee($recette->url);
-
-			$response->assertSee($recette->temps_cuisson);
+			$response->assertSee($ingredient->nom);
 		}
 	}
+});
+test('photo recette', function (): void {
+	$response = $this->get('carnet-recettes');
 
-	public function testIngredientDansCatalogueRecettes(): void
-	{
+	$recettes = $response->viewData('recettes');
 
-		$response = $this->get('carnet-recettes');
-
-		$recettes = $response->viewData('recettes');
-
-		foreach ($recettes as $recette) {
-			foreach ($recette->recuperationIngredient as $ingredient) {
-				$response->assertSee($ingredient->id);
-
-				$response->assertSee($ingredient->nom);
-			}
+	foreach ($recettes as $recette) {
+		foreach ($recette->recuperationPhoto as $photo) {
+			$response->assertSee($photo->nom);
+			$response->assertSee($photo->description);
+			$response->assertSee($photo->dossier);
 		}
 	}
-
-	public function testPhotoRecette(): void
-	{
-		$response = $this->get('carnet-recettes');
-
-		$recettes = $response->viewData('recettes');
-
-		foreach ($recettes as $recette) {
-			foreach ($recette->recuperationPhoto as $photo) {
-				$response->assertSee($photo->nom);
-				$response->assertSee($photo->description);
-				$response->assertSee($photo->dossier);
-			}
-		}
-	}
-}
+});

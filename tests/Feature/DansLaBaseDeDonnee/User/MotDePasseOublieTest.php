@@ -1,49 +1,29 @@
 <?php
 
 declare(strict_types = 1);
-
-namespace Tests\Feature\DansLaBaseDeDonnee\User;
-
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
 
-/**
- * @coversNothing
- */
-class MotDePasseOublieTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-	private array $donnees_user;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-	private array $mot_de_passe_oublie;
+beforeEach(function (): void {
+	$this->donnees_user = $this->donnees('user');
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+	$this->mot_de_passe_oublie = $this->donnees('mot_de_passe_oublie');
 
-		$this->donnees_user = $this->donnees('user');
+	$user = $this->creationUser();
+});
+test('changement mot de passe', function (): void {
+	$this->post('/mot-de-passe-oublie', $this->mot_de_passe_oublie);
 
-		$this->mot_de_passe_oublie = $this->donnees('mot_de_passe_oublie');
+	$this->assertDatabaseMissing('users', $this->donnees_user);
 
-		$user = $this->creationUser();
-	}
+	$this->donnees_user['password'] = $this->mot_de_passe_oublie['password'];
 
-	public function testChangementMotDePasse(): void
-	{
-		$this->post('/mot-de-passe-oublie', $this->mot_de_passe_oublie);
+	$user = new User;
 
-		$this->assertDatabaseMissing('users', $this->donnees_user);
+	$user = $user->first();
 
-		$this->donnees_user['password'] = $this->mot_de_passe_oublie['password'];
-
-		$user = new User;
-
-		$user = $user->first();
-
-		$this->assertTrue(password_verify($this->mot_de_passe_oublie['password'], $user->password));
-	}
-}
+	expect(password_verify($this->mot_de_passe_oublie['password'], $user->password))->toBeTrue();
+});

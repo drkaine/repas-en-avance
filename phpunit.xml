@@ -3,14 +3,6 @@
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          colors="true"
-         backupGlobals="true"
-         backupStaticProperties="true"
-         requireCoverageMetadata="true"
-         processIsolation="true"
-         stopOnError="true"
-         beStrictAboutChangesToGlobalState="true"
-         beStrictAboutTestsThatDoNotTestAnything="true"
-         displayDetailsOnTestsThatTriggerDeprecations="true"
 >
     <testsuites>
         <testsuite name="Unit">

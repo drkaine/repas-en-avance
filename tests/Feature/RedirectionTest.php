@@ -1,92 +1,57 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
-use Tests\Traits\RecuperationDonneesDeTestTrait;
+uses(Tests\Traits\RecuperationDonneesDeTestTrait::class);
 
-/**
- * @coversNothing
- */
-class RedirectionTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
-	use RecuperationDonneesDeTestTrait;
+beforeEach(function (): void {
+	$this->donnees_user = $this->donnees('user');
+	$this->donnees_user_anonyme = $this->donnees('user_anonyme');
+	$this->donnees_user_anonyme_recupere = $this->donnees('user_anonyme_recupere');
+	$this->donnes_carnet_recettes = $this->donnees('carnet_recette');
+});
+test('deconnexion', function (): void {
+	$response = $this->get('deconnexion');
 
-	private array $donnees_user;
+	$response->assertRedirect('/');
+});
+test('anonymisation user', function (): void {
+	$this->userConnecte();
 
-	private array $donnees_user_anonyme;
+	$response = $this->get('/anonymisation-du-compte');
 
-	private array $donnees_user_anonyme_recupere;
+	$response->assertRedirect('deconnexion');
+});
+test('modification des donnees du user', function (): void {
+	$this->userConnecte();
 
-	private array $donnes_carnet_recettes;
+	unset($this->donnees_user['password']);
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+	$this->donnees_user['tags_regimes_alimentaires'] = [];
 
-		$this->donnees_user = $this->donnees('user');
-		$this->donnees_user_anonyme = $this->donnees('user_anonyme');
-		$this->donnees_user_anonyme_recupere = $this->donnees('user_anonyme_recupere');
-		$this->donnes_carnet_recettes = $this->donnees('carnet_recette');
-	}
+	$response = $this->post('/modification-user', $this->donnees_user);
 
-	public function testDeconnexion(): void
-	{
-		$response = $this->get('deconnexion');
+	$response->assertRedirect('/');
+});
+test('recuperation compte', function (): void {
+	$this->creation('User', 'user_anonyme');
 
-		$response->assertRedirect('/');
-	}
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-	public function testAnonymisationUser(): void
-	{
-		$this->userConnecte();
+	$response->assertRedirect('/');
+});
+test('ajout carnet recettes', function (): void {
+	$response = $this->post('/ajout-carnet-recettes', $this->donnes_carnet_recettes);
 
-		$response = $this->get('/anonymisation-du-compte');
+	$response->assertRedirect('/');
+});
+test('suppression carnet recettes', function (): void {
+	$this->creation('CarnetRecette', 'carnet_recette');
 
-		$response->assertRedirect('deconnexion');
-	}
+	$response = $this->post('/suppression-carnet-recettes', $this->donnes_carnet_recettes);
 
-	public function testModificationDesDonneesDuUser(): void
-	{
-		$this->userConnecte();
-
-		unset($this->donnees_user['password']);
-
-		$this->donnees_user['tags_regimes_alimentaires'] = [];
-
-		$response = $this->post('/modification-user', $this->donnees_user);
-
-		$response->assertRedirect('/');
-	}
-
-	public function testRecuperationCompte(): void
-	{
-		$this->creation('User', 'user_anonyme');
-
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
-
-		$response->assertRedirect('/');
-	}
-
-	public function testAjoutCarnetRecettes(): void
-	{
-		$response = $this->post('/ajout-carnet-recettes', $this->donnes_carnet_recettes);
-
-		$response->assertRedirect('/');
-	}
-
-	public function testSuppressionCarnetRecettes(): void
-	{
-		$this->creation('CarnetRecette', 'carnet_recette');
-
-		$response = $this->post('/suppression-carnet-recettes', $this->donnes_carnet_recettes);
-
-		$response->assertRedirect('/');
-	}
-}
+	$response->assertRedirect('/');
+});

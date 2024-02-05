@@ -1,33 +1,20 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\Affichage\DonneesDans;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+test('tag dans ajout tag', function (): void {
+	$this->userConnecte();
 
-/**
- * @coversNothing
- */
-class AjoutTagTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+	$this->creation('Tag', 'tag');
 
-	public function testTagDansAjoutTag(): void
-	{
-		$this->userConnecte();
+	$response = $this->get('/ajout-tag');
 
-		$this->creation('Tag', 'tag');
+	$tags = $response->viewData('tags');
 
-		$response = $this->get('/ajout-tag');
-
-		$tags = $response->viewData('tags');
-
-		foreach ($tags as $tag) {
-			$response->assertSee($tag->nom);
-		}
+	foreach ($tags as $tag) {
+		$response->assertSee($tag->nom);
 	}
-}
+});

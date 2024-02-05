@@ -1,57 +1,35 @@
 <?php
 
 declare(strict_types = 1);
-
-namespace Tests\Feature\DansLaBaseDeDonnee\User;
-
 use App\Services\GestionUsersInactifService;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
-use Tests\Traits\RecuperationDonneesDeTestTrait;
 
-/**
- * @coversNothing
- */
-class SuppressionTest extends TestCase
-{
-	use RecuperationDonneesDeTestTrait;
-	use ModelDeTestTrait;
-	use RefreshDatabase;
+uses(Tests\Traits\RecuperationDonneesDeTestTrait::class);
 
-	private array $donnees_user_anonyme;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-	private GestionUsersInactifService $anonymisation_helper;
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+beforeEach(function (): void {
+	$this->donnees_user_anonyme = $this->donnees('user');
 
-		$this->donnees_user_anonyme = $this->donnees('user');
+	$this->anonymisation_helper = new GestionUsersInactifService;
 
-		$this->anonymisation_helper = new GestionUsersInactifService;
+	$this->creation('User', 'user_anonyme');
+});
+test('users anonymes', function (): void {
+	$this->anonymisation_helper->supprimer();
 
-		$this->creation('User', 'user_anonyme');
-	}
+	$this->assertDatabaseMissing('users', $this->donnees_user_anonyme);
+});
+test('regime alimentaire des users anonymes', function (): void {
+	$date = new Carbon;
 
-	public function testUsersAnonymes(): void
-	{
-		$this->anonymisation_helper->supprimer();
+	$donnees_user_anonyme['derniere_connexion'] = $date->now()->subMonths(7);
 
-		$this->assertDatabaseMissing('users', $this->donnees_user_anonyme);
-	}
+	$this->creation('RegimeAlimentaire', 'regime_alimentaire');
 
-	public function testRegimeAlimentaireDesUsersAnonymes(): void
-	{
-		$date = new Carbon;
+	$this->anonymisation_helper->supprimer();
 
-		$donnees_user_anonyme['derniere_connexion'] = $date->now()->subMonths(7);
-
-		$this->creation('RegimeAlimentaire', 'regime_alimentaire');
-
-		$this->anonymisation_helper->supprimer();
-
-		$this->assertDatabaseMissing('regimes_alimentaires', $this->donnees('regime_alimentaire'));
-	}
-}
+	$this->assertDatabaseMissing('regimes_alimentaires', $this->donnees('regime_alimentaire'));
+});

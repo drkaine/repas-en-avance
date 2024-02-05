@@ -1,118 +1,79 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\Envoie;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+beforeEach(function (): void {
+	$this->creationTagsAjoutRecette();
 
-/**
- * @coversNothing
- */
-class FormulaireTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+	$this->donnees_user = $this->donnees('user');
 
-	private array $donnees_user;
+	$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
 
-	private array $donnees_formulaire_ajout_recette;
+	$this->donnees_mot_de_passe_oublie = $this->donnees('mot_de_passe_oublie');
 
-	private array $donnees_mot_de_passe_oublie;
+	$this->donnees_user_anonyme = $this->donnees('user');
 
-	private array $donnees_user_anonyme;
+	$this->donnees_user_anonyme_recupere = $this->donnees('user_anonyme_recupere');
 
-	private array $donnees_user_anonyme_recupere;
+	$this->creation('User', 'user_anonyme');
+});
+test('inscription', function (): void {
+	$this->creationRegimesAlimentaire();
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+	$this->donnees_user['password_confirmation'] = 'password';
 
-		$this->creationTagsAjoutRecette();
+	$this->donnees_user['regimes_alimentaires'] = [];
 
-		$this->donnees_user = $this->donnees('user');
+	$response = $this->post('/inscription', $this->donnees_user);
 
-		$this->donnees_formulaire_ajout_recette = $this->donneesFormulaireAjoutRecette();
+	$response->assertStatus(200);
+});
+test('connexion', function (): void {
+	$this->creationUser();
 
-		$this->donnees_mot_de_passe_oublie = $this->donnees('mot_de_passe_oublie');
+	unset($this->donnees_user['nom']);
 
-		$this->donnees_user_anonyme = $this->donnees('user');
+	$response = $this->post('/connexion', $this->donnees_user);
 
-		$this->donnees_user_anonyme_recupere = $this->donnees('user_anonyme_recupere');
+	$response->assertRedirect('/');
+});
+test('ajout tag', function (): void {
+	$response = $this->post('/ajout-tag', [
+		'nom' => 'Catégorie',
+		'tags_parent' => [],
+		'tags_enfant' => [],
+	]);
 
-		$this->creation('User', 'user_anonyme');
-	}
+	$response->assertStatus(200);
+});
+test('ajout recette', function (): void {
+	$this->userConnecte();
 
-	public function testInscription(): void
-	{
-		$this->creationRegimesAlimentaire();
+	$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
 
-		$this->donnees_user['password_confirmation'] = 'password';
+	$response->assertStatus(200);
+});
+test('demande mot de passe oublie', function (): void {
+	$this->creationUser();
 
-		$this->donnees_user['regimes_alimentaires'] = [];
+	$response = $this->post('/demande-mot-de-passe-oublie', [
+		'email' => 'email@test.fr',
+	]);
 
-		$response = $this->post('/inscription', $this->donnees_user);
+	$response->assertStatus(200);
+});
+test('mot de passe oublie', function (): void {
+	$this->creationUser();
 
-		$response->assertStatus(200);
-	}
+	$response = $this->post('/mot-de-passe-oublie', $this->donnees_mot_de_passe_oublie);
 
-	public function testConnexion(): void
-	{
-		$this->creationUser();
+	$response->assertStatus(200);
+});
+test('recuperation compte', function (): void {
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-		unset($this->donnees_user['nom']);
-
-		$response = $this->post('/connexion', $this->donnees_user);
-
-		$response->assertRedirect('/');
-	}
-
-	public function testAjoutTag(): void
-	{
-		$response = $this->post('/ajout-tag', [
-			'nom' => 'Catégorie',
-			'tags_parent' => [],
-			'tags_enfant' => [],
-		]);
-
-		$response->assertStatus(200);
-	}
-
-	public function testAjoutRecette(): void
-	{
-		$this->userConnecte();
-
-		$response = $this->post('/ajout-recette', $this->donnees_formulaire_ajout_recette);
-
-		$response->assertStatus(200);
-	}
-
-	public function testDemandeMotDePasseOublie(): void
-	{
-		$this->creationUser();
-
-		$response = $this->post('/demande-mot-de-passe-oublie', [
-			'email' => 'email@test.fr',
-		]);
-
-		$response->assertStatus(200);
-	}
-
-	public function testMotDePasseOublie(): void
-	{
-		$this->creationUser();
-
-		$response = $this->post('/mot-de-passe-oublie', $this->donnees_mot_de_passe_oublie);
-
-		$response->assertStatus(200);
-	}
-
-	public function testRecuperationCompte(): void
-	{
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
-
-		$response->assertRedirect('/');
-	}
-}
+	$response->assertRedirect('/');
+});

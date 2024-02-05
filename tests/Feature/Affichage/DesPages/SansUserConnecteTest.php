@@ -1,84 +1,57 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\Affichage\DesPages;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+test('accueil', function (): void {
+	$response = $this->get('/');
 
-/**
- * @coversNothing
- */
-class SansUserConnecteTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+	$response->assertStatus(200);
+});
+test('inscription', function (): void {
+	$this->creationRegimesAlimentaire();
 
-	public function testAccueil(): void
-	{
-		$response = $this->get('/');
+	$response = $this->get('inscription');
 
-		$response->assertStatus(200);
-	}
+	$response->assertStatus(200);
+});
+test('connexion', function (): void {
+	$response = $this->get('connexion');
 
-	public function testInscription(): void
-	{
-		$this->creationRegimesAlimentaire();
+	$response->assertStatus(200);
+});
+test('recuperation compte', function (): void {
+	$response = $this->get('recuperation-compte');
 
-		$response = $this->get('inscription');
+	$response->assertStatus(200);
+});
+test('catalogue recettes', function (): void {
+	$this->creation('Recette', 'recette');
 
-		$response->assertStatus(200);
-	}
+	$this->creationDonnees('Tag', 'tag_ingredient');
 
-	public function testConnexion(): void
-	{
-		$response = $this->get('connexion');
+	$this->creation('Ingredient', 'ingredient');
 
-		$response->assertStatus(200);
-	}
+	$response = $this->get('catalogue-recettes');
 
-	public function testRecuperationCompte(): void
-	{
-		$response = $this->get('recuperation-compte');
+	$response->assertStatus(200);
+});
+test('confirmation email', function (): void {
+	$user = $this->creationUser();
 
-		$response->assertStatus(200);
-	}
+	$response = $this->get('confirmation-email/' . $user->email);
 
-	public function testCatalogueRecettes(): void
-	{
-		$this->creation('Recette', 'recette');
+	$response->assertStatus(200);
+});
+test('mot de passe oublie', function (): void {
+	$response = $this->get('mot-de-passe-oublie/oigoiuyv');
 
-		$this->creationDonnees('Tag', 'tag_ingredient');
+	$response->assertStatus(200);
+});
+test('demande mot de passe oublie', function (): void {
+	$response = $this->get('demande-mot-de-passe-oublie');
 
-		$this->creation('Ingredient', 'ingredient');
-
-		$response = $this->get('catalogue-recettes');
-
-		$response->assertStatus(200);
-	}
-
-	public function testConfirmationEmail(): void
-	{
-		$user = $this->creationUser();
-
-		$response = $this->get('confirmation-email/' . $user->email);
-
-		$response->assertStatus(200);
-	}
-
-	public function testMotDePasseOublie(): void
-	{
-		$response = $this->get('mot-de-passe-oublie/oigoiuyv');
-
-		$response->assertStatus(200);
-	}
-
-	public function testDemandeMotDePasseOublie(): void
-	{
-		$response = $this->get('demande-mot-de-passe-oublie');
-
-		$response->assertStatus(200);
-	}
-}
+	$response->assertStatus(200);
+});

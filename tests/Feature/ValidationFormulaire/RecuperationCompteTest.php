@@ -1,117 +1,80 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\ValidationFormulaire;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+beforeEach(function (): void {
+	$this->donnees_user_anonyme_recupere = $this->donnees('user_anonyme_recupere');
+});
+test('champs nom', function (): void {
+	$this->donnees_user_anonyme_recupere['nom'] = null;
 
-/**
- * @coversNothing
- */
-class RecuperationCompteTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-	private array $donnees_user_anonyme_recupere;
+	$response->assertStatus(302);
+});
+test('longueur maximum champs nom', function (): void {
+	$this->donnees_user_anonyme_recupere['nom'] = 'aztrhgertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvaztrhgertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvaztrhgertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv';
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-		$this->donnees_user_anonyme_recupere = $this->donnees('user_anonyme_recupere');
-	}
+	$response->assertStatus(302);
+});
+test('longueur minimum champs nom', function (): void {
+	$this->donnees_user_anonyme_recupere['nom'] = 'az';
 
-	public function testChampsNom(): void
-	{
-		$this->donnees_user_anonyme_recupere['nom'] = null;
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
+	$response->assertStatus(302);
+});
+test('champs email', function (): void {
+	$this->donnees_user_anonyme_recupere['email'] = null;
 
-		$response->assertStatus(302);
-	}
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-	public function testLongueurMaximumChampsNom(): void
-	{
-		$this->donnees_user_anonyme_recupere['nom'] = 'aztrhgertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvaztrhgertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvaztrhgertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcvbnazertyuiopmlkjhgfdsqwxcv';
+	$response->assertStatus(302);
+});
+test('longueur maximum champs email', function (): void {
+	$this->donnees_user_anonyme_recupere['email'] = 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio';
 
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-		$response->assertStatus(302);
-	}
+	$response->assertStatus(302);
+});
+test('longueur minimum champs email', function (): void {
+	$this->donnees_user_anonyme_recupere['email'] = 'a@.fr';
 
-	public function testLongueurMinimumChampsNom(): void
-	{
-		$this->donnees_user_anonyme_recupere['nom'] = 'az';
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
+	$response->assertStatus(302);
+});
+test('format champs email', function (): void {
+	$this->donnees_user_anonyme_recupere['email'] = 'emailestfr';
 
-		$response->assertStatus(302);
-	}
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-	public function testChampsEmail(): void
-	{
-		$this->donnees_user_anonyme_recupere['email'] = null;
+	$response->assertStatus(302);
+});
+test('champs password', function (): void {
+	$this->donnees_user_anonyme_recupere['password'] = null;
 
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-		$response->assertStatus(302);
-	}
+	$response->assertStatus(302);
+});
+test('longueur minimum password', function (): void {
+	$this->donnees_user_anonyme_recupere['password'] = 'p';
 
-	public function testLongueurMaximumChampsEmail(): void
-	{
-		$this->donnees_user_anonyme_recupere['email'] = 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio';
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
+	$response->assertStatus(302);
+});
+test('longueur maximum password', function (): void {
+	$this->donnees_user_anonyme_recupere['password'] = 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio';
 
-		$response->assertStatus(302);
-	}
+	$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
 
-	public function testLongueurMinimumChampsEmail(): void
-	{
-		$this->donnees_user_anonyme_recupere['email'] = 'a@.fr';
-
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
-
-		$response->assertStatus(302);
-	}
-
-	public function testFormatChampsEmail(): void
-	{
-		$this->donnees_user_anonyme_recupere['email'] = 'emailestfr';
-
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
-
-		$response->assertStatus(302);
-	}
-
-	public function testChampsPassword(): void
-	{
-		$this->donnees_user_anonyme_recupere['password'] = null;
-
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
-
-		$response->assertStatus(302);
-	}
-
-	public function testLongueurMinimumPassword(): void
-	{
-		$this->donnees_user_anonyme_recupere['password'] = 'p';
-
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
-
-		$response->assertStatus(302);
-	}
-
-	public function testLongueurMaximumPassword(): void
-	{
-		$this->donnees_user_anonyme_recupere['password'] = 'azertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuioazertyuiopmlkjhgfdsqwxcvbnazertyuio';
-
-		$response = $this->post('/recuperation-compte', $this->donnees_user_anonyme_recupere);
-
-		$response->assertStatus(302);
-	}
-}
+	$response->assertStatus(302);
+});

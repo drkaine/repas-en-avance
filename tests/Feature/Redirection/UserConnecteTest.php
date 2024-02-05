@@ -1,36 +1,21 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\Redirection;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+test('inscription', function (): void {
+	$this->userConnecte();
 
-/**
- * @coversNothing
- */
-class UserConnecteTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+	$response = $this->get('inscription');
 
-	public function testInscription(): void
-	{
-		$this->userConnecte();
+	$response->assertRedirect('mon-compte');
+});
+test('connexion', function (): void {
+	$this->userConnecte();
 
-		$response = $this->get('inscription');
+	$response = $this->get('connexion');
 
-		$response->assertRedirect('mon-compte');
-	}
-
-	public function testConnexion(): void
-	{
-		$this->userConnecte();
-
-		$response = $this->get('connexion');
-
-		$response->assertRedirect('mon-compte');
-	}
-}
+	$response->assertRedirect('mon-compte');
+});

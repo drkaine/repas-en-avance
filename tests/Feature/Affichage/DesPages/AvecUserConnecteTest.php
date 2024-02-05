@@ -1,67 +1,44 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\Affichage\DesPages;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+beforeEach(function (): void {
+	$this->userConnecte();
+});
+test('ajout tag', function (): void {
+	$this->creation('Tag', 'tag');
 
-/**
- * @coversNothing
- */
-class AvecUserConnecteTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+	$response = $this->get('ajout-tag');
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+	$response->assertStatus(200);
+});
+test('ajout recette', function (): void {
+	$this->creationTagsAjoutRecette();
 
-		$this->userConnecte();
-	}
+	$response = $this->get('ajout-recette');
 
-	public function testAjoutTag(): void
-	{
-		$this->creation('Tag', 'tag');
+	$response->assertStatus(200);
+});
+test('mon compte', function (): void {
+	$this->creationRegimesAlimentaire();
 
-		$response = $this->get('ajout-tag');
+	$response = $this->get('mon-compte');
 
-		$response->assertStatus(200);
-	}
+	$response->assertStatus(200);
+});
+test('carnet de recettes', function (): void {
+	$this->creation('Recette', 'recette');
 
-	public function testAjoutRecette(): void
-	{
-		$this->creationTagsAjoutRecette();
+	$this->creationDonnees('Tag', 'tag_ingredient');
 
-		$response = $this->get('ajout-recette');
+	$this->creation('Ingredient', 'ingredient');
 
-		$response->assertStatus(200);
-	}
+	$this->creation('CarnetRecette', 'carnet_recette');
 
-	public function testMonCompte(): void
-	{
-		$this->creationRegimesAlimentaire();
+	$response = $this->get('carnet-recettes');
 
-		$response = $this->get('mon-compte');
-
-		$response->assertStatus(200);
-	}
-
-	public function testCarnetDeRecettes(): void
-	{
-		$this->creation('Recette', 'recette');
-
-		$this->creationDonnees('Tag', 'tag_ingredient');
-
-		$this->creation('Ingredient', 'ingredient');
-
-		$this->creation('CarnetRecette', 'carnet_recette');
-
-		$response = $this->get('carnet-recettes');
-
-		$response->assertStatus(200);
-	}
-}
+	$response->assertStatus(200);
+});

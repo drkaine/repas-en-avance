@@ -1,48 +1,28 @@
 <?php
 
 declare(strict_types = 1);
-
-namespace Tests\Feature;
-
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
 
-/**
- * @coversNothing
- */
-class AuthentificationTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-	private array $donnees_user;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+beforeEach(function (): void {
+	$this->donnees_user = $this->donnees('user');
+});
+test('connexion', function (): void {
+	$user = $this->creationUser();
 
-		$this->donnees_user = $this->donnees('user');
-	}
+	unset($this->donnees_user['nom'], $this->donnees_user['email_verified_at']);
 
-	public function testConnexion(): void
-	{
-		$user = $this->creationUser();
+	$this->post('/connexion', $this->donnees_user);
 
-		unset($this->donnees_user['nom'], $this->donnees_user['email_verified_at']);
+	expect(Auth::user()->id)->toBe($user->id);
+});
+test('deconnexion', function (): void {
+	$this->userConnecte();
 
-		$this->post('/connexion', $this->donnees_user);
+	$this->get('deconnexion');
 
-		$this->assertSame($user->id, Auth::user()->id);
-	}
-
-	public function testDeconnexion(): void
-	{
-		$this->userConnecte();
-
-		$this->get('deconnexion');
-
-		$this->assertGuest();
-	}
-}
+	$this->assertGuest();
+});

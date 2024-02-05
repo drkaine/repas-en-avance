@@ -1,33 +1,21 @@
 <?php
 
 declare(strict_types = 1);
-
-namespace Tests\Feature\Envoie;
-
 use App\Notifications\ConfirmationEmail;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
-use Tests\Traits\RecuperationDonneesDeTestTrait;
 
-/**
- * @coversNothing
- */
-class NotificationTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
-	use RecuperationDonneesDeTestTrait;
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-	public function testVerificationEmailIsSent(): void
-	{
-		Notification::fake();
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-		$user = $this->creationUser();
+uses(Tests\Traits\RecuperationDonneesDeTestTrait::class);
 
-		$user->notify(new ConfirmationEmail);
+test('verification email is sent', function (): void {
+	Notification::fake();
 
-		Notification::assertSentTo($user, ConfirmationEmail::class);
-	}
-}
+	$user = $this->creationUser();
+
+	$user->notify(new ConfirmationEmail);
+
+	Notification::assertSentTo($user, ConfirmationEmail::class);
+});

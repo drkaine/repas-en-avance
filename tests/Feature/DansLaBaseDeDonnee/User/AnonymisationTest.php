@@ -1,70 +1,47 @@
 <?php
 
 declare(strict_types = 1);
-
-namespace Tests\Feature\DansLaBaseDeDonnee\User;
-
 use App\Services\GestionUsersInactifService;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
-use Tests\Traits\RecuperationDonneesDeTestTrait;
 
-/**
- * @coversNothing
- */
-class AnonymisationTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
-	use RecuperationDonneesDeTestTrait;
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-	private array $donnees_user;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-	private array $donnees_user_anonyme;
+uses(Tests\Traits\RecuperationDonneesDeTestTrait::class);
 
-	protected function setUp(): void
-	{
-		parent::setUp();
+beforeEach(function (): void {
+	$this->donnees_user = $this->donnees('user');
+	$this->donnees_user_anonyme = $this->donnees('user_anonyme');
+	unset($this->donnees_user_anonyme['password'], $this->donnees_user_anonyme['derniere_connexion']);
+});
+test('anonymisation user', function (): void {
+	$user = $this->creationUser();
 
-		$this->donnees_user = $this->donnees('user');
-		$this->donnees_user_anonyme = $this->donnees('user_anonyme');
-		unset($this->donnees_user_anonyme['password'], $this->donnees_user_anonyme['derniere_connexion']);
+	unset($this->donnees_user['password']);
 
-	}
+	$this->actingAs($user);
 
-	public function testAnonymisationUser(): void
-	{
-		$user = $this->creationUser();
+	$this->get('/anonymisation-du-compte');
 
-		unset($this->donnees_user['password']);
+	$this->assertDatabaseMissing('users', $this->donnees_user);
 
-		$this->actingAs($user);
+	$this->assertDatabaseHas('users', $this->donnees_user_anonyme);
+});
+test('anonymisation users inactif', function (): void {
+	$date = new Carbon;
 
-		$this->get('/anonymisation-du-compte');
+	$user = $this->creationUser();
 
-		$this->assertDatabaseMissing('users', $this->donnees_user);
+	$user->derniere_connexion = $date->now()->subMonths(4);
 
-		$this->assertDatabaseHas('users', $this->donnees_user_anonyme);
-	}
+	$user->save();
 
-	public function testAnonymisationUsersInactif(): void
-	{
-		$date = new Carbon;
+	$anonymisation_helper = new GestionUsersInactifService;
 
-		$user = $this->creationUser();
+	$anonymisation_helper->anonymiser();
 
-		$user->derniere_connexion = $date->now()->subMonths(4);
+	$this->assertDatabaseMissing('users', $this->donnees_user);
 
-		$user->save();
-
-		$anonymisation_helper = new GestionUsersInactifService;
-
-		$anonymisation_helper->anonymiser();
-
-		$this->assertDatabaseMissing('users', $this->donnees_user);
-
-		$this->assertDatabaseHas('users', $this->donnees_user_anonyme);
-	}
-}
+	$this->assertDatabaseHas('users', $this->donnees_user_anonyme);
+});

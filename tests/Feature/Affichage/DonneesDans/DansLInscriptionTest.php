@@ -1,39 +1,23 @@
 <?php
 
 declare(strict_types = 1);
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
-namespace Tests\Feature\Affichage\DonneesDans;
+uses(Tests\Traits\ModelDeTestTrait::class);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Tests\Traits\ModelDeTestTrait;
+beforeEach(function (): void {
+	$this->creationRegimesAlimentaire();
+});
+test('tag dans l inscription', function (): void {
+	$this->creationRegimesAlimentaire();
 
-/**
- * @coversNothing
- */
-class DansLInscriptionTest extends TestCase
-{
-	use RefreshDatabase;
-	use ModelDeTestTrait;
+	$response = $this->get('inscription');
 
-	protected function setUp(): void
-	{
-		parent::setUp();
-		$this->creationRegimesAlimentaire();
+	$regimes_alimentaires = $response->viewData('regimes_alimentaires');
+
+	foreach ($regimes_alimentaires as $regime_alimentaire) {
+		$response->assertSee($regime_alimentaire->nom);
+
+		$response->assertSee($regime_alimentaire->id);
 	}
-
-	public function testTagDansLInscription(): void
-	{
-		$this->creationRegimesAlimentaire();
-
-		$response = $this->get('inscription');
-
-		$regimes_alimentaires = $response->viewData('regimes_alimentaires');
-
-		foreach ($regimes_alimentaires as $regime_alimentaire) {
-			$response->assertSee($regime_alimentaire->nom);
-
-			$response->assertSee($regime_alimentaire->id);
-		}
-	}
-}
+});
